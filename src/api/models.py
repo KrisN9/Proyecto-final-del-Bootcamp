@@ -31,7 +31,7 @@ class User(db.Model):
         }
 
 
-class Favorito(db.Model):
+class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_user = db.Column(db.Integer, db.ForeignKey('user.id'),
         nullable=False)
@@ -52,7 +52,7 @@ class Proveedor(db.Model):
     login= db.relationship('Login', backref='proveedor', lazy=True) 
     
 
-class Ofertas(db.Model):
+class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_user =db.Column(db.Integer, db.ForeignKey('proveedor.id'),nullable=False)
     name=db.Column(db.String(80), unique=False, nullable=False)
