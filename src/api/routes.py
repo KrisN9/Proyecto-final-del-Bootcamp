@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Login, Favorite, Proveedor, Ofertas
+from api.models import db, User, Login, Favorite, Proveedor, Offer
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
@@ -40,8 +40,8 @@ def get_proveedor(proveedor_id):
 
 @api.route('/user/favorite', methodos=['GET'])  #Se obtiene todos los favoritos 
 def all_favorite():
-    favorites=Favorites.query.all()
-    data = [favorite.serialize() for favorites in favorites]
+    favorites= Favorite.query.all()
+    data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
 
 
