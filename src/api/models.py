@@ -56,7 +56,7 @@ class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_user =db.Column(db.Integer, db.ForeignKey('proveedor.id'),nullable=False)
     name=db.Column(db.String(80), unique=False, nullable=False)
-    precio= db.Column(db.Integer, nullable=False )
+    price= db.Column(db.Integer, nullable=False )
     url= db.Column(db.String(200), nullable=False)
     location=db.Column(db.String(200), nullable=False)
     image= db.Column(db.String(120),nullable=True)
