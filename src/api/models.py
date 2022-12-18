@@ -35,7 +35,7 @@ class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_user = db.Column(db.Integer, db.ForeignKey('user.id'),
         nullable=False)
-    id_offer =db.Column(db.Integer, db.ForeignKey('ofertas.id'),
+    id_offer =db.Column(db.Integer, db.ForeignKey('offer.id'),
         nullable=False)
 
 
