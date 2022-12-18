@@ -1,7 +1,7 @@
   
 import os
 from flask_admin import Admin
-from .models import db, User, Login, Favorite , Proveedor, Offer
+from .models import db, User, Login, Favorite, Proveedor, Offer
 from flask_admin.contrib.sqla import ModelView
 
 def setup_admin(app):
