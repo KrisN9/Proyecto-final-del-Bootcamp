@@ -33,10 +33,8 @@ class User(db.Model):
 
 class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    id_user = db.Column(db.Integer, db.ForeignKey('user.id'),
-        nullable=False)
-    id_offer =db.Column(db.Integer, db.ForeignKey('offer.id'),
-        nullable=False)
+    id_user = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
+    id_offer =db.Column(db.Integer, db.ForeignKey('offer.id'),nullable=False)
 
 
 class Proveedor(db.Model):
@@ -50,7 +48,7 @@ class Proveedor(db.Model):
     imagen=db.Column(db.String(120),nullable=True)
     id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
     login= db.relationship('Login', backref='proveedor', lazy=True) 
-    
+
 
 class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -60,7 +58,5 @@ class Offer(db.Model):
     url= db.Column(db.String(200), nullable=False)
     location=db.Column(db.String(200), nullable=False)
     image= db.Column(db.String(120),nullable=True)
-
-
 
 
