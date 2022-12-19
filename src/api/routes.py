@@ -38,11 +38,10 @@ def get_proveedor(proveedor_id):
     
     return jsonify({"Doesn´t exist"})
 
-@api.route('/user/favorite', methodos=['GET'])  #Se obtiene todos los favoritos 
+@api.route('/user/favorite' , methods=['GET'])  #Se obtiene todos los favoritos 
 def all_favorite():
     favorites= Favorite.query.all()
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
-
 
 
