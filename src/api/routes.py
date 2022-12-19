@@ -22,7 +22,7 @@ def all_proveedor():
 
     return jsonify(data), 200
 
-@api.route('/user/<int:user_id> ', methods=['GET'] ) #Se obtiene un usuario por id 
+@api.route('/user/<int:user_id>', methods=['GET'] ) #Se obtiene un usuario por id 
 def get_user(user_id):
     user= User.query.filter_by(id=user_id).first()
     if user: 
@@ -38,10 +38,12 @@ def get_proveedor(proveedor_id):
     
     return jsonify({"Doesn´t exist"})
 
-@api.route('/user/favorite' , methods=['GET'])  #Se obtiene todos los favoritos 
+@api.route('/user/favorite', methods=['GET'])  #Se obtiene todos los favoritos 
 def all_favorite():
     favorites= Favorite.query.all()
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
+
+
 
 
