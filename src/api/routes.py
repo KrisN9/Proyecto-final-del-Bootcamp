@@ -1,7 +1,7 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprint
+from flask import Flask, request, jsonify, url_for, Blueprintgit 
 from api.models import db, User, Login, Favorite, Proveedor, Offer
 from api.utils import generate_sitemap, APIException
 
@@ -43,7 +43,3 @@ def all_favorite():
     favorites= Favorite.query.all()
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
-
-
-
-
