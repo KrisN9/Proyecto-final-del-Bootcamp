@@ -59,4 +59,3 @@ class Offer(db.Model):
     location=db.Column(db.String(200), nullable=False)
     image= db.Column(db.String(120),nullable=True)
 
-
