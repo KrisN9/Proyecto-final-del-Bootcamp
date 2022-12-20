@@ -92,11 +92,12 @@ def create_user():
 
 @api.route('/supplier', methods=['POST'])  #añadir un nuevo proveedor
 def create_supplier():
-    
     data = request.json
-    supplier = Supplier.query.filter_by
+    supplier = Supplier.query.filter_by(email=data['email'], password=data['password'])
+    if supplier:
+        return jsonify(data), 200
 
-    return jsonify(data), 200
+    return jsonify({"msg": "Usuario/contraseña incorrectos"}), 400
 
 
 @api.route('/offer', methods=['POST'])  #añadir una nueva oferta
