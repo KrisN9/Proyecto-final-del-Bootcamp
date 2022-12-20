@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprintgit 
-from api.models import db, User, Login, Favorite, Proveedor, Offer
+from api.models import db, User, Login, Favorite, Supplier, Offer
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
@@ -15,10 +15,10 @@ def all_user():
 
     return jsonify(data), 200
 
-@api.route('/proveedor' , methodos=['GET'] )   # se obtiene todos lo proveedores
-def all_proveedor():
-    proveedors= Proveedor.query.all()
-    data =[proveedor.serialize() for proveedor in proveedors]
+@api.route('/supplier' , methods=['GET'] )   # se obtiene todos lo proveedores
+def all_suppliers():
+    suppliers= Suppliers.query.all()
+    data =[supplier.serialize() for supplier in suppliers]
 
     return jsonify(data), 200
 
@@ -26,14 +26,14 @@ def all_proveedor():
 def get_user(user_id):
     user= User.query.filter_by(id=user_id).first()
     if user: 
-        return jsonify(user.serialize())
+        return jsonify(user.serialize()), 200
 
     return jsonify({"Doesn´t exist"}), 400
 
-@api.route('/proveedor/<int:proveedor_id>', methods=['GET']) # se obtiene proveedor por id 
-def get_proveedor(proveedor_id):
-    proveedor= Proveedor.query.filter_by(id=proveedor_id).first()
-    if proveedor : 
+@api.route('/supplier/<int:supplier_id>', methods=['GET']) # se obtiene proveedor por id 
+def get_supplier(supplier_id):
+    supplier= Supplier.query.filter_by(id=supplier_id).first()
+    if supplier : 
         return jsonify(proveedor.serialize()),200
     
     return jsonify({"Doesn´t exist"})
