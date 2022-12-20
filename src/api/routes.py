@@ -44,6 +44,20 @@ def all_favorite():                                             #pendiente de re
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
 
+@api.route('/supplier/<int:supplier_id>', methods=['GET']) # se obtiene proveedor por id 
+def get_supplier(supplier_id):
+    supplier= Supplier.query.filter_by(id=supplier_id).first()
+    if supplier : 
+        return jsonify(supplier.serialize()),200
+    
+    return jsonify({"Doesn´t exist"})
+
+@api.route('/user/favorite/<int:user_id>', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
+def all_favorite():                                             #pendiente de revisar
+    favorites= Favorite.query.all(id=user_id)
+    data = [favorite.serialize() for favorite in favorites]
+    return jsonify(data),200
+
 @api.route('/supplier/offer/<int:supplier_id>', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
 def all_offer():                                                  #pendiente de revisar
     offers= Offer.query.all(id=supplier_id)
@@ -56,5 +70,7 @@ def all_offer():
     offers= Offer.query.all()
     data =[offer.serialize() for Offer in offers]
     return jsonify(data), 200
+
+
 
 
