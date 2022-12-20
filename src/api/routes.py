@@ -15,10 +15,10 @@ def all_user():
 
     return jsonify(data), 200
 
-@api.route('/proveedor' , methodos=['GET'] )   # se obtiene todos lo proveedores
-def all_proveedor():
-    proveedors= Proveedor.query.all()
-    data =[proveedor.serialize() for proveedor in proveedors]
+@api.route('/supplier' , methodos=['GET'] )   # se obtiene todos lo proveedores
+def all_suppliers():
+    suppliers= Supplier.query.all()
+    data =[supplier.serialize() for supplier in suppliers]
 
     return jsonify(data), 200
 
@@ -30,11 +30,11 @@ def get_user(user_id):
 
     return jsonify({"Doesn´t exist"}), 400
 
-@api.route('/proveedor/<int:proveedor_id>', methods=['GET']) # se obtiene proveedor por id 
-def get_proveedor(proveedor_id):
-    proveedor= Proveedor.query.filter_by(id=proveedor_id).first()
-    if proveedor : 
-        return jsonify(proveedor.serialize()),200
+@api.route('/supplier/<int:supplier_id>', methods=['GET']) # se obtiene proveedor por id 
+def get_supplier(supplier_id):
+    supplier= Supplier.query.filter_by(id=supplier_id).first()
+    if supplier : 
+        return jsonify(supplier.serialize()),200
     
     return jsonify({"Doesn´t exist"})
 
