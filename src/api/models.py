@@ -15,7 +15,6 @@ class User(db.Model):
     last_name=db.Column(db.String(80), unique=False, nullable=False)
     city=db.Column(db.String(80), unique=False, nullable=False)
     telephone_number=db.Column(db.Integer, nullable=False) 
-    image= db.Column(db.String(120),nullable=True)
     id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
     login= db.relationship('Login', backref='user', lazy=True) 
     
@@ -37,26 +36,24 @@ class Favorite(db.Model):
     id_offer =db.Column(db.Integer, db.ForeignKey('offer.id'),nullable=False)
 
 
-class Proveedor(db.Model):
+class Supplier(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     company_name =db.Column(db.String(80), unique=True, nullable=False) 
-    cif_empresa=db.Column(db.Integer,unique=True, nullable=False)
+    company_cif=db.Column(db.Integer,unique=True, nullable=False)
     name=db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
     city=db.Column(db.String(80), unique=False, nullable=False)
     telephone_number=db.Column(db.Integer, nullable=False)
-    imagen=db.Column(db.String(120),nullable=True)
     id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
-    login= db.relationship('Login', backref='proveedor', lazy=True) 
+    login= db.relationship('Login', backref='supplier', lazy=True) 
 
 
 class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    id_user =db.Column(db.Integer, db.ForeignKey('proveedor.id'),nullable=False)
+    id_user =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)
     name=db.Column(db.String(80), unique=False, nullable=False)
     price= db.Column(db.Integer, nullable=False )
     url= db.Column(db.String(200), nullable=False)
     location=db.Column(db.String(200), nullable=False)
-    image= db.Column(db.String(120),nullable=True)
 
 
