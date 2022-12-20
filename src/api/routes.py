@@ -4,6 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprintgit 
 from api.models import db, User, Login, Favorite, Supplier, Offer
 from api.utils import generate_sitemap, APIException
+from flask_jwt_extended import create_access_token
 
 api = Blueprint('api', __name__)
 
@@ -80,27 +81,29 @@ def delete_supplier(supplier_id):
     return jsonify({"message": "User Deleted."})
 
 
-@api.route('/user', methods=['POST'])  #añadir un nuevo usuario
+@api.route('/user', methods=['POST'])  #crear un nuevo usuario
 def create_user():
     data = request.json
     user = User.query.filter_by(email=data['email'], password=data['password'])
     if user:
-        return jsonify(data), 200
+        access_token = create_access_token(identity=user.id)
+        return jsonify({"token": access_token}), 200
     
-    return jsonify({"msg": "Usuario/contraseña incorrectos"}), 400
+    return jsonify({"msg": "Wrong user/password"}), 400
 
 
-@api.route('/supplier', methods=['POST'])  #añadir un nuevo proveedor
+@api.route('/supplier', methods=['POST'])  #crear un nuevo proveedor
 def create_supplier():
     data = request.json
     supplier = Supplier.query.filter_by(email=data['email'], password=data['password'])
     if supplier:
-        return jsonify(data), 200
+        access_token = create_access_token(identity=supplier.id)
+        return jsonify({"token": access_token}), 200
 
-    return jsonify({"msg": "Usuario/contraseña incorrectos"}), 400
+    return jsonify({"msg": "Wrong user/password"}), 400
 
 
-@api.route('/offer', methods=['POST'])  #añadir una nueva oferta
+@api.route('/offer', methods=['POST'])  #crear una nueva oferta
 def create_offer():
     
     data = request.json
@@ -108,6 +111,15 @@ def create_offer():
     if offer:
         return jsonify(data), 200
 
-    return jsonify({"msg": "Nombre/URL incorrectos"}), 400
+    return jsonify({"msg": "Wrong name/URL"}), 400
 
 
+@api.route('/favorite', methods=['POST']) #añadir un nuevo favorito
+def add_favorite():
+
+    data = request.json
+    favorite = Favorite.query.filter_by(id_user=data['id_user'], id_offer=data['id_offer'])
+    if favorite:
+        return jsonify(data), 200
+
+    return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400
