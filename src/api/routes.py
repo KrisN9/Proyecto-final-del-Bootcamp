@@ -16,6 +16,13 @@ def all_user():
 
     return jsonify(data), 200
 
+
+@api.route('/user', methods=['GET']) #se obtiene los datos de un usuario concreto
+def get_user():
+    user = User.query.filter_by(user_id).first()
+    data =[user.serialize() for user in users]
+    return jsonify(data), 200
+
 @api.route('/supplier' , methods=['GET'] )   # se obtiene todos lo proveedores
 def all_suppliers():
     suppliers= Suppliers.query.all()
@@ -123,3 +130,31 @@ def add_favorite():
         return jsonify(data), 200
 
     return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400
+
+
+@api.route('/user/<int: user_id>', methods=['PUT']) #modificación de datos de usuario
+def update_user(user_id):
+    change_data = request.json
+
+    for user in users:
+        if user['id'] == user_id:
+            user['email'] = change_data['email'],
+            user['password'] = change_data['password']
+            user['telephone_number'] = change_data['telephone_number']
+            return jsonify(user), 200
+
+        return ({"msg": 'User with id {user_id} not found'}), 404
+
+@api.route('/supplier/<int: supplier_id>', methods=['PUT']) #modificacion de datos de proveedor
+def update_supplier(supplier_id):
+
+    change_data = request.json
+
+    for supplier in suppliers:
+        if supplier['id'] == supplier_id:
+            supplier['email'] = change_data['email'],
+            supplier['password'] = change_data['password']
+            supplier['telephone_number'] = change_data['telephone_number']
+            return jsonify(supplier), 200
+
+        return ({"msg": 'Supplier with id {supplier_id} not found'}), 404
