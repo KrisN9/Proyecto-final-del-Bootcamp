@@ -78,3 +78,28 @@ def delete_supplier(supplier_id):
         return jsonify({"message": "Error"}), 400
     
     return jsonify({"message": "User Deleted."})
+
+
+@api.route('/user', methods=['POST'])  #añadir un nuevo usuario (desde el front, hacer fetch y enviar usuario y contraseña)
+def create_user():
+    
+    data = request.json
+
+    return jsonify(data), 200
+
+@api.route('/supplier', methods=['POST'])  #añadir un nuevo proveedor
+def create_supplier():
+    
+    data = request.json
+
+    return jsonify(data), 200
+    
+
+@api.route('/offer', methods=['POST'])  #añadir una nueva oferta
+def create_offer():
+    
+    data = request.json
+
+    return jsonify(data), 200
+
+
