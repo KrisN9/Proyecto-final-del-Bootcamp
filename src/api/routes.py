@@ -34,7 +34,7 @@ def get_user(user_id):
 def get_supplier(supplier_id):
     supplier= Supplier.query.filter_by(id=supplier_id).first()
     if supplier : 
-        return jsonify(proveedor.serialize()),200
+        return jsonify(supplier.serialize()),200
     
     return jsonify({"Doesn´t exist"})
 
