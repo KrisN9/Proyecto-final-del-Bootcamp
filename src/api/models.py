@@ -26,7 +26,7 @@ class User(db.Model):
     name =db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
     city=db.Column(db.String(80), unique=False, nullable=False)
-    telephone_number=db.Column(db.Integer, nullable=False) 
+    telephone_number=db.Column(db.String(80), nullable=False) 
     id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
     login= db.relationship('Login', backref='user', lazy=True) 
     
