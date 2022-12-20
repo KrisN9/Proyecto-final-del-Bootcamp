@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Login, Favorite, Proveedor, Offer
+from api.models import db, User, Login, Favorite, Supplier, Offer
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
@@ -15,7 +15,7 @@ def all_user():
 
     return jsonify(data), 200
 
-@api.route('/supplier' , methodos=['GET'] )   # se obtiene todos lo proveedores
+@api.route('/supplier' , methods=['GET'] )   # se obtiene todos lo proveedores
 def all_suppliers():
     suppliers= Supplier.query.all()
     data =[supplier.serialize() for supplier in suppliers]
@@ -26,7 +26,7 @@ def all_suppliers():
 def get_user(user_id):
     user= User.query.filter_by(id=user_id).first()
     if user: 
-        return jsonify(user.serialize())
+        return jsonify(user.serialize()), 200
 
     return jsonify({"Doesn´t exist"}), 400
 
