@@ -57,4 +57,4 @@ def all_offer():
     data =[offer.serialize() for Offer in offers]
     return jsonify(data), 200
 
-@api.route('/', methods=['POST']) # pendiente
+
