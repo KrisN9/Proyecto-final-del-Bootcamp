@@ -104,7 +104,10 @@ def create_supplier():
 def create_offer():
     
     data = request.json
+    offer = Offer.query.filter_by(name=data['name'], url=data['url'])
+    if offer:
+        return jsonify(data), 200
 
-    return jsonify(data), 200
+    return jsonify({"msg": "Nombre/URL incorrectos"}), 400
 
 
