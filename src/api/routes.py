@@ -15,7 +15,7 @@ def all_user():
 
     return jsonify(data), 200
 
-@api.route('/supplier' , methods=['GET'] )   # se obtiene todos lo proveedores
+@api.route('/supplier' , methodos=['GET'] )   # se obtiene todos lo proveedores
 def all_suppliers():
     suppliers= Supplier.query.all()
     data =[supplier.serialize() for supplier in suppliers]
@@ -26,7 +26,7 @@ def all_suppliers():
 def get_user(user_id):
     user= User.query.filter_by(id=user_id).first()
     if user: 
-        return jsonify(user.serialize()), 200
+        return jsonify(user.serialize())
 
     return jsonify({"Doesn´t exist"}), 400
 
@@ -38,12 +38,23 @@ def get_supplier(supplier_id):
     
     return jsonify({"Doesn´t exist"})
 
-@api.route('/user/favorite', methods=['GET'])  #Se obtiene todos los favoritos 
-def all_favorite():
-    favorites= Favorite.query.all()
+@api.route('/user/favorite/<int:user_id>', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
+def all_favorite():                                             #pendiente de revisar
+    favorites= Favorite.query.all(id=user_id)
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
 
+@api.route('/supplier/offer/<int:supplier_id>', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
+def all_offer():                                                  #pendiente de revisar
+    offers= Offer.query.all(id=supplier_id)
+    data=[offer.serialize() for offer in offers ]
+    return jsonify(data), 200
 
 
+@api.route('/offer', methods=['GET'])  #obtine todas las ofertas
+def all_offer():
+    offers= Offer.query.all()
+    data =[offer.serialize() for Offer in offers]
+    return jsonify(data), 200
 
+@api.route('/', methods=['POST']) # pendiente
