@@ -30,6 +30,14 @@ def get_supplier(supplier_id):
     
     return jsonify({"Doesn´t exist"})
 
+@api.route('/user/<int:user_id>', methods=['GET']) # se obtiene usuario por id 
+def get_supplier(user_id):
+    users= User.query.filter_by(id=user_id).first()
+    if users : 
+        return jsonify(users.serialize()),200
+    
+    return jsonify({"Doesn´t exist"})
+
 @api.route('/user/favorite/<int:user_id>', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
 def favorite_user(user_id):                                             #pendiente de revisar
     favorites= Favorite.query.all(id=user_id)
@@ -48,7 +56,7 @@ def all_offer():
     data =[offer.serialize() for Offer in offers]
     return jsonify(data), 200
 
-@api.route('/favorite', methods=['GET'])  #obtiene todas los favoritos 
+@api.route('/favorite', methods=['GET'])  #obtiene todos los favoritos 
 def all_favorite():
     favorites= Favorite.query.all()
     data =[favorite.serialize() for favorite in favorites]
@@ -65,7 +73,7 @@ def delete_user(user_id):
     except:
         return jsonify({"message": "Error"}), 400
     
-    return jsonify({"message": "User Deleted."})
+    return jsonify({"message": "User Deleted."}),200
 
 @api.route('/delete_supplier/<int:supplier_id>', methods=['DELETE'])  #emilinar proveedor por id 
 def delete_supplier(supplier_id):
@@ -77,4 +85,11 @@ def delete_supplier(supplier_id):
     except:
         return jsonify({"message": "Error"}), 400
     
-    return jsonify({"message": "User Deleted."})
+    return jsonify({"message": "User Deleted."}),200
+
+@api.route('/delete_offer/<int:supplier_id>/<int:offer_id>', methods=['DELETE'])   # eliminar oferta por proveedor  # pendiente de revisar 
+def delete_offer(supplier_id, offer_id):
+    deleteOffer= Offer() #pendiente
+
+
+                                                            
