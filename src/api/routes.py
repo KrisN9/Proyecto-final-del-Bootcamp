@@ -176,3 +176,15 @@ def update_offer(id_offer):
 
         return ({"msg": 'Offer with id {offer_id} not found'}), 404
 
+
+@api.route('/favorite/<int: favorite_id>', methods=['PUT']) #modificar datos de favoritos
+def update_favorite(favorite_id):
+
+    change_data = request.json
+
+    for favorite in favorites:
+        if favorite['id'] == favorite_id:
+            favorite['id_offer'] = change_data['id_offer']
+            return jsonify(favorite), 200
+
+        return jsonify({"msg": "Favorite with id {favorite_id} is not found"}), 404
