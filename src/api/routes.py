@@ -27,7 +27,7 @@ def get_user():
 
 @api.route('/supplier' , methods=['GET'] )   # se obtiene todos lo proveedores
 def all_suppliers():
-    suppliers= Suppliers.query.all()
+    suppliers= Supplier.query.all()
     data =[supplier.serialize() for supplier in suppliers]
 
     return jsonify(data), 200
@@ -52,7 +52,7 @@ def offer_supplier(supplier_id):                                                
     data=[offer.serialize() for offer in offers ]
     return jsonify(data), 200
 
-@api.route('/offer', methods=['GET'])  #obtiene todas las ofertas
+@api.route('/offer', methods=['GET'])  #obtiene todas las ofertas  # revisar
 def all_offer():
     offers= Offer.query.all()
     data =[offer.serialize() for Offer in offers]
@@ -65,7 +65,7 @@ def all_favorite():
     return jsonify(data), 200
 
 
-@api.route('/delete_user/<int:user_id>', methods=['DELETE'])   #eliminar user por id 
+@api.route('/delete_user/<int:user_id>', methods=['DELETE'])   #eliminar usuario  por id 
 def delete_user(user_id):
     try: 
         user =User.query.filter_by(user_id).first()
@@ -88,6 +88,28 @@ def delete_supplier(supplier_id):
         return jsonify({"message": "Error"}), 400
     
     return jsonify({"message": "User Deleted."})
+
+@api.route('/delete_favorite/<int:user_id>/<int:favorite_id>', methods=['DELETE'])      #emilinar favorito del usuario. 
+def delete_favorite(user_id, favorite_id):
+    try:
+        removeFavorite=Favorite(id=favorite_id)
+        db.session.delete(removeFavorite)
+        db.session.commit()
+    except:
+        return jsonify({"message": "Error"}),400
+
+    return jsonify({"Favorite removed"})
+
+@api.route('/delete_offer/<int:supplier_id>/<int:offer_id>', methods=['DELETE'])      #eliminar oferta de un proveedor 
+def delete_offer(supplier_id, offer_id):
+    try:
+        removeOffer=Offer(id=offer_id)
+        db.session.delete(removeOffer)
+        db.session.commit()
+    except:
+        return jsonify({"message": "Error"}),400
+
+    return jsonify({"Offer removed"})
 
 
 @api.route('/user', methods=['POST'])  #crear un nuevo usuario
