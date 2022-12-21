@@ -9,6 +9,7 @@ from flask_jwt_extended import create_access_token
 api = Blueprint('api', __name__)
 
 
+
 @api.route('/user', methods=['GET'])  #se obtiene todo los usuarios 
 def all_user():
     users=User.query.all()
