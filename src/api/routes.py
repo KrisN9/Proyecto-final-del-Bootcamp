@@ -17,15 +17,7 @@ def all_user():
     return jsonify(data), 200
 
 
-@api.route('/user/<int: user_id>', methods=['GET']) #se obtiene los datos de un usuario concreto
-def get_user():
-    user = User.query.filter_by(user_id).first()
-    if user: 
-        return jsonify(user.serialize()),200
-    
-    return jsonify({"Doesn´t exist"}), 400
-
-@api.route('/supplier' , methods=['GET'] )   # se obtiene todos lo proveedores
+@api.route('/supplier' , methods=['GET'] )   # se obtiene todos los proveedores
 def all_suppliers():
     suppliers= Supplier.query.all()
     data =[supplier.serialize() for supplier in suppliers]
@@ -63,7 +55,7 @@ def offer_supplier(supplier_id):                                                
 @api.route('/offer', methods=['GET'])  #obtiene todas las ofertas  # revisar
 def all_offer():
     offers= Offer.query.all()
-    data =[offer.serialize() for Offer in offers]
+    data =[offer.serialize() for offer in offers]
     return jsonify(data), 200
 
 @api.route('/favorite', methods=['GET'])  #obtiene todos los favoritos 
