@@ -4,6 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Login, Favorite, Supplier, Offer
 from api.utils import generate_sitemap, APIException
+from flask_jwt_extended import create_access_token
 
 api = Blueprint('api', __name__)
 
@@ -15,9 +16,18 @@ def all_user():
 
     return jsonify(data), 200
 
+
+@api.route('/user/<int: user_id>', methods=['GET']) #se obtiene los datos de un usuario concreto
+def get_user():
+    user = User.query.filter_by(user_id).first()
+    if user: 
+        return jsonify(user.serialize()),200
+    
+    return jsonify({"Doesn´t exist"}), 400
+
 @api.route('/supplier' , methods=['GET'] )   # se obtiene todos lo proveedores
 def all_suppliers():
-    suppliers= Suppliers.query.all()
+    suppliers= Supplier.query.all()
     data =[supplier.serialize() for supplier in suppliers]
 
     return jsonify(data), 200
@@ -28,7 +38,7 @@ def get_supplier(supplier_id):
     if supplier : 
         return jsonify(supplier.serialize()),200
     
-    return jsonify({"Doesn´t exist"})
+    return jsonify({"Doesn´t exist"}), 400
 
 @api.route('/user/<int:user_id>', methods=['GET']) # se obtiene usuario por id 
 def get_supplier(user_id):
@@ -50,7 +60,7 @@ def offer_supplier(supplier_id):                                                
     data=[offer.serialize() for offer in offers ]
     return jsonify(data), 200
 
-@api.route('/offer', methods=['GET'])  #obtiene todas las ofertas
+@api.route('/offer', methods=['GET'])  #obtiene todas las ofertas  # revisar
 def all_offer():
     offers= Offer.query.all()
     data =[offer.serialize() for Offer in offers]
@@ -63,7 +73,7 @@ def all_favorite():
     return jsonify(data), 200
 
 
-@api.route('/delete_user/<int:user_id>', methods=['DELETE'])   #eliminar user por id 
+@api.route('/delete_user/<int:user_id>', methods=['DELETE'])   #eliminar usuario  por id 
 def delete_user(user_id):
     try: 
         user =User.query.filter_by(user_id).first()
@@ -85,11 +95,126 @@ def delete_supplier(supplier_id):
     except:
         return jsonify({"message": "Error"}), 400
     
-    return jsonify({"message": "User Deleted."}),200
+    return jsonify({"message": "User Deleted."})
 
-@api.route('/delete_offer/<int:supplier_id>/<int:offer_id>', methods=['DELETE'])   # eliminar oferta por proveedor  # pendiente de revisar 
+@api.route('/delete_favorite/<int:user_id>/<int:favorite_id>', methods=['DELETE'])      #emilinar favorito del usuario. 
+def delete_favorite(user_id, favorite_id):
+    try:
+        removeFavorite=Favorite(id=favorite_id)
+        db.session.delete(removeFavorite)
+        db.session.commit()
+    except:
+        return jsonify({"message": "Error"}),400
+
+    return jsonify({"Favorite removed"})
+
+@api.route('/delete_offer/<int:supplier_id>/<int:offer_id>', methods=['DELETE'])      #eliminar oferta de un proveedor 
 def delete_offer(supplier_id, offer_id):
-    deleteOffer= Offer() #pendiente
+    try:
+        removeOffer=Offer(id=offer_id)
+        db.session.delete(removeOffer)
+        db.session.commit()
+    except:
+        return jsonify({"message": "Error"}),400
+
+    return jsonify({"Offer removed"})
 
 
-                                                            
+@api.route('/user', methods=['POST'])  #crear un nuevo usuario
+def create_user():
+    data = request.json
+    user = User.query.filter_by(email=data['email'], password=data['password'])
+    if user:
+        access_token = create_access_token(identity=user.id)
+        return jsonify({"token": access_token}), 200
+    
+    return jsonify({"msg": "Wrong user/password"}), 400
+
+
+@api.route('/supplier', methods=['POST'])  #crear un nuevo proveedor
+def create_supplier():
+    data = request.json
+    supplier = Supplier.query.filter_by(email=data['email'], password=data['password'])
+    if supplier:
+        access_token = create_access_token(identity=supplier.id)
+        return jsonify({"token": access_token}), 200
+
+    return jsonify({"msg": "Wrong user/password"}), 400
+
+
+@api.route('/offer', methods=['POST'])  #crear una nueva oferta
+def create_offer():
+    
+    data = request.json
+    offer = Offer.query.filter_by(name=data['name'], url=data['url'])
+    if offer:
+        return jsonify(data), 200
+
+    return jsonify({"msg": "Wrong name/URL"}), 400
+
+
+@api.route('/favorite', methods=['POST']) #añadir un nuevo favorito
+def add_favorite():
+
+    data = request.json
+    favorite = Favorite.query.filter_by(id_user=data['id_user'], id_offer=data['id_offer'])
+    if favorite:
+        return jsonify(data), 200
+
+    return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400
+
+
+@api.route('/user/<int: user_id>', methods=['PUT']) #modificación de datos de usuario
+def update_user(user_id):
+    change_data = request.json
+
+    for user in users:
+        if user['id'] == user_id:
+            user['email'] = change_data['email'],
+            user['password'] = change_data['password']
+            user['telephone_number'] = change_data['telephone_number']
+            return jsonify(user), 200
+
+        return ({"msg": 'User with id {user_id} not found'}), 404
+
+@api.route('/supplier/<int: supplier_id>', methods=['PUT']) #modificacion de datos de proveedor
+def update_supplier(supplier_id):
+
+    change_data = request.json
+
+    for supplier in suppliers:
+        if supplier['id'] == supplier_id:
+            supplier['email'] = change_data['email'],
+            supplier['password'] = change_data['password']
+            supplier['telephone_number'] = change_data['telephone_number']
+            return jsonify(supplier), 200
+
+        return ({"msg": 'Supplier with id {supplier_id} not found'}), 404
+
+@api.route('/offer/<int: id_offer>', methods=['PUT']) #modificar datos de oferta
+def update_offer(id_offer):
+
+    change_data = request.json
+
+    for offer in offers:
+        if offer['id'] == offer_id:
+            offer['name'] = change_data['name'],
+            offer['price'] = change_data['price']
+            offer['url'] = change_data['url']
+            offer['location'] = change_data['location']
+            return jsonify(offer), 200
+
+        return ({"msg": 'Offer with id {offer_id} not found'}), 404
+
+
+@api.route('/favorite/<int: favorite_id>', methods=['PUT']) #modificar datos de favoritos
+def update_favorite(favorite_id):
+
+    change_data = request.json
+
+    for favorite in favorites:
+        if favorite['id'] == favorite_id:
+            favorite['id_offer'] = change_data['id_offer']
+            return jsonify(favorite), 200
+
+        return jsonify({"msg": "Favorite with id {favorite_id} is not found"}), 404
