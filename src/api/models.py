@@ -85,7 +85,7 @@ class Supplier(db.Model):
 
 class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    id_user =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)
+    id_supplier =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)
     login= db.relationship('Login', backref='offer', lazy=True) 
     name=db.Column(db.String(80), unique=False, nullable=False)
     price= db.Column(db.Integer, nullable=False )
