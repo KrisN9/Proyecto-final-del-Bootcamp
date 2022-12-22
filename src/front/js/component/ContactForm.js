@@ -38,7 +38,7 @@ const ContactForm = () => {
           Mensaje*
         </label>
         <textarea
-          class="form-control"
+          className="form-control"
           id="exampleFormControlMessage"
           placeholder="Mensaje"
           rows="3"

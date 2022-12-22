@@ -10,10 +10,13 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
+	<>
     <div className="text-center mt-3">
       <Slide />
-
-      <ContactForm />
     </div>
+	<div className="col-6 mt-5 ms-auto me-4">
+		<MyMapComponent isMarkerShown />
+	</div>
+	</>
   );
 };
