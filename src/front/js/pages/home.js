@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import Slide from "../component/slide";
+import MyMapComponent from "../component/MyMapComponent";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
