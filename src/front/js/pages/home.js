@@ -5,20 +5,12 @@ import "../../styles/home.css";
 import Slide from "../component/slide";
 
 export const Home = () => {
-	const { store, actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
 
-	return (
-		<div className="text-center mt-3">
-			
-			
-			<Slide/>
-			
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			
-			
-		</div>
-	);
+  return (
+    <div className="text-center mt-3">
+      <Slide />
+
+    </div>
+  );
 };
