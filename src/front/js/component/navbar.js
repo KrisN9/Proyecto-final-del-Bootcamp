@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export const Navbar = () => {
 	return (
 
-		<nav className="navbar navbar-expand-lg  navbar-dark bg-warning text-dark">
+		<nav className="navbar navbar-expand-lg navbar-dark text-dark">
 			  <div className="container">
 
    				<Link to="/">
@@ -17,9 +17,9 @@ export const Navbar = () => {
     	</button>
 		<div className="collapse navbar-collapse gap-2 justify-content-md-end" id="navbarSupportedContent">
 			
-			<button type="button" className="btn btn-success">Favorito</button>
-			<button type="button" className="btn btn-success">Registrarse</button>
-	 		<button type="button" className="btn btn-success">Iniciar sesión</button>
+			<button type="button" className="btn btn-outline-success rounded-pill">Favorito</button>
+			<button type="button" className="btn btn-outline-success rounded-pill">Registrarse</button>
+	 		<button type="button" className="btn btn-outline-success rounded-pill">Iniciar sesión</button>
 			
 	
 		</div>
