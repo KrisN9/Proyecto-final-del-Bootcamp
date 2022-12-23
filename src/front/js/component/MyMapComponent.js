@@ -18,7 +18,7 @@ const MyMapComponent = compose(
   withScriptjs,
   withGoogleMap
 )((props) => (
-  <GoogleMap defaultZoom={8} defaultCenter={{ lat: 40.417213416794496, lng: -3.7036235136715936 }}>
+  <GoogleMap defaultZoom={14} defaultCenter={{ lat: 40.417213416794496, lng: -3.7036235136715936 }}>
     {props.isMarkerShown && (
       <Marker position={{ lat: 40.417213416794496, lng: -3.7036235136715936 }} onClick={props.onMarkerClick}/>
     )}
@@ -45,7 +45,7 @@ class MyFancyComponent extends React.PureComponent {
     this.delayedShowMarker()
   }
 
-  
+
   render() {
     return (
       <MyMapComponent
