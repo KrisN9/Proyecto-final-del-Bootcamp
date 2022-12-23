@@ -6,6 +6,8 @@ import Slide from "../component/slide";
 import MyMapComponent from "../component/MyMapComponent";
 import ContactForm from "../component/ContactForm";
 import SearchBar from "../component/SearchBar";
+import SupplierRegister from "../component/SupplierRegister";
+import UserRegister from "../component/UserRegister";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
