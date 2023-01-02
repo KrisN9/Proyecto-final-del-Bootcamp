@@ -33,15 +33,15 @@ export const Footer = () => (
 			</div>
 			<div className="col-12 col-md-3  ">Descarga nuestras Apps
 			<div className="mt-3"> 
-			<img src="https://es.logodownload.org/wp-content/uploads/2019/06/disponible-en-google-play-badge-1.png" width="100" height="40" class=" me-2"/>
-			<img src="https://vivecudillero.com/wp-content/uploads/2019/11/appstore.png" width="100" height="40" class="me-2"/>
+			<a href="https://play.google.com/store/games?hl=es"><img src="https://es.logodownload.org/wp-content/uploads/2019/06/disponible-en-google-play-badge-1.png" width="100" height="40" class=" me-2"/></a>
+			<a href="https://www.apple.com/es/app-store/"><img src="https://vivecudillero.com/wp-content/uploads/2019/11/appstore.png" width="100" height="40" class=" me-2"/></a>
 			</div>
 			</div>		
 			<div className="col-12 col-md-3 ">Comunidad
 			<div className=" mt-3">
-			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png" width="40" height="40" class="rounded-circle me-2"/>
-		    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" width="40" height="40" class="rounded-circle me-2"/>
-			<img src="https://www.pngkey.com/png/full/2-27646_twitter-logo-png-transparent-background-logo-twitter-png.png" width="40" height="40" class="rounded-circle me-2"/>
+			<a href="https://es-es.facebook.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png" width="40" height="40" class="rounded-circle me-2"/></a>
+			<a href="https://www.instagram.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" width="40" height="40" class="rounded-circle me-2"/></a>
+			<a href="https://twitter.com/"><img src="https://www.pngkey.com/png/full/2-27646_twitter-logo-png-transparent-background-logo-twitter-png.png" width="40" height="40" class="rounded-circle me-2"/></a>
 			</div>
 			</div>
 			<div className="col-12 col-md-3 ">Tienes alguna duda? 
