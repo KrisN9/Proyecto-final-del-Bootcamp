@@ -7,7 +7,7 @@ export const Footer = () => (
 		<div className="row ">
 			<div className="col-12 col-md-3 ">Colaboradores
 			<div className="mt-3"> 
-			<img src="https://pbs.twimg.com/profile_images/1531998332347990017/HGRMiQ___400x400.jpg" width="40" height="40" class="rounded-circle me-2"/>
+			<img src="https://pbs.twimg.com/profile_images/1531998332347990017/HGRMiQ___400x400.jpg" width="40" height="40" class="rounded-circle me-2" />
 			<img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/The_Good_Burger_%28TGB%29.jpg" width="40" height="40" class="rounded-circle me-2"/>
 			<img src="https://www.telepizza.es/Content/Themes/TP/Images/meta-image.jpg" width="40" height="40" class="rounded-circle me-2"/>
 			<img src="https://noticiaslogisticaytransporte.com/wp-content/uploads/2022/12/oficinas-glovo-barcelona.png" width="40" height="40" class="rounded-circle me-2"/>
@@ -21,6 +21,14 @@ export const Footer = () => (
 			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/McDonald%27s_logo.svg/2560px-McDonald%27s_logo.svg.png" width="40" height="40" class="rounded-circle me-2"/>
 			<img src="https://www.elcorteingles.es/centroscomerciales/uploads/service/logo/936/malvon%20logo.jpg" width="40" height="40"  class="rounded-circle me-2"/>
 			<img src="https://img2.freepng.es/20180527/cjp/kisspng-papa-john-s-pizza-take-out-restaurant-finger-post-5b0ac8dbe21378.690054431527433435926.jpg" width="40" height="40" class="rounded-circle me-2"/>
+			</div>
+			<div className="mt-2"> 
+			<img src="https://play-lh.googleusercontent.com/Jq75dJNMtPEGxl-PHUW7H6LfYrvVJthQV0A_L7N33WaEA1nntDknsK5inWd-JmoaSOti" width="40" height="40" class="rounded-circle me-2"/>
+			<img src="https://www.franquicia.net/wp-content/uploads/2020/12/popeyes-logo-300.jpg" width="40" height="40" class="rounded-circle me-2"/>
+			<img src="https://www.familycheck.es/wp-content/uploads/2019/09/6.jpg" width="40" height="40" class="rounded-circle me-2"/>
+			<img src="https://media.easy.co.il/images/PICS/5795578.jpg" width="40" height="40" class="rounded-circle me-2"/>
+			<img src="https://i0.wp.com/www.lafranquicia.es/wp-content/uploads/2018/06/Logo-Tako-Away-350.jpg" width="40" height="40" class="rounded-circle me-2"/>
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS62-qvwY-j4_l-0ywJcKM8rSLCuN5YdY47g-cDGdcUvWQZKN58U-8JxUAFR27jQGlmVnM&usqp=CAU" width="40" height="40" class="rounded-circle me-2"/>
 			</div>
 			</div>
 			<div className="col-12 col-md-3  ">Descarga nuestras Apps
