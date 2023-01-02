@@ -8,6 +8,7 @@ import ContactForm from "../component/ContactForm";
 import SearchBar from "../component/SearchBar";
 import SupplierRegister from "../component/SupplierRegister";
 import UserRegister from "../component/UserRegister";
+import Cards from "../component/Cards";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -17,12 +18,27 @@ export const Home = () => {
     <div className="text-center mt-3">
       <Slide />
     </div>
-	<div className="col-6 mt-5 ms-auto me-5">
-		<div className="me-5">
-			<SearchBar />
-			<MyMapComponent isMarkerShown />
-		</div>
+	
+	<div className="row">
+	<div className="col-12 col-md-6 mt-5">
+		<div className="ms-5">
+			<Cards/>
+			<Cards/>
+			<Cards/>
+		</div>	
 	</div>
+
+	<div className="col-12 col-md-6 mt-5 ">
+		<div className="me-5">
+		<SearchBar />
+		<MyMapComponent isMarkerShown />
+		</div>
+
+
+	</div>
+	</div>
+		
+	
 	</>
   );
 };
