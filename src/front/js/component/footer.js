@@ -11,13 +11,13 @@ export const Footer = () => (
 			<img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/The_Good_Burger_%28TGB%29.jpg" width="40" height="40" class="rounded-circle me-2"/>
 			<img src="https://www.telepizza.es/Content/Themes/TP/Images/meta-image.jpg" width="40" height="40" class="rounded-circle me-2"/>
 			<img src="https://noticiaslogisticaytransporte.com/wp-content/uploads/2022/12/oficinas-glovo-barcelona.png" width="40" height="40" class="rounded-circle me-2"/>
-			<img src="https://assets.stickpng.com/images/5f4921b668ecc70004ae7047.png" width="40" height="40" class="rounded-circle me-2" />
+			<img src="https://e7.pngegg.com/pngimages/141/427/png-clipart-uber-eats-pizza-food-delivery-restaurant-pizza-food-text-thumbnail.png" width="40" height="40" class="rounded-circle me-2" />
 			<img src="https://play-lh.googleusercontent.com/7hm-g4MVs5eJOOYv1mECDpPU70mnZ17ixVWNeftIwAk6T_EEM3czjHecd4NO-QwFaGWp" width="40" height="40" class="rounded-circle me-2"/>
 			</div>
 			<div className="mt-2"> 
 			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/85/Burger_King_logo_%281999%29.svg/2024px-Burger_King_logo_%281999%29.svg.png" width="40" height="40" class="rounded-circle me-2"/>
 			<img src="https://i.pinimg.com/originals/ee/fd/cf/eefdcf8f23c277bfac155152c6ab3a20.jpg" width="40" height="40" class="rounded-circle me-2"/>
-			<img src="https://assets.stickpng.com/images/5842eff2a6515b1e0ad75b0e.png" width="40" height="40" class="rounded-circle me-2"/>
+			<img src="https://img2.freepng.es/20181117/ahb/kisspng-laufuhr-test-images-saved-by-the-bell-logo-png-5bf0b799d5e510.8916967515425022978761.jpg" width="40" height="40" class="rounded-circle me-2"/>
 			<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/McDonald%27s_logo.svg/2560px-McDonald%27s_logo.svg.png" width="40" height="40" class="rounded-circle me-2"/>
 			<img src="https://www.elcorteingles.es/centroscomerciales/uploads/service/logo/936/malvon%20logo.jpg" width="40" height="40"  class="rounded-circle me-2"/>
 			<img src="https://img2.freepng.es/20180527/cjp/kisspng-papa-john-s-pizza-take-out-restaurant-finger-post-5b0ac8dbe21378.690054431527433435926.jpg" width="40" height="40" class="rounded-circle me-2"/>
