@@ -47,7 +47,7 @@ class Favorite(db.Model):
     id_user = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
     login_user= db.relationship('Login', backref='user', lazy=True) 
     id_offer =db.Column(db.Integer, db.ForeignKey('offer.id'),nullable=False)
-    login_offer= db.relationship('Login', backref='offer', lazy=True)
+    login_offer= db.relationship('Offer', backref='offer', lazy=True)
 
     def __repr__(self):
         return f'<Favorite {self.email}>'
@@ -86,7 +86,7 @@ class Supplier(db.Model):
 class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_supplier =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)
-    login= db.relationship('Login', backref='offer', lazy=True) 
+    login= db.relationship('Supplier', backref='offer', lazy=True) 
     name=db.Column(db.String(80), unique=False, nullable=False)
     price= db.Column(db.Integer, nullable=False )
     url= db.Column(db.String(200), nullable=False)
