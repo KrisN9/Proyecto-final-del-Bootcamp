@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => (
 
@@ -44,8 +45,8 @@ export const Footer = () => (
 			<a href="https://twitter.com/"><img src="https://www.pngkey.com/png/full/2-27646_twitter-logo-png-transparent-background-logo-twitter-png.png" width="40" height="40" class="rounded-circle me-2"/></a>
 			</div>
 			</div>
-			<div className="col-12 col-md-3 ">Tienes alguna duda? 
-			<a href="#" className="text-decoration-none"> Contactanos.</a>
+			<div className="col-12 col-md-3 ">Tienes alguna duda?
+			<Link to={`/contacta-con-nosotros`}>Contactanos</Link>
 			</div>
 		</div>
 

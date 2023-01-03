@@ -3,9 +3,12 @@ import React from "react";
 const ContactForm = () => {
   return (
     <>
-    <h1>Contacta con nosotros</h1> {/* falta corregir estilo de la letra*/}
-	<h3>Rellena el formulario y contactaremos contigo</h3> {/* falta corregir estilo de la letra*/}
-    <div className="container bg-warning px-3 py-3">
+    <div className="text-center mt-3">
+    <p className="fs-1 fw-bolder">Contacta con nosotros</p> {/* creo que esta bien, pero hay que revisarlo */}
+	  <p className="fs-3 fst-italic" >Rellena el formulario y contactaremos contigo</p> {/*creo que esta bien, pero hay que revisarlo*/}
+    </div>
+   
+    <div className="container bg-warning px-3 py-3 mt-2 mb-5">
       <div className="form-floating mb-3">
         <input
           type="name"
@@ -33,17 +36,21 @@ const ContactForm = () => {
         />
         <label for="floatingNumber">Número de teléfono</label>
       </div>
-      <div className="form-floating mb-3">       {/* corregir el campo de mensaje */}
-        <label for="exampleFormControlMessage" className="form-label">
-          Mensaje*
-        </label>
+ 
+      <div className="form-floating mb-3 " >  
         <textarea
-          className="form-control"
+          className="form-control "
           id="exampleFormControlMessage"
           placeholder="Mensaje"
           rows="3"
+
         ></textarea>
+
+        <label for="exampleFormControlMessage" className="form-label">
+          Mensaje
+        </label>
       </div>
+
       <div className="form-check mb-3">
         <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
         <label className="form-check-label" for="defaultCheck1">
