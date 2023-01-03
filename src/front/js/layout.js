@@ -13,6 +13,7 @@ import ContactForm from "./component/ContactForm";
 import SupplierRegister from "./component/SupplierRegister";
 import UserRegister from "./component/UserRegister";
 import Registers from "./component/Registers";
+import LogIn from "./component/logIn";
 
 //create your first component
 const Layout = () => {
@@ -32,6 +33,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<ContactForm/>} path="/contacta-con-nosotros"/>  
                         <Route element={<Registers/>} path="/registro"/>
+                        <Route element={<LogIn/>} path="/inicio-sesion"/>
                         <Route element={<SupplierRegister/>} path ="/registro-proveedor"/> 
                         <Route element={<UserRegister/>} path = "/registro-usuario"/>
                     </Routes>
