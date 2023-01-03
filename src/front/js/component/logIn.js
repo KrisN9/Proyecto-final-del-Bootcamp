@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 
 
 const LogIn=()=>{
+
+    const [username, setUsername] = useState('')
+    const [userPassword, setUserPassword] = useState('')
+    const [suppliername, setSuppliername] = useState('')
+    const [supplierPassword, setSupplierPassword] = useState('')
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+    }
 
     return (
     
@@ -23,6 +32,8 @@ const LogIn=()=>{
                     <div className="form-floating mb-3">
                             <input
                             type="email"
+                            value={username}
+                            onChange={e => setUsername(e.target.value)}
                             className="form-control"
                             id="floatingInput"
                             placeholder="name@example.com"
@@ -32,6 +43,8 @@ const LogIn=()=>{
                         <div className="form-floating mb-3">
                             <input
                             type="password"
+                            value={userPassword}
+                            onChange={e => setUserPassword(e.target.value)}
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
@@ -66,6 +79,8 @@ const LogIn=()=>{
                     <div className="form-floating mb-3">
                             <input
                             type="email"
+                            value={suppliername}
+                            onChange={e => setSuppliername(e.target.value)}
                             className="form-control"
                             id="floatingInput"
                             placeholder="name@example.com"
@@ -75,6 +90,8 @@ const LogIn=()=>{
                         <div className="form-floating mb-3">
                             <input
                             type="password"
+                            value={supplierPassword}
+                            onChange={e => setSupplierPassword(e.target.value)}
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"

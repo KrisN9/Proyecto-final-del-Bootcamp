@@ -55,7 +55,7 @@ const UserRegister = () => {
         <label for="floatingNumber">Número de teléfono</label>
       </div>
       <select class="form-select mb-3" aria-label="Default select example">
-            <option selected>Ciudad(elegir de las indicadas en el desplegable)</option>
+            <option selected>Ciudad(elegir de las indicadas en el desplegable)*</option>
             <option value="Álava/Araba">Álava/Araba</option>
             <option value="Albacete">Albacete</option>
             <option value="Alicante">Alicante</option>
