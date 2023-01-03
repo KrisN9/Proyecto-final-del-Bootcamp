@@ -18,7 +18,8 @@ export const Navbar = () => {
 		<div className="collapse navbar-collapse gap-2 justify-content-md-end" id="navbarSupportedContent">
 			
 			<button type="button" className="btn btn-outline-success rounded-pill">Favorito</button>
-			<button type="button" className="btn btn-outline-success rounded-pill">Registrarse</button>
+			<Link to="/registro"><button type="button" className="btn btn-outline-success rounded-pill">Registrarse</button></Link>
+			
 	 		<button type="button" className="btn btn-outline-success rounded-pill">Iniciar sesión</button>
 			
 	
