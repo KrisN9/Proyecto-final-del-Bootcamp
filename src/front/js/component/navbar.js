@@ -20,9 +20,8 @@ export const Navbar = () => {
 			<button type="button" className="btn btn-outline-success rounded-pill">Favorito</button>
 			<Link to="/registro"><button type="button" className="btn btn-outline-success rounded-pill">Registrarse</button></Link>
 			
-	 		<button type="button" className="btn btn-outline-success rounded-pill">Iniciar sesión</button>
+	 		<Link to="/inicio-sesion"><button type="button" className="btn btn-outline-success rounded-pill">Iniciar sesión</button></Link>
 			
-	
 		</div>
   </div>
 </nav>
