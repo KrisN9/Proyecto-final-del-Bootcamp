@@ -3,9 +3,12 @@ import React from "react";
 const UserRegister = () => {
   return (
     <>
-    <h1>Registro de usuarios</h1> {/* falta corregir estilo de la letra*/}
-	<h3>Rellena el formulario para empezar a comparar ofertas!</h3> {/* falta corregir estilo de la letra*/}
-    <div className="container bg-warning px-3 py-3">
+    <div className="text-center mt-3">
+    <p className="fs-1 fw-bolder">Registro de usuarios</p> {/* falta corregir estilo de la letra*/}
+	<p className="fs-3 fst-italic">Rellena el formulario para empezar a comparar ofertas!</p> {/* falta corregir estilo de la letra*/}
+    </div>
+    
+    <div className="container bg-warning px-3 py-3 mt-2 mb-5">
       <div className="form-floating mb-3">
         <input
           type="name"

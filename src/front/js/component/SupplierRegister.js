@@ -3,9 +3,12 @@ import React from "react";
 const SupplierRegister = () => {
   return (
     <>
-    <h1>Registro de Proveedores</h1> {/* falta corregir estilo de la letra*/}
-	<h3>Rellena el formulario para empezar a enviar tus ofertas!</h3> {/* falta corregir estilo de la letra*/}
-    <div className="container bg-warning px-3 py-3">
+    <div className="text-center mt-3">
+    <p className="fs-1 fw-bolder">Registro de Proveedores</p> {/* falta corregir estilo de la letra*/}
+   	<p className="fs-3 fst-italic">Rellena el formulario para empezar a enviar tus ofertas!</p> {/* falta corregir estilo de la letra*/}
+    </div>
+    <div className="container bg-warning px-3 py-3 mt-2 mb-5">
+   
     <div className="form-floating mb-3">
         <input
           type="company-name"

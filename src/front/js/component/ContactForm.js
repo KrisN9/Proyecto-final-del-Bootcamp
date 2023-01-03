@@ -7,7 +7,6 @@ const ContactForm = () => {
     <p className="fs-1 fw-bolder">Contacta con nosotros</p> {/* creo que esta bien, pero hay que revisarlo */}
 	  <p className="fs-3 fst-italic" >Rellena el formulario y contactaremos contigo</p> {/*creo que esta bien, pero hay que revisarlo*/}
     </div>
-   
     <div className="container bg-warning px-3 py-3 mt-2 mb-5">
       <div className="form-floating mb-3">
         <input
