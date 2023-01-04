@@ -9,7 +9,7 @@ const Registers=()=>{
         <div className="container">{/* pendiente de arreglar la presentación*/}
         <div className="row text-center mb-5 centro">
             <div className="col-md-6">
-                <p className="fs-1 fst-italic">Registrate como Usuario</p>
+                <p className="fs-1 fst-italic">Registrate como usuario</p>
                 <div className=" col-6 mx-auto">
                    <Link to="/registro-usuario"><button className="btn btn-outline-success" type="button">Registrate</button></Link> 
                     </div>

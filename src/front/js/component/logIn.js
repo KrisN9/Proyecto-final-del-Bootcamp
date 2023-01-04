@@ -20,7 +20,7 @@ const LogIn=()=>{
             <div className="col-md-6">
                 <p className="fs-1 fst-italic">Iniciar sesión como usuario</p>
                 <div className=" col-6 mx-auto">
-                  <button className="btn btn-outline-success " type="button" data-bs-toggle="modal" data-bs-target="#modalUsuario">Iniciar sesión</button>
+                  <button className="btn btn-outline-warning " type="button" data-bs-toggle="modal" data-bs-target="#modalUsuario">Iniciar sesión</button>
                   <div className="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div className="modal-content">     {/*modal para usuario*/ }
@@ -53,8 +53,8 @@ const LogIn=()=>{
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                      <Link to="/privada-usuario/id"><button type="button" className="btn btn-primary">OK</button></Link>  
+                        <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                      <Link to="/privada-usuario/id"><button type="button" className="btn btn-outline-warning">Continuar</button></Link>  
                     </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ const LogIn=()=>{
             <div className="col-md-6">  
             <p className="fs-1 fst-italic" >Iniciar sesión como proveedor</p>
             <div className="col-6 mx-auto">    
-            <button className="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#modalProveedor">Iniciar sesión</button>
+            <button className="btn btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#modalProveedor">Iniciar sesión</button>
             <div className="modal fade" id="modalProveedor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div className="modal-content">   
@@ -100,9 +100,9 @@ const LogIn=()=>{
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <Link to="/privada-proveedor/id">
-                        <button type="button" className="btn btn-primary">ok</button>
+                        <button type="button" className="btn btn-outline-warning">Continuar</button>
                         </Link>
                     </div>
                     </div>
