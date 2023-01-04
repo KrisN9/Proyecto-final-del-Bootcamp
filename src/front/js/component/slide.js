@@ -1,5 +1,7 @@
 import React from "react";
 
+{/*pendiente de revisar como usar los slide
+se puede usar Props?*/}
 
 const Slide=()=>{
 
