@@ -5,7 +5,7 @@ const Slide=()=>{
 
     return (
 
-        <div id="carouselExampleFade" className="carousel slide carousel-fade container" data-bs-ride="carousel">
+        <div id="carouselExampleFade" className="carousel slide carousel-fade container col-md-6" data-bs-ride="carousel">
         <div className="carousel-inner  ">
           <div className="carousel-item active ">
             <img src="https://soydechollos.com/storage/oferta/2-pizzas-medianas-a-domicilio-de-hasta-2-ingredientes-por-69.png" className="d-block w-100 " height="500" alt="..."/>
