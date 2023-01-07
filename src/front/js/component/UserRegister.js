@@ -69,7 +69,7 @@ const UserRegister = () => {
             placeholder="contraseña"
             name="Contraseña"
             onChange={handleChange} 
-          /> <a href="#" onClick={handleClick}><i class="far fa-eye-slash"></i> </a>
+          /> <a href="#" onClick={handleClick}><i class="far fa-eye"></i> </a>
           <label htmlFor="floatingInput">Contraseña*</label>
         </div>
         <div className="form-floating mb-3">
@@ -81,7 +81,7 @@ const UserRegister = () => {
             name="Repetir contraseña"
             onChange={handleChange}
           />
-            <a href="#"> <i class="far fa-eye-slash"></i> </a>
+            <a href="#"> <i class="far fa-eye"></i> </a>
         
           <label htmlFor="floatingInput">Repetir contraseña*</label>
           

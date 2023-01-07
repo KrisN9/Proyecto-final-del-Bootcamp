@@ -48,7 +48,7 @@ const LogIn=()=>{
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
-                            />
+                            /><a href="#"> <i class="far fa-eye"></i> </a>
                             <label for="floatingInput">Contraseña*</label>
                         </div>
                     </div>
@@ -96,6 +96,7 @@ const LogIn=()=>{
                             id="floatingPassword"
                             placeholder="contraseña"
                             />
+                            <a href="#"> <i class="far fa-eye"></i> </a>
                             <label for="floatingInput">Contraseña*</label>
                         </div>
                     </div>

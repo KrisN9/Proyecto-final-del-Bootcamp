@@ -86,7 +86,7 @@ const SupplierRegister = () => {
           name="contraseña"
           onChange={handleChange}  
         />
-        <a href="#"><i class="far fa-eye-slash"></i> </a>
+        <a href="#"><i class="far fa-eye"></i> </a>
         <label htmlFor="floatingInput">Contraseña*</label>
       </div>
       <div className="form-floating mb-3">
@@ -98,7 +98,7 @@ const SupplierRegister = () => {
           name="Repetir Contraseña"
           onChange={handleChange}  
         />
-        <a href="#" ><i class="far fa-eye-slash"></i> </a>
+        <a href="#" ><i class="far fa-eye"></i> </a>
         <label htmlFor="floatingInput">Repetir contraseña*</label>
       </div>
       <div className="form-floating mb-3">
