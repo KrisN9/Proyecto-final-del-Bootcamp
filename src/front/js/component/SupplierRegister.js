@@ -1,8 +1,32 @@
 import React from "react";
+import { useState, useEffect } from "react";
 
+// crear base de datos para la opcion ciudad, hacer fetch para visualizar.
 const SupplierRegister = () => {
+  const [formData, setFormData] = useState({});
+  const [city, setCity]= useState([]);
+ 
+  useEffect(()=>{
+    fetch(process.env.BACKEND_URL + "va la direccion del api") //pendiente de revisar URL del api. 
+    .then((response)=> response.json())
+    .then((response)=>{
+      setCity(response);
+    })
+
+  },[])
+
+  const handleChange =(event) => {
+    setFormData({...formData, [event.target.name]: event.target.value });
+  };
+
+  const handleSubmit =(event)=>{
+    event.preventDefault();   
+   
+  }
+  
   return (
     <>
+    <form onSubmit={handleSubmit}>
     <div className="text-center mt-3">
     <p className="fs-1 fw-bolder">Registro de Proveedores</p> {/* falta corregir estilo de la letra*/}
    	<p className="fs-3 fst-italic">Rellena el formulario para empezar a enviar tus ofertas!</p> {/* falta corregir estilo de la letra*/}
@@ -15,8 +39,10 @@ const SupplierRegister = () => {
           className="form-control"
           id="floatingName"
           placeholder="Nombre de la empresa"
+          name="Nombre de la empresa"
+          onChange={handleChange}
         />
-        <label for="floatingInput">Nombre de la empresa*</label>
+        <label htmlFor="floatingInput">Nombre de la empresa*</label>
       </div>
       <div className="form-floating mb-3">
         <input
@@ -24,8 +50,10 @@ const SupplierRegister = () => {
           className="form-control"
           id="floatingNumber"
           placeholder="CIF de la empresa"
+          name="CIF de la empresa"
+          onChange={handleChange}
         />
-        <label for="floatingInput">CIF de la empresa*</label>
+        <label htmlFor="floatingInput">CIF de la empresa*</label>
       </div>
       <div className="form-floating mb-3">
         <input
@@ -33,8 +61,10 @@ const SupplierRegister = () => {
           className="form-control"
           id="floatingName"
           placeholder="Nombre y Apellidos"
+          name="Nombre y Apellidos"
+          onChange={handleChange}  
         />
-        <label for="floatingName">Nombre y Apellidos de la persona de contacto*</label>
+        <label htmlFor="floatingName">Nombre y Apellidos de la persona de contacto*</label>
       </div>
       <div className="form-floating mb-3">
         <input
@@ -42,8 +72,10 @@ const SupplierRegister = () => {
           className="form-control"
           id="floatingInput"
           placeholder="name@example.com"
+          name="Dirección de correo electrónico"
+          onChange={handleChange}  
         />
-        <label for="floatingInput">Dirección de correo electrónico*</label>
+        <label htmlFor="floatingInput">Dirección de correo electrónico*</label>
       </div>
       <div className="form-floating mb-3">
         <input
@@ -51,8 +83,11 @@ const SupplierRegister = () => {
           className="form-control"
           id="floatingPassword"
           placeholder="contraseña"
+          name="contraseña"
+          onChange={handleChange}  
         />
-        <label for="floatingInput">Contraseña*</label>
+        <a href="#"><i class="far fa-eye-slash"></i> </a>
+        <label htmlFor="floatingInput">Contraseña*</label>
       </div>
       <div className="form-floating mb-3">
         <input
@@ -60,8 +95,11 @@ const SupplierRegister = () => {
           className="form-control"
           id="floatingPassword"
           placeholder="Repetir Contraseña"
+          name="Repetir Contraseña"
+          onChange={handleChange}  
         />
-        <label for="floatingInput">Repetir contraseña*</label>
+        <a href="#" ><i class="far fa-eye-slash"></i> </a>
+        <label htmlFor="floatingInput">Repetir contraseña*</label>
       </div>
       <div className="form-floating mb-3">
         <input
@@ -69,11 +107,18 @@ const SupplierRegister = () => {
           className="form-control"
           id="floatingNumber"
           placeholder="Número de teléfono"
+          name="Número de teléfono"
+          onChange={handleChange}  
         />
-        <label for="floatingNumber">Número de teléfono</label>
+        <label htmlFor="floatingNumber">Número de teléfono</label>
       </div>
-      <select class="form-select mb-3" aria-label="Default select example">
-            <option selected>Ciudad(elegir de las indicadas en el desplegable)*</option>
+      <select 
+      className="form-select mb-3" 
+      aria-label="Default select example"
+      name="Ciudad"
+      onChange={handleChange}
+      >
+            <option disabled selected>Ciudad(elegir de las indicadas en el desplegable)*</option>
             <option value="Álava/Araba">Álava/Araba</option>
             <option value="Albacete">Albacete</option>
             <option value="Alicante">Alicante</option>
@@ -129,7 +174,7 @@ const SupplierRegister = () => {
         </select>
       <div className="form-check mb-3">
         <input className="form-check-input" type="checkbox" value="" id="defaultCheck1" />
-        <label className="form-check-label" for="defaultCheck1">
+        <label className="form-check-label" htmlFor="defaultCheck1">
             He leído y consiento al contenido de la Información Legal y de Protección de Datos.
         </label>
         </div>
@@ -137,6 +182,7 @@ const SupplierRegister = () => {
             <button type="submit" className="btn btn-danger">Enviar</button>
         </div>
     </div>
+    </form>
     </>
   );
 };

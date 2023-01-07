@@ -14,3 +14,10 @@
     margin-top: 200px;
     margin-bottom: 200px;
 }
+
+.far{
+    position: absolute;
+    right: 10px;
+    top:50%
+    
+}
