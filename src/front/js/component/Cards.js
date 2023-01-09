@@ -19,7 +19,7 @@ const Cards =()=>{
             </div>
             </div>
             <div className="col-md-2 mt-3">
-                <button type="button" className="btn btn-danger float-end me-3">
+                <button type="button" className="btn btn-danger float-end me-3 mt-2">
                 <i className="fas fa-heart"></i>
                 </button>
                 <button type="button" className="btn btn-warning float-end me-2 mt-2">Pedir!</button>
