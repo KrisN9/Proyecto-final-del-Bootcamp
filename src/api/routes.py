@@ -113,7 +113,7 @@ def delete_offer(supplier_id, offer_id):
     return jsonify({"Offer removed"})
 
 
-@api.route('/user', methods=['POST'])  #crear un nuevo usuario
+@api.route('/user', methods=['POST'])  #login de usuario
 def create_user():
     data = request.json
     user = User.query.filter_by(email=data['email'], password=data['password'])
@@ -124,7 +124,7 @@ def create_user():
     return jsonify({"msg": "Wrong user/password"}), 400
 
 
-@api.route('/supplier', methods=['POST'])  #crear un nuevo proveedor
+@api.route('/supplier', methods=['POST'])  #login de proveedor
 def create_supplier():
     data = request.json
     supplier = Supplier.query.filter_by(email=data['email'], password=data['password'])
