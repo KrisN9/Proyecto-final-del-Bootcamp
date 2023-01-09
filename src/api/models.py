@@ -45,9 +45,9 @@ class User(db.Model):
 class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_user = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
-    login_user= db.relationship('Login', backref='user', lazy=True) 
+    user= db.relationship('User', backref='user', lazy=True) 
     id_offer =db.Column(db.Integer, db.ForeignKey('offer.id'),nullable=False)
-    login_offer= db.relationship('Offer', backref='offer', lazy=True)
+    offer= db.relationship('Offer', backref='offer', lazy=True)
 
     def __repr__(self):
         return f'<Favorite {self.email}>'

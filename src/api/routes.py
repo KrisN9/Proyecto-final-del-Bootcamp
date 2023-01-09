@@ -34,7 +34,7 @@ def get_supplier(supplier_id):
     return jsonify({"Doesn´t exist"}), 400
 
 @api.route('/user/<int:user_id>', methods=['GET']) # se obtiene usuario por id 
-def get_supplier(user_id):
+def get_user(user_id):
     users= User.query.filter_by(id=user_id).first()
     if users : 
         return jsonify(users.serialize()),200
@@ -157,7 +157,7 @@ def add_favorite():
     return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400
 
 
-@api.route('/user/<int: user_id>', methods=['PUT']) #modificación de datos de usuario
+@api.route('/user/<int:user_id>', methods=['PUT']) #modificación de datos de usuario
 def update_user(user_id):
     change_data = request.json
 
@@ -170,7 +170,7 @@ def update_user(user_id):
 
         return ({"msg": 'User with id {user_id} not found'}), 404
 
-@api.route('/supplier/<int: supplier_id>', methods=['PUT']) #modificacion de datos de proveedor
+@api.route('/supplier/<int:supplier_id>', methods=['PUT']) #modificacion de datos de proveedor
 def update_supplier(supplier_id):
 
     change_data = request.json
@@ -184,8 +184,8 @@ def update_supplier(supplier_id):
 
         return ({"msg": 'Supplier with id {supplier_id} not found'}), 404
 
-@api.route('/offer/<int: id_offer>', methods=['PUT']) #modificar datos de oferta
-def update_offer(id_offer):
+@api.route('/offer/<int:offer_id>', methods=['PUT']) #modificar datos de oferta
+def update_offer(offer_id):
 
     change_data = request.json
 
@@ -200,7 +200,7 @@ def update_offer(id_offer):
         return ({"msg": 'Offer with id {offer_id} not found'}), 404
 
 
-@api.route('/favorite/<int: favorite_id>', methods=['PUT']) #modificar datos de favoritos
+@api.route('/favorite/<int:favorite_id>', methods=['PUT']) #modificar datos de favoritos
 def update_favorite(favorite_id):
 
     change_data = request.json
