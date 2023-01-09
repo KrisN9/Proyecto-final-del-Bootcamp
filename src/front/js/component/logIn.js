@@ -1,17 +1,44 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 
 
 const LogIn=()=>{
 
+    const [formDataUser, setFormDataUser] = useState({});
+    const [formDataSupplier, setFormDataSupplier] = useState({});
+    const [value, setValue]=useState([]);
+    
+
+    const handleChangeUser =(event) => {
+        setFormDataUser({...formDataUser, [event.target.name]: event.target.value });
+      };
+    
+    const handleChangeSupplier =(event) => {
+        setFormDataSupplier({...formDataSupplier, [event.target.name]: event.target.value });
+      };
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+    }
+
+    const keyDown=(e)=>{
+     if(e.keyCode== "13" && formDataUser){
+       setValue([...value, formDataUser]);
+       setFormDataUser("")
+                          // pregunrtar porque cuando se presiona enter los imput no estan vacios 
+     }
+
+    }
+
     return (
     
-        <div className="container">    {/* pendiente de arreglar la presentación*/}
+        <div className="container">    
         <div className="row text-center mb-5 centro"> 
             <div className="col-md-6">
                 <p className="fs-1 fst-italic">Iniciar sesión como usuario</p>
                 <div className=" col-6 mx-auto">
-                  <button className="btn btn-outline-success " type="button" data-bs-toggle="modal" data-bs-target="#modalUsuario">Iniciar sesión</button>
+                  <button className="btn btn-outline-warning " type="button" data-bs-toggle="modal" data-bs-target="#modalUsuario">Iniciar sesión</button>
                   <div className="modal fade" id="modalUsuario" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div className="modal-content">     {/*modal para usuario*/ }
@@ -26,8 +53,11 @@ const LogIn=()=>{
                             className="form-control"
                             id="floatingInput"
                             placeholder="name@example.com"
+                            name="email"
+                            onChange={handleChangeUser}
+                            onKeyDown={keyDown}
                             />
-                            <label for="floatingInput">Dirección de correo electrónico*</label>
+                            <label htmlFor="floatingInput">Dirección de correo electrónico*</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input
@@ -35,13 +65,16 @@ const LogIn=()=>{
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
-                            />
-                            <label for="floatingInput">Contraseña*</label>
+                            name="contraseña"
+                            onChange={handleChangeUser}
+                            onKeyDown={keyDown}
+                            /><a href="#"> <i className="far fa-eye"></i> </a>
+                            <label htmlFor="floatingInput">Contraseña*</label>
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                      <Link to="/privada-usuario/id"><button type="button" className="btn btn-primary">OK</button></Link>  
+                        <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                      <Link to="/privada-usuario/id"><button type="button" className="btn btn-outline-warning " >Continuar</button></Link>  
                     </div>
                     </div>
                 </div>
@@ -54,7 +87,7 @@ const LogIn=()=>{
             <div className="col-md-6">  
             <p className="fs-1 fst-italic" >Iniciar sesión como proveedor</p>
             <div className="col-6 mx-auto">    
-            <button className="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#modalProveedor">Iniciar sesión</button>
+            <button className="btn btn-outline-warning" type="button" data-bs-toggle="modal" data-bs-target="#modalProveedor">Iniciar sesión</button>
             <div className="modal fade" id="modalProveedor" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
                     <div className="modal-content">   
@@ -69,23 +102,28 @@ const LogIn=()=>{
                             className="form-control"
                             id="floatingInput"
                             placeholder="name@example.com"
+                            name="email"
+                            onChange={handleChangeSupplier}
                             />
-                            <label for="floatingInput">Dirección de correo electrónico*</label>
+                            <label htmlFor="floatingInput">Dirección de correo electrónico*</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input
-                            type="password"
+                            type="password" 
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
+                            name="contraseña"
+                            onChange={handleChangeSupplier}
                             />
-                            <label for="floatingInput">Contraseña*</label>
+                            <a href="#"> <i className="far fa-eye"></i> </a>
+                            <label htmlFor="floatingInput">Contraseña*</label>
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
                         <Link to="/privada-proveedor/id">
-                        <button type="button" className="btn btn-primary">ok</button>
+                        <button type="button" className="btn btn-outline-warning">Continuar</button>
                         </Link>
                     </div>
                     </div>
