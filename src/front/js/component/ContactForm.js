@@ -3,6 +3,10 @@ import React, { useState } from "react";
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({});
+  const [contactName, setContactName] = useState('');
+  const [contactEmail, setContactEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [message, setMessage] = useState('');
 
   const handleChange =(event) => {
     setFormData({...formData, [event.target.name]: event.target.value });
@@ -24,6 +28,7 @@ const ContactForm = () => {
         <div className="form-floating mb-3">
           <input
             type="name"
+            value={contactName}
             className="form-control"
             id="floatingName"
             placeholder="Nombre y Apellidos"
@@ -36,6 +41,7 @@ const ContactForm = () => {
         <div className="form-floating mb-3">
           <input
             type="email"
+            value={contactEmail}
             className="form-control"
             id="floatingInput"
             placeholder="name@example.com"
@@ -49,6 +55,7 @@ const ContactForm = () => {
         <div className="form-floating mb-3">
           <input
             type="phone-number"
+            value={phoneNumber}
             className="form-control"
             id="floatingNumber"
             placeholder="Número de teléfono"
@@ -60,9 +67,10 @@ const ContactForm = () => {
 
         <div className="form-floating mb-3 ">
           <textarea
-            className="form-control "
+            className="form-control"
             id="exampleFormControlMessage"
             placeholder="Mensaje"
+            value={message}
             rows="3"
             name="Mensaje"
             onChange={handleChange}
