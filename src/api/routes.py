@@ -5,9 +5,11 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Login, Favorite, Supplier, Offer
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
+from flask_jwt_extended import JWTManager
 
 api = Blueprint('api', __name__)
-
+app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+jwt = JWTManager(app)
 
 
 @api.route('/user', methods=['GET'])  #se obtiene todo los usuarios 
@@ -42,13 +44,13 @@ def get_user(user_id):
     return jsonify({"Doesn´t exist"})
 
 @api.route('/user/favorite/<int:user_id>', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
-def favorite_user(user_id):                                             #pendiente de revisar
+def favorite_user(user_id):                                             
     favorites= Favorite.query.all(id=user_id)
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
 
 @api.route('/supplier/offer/<int:supplier_id>', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
-def offer_supplier(supplier_id):                                                  #pendiente de revisar
+def offer_supplier(supplier_id):                                                 
     offers= Offer.query.all(id=supplier_id)
     data=[offer.serialize() for offer in offers ]
     return jsonify(data), 200
