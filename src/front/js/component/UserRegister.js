@@ -4,10 +4,6 @@ import { useState, useEffect} from "react";
 const UserRegister = () => {
   const [formData, setFormData] = useState({});
   const [city, setCity]= useState([]);
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
  
   useEffect(()=>{
     fetch(process.env.BACKEND_URL + "va la direccion del api") //pendiente de revisar URL del api. 
@@ -44,7 +40,6 @@ const UserRegister = () => {
         <div className="form-floating mb-3">
           <input
             type="name"
-            value={name}
             className="form-control"
             id="floatingName"
             placeholder="Nombre y Apellidos"
@@ -56,7 +51,6 @@ const UserRegister = () => {
         <div className="form-floating mb-3">
           <input
             type="email"
-            value={email}
             className="form-control"
             id="floatingInput"
             placeholder="name@example.com"
@@ -70,7 +64,6 @@ const UserRegister = () => {
         <div className="form-floating mb-3">
           <input
             type="password"
-            value={password}
             className="form-control"
             id="floatingPassword"
             placeholder="contraseña"
@@ -96,7 +89,6 @@ const UserRegister = () => {
         <div className="form-floating mb-3">
           <input
             type="phone-number"
-            value={phoneNumber}
             className="form-control"
             id="floatingNumber"
             placeholder="Número de teléfono"
