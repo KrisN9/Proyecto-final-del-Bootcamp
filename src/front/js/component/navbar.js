@@ -21,7 +21,7 @@ export const Navbar = () => {
 						Favorito
 				</button>
 				<ul className="dropdown-menu">
-				<p className="text-center fst-italic text-danger">Aún no tienes ofertas favoritas. <i class="far fa-sad-cry"></i></p>
+				<p className="text-center fst-italic text-danger">Aún no tienes ofertas favoritas. <i className="far fa-sad-cry"></i></p>
 				</ul>
 				</div>
 							
