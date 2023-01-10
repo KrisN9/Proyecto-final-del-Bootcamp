@@ -8,8 +8,7 @@ class User(db.Model):
     last_name=db.Column(db.String(80), unique=False, nullable=False)
     email=db.Column(db.String(250), unique=True, nullable=False)
     city=db.Column(db.String(80), unique=False, nullable=False)
-    telephone_number=db.Column(db.String(80), nullable=True) 
-    favorite=db.relationship('Favorite', backref='user', lazy=True) 
+    telephone_number=db.Column(db.String(80), nullable=True)
     
     
     def __repr__(self):
@@ -28,7 +27,7 @@ class Favorite(db.Model):
     id=db.Column(db.Integer, primary_key=True)
     id_user=db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
     id_offer=db.Column(db.Integer, db.ForeignKey('offer.id'),nullable=False)
-    user=db.relationship('User', backref='user', lazy=True) 
+    user=db.relationship('User', backref='favorite', lazy=True) 
     offer=db.relationship('Offer', backref='favorite', lazy=True)
 
     def __repr__(self):
