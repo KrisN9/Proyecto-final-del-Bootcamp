@@ -4,12 +4,10 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Login, Favorite, Supplier, Offer
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import create_access_token
-from flask_jwt_extended import JWTManager
+from flask_jwt_extended import create_access_token, jwt_required , get_jwt_identity
+
 
 api = Blueprint('api', __name__)
-app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
-jwt = JWTManager(app)
 
 
 @api.route('/user', methods=['GET'])  #se obtiene todo los usuarios 
@@ -138,10 +136,10 @@ def register_supplier():
     return jsonify({"msg": "Supplier created"})
 
 
-@api.route('/login-user', methods=['POST'])  #login de usuario
+@api.route('/login-user', methods=['POST'])  #login de usuario    revisar
 def login_user():
     data = request.json
-    user = User.query.filter_by(email=data['email'], password=data['password'])
+    user = Login.query.filter_by(email=data['email'], password=data['password']).first()
     if user:
         access_token = create_access_token(identity=user.id)
         return jsonify({"token": access_token}), 200
@@ -149,10 +147,15 @@ def login_user():
     return jsonify({"msg": "Wrong user/password"}), 400
 
 
-@api.route('/login-supplier', methods=['POST'])  #login de proveedor   
+@api.route('/login', methods=['GET'])         # devuelve todos los usuarios logiados
+@jwt_required()
+def get_allLogin():
+    return jsonify([login.serialize() for login in Login.query.all()]), 200
+    
+@api.route('/login-supplier', methods=['POST'])  #login de proveedor    revisar
 def login_supplier():
     data = request.json
-    supplier = Supplier.query.filter_by(email=data['email'], password=data['password'])
+    supplier = Login.query.filter_by(email=data['email'], password=data['password']).first()
     if supplier:
         access_token = create_access_token(identity=supplier.id)
         return jsonify({"token": access_token}), 200
