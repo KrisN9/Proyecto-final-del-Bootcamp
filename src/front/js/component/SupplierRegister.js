@@ -5,12 +5,7 @@ import { useState, useEffect } from "react";
 const SupplierRegister = () => {
   const [formData, setFormData] = useState({});
   const [city, setCity]= useState([]);
-  const [companyName, setCompanyName] = useState('');
-  const [companyNumber, setCompanyNumber] = useState('');
-  const [contactName, setContactName] = useState('');
-  const [contactEmail, setContactEmail] = useState('');
-  const [supplierPassword, setSupplierPassword] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  
  
   useEffect(()=>{
     fetch(process.env.BACKEND_URL + "va la direccion del api") //pendiente de revisar URL del api. 
@@ -42,7 +37,6 @@ const SupplierRegister = () => {
     <div className="form-floating mb-3">
         <input
           type="company-name"
-          value={companyName}
           className="form-control"
           id="floatingName"
           placeholder="Nombre de la empresa"
@@ -54,7 +48,6 @@ const SupplierRegister = () => {
       <div className="form-floating mb-3">
         <input
           type="company-number"
-          value={companyNumber}
           className="form-control"
           id="floatingNumber"
           placeholder="CIF de la empresa"
@@ -66,7 +59,6 @@ const SupplierRegister = () => {
       <div className="form-floating mb-3">
         <input
           type="name"
-          value={contactName}
           className="form-control"
           id="floatingName"
           placeholder="Nombre y Apellidos"
@@ -78,7 +70,6 @@ const SupplierRegister = () => {
       <div className="form-floating mb-3">
         <input
           type="email"
-          value={contactEmail}
           className="form-control"
           id="floatingInput"
           placeholder="name@example.com"
@@ -90,7 +81,6 @@ const SupplierRegister = () => {
       <div className="form-floating mb-3">
         <input
           type="password"
-          value={supplierPassword}
           className="form-control"
           id="floatingPassword"
           placeholder="contraseña"
@@ -115,7 +105,6 @@ const SupplierRegister = () => {
       <div className="form-floating mb-3">
         <input
           type="phone-number"
-          value={phoneNumber}
           className="form-control"
           id="floatingNumber"
           placeholder="Número de teléfono"
