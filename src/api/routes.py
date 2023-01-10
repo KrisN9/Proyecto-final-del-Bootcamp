@@ -1,13 +1,15 @@
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
-from flask import Flask, request, jsonify, url_for, Blueprintgit 
+from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Login, Favorite, Supplier, Offer
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token
+from flask_jwt_extended import JWTManager
 
 api = Blueprint('api', __name__)
-
+app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+jwt = JWTManager(app)
 
 
 @api.route('/user', methods=['GET'])  #se obtiene todo los usuarios 
@@ -34,7 +36,7 @@ def get_supplier(supplier_id):
     return jsonify({"Doesn´t exist"}), 400
 
 @api.route('/user/<int:user_id>', methods=['GET']) # se obtiene usuario por id 
-def get_supplier(user_id):
+def get_user(user_id):
     users= User.query.filter_by(id=user_id).first()
     if users : 
         return jsonify(users.serialize()),200
@@ -42,13 +44,13 @@ def get_supplier(user_id):
     return jsonify({"Doesn´t exist"})
 
 @api.route('/user/favorite/<int:user_id>', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
-def favorite_user(user_id):                                             #pendiente de revisar
+def favorite_user(user_id):                                             
     favorites= Favorite.query.all(id=user_id)
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
 
 @api.route('/supplier/offer/<int:supplier_id>', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
-def offer_supplier(supplier_id):                                                  #pendiente de revisar
+def offer_supplier(supplier_id):                                                 
     offers= Offer.query.all(id=supplier_id)
     data=[offer.serialize() for offer in offers ]
     return jsonify(data), 200
@@ -113,8 +115,31 @@ def delete_offer(supplier_id, offer_id):
     return jsonify({"Offer removed"})
 
 
-@api.route('/user', methods=['POST'])  #crear un nuevo usuario
-def create_user():
+@api.route('/register-user', methods=['POST'])   #registro de usuario
+def register_user():
+    data = request.json
+    user = User(id=data['id'], name=data['name'], last_name=data['last name'], 
+    id_login=data['id login'], telephone_number=data['telephone number'], city=data['city'])
+    db.session.add(user)
+    db.session.commit()
+
+    return jsonify({"msg": "User created"})
+
+
+@api.route('/register-supplier', methods=['POST'])   #registro de proveedor
+def register_supplier():
+    data = request.json
+    supplier = Supplier(id=data['id'], company_name=data['company name'], company_cif=data['company cif'], 
+    name=data['name'], last_name=data['last name'], city=data['city'], telephone_number=data['telephone number'],
+    id_login=data['id login'])
+    db.session.add(supplier)
+    db.session.commit()
+
+    return jsonify({"msg": "Supplier created"})
+
+
+@api.route('/login-user', methods=['POST'])  #login de usuario
+def login_user():
     data = request.json
     user = User.query.filter_by(email=data['email'], password=data['password'])
     if user:
@@ -124,8 +149,8 @@ def create_user():
     return jsonify({"msg": "Wrong user/password"}), 400
 
 
-@api.route('/supplier', methods=['POST'])  #crear un nuevo proveedor
-def create_supplier():
+@api.route('/login-supplier', methods=['POST'])  #login de proveedor   
+def login_supplier():
     data = request.json
     supplier = Supplier.query.filter_by(email=data['email'], password=data['password'])
     if supplier:
@@ -157,7 +182,7 @@ def add_favorite():
     return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400
 
 
-@api.route('/user/<int: user_id>', methods=['PUT']) #modificación de datos de usuario
+@api.route('/user/<int:user_id>', methods=['PUT']) #modificación de datos de usuario
 def update_user(user_id):
     change_data = request.json
 
@@ -170,7 +195,7 @@ def update_user(user_id):
 
         return ({"msg": 'User with id {user_id} not found'}), 404
 
-@api.route('/supplier/<int: supplier_id>', methods=['PUT']) #modificacion de datos de proveedor
+@api.route('/supplier/<int:supplier_id>', methods=['PUT']) #modificacion de datos de proveedor
 def update_supplier(supplier_id):
 
     change_data = request.json
@@ -184,8 +209,8 @@ def update_supplier(supplier_id):
 
         return ({"msg": 'Supplier with id {supplier_id} not found'}), 404
 
-@api.route('/offer/<int: id_offer>', methods=['PUT']) #modificar datos de oferta
-def update_offer(id_offer):
+@api.route('/offer/<int:offer_id>', methods=['PUT']) #modificar datos de oferta
+def update_offer(offer_id):
 
     change_data = request.json
 
@@ -200,7 +225,7 @@ def update_offer(id_offer):
         return ({"msg": 'Offer with id {offer_id} not found'}), 404
 
 
-@api.route('/favorite/<int: favorite_id>', methods=['PUT']) #modificar datos de favoritos
+@api.route('/favorite/<int:favorite_id>', methods=['PUT']) #modificar datos de favoritos
 def update_favorite(favorite_id):
 
     change_data = request.json
@@ -211,4 +236,3 @@ def update_favorite(favorite_id):
             return jsonify(favorite), 200
 
         return jsonify({"msg": "Favorite with id {favorite_id} is not found"}), 404
-
