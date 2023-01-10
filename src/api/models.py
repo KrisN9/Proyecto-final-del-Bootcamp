@@ -6,7 +6,7 @@ class Login(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    type_user= db.Column(db.Integer)
+    type_user= db.Column(db.Integer) # pendiente de revisar 
 
     def __repr__(self):
         return f'<Login {self.email}>'
@@ -28,7 +28,7 @@ class User(db.Model):
     city=db.Column(db.String(80), unique=False, nullable=False)
     telephone_number=db.Column(db.String(80), nullable=False) 
     id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
-    login= db.relationship('Login', backref='user', lazy=True) 
+    login= db.relationship('Login', backref='login', lazy=True) 
     
     
     def __repr__(self):
@@ -37,7 +37,7 @@ class User(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "email": self.email,
+            "email": self.email, # revisar
 
         }
 
