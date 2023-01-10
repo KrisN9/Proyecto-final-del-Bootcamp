@@ -2,33 +2,14 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class Login(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
-    type_user= db.Column(db.Integer) # pendiente de revisar 
-
-    def __repr__(self):
-        return f'<Login {self.email}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "email": self.email,
-            "type user": self.type_user,
-
-        }
-
-
-
 class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    name =db.Column(db.String(80), unique=False, nullable=False)
+    id=db.Column(db.Integer, primary_key=True)
+    name=db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
+    email=db.Column(db.String(250), unique=True, nullable=False)
     city=db.Column(db.String(80), unique=False, nullable=False)
-    telephone_number=db.Column(db.String(80), nullable=False) 
-    id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
-    login= db.relationship('Login', backref='login', lazy=True) 
+    telephone_number=db.Column(db.String(80), nullable=True) 
+    favorite=db.relationship('Favorite', backref='user', lazy=True) 
     
     
     def __repr__(self):
@@ -38,19 +19,20 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email, # revisar
+            "city": self.city
 
         }
 
 
 class Favorite(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    id_user = db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
-    user= db.relationship('User', backref='user', lazy=True) 
-    id_offer =db.Column(db.Integer, db.ForeignKey('offer.id'),nullable=False)
-    offer= db.relationship('Offer', backref='offer', lazy=True)
+    id=db.Column(db.Integer, primary_key=True)
+    id_user=db.Column(db.Integer, db.ForeignKey('user.id'),nullable=False)
+    id_offer=db.Column(db.Integer, db.ForeignKey('offer.id'),nullable=False)
+    user=db.relationship('User', backref='user', lazy=True) 
+    offer=db.relationship('Offer', backref='favorite', lazy=True)
 
     def __repr__(self):
-        return f'<Favorite {self.email}>'
+        return f'<Favorite {self.id}>'
 
     def serialize(self):
         return {
@@ -61,18 +43,19 @@ class Favorite(db.Model):
 
 
 class Supplier(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    company_name =db.Column(db.String(80), unique=True, nullable=False) 
+    id=db.Column(db.Integer, primary_key=True)
+    company_name=db.Column(db.String(80), unique=True, nullable=False) 
     company_cif=db.Column(db.String(80),unique=True, nullable=False)
     name=db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
+    email=db.Column(db.String(250), unique=True, nullable=False)
     city=db.Column(db.String(80), unique=False, nullable=False)
-    telephone_number=db.Column(db.String(80), nullable=False)
-    id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
-    login= db.relationship('Login', backref='supplier', lazy=True)
+    telephone_number=db.Column(db.String(80), nullable=True)
+    offer_id=db.Column(db.Integer, db.ForeignKey('offer.id'), nullable=False)
+    offer=db.relationship('Offer', backref='supplier', lazy=True)
 
     def __repr__(self):
-        return f'<Supplier {self.company_name}>'
+        return f'<Supplier {self.email}>'
 
     def serialize(self):
         return {
@@ -80,17 +63,18 @@ class Supplier(db.Model):
             "name": self.name,
             "last name": self.last_name,
             "company name": self.company_name,
+            "city": self.city
         }
 
 
 class Offer(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    id_supplier =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)
-    login= db.relationship('Supplier', backref='supplier', lazy=True) 
+    id=db.Column(db.Integer, primary_key=True)
+    supplier_id=db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)
+    supplier=db.relationship('Supplier', backref='offer', lazy=True) 
     name=db.Column(db.String(80), unique=False, nullable=False)
-    price= db.Column(db.Integer, nullable=False )
-    url= db.Column(db.String(200), nullable=False)
-    location=db.Column(db.String(200), nullable=False)
+    price=db.Column(db.Integer, nullable=False )
+    url=db.Column(db.String(200), nullable=False)
+    city=db.Column(db.String(200), nullable=False)
 
 
     def __repr__(self):
@@ -100,5 +84,6 @@ class Offer(db.Model):
         return {
             "id": self.id,
             "url": self.url,
+            "supplier": self.supplier
             
         }
