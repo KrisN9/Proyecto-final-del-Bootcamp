@@ -20,8 +20,13 @@ const SupplierRegister = () => {
     setFormData({...formData, [event.target.name]: event.target.value });
   };
 
+
+
   const handleSubmit =(event)=>{
     event.preventDefault();
+    if (formData.password1 === formData.password2){
+      //fetch
+    }
   }
   
   return (
@@ -83,7 +88,7 @@ const SupplierRegister = () => {
           className="form-control"
           id="floatingPassword"
           placeholder="contraseña"
-          name="contraseña"
+          name="password1"
           onChange={handleChange}  
         />
         <a href="#"><i className="far fa-eye"></i> </a>
@@ -95,7 +100,7 @@ const SupplierRegister = () => {
           className="form-control"
           id="floatingPassword"
           placeholder="Repetir Contraseña"
-          name="Repetir Contraseña"
+          name="password2"
           onChange={handleChange}  
         />
         <a href="#" ><i className="far fa-eye"></i> </a>
