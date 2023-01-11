@@ -50,8 +50,6 @@ class Supplier(db.Model):
     email=db.Column(db.String(250), unique=True, nullable=False)
     city=db.Column(db.String(80), unique=False, nullable=False)
     telephone_number=db.Column(db.String(80), nullable=True)
-    offer_id=db.Column(db.Integer, db.ForeignKey('offer.id'), nullable=False)
-    offer=db.relationship('Offer', backref='supplier', lazy=True)
 
     def __repr__(self):
         return f'<Supplier {self.email}>'
