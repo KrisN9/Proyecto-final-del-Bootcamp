@@ -2,45 +2,26 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-class Login(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
-    type_user= db.Column(db.Integer) # pendiente de revisar 
-
-    def __repr__(self):
-        return f'<Login {self.email}>'
-
-    def serialize(self):
-        return {
-            "id": self.id,
-            "email": self.email,
-            "type user": self.type_user,
-
-        }
-
-
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
     name =db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
     city=db.Column(db.String(80), unique=False, nullable=False)
     telephone_number=db.Column(db.String(80), nullable=False) 
-    id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
-    login= db.relationship('Login', backref='login', lazy=True) 
-    
-    
+    #id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
+   
     def __repr__(self):
         return f'<User {self.email}>'
 
     def serialize(self):
         return {
             "id": self.id,
-            "email": self.email, # revisar
+            "email": self.email,
 
         }
-
 
 class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -62,14 +43,16 @@ class Favorite(db.Model):
 
 class Supplier(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
     company_name =db.Column(db.String(80), unique=True, nullable=False) 
     company_cif=db.Column(db.String(80),unique=True, nullable=False)
     name=db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
-    city=db.Column(db.String(80), unique=False, nullable=False)
+    address=db.Column(db.String(250), unique=False, nullable=False)   
     telephone_number=db.Column(db.String(80), nullable=False)
-    id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
-    login= db.relationship('Login', backref='supplier', lazy=True)
+    # id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
+    # login= db.relationship('Login', backref='supplier', lazy=True)
 
     def __repr__(self):
         return f'<Supplier {self.company_name}>'
@@ -77,6 +60,7 @@ class Supplier(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "email":self.email,
             "name": self.name,
             "last name": self.last_name,
             "company name": self.company_name,
@@ -86,11 +70,13 @@ class Supplier(db.Model):
 class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_supplier =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)
-    login= db.relationship('Supplier', backref='supplier', lazy=True) 
+    login= db.relationship('Supplier', backref='supplier', lazy=True)
+    company_name=db.Column(db.String(80),unique=True, nullable=False) #pendiente   db.ForeignKey('supplier.company_name')
     name=db.Column(db.String(80), unique=False, nullable=False)
     price= db.Column(db.Integer, nullable=False )
+    url_image=db.Column(db.String(200))
     url= db.Column(db.String(200), nullable=False)
-    location=db.Column(db.String(200), nullable=False)
+    location =db.Column(db.String(200), nullable=False) #ubicacion en el mapa 
 
 
     def __repr__(self):
@@ -100,5 +86,10 @@ class Offer(db.Model):
         return {
             "id": self.id,
             "url": self.url,
+            "image":self.url_image,
+            "location":self.location, 
+            "company_name":self.company_name
             
         }
+
+
