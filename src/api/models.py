@@ -5,8 +5,8 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password = db.Column(db.String(80), unique=False, nullable=False)
+    email =db.Column(db.String(120), unique=True, nullable=False)
+    password =db.Column(db.String(80), unique=False, nullable=False)
     name =db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
     city=db.Column(db.String(80), unique=False, nullable=False)
@@ -70,9 +70,9 @@ class Supplier(db.Model):
 class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_supplier =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)
-    login= db.relationship('Supplier', backref='supplier', lazy=True)
+    supplier= db.relationship('Supplier', backref='supplier', lazy=True)
     company_name=db.Column(db.String(80),unique=True, nullable=False) #pendiente   db.ForeignKey('supplier.company_name')
-    name=db.Column(db.String(80), unique=False, nullable=False)
+    name=db.Column(db.String(200), unique=False, nullable=False)
     price= db.Column(db.Integer, nullable=False )
     url_image=db.Column(db.String(200))
     url= db.Column(db.String(200), nullable=False)

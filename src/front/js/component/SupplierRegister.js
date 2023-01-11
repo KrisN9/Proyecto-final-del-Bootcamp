@@ -25,7 +25,8 @@ const SupplierRegister = () => {
   const handleSubmit =(event)=>{
     event.preventDefault();
     if (formData.password1 === formData.password2){
-      //fetch
+      /*fetch(process.env.BACKEND_URL + "/admin/supplier")
+       .then((response)=> response.json()) */
     }
   }
   
