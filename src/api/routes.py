@@ -142,9 +142,18 @@ def login_user():
     user = Login.query.filter_by(email=data['email'], password=data['password']).first()
     if user:
         access_token = create_access_token(identity=user.id)
-        return jsonify({"token": access_token}), 200
+        return jsonify({"token": access_token, "user": user}), 200
     
     return jsonify({"msg": "Wrong user/password"}), 400
+
+
+# @api.route('/login', methods=['GET'])         # como ejemplo
+# @jwt_required()
+# def get_allLogin():
+#     user_id = get_jwt_identity()
+#     user = Login.query.filter_by(id=user_id).first()  #revisar 
+#     return jsonify(user),200  #revisar no es del proyecto 
+#     return jsonify([login.serialize() for login in Login.query.all()]), 200
 
 
 @api.route('/login', methods=['GET'])         # devuelve todos los usuarios logiados
