@@ -26,16 +26,19 @@ const SupplierRegister = () => {
     event.preventDefault();
     if (formData.password1 === formData.password2){
       //useEffect(()=>{
-      /*fetch(process.env.BACKEND_URL + "/api/register-supplier")           //creo que sería + '/api/register-supplier', siguiendo el POST de crear proveedores
-       .then((response)=> response.json()) */
-      // .then((response)=>{
-        //     setSupplier(response)
-
-
-
-        //   })
-      
-        // },[])
+       /*fetch(process.env.BACKEND_URL + '/api/register-supplier'), {
+        method: 'POST',
+        headers:
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+       });
+       else ("msg": "The password is not repeated")
+       */
   }
 }
   return (
