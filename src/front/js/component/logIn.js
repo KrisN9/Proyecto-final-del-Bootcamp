@@ -18,22 +18,28 @@ const LogIn=()=>{
     const switchShownSupplier = () => 
             setSupplierShown(!supplierShown);
          
-    // useEffect(()=>{
-    //  fetch(process.env.BACKEND_URL + "/api/login-user")
-    //  .then((response)=>{
-    //     response.json    
-    //  }).then ((response)=>{
-    //      setUser(response)
-    //  })
+        const option ={
+            
+            method: 'POST',
+			body: JSON.stringify(formData),
+			headers: {
+			  "Content-Type": "application/json", 
 
-    // })
+                    }
+                }
 
+    useEffect(()=>{
+     fetch(process.env.BACKEND_URL + "/api/login-user", option)   //guardar en una funcion 
+     .then((response)=>{
+        response.json() 
+     }).then((response)=>{
+        console.log(response)
+     })
+   
+    })
 
-    
     const handleSubmit = (e) => {
         e.preventDefault()
-
-
     }
 
     return (
