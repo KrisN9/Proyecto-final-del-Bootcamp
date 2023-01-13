@@ -93,7 +93,7 @@ def register_user():
     try:
         data = request.json
         user = User(id=data['id'],email=data['email'], password=data['password'], name=data['name'], last_name=data['last name'],  
-         telephone_number=data['telephone number'], address=data['address'])
+         telephone_number=data['telephone_number'], address=data['address'])
         db.session.add(user)
         db.session.commit()
     except: 
@@ -107,8 +107,8 @@ def register_user():
 def register_supplier():
     try:
         data = request.json
-        supplier = Supplier(id=data['id'],email=data['email'], password=data['password'], company_name=data['company name'], company_cif=data['company cif'], 
-        name=data['name'], last_name=data['last name'], city=data['city'], telephone_number=data['telephone number'])
+        supplier = Supplier(id=data['id'],email=data['email'], password=data['password'], company_name=data['company_name'], company_cif=data['company_cif'], 
+        name=data['name'], last_name=data['last_name'], city=data['city'], telephone_number=data['telephone_number'])
         db.session.add(supplier)
         db.session.commit()
     except:
@@ -203,7 +203,7 @@ def update_offer(offer_id):
 
         return ({"msg": 'Offer with id {offer_id} not found'}), 404
 
-
+#pendiente de preguntar crear ROUTE PARA obetener las ofertas por la zona de busqueda 
 
 
 # @api.route('/user', methods=['GET'])  #se obtiene todo los usuarios 

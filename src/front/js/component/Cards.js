@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { Params, useParams } from "react-router-dom";
 
 const Cards =()=>{
+    
+    const params= useParams()
+    const [offer, setOffer]=useState('')
+
+    useEffect(()=>{
+        fetch('process.env.BACKEND_URL + "....."')//pendiente url
+        .then(response =>{
+            return response.json()
+        }).then(response=>{
+            setOffer(response)
+        })
+
+    })
+
+
 
     return (
 
          /* pendiente de revisar si van las cards 
          usar props, useffect */ 
+
+
+
          
         <div className="card mb-3">
         <div className="row g-0">

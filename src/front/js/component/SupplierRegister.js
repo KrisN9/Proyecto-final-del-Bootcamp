@@ -26,6 +26,7 @@ const SupplierRegister = () => {
     if (formData.password1 === formData.password2){
       /*fetch(process.env.BACKEND_URL + "/admin/supplier")
        .then((response)=> response.json()) */
+       
     }
   }
   

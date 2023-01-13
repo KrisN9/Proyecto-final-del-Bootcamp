@@ -62,7 +62,7 @@ const UserRegister = () => {
             className="form-control"
             id="floatingPassword"
             placeholder="contraseña"
-            name="Contraseña"  
+            name="password1"  
             onChange={handleChange}  
           />  
           <a href="#" onClick={switchShown}><i class={shown ? "far fa-eye-slash" :"far fa-eye"}></i> </a>
@@ -74,7 +74,7 @@ const UserRegister = () => {
             className="form-control"
             id="floatingPassword"
             placeholder="Repetir Contraseña"
-            name="Repetir contraseña"
+            name="password2"
             onChange={handleChange}
           />
             <a href="#" onClick={switchShown2}><i class={shown2 ? "far fa-eye-slash" :"far fa-eye"}></i> </a>
