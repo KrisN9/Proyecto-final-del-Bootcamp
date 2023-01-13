@@ -24,7 +24,7 @@ const SupplierRegister = () => {
   const handleSubmit =(event)=>{
     event.preventDefault();
     if (formData.password1 === formData.password2){
-      /*fetch(process.env.BACKEND_URL + "/admin/supplier")
+      /*fetch(process.env.BACKEND_URL + "/admin/supplier")           //creo que sería + '/api/register-supplier', siguiendo el POST de crear proveedores
        .then((response)=> response.json()) */
     }
   }
