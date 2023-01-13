@@ -3,16 +3,14 @@ import { useState, useEffect} from "react";
 
 const UserRegister = () => {
   const [formData, setFormData] = useState({});
-  const [city, setCity]= useState([]);
- 
-  useEffect(()=>{
-    fetch(process.env.BACKEND_URL + "va la direccion del api") //pendiente de revisar URL del api. 
-    .then((response)=> response.json())
-    .then((response)=>{
-      setCity(response);
-    })
+  const [shown, setShown] = useState(false);   //f para mostar contraseña
+  const [shown2, setShown2] = useState(false);
+  
+  const switchShown = () => 
+  setShown(!shown);
 
-  },[])
+  const switchShown2 = () => 
+  setShown2(!shown2);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -22,10 +20,7 @@ const UserRegister = () => {
     event.preventDefault();   
   }
 
-  const handleClick=(e)=>{
-    
-    //pendiente de revisar
-  }
+
   return (
     <>
     <form onSubmit={handleSubmit}>
@@ -63,25 +58,26 @@ const UserRegister = () => {
         </div>
         <div className="form-floating mb-3">
           <input
-            type="password"
+            type={shown ? 'text' : 'password'}
             className="form-control"
             id="floatingPassword"
             placeholder="contraseña"
-            name="Contraseña"
-            onChange={handleChange} 
-          /> <a href="#" onClick={handleClick}><i class="far fa-eye"></i> </a>
+            name="Contraseña"  
+            onChange={handleChange}  
+          />  
+          <a href="#" onClick={switchShown}><i class={shown ? "far fa-eye-slash" :"far fa-eye"}></i> </a>
           <label htmlFor="floatingInput">Contraseña*</label>
         </div>
         <div className="form-floating mb-3">
           <input
-            type="password"
+            type={shown2 ? 'text' : 'password'}
             className="form-control"
             id="floatingPassword"
             placeholder="Repetir Contraseña"
             name="Repetir contraseña"
             onChange={handleChange}
           />
-            <a href="#"> <i class="far fa-eye"></i> </a>
+            <a href="#" onClick={switchShown2}><i class={shown2 ? "far fa-eye-slash" :"far fa-eye"}></i> </a>
         
           <label htmlFor="floatingInput">Repetir contraseña*</label>
           
@@ -185,4 +181,17 @@ const UserRegister = () => {
 export default UserRegister;
 
 
+
 // className={type=="password"?"far fa-eye-slash":"far fa-eye"}><i class="far fa-eye-slash"></i>  </a>
+
+
+// const [city, setCity]= useState([]);
+ 
+  // useEffect(()=>{
+  //   fetch(process.env.BACKEND_URL + "va la direccion del api") //pendiente de revisar URL del api. 
+  //   .then((response)=> response.json())
+  //   .then((response)=>{
+  //     setCity(response);
+  //   })
+
+  // },[])

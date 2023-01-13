@@ -3,12 +3,22 @@ import { Link } from "react-router-dom";
 
 
 const LogIn=()=>{
+    const [formData, setFormData] = useState({});
+    const [userShown, setUserShown] = useState(false);   //f para mostar contraseña
+    const [supplierShown, setSupplierShown] = useState(false);
 
-    const [username, setUsername] = useState('')
-    const [userPassword, setUserPassword] = useState('')
-    const [suppliername, setSuppliername] = useState('')
-    const [supplierPassword, setSupplierPassword] = useState('')
+    const handleChange =(event) => {
+        setFormData({...formData, [event.target.name]: event.target.value });
+      };
+    
+    const switchShownUser = () => 
+         setUserShown(!userShown);
 
+    const switchShownSupplier = () => 
+            setSupplierShown(!supplierShown);
+         
+
+    
     const handleSubmit = (e) => {
         e.preventDefault()
     }
@@ -32,8 +42,8 @@ const LogIn=()=>{
                     <div className="form-floating mb-3">
                             <input
                             type="email"
-                            value={username}
-                            onChange={e => setUsername(e.target.value)}
+                            name="email"
+                            onChange={handleChange}
                             className="form-control"
                             id="floatingInput"
                             placeholder="name@example.com"
@@ -42,13 +52,13 @@ const LogIn=()=>{
                         </div>
                         <div className="form-floating mb-3">
                             <input
-                            type="password"
-                            value={userPassword}
-                            onChange={e => setUserPassword(e.target.value)}
+                             type={userShown ? 'text' : 'password'}
+                             name="contraseña"
+                            onChange={handleChange}
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
-                            /><a href="#"> <i class="far fa-eye"></i> </a>
+                            /> <a href="#" onClick={switchShownUser}><i class={userShown? "far fa-eye-slash" :"far fa-eye"}></i> </a>
                             <label for="floatingInput">Contraseña*</label>
                         </div>
                     </div>
@@ -79,8 +89,8 @@ const LogIn=()=>{
                     <div className="form-floating mb-3">
                             <input
                             type="email"
-                            value={suppliername}
-                            onChange={e => setSuppliername(e.target.value)}
+                            name="email"
+                            onChange={handleChange}
                             className="form-control"
                             id="floatingInput"
                             placeholder="name@example.com"
@@ -89,14 +99,14 @@ const LogIn=()=>{
                         </div>
                         <div className="form-floating mb-3">
                             <input
-                            type="password"
-                            value={supplierPassword}
-                            onChange={e => setSupplierPassword(e.target.value)}
+                            type={supplierShown ? 'text' : 'password'}
+                            name="contraseña"
+                            onChange={handleChange}
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
                             />
-                            <a href="#"> <i class="far fa-eye"></i> </a>
+                            <a href="#" onClick={switchShownSupplier}><i class={supplierShown? "far fa-eye-slash" :"far fa-eye"}></i> </a>
                             <label for="floatingInput">Contraseña*</label>
                         </div>
                     </div>
