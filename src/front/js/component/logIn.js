@@ -3,37 +3,30 @@ import { Link } from "react-router-dom";
 
 
 const LogIn=()=>{
+    const [formData, setFormData] = useState({});
+    const [userShown, setUserShown] = useState(false);   //f para mostar contraseña
+    const [supplierShown, setSupplierShown] = useState(false);
 
-    const [formDataUser, setFormDataUser] = useState({});
-    const [formDataSupplier, setFormDataSupplier] = useState({});
-    const [value, setValue]=useState([]);
-    
-
-    const handleChangeUser =(event) => {
-        setFormDataUser({...formDataUser, [event.target.name]: event.target.value });
+    const handleChange =(event) => {
+        setFormData({...formData, [event.target.name]: event.target.value });
       };
     
-    const handleChangeSupplier =(event) => {
-        setFormDataSupplier({...formDataSupplier, [event.target.name]: event.target.value });
-      };
+    const switchShownUser = () => 
+         setUserShown(!userShown);
 
+    const switchShownSupplier = () => 
+            setSupplierShown(!supplierShown);
+         
 
+    
     const handleSubmit = (e) => {
         e.preventDefault()
     }
 
-    const keyDown=(e)=>{
-     if(e.keyCode== "13" && formDataUser){
-       setValue([...value, formDataUser]);
-       setFormDataUser("")
-                          // pregunrtar porque cuando se presiona enter los imput no estan vacios 
-     }
-
-    }
-
     return (
     
-        <div className="container">    
+        <form onSubmit={handleSubmit}>
+        <div className="container">    {/* pendiente de arreglar la presentación*/}
         <div className="row text-center mb-5 centro"> 
             <div className="col-md-6">
                 <p className="fs-1 fst-italic">Iniciar sesión como usuario</p>
@@ -50,31 +43,29 @@ const LogIn=()=>{
                     <div className="form-floating mb-3">
                             <input
                             type="email"
+                            name="email"
+                            onChange={handleChange}
                             className="form-control"
                             id="floatingInput"
                             placeholder="name@example.com"
-                            name="email"
-                            onChange={handleChangeUser}
-                            onKeyDown={keyDown}
                             />
-                            <label htmlFor="floatingInput">Dirección de correo electrónico*</label>
+                            <label for="floatingInput">Dirección de correo electrónico*</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input
-                            type="password"
+                             type={userShown ? 'text' : 'password'}
+                             name="contraseña"
+                            onChange={handleChange}
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
-                            name="contraseña"
-                            onChange={handleChangeUser}
-                            onKeyDown={keyDown}
-                            /><a href="#"> <i className="far fa-eye"></i> </a>
-                            <label htmlFor="floatingInput">Contraseña*</label>
+                            /> <a href="#" onClick={switchShownUser}><i class={userShown? "far fa-eye-slash" :"far fa-eye"}></i> </a>
+                            <label for="floatingInput">Contraseña*</label>
                         </div>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <Link to="/privada-usuario/id"><button type="button" className="btn btn-outline-warning " >Continuar</button></Link>  
+                      <Link to="/privada-usuario/id"><button type="button" className="btn btn-outline-warning">Continuar</button></Link>  
                     </div>
                     </div>
                 </div>
@@ -99,25 +90,25 @@ const LogIn=()=>{
                     <div className="form-floating mb-3">
                             <input
                             type="email"
+                            name="email"
+                            onChange={handleChange}
                             className="form-control"
                             id="floatingInput"
                             placeholder="name@example.com"
-                            name="email"
-                            onChange={handleChangeSupplier}
                             />
-                            <label htmlFor="floatingInput">Dirección de correo electrónico*</label>
+                            <label for="floatingInput">Dirección de correo electrónico*</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input
-                            type="password" 
+                            type={supplierShown ? 'text' : 'password'}
+                            name="contraseña"
+                            onChange={handleChange}
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
-                            name="contraseña"
-                            onChange={handleChangeSupplier}
                             />
-                            <a href="#"> <i className="far fa-eye"></i> </a>
-                            <label htmlFor="floatingInput">Contraseña*</label>
+                            <a href="#" onClick={switchShownSupplier}><i class={supplierShown? "far fa-eye-slash" :"far fa-eye"}></i> </a>
+                            <label for="floatingInput">Contraseña*</label>
                         </div>
                     </div>
                     <div className="modal-footer">
@@ -135,10 +126,9 @@ const LogIn=()=>{
             </div>
         </div>
         </div>
-        
+        </form>
 
     )
 }
-
 
 export default LogIn
