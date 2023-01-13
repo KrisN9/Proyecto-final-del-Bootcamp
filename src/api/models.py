@@ -8,7 +8,7 @@ class User(db.Model):
     password =db.Column(db.String(80), unique=False, nullable=False)
     name =db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
-    city=db.Column(db.String(80), unique=False, nullable=False)
+    address=db.Column(db.String(250), unique=False, nullable=False)    #address  por city   
     telephone_number=db.Column(db.String(80), nullable=False) 
     #id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
    
@@ -48,7 +48,7 @@ class Supplier(db.Model):
     company_cif=db.Column(db.String(80),unique=True, nullable=False)
     name=db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
-    address=db.Column(db.String(250), unique=False, nullable=False)   
+    address=db.Column(db.String(250), unique=False, nullable=False)   #address  por city   
     telephone_number=db.Column(db.String(80), nullable=False)
     # id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
     # login= db.relationship('Login', backref='supplier', lazy=True)
@@ -73,7 +73,7 @@ class Offer(db.Model):
     company_name=db.Column(db.String(80),unique=True, nullable=False) #pendiente   db.ForeignKey('supplier.company_name')
     name=db.Column(db.String(200), unique=False, nullable=False)
     price= db.Column(db.Integer, nullable=False )
-    url_image=db.Column(db.String(200))
+    url_image=db.Column(db.String(200), nullable=False)
     url= db.Column(db.String(200), nullable=False)
     location =db.Column(db.String(200), nullable=False) #ubicacion en el mapa 
 

@@ -90,24 +90,31 @@ def delete_offer(supplier_id, offer_id):
 
 @api.route('/register-user', methods=['POST'])   #registro de usuario
 def register_user():
-    data = request.json
-    user = User(id=data['id'],email=data['email'], password=data['password'], name=data['name'], last_name=data['last name'],  
-     telephone_number=data['telephone number'], city=data['city'])
-    db.session.add(user)
-    db.session.commit()
+    try:
+        data = request.json
+        user = User(id=data['id'],email=data['email'], password=data['password'], name=data['name'], last_name=data['last name'],  
+         telephone_number=data['telephone number'], address=data['address'])
+        db.session.add(user)
+        db.session.commit()
+    except: 
 
-    return jsonify({"msg": "User created"})
-
+        return jsonify({"msg": "Error"}),400
+    
+    return jsonify({"msg": "User created"}),200
+    
 
 @api.route('/register-supplier', methods=['POST'])   #registro de proveedor
 def register_supplier():
-    data = request.json
-    supplier = Supplier(id=data['id'],email=data['email'], password=data['password'], company_name=data['company name'], company_cif=data['company cif'], 
-    name=data['name'], last_name=data['last name'], city=data['city'], telephone_number=data['telephone number'])
-    db.session.add(supplier)
-    db.session.commit()
-
-    return jsonify({"msg": "Supplier created"})
+    try:
+        data = request.json
+        supplier = Supplier(id=data['id'],email=data['email'], password=data['password'], company_name=data['company name'], company_cif=data['company cif'], 
+        name=data['name'], last_name=data['last name'], city=data['city'], telephone_number=data['telephone number'])
+        db.session.add(supplier)
+        db.session.commit()
+    except:
+         return jsonify({"msg": "Error"}),400
+    
+    return jsonify({"msg": "Supplier created"}),200
 
 
 @api.route('/login-user', methods=['POST'])  #login de usuario    
