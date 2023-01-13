@@ -25,6 +25,7 @@ const LogIn=()=>{
 
     return (
     
+        <form onSubmit={handleSubmit}>
         <div className="container">    {/* pendiente de arreglar la presentación*/}
         <div className="row text-center mb-5 centro"> 
             <div className="col-md-6">
@@ -125,7 +126,7 @@ const LogIn=()=>{
             </div>
         </div>
         </div>
-        
+        </form>
 
     )
 }
