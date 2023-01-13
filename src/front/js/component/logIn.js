@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import { Link } from "react-router-dom";
 
 
@@ -6,6 +6,7 @@ const LogIn=()=>{
     const [formData, setFormData] = useState({});
     const [userShown, setUserShown] = useState(false);   //f para mostar contraseña
     const [supplierShown, setSupplierShown] = useState(false);
+    const [user , setUser]=useState({});
 
     const handleChange =(event) => {
         setFormData({...formData, [event.target.name]: event.target.value });
@@ -17,10 +18,22 @@ const LogIn=()=>{
     const switchShownSupplier = () => 
             setSupplierShown(!supplierShown);
          
+    // useEffect(()=>{
+    //  fetch(process.env.BACKEND_URL + "/api/login-user")
+    //  .then((response)=>{
+    //     response.json    
+    //  }).then ((response)=>{
+    //      setUser(response)
+    //  })
+
+    // })
+
 
     
     const handleSubmit = (e) => {
         e.preventDefault()
+
+
     }
 
     return (
@@ -132,3 +145,5 @@ const LogIn=()=>{
 }
 
 export default LogIn
+
+

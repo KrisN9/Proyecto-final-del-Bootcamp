@@ -3,7 +3,7 @@ import { useState, useEffect} from "react";
 
 const UserRegister = () => {
   const [formData, setFormData] = useState({});
-  const [shown, setShown] = useState(false);   //f para mostar contraseña
+  const [shown, setShown] = useState(false);   // para mostar contraseña
   const [shown2, setShown2] = useState(false);
   
   const switchShown = () => 
@@ -17,8 +17,21 @@ const UserRegister = () => {
   };
 
   const handleSubmit =(event)=>{
-    event.preventDefault();   
-  }
+    event.preventDefault();  
+    if (formData.password1 === formData.password2){
+      //useEffect(()=>{
+      /*fetch(process.env.BACKEND_URL + "api/register-user")           //creo que sería + '/api/register-supplier', siguiendo el POST de crear proveedores
+       .then((response)=> response.json()) */
+      // .then((response)=>{
+        //     
+
+
+
+        //   })
+      
+        // },[])
+  } 
+ }
 
 
   return (

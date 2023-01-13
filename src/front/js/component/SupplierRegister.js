@@ -6,6 +6,7 @@ const SupplierRegister = () => {
   const [formData, setFormData] = useState({});
   const [shown, setShown] = useState(false);   //f para mostar contraseña
   const [shown2, setShown2] = useState(false);
+  const [supplier, setSupllier]=useEffect({});
  
   const switchShown = () => 
   setShown(!shown);
@@ -24,12 +25,19 @@ const SupplierRegister = () => {
   const handleSubmit =(event)=>{
     event.preventDefault();
     if (formData.password1 === formData.password2){
-      /*fetch(process.env.BACKEND_URL + "/admin/supplier")           //creo que sería + '/api/register-supplier', siguiendo el POST de crear proveedores
+      //useEffect(()=>{
+      /*fetch(process.env.BACKEND_URL + "/api/register-supplier")           //creo que sería + '/api/register-supplier', siguiendo el POST de crear proveedores
        .then((response)=> response.json()) */
-       
-    }
+      // .then((response)=>{
+        //     setSupplier(response)
+
+
+
+        //   })
+      
+        // },[])
   }
-  
+}
   return (
     <>
     <form onSubmit={handleSubmit}>
