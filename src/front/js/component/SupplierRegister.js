@@ -6,7 +6,7 @@ const SupplierRegister = () => {
   const [formData, setFormData] = useState({});
   const [shown, setShown] = useState(false);   //f para mostar contraseña
   const [shown2, setShown2] = useState(false);
-  const [supplier, setSupllier]=useEffect({});
+  const [city, setCity]= useState([]);
  
   const switchShown = () => 
   setShown(!shown);
@@ -207,7 +207,7 @@ const SupplierRegister = () => {
 export default SupplierRegister;
 
 
-  // const [city, setCity]= useState([]);
+  // 
   
  
   // useEffect(()=>{
