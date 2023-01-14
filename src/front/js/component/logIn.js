@@ -4,20 +4,20 @@ import { Link } from "react-router-dom";
 
 const LogIn=()=>{
     const [formData, setFormData] = useState({});
-    const [userShown, setUserShown] = useState(false);   //para mostar contraseña
-    const [supplierShown, setSupplierShown] = useState(false);
-    const [user , setUser]=useState({});
+    const [shownUser, setShownUser] = useState(false);   //para mostar contraseña
+    const [shownSupplier, setShownSupplier] = useState(false);
+   // const [user , setUser]=useState({});
 
     const handleChange =(event) => {
         setFormData({...formData, [event.target.name]: event.target.value });
       };
     
-    const shownUser = () => {
-        setUserShown(!userShown)
+    const user = () => {
+        setShownUser(!shownUser)
     };
         
-    const shownSupplier = () => {
-        setSupplierShown(!supplierShown)
+    const supplier = () => {
+        setShownSupplier(!shownSupplier)
     };
             
        
@@ -75,13 +75,13 @@ const LogIn=()=>{
                         </div>
                         <div className="form-floating mb-3">
                             <input
-                             type={userShown ? "text" : "password"}
+                             type={shownUser ? "text" : "password"}
                              name="contraseña"
                             onChange={handleChange}     
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
-                            /> <a href="#" onClick={shownUser}><i class={userShown? "far fa-eye-slash" :"far fa-eye"}></i></a>
+                            /> <a href="#" onClick={user}><i class={shownUser? "far fa-eye-slash" :"far fa-eye"}></i></a>
                             <label for="floatingInput">Contraseña*</label>
                         </div>
                     </div>
@@ -122,14 +122,14 @@ const LogIn=()=>{
                         </div>
                         <div className="form-floating mb-3">
                             <input
-                            type={supplierShown ? 'text' : 'password'}
+                            type={shownSupplier ? 'text' : 'password'}
                             name="contraseña"
                             onChange={handleChange}
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
                             />
-                            <a href="#" onClick={shownSupplier}><i class={supplierShown? "far fa-eye-slash" :"far fa-eye"}></i> </a>
+                            <a href="#" onClick={supplier}><i class={shownSupplier? "far fa-eye-slash" :"far fa-eye"}></i> </a>
                             <label for="floatingInput">Contraseña*</label>
                         </div>
                     </div>
