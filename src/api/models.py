@@ -8,7 +8,8 @@ class User(db.Model):
     password =db.Column(db.String(80), unique=False, nullable=False)
     name =db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
-    city=db.Column(db.String(250), db.ForeignKey('city.name'), nullable=False)    #address  por city   
+    city_id=db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)    #address  por city   
+    city_name=db.relationship('City', backref='user', lazy=True)
     telephone_number=db.Column(db.String(80), nullable=False) 
     #id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
    
@@ -48,7 +49,8 @@ class Supplier(db.Model):
     company_cif=db.Column(db.String(80),unique=True, nullable=False)
     name=db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
-    city=db.Column(db.String(250), db.ForeignKey('city.name'), nullable=False)       #address  por city   
+    city_id=db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)       #address  por city  
+    city_name=db.relationship('City', backref='supplier', lazy=True) 
     telephone_number=db.Column(db.String(80), nullable=False)
     # id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
     # login= db.relationship('Login', backref='supplier', lazy=True)
@@ -96,3 +98,11 @@ class City(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name =db.Column(db.String(80), unique=True, nullable=False)
 
+    def __repr__(self):
+        return f'<City {self.name}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "name": self.name,
+        }

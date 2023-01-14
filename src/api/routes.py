@@ -40,6 +40,14 @@ def offer_supplier(supplier_id):
     return jsonify(data), 200
 
 
+@api.route('/city', methods=['GET'])  #se obtiene todas las ciudades
+def get_cities():
+    cities=City.query.all()
+    data=[city.serialize() for city in cities]
+
+    return jsonify(data), 200
+
+
 
 @api.route('/delete_user/<int:user_id>', methods=['DELETE'])   #eliminar usuario  por id 
 def delete_user(user_id):
