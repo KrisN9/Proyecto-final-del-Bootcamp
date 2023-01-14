@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const LogIn=()=>{
     const [formData, setFormData] = useState({});
-    const [userShown, setUserShown] = useState(false);   //f para mostar contraseña
+    const [userShown, setUserShown] = useState(false);   //para mostar contraseña
     const [supplierShown, setSupplierShown] = useState(false);
     const [user , setUser]=useState({});
 
@@ -12,13 +12,16 @@ const LogIn=()=>{
         setFormData({...formData, [event.target.name]: event.target.value });
       };
     
-    const switchShownUser = () => 
-         setUserShown(!userShown);
-
-    const switchShownSupplier = () => 
-            setSupplierShown(!supplierShown);
-         
-        const option ={
+    const shownUser = () => {
+        setUserShown(!userShown)
+    };
+        
+    const shownSupplier = () => {
+        setSupplierShown(!supplierShown)
+    };
+            
+       
+            const option ={
             
             method: 'POST',
 			body: JSON.stringify(formData),
@@ -72,13 +75,13 @@ const LogIn=()=>{
                         </div>
                         <div className="form-floating mb-3">
                             <input
-                             type={userShown ? 'text' : 'password'}
+                             type={userShown ? "text" : "password"}
                              name="contraseña"
-                            onChange={handleChange}
+                            onChange={handleChange}     
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
-                            /> <a href="#" onClick={switchShownUser}><i class={userShown? "far fa-eye-slash" :"far fa-eye"}></i> </a>
+                            /> <a href="#" onClick={shownUser}><i class={userShown? "far fa-eye-slash" :"far fa-eye"}></i></a>
                             <label for="floatingInput">Contraseña*</label>
                         </div>
                     </div>
@@ -126,7 +129,7 @@ const LogIn=()=>{
                             id="floatingPassword"
                             placeholder="contraseña"
                             />
-                            <a href="#" onClick={switchShownSupplier}><i class={supplierShown? "far fa-eye-slash" :"far fa-eye"}></i> </a>
+                            <a href="#" onClick={shownSupplier}><i class={supplierShown? "far fa-eye-slash" :"far fa-eye"}></i> </a>
                             <label for="floatingInput">Contraseña*</label>
                         </div>
                     </div>

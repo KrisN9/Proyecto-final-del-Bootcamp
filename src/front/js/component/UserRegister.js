@@ -3,15 +3,19 @@ import { useState, useEffect} from "react";
 
 const UserRegister = () => {
   const [formData, setFormData] = useState({});
-  const [shown, setShown] = useState(false);   // para mostar contraseña
-  const [shown2, setShown2] = useState(false);
+  const [shownPassword, setShownPassword] = useState(false);   // para mostar contraseña
+  const [shownPassword2, setShownPassword2] = useState(false);
   const [city, setCity] = useState([]);
   
-  const switchShown = () => 
-  setShown(!shown);
+  const password = () =>{
+    setShownPassword(!shownPassword)
+  } ;
+  
 
-  const switchShown2 = () => 
-  setShown2(!shown2);
+  const password2 = () => {
+    setShownPassword2(!shownPassword2)
+  };
+ 
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -74,26 +78,26 @@ const UserRegister = () => {
         </div>
         <div className="form-floating mb-3">
           <input
-            type={shown ? 'text' : 'password'}
+            type={shownPassword ? 'text' : 'password'}
             className="form-control"
             id="floatingPassword"
             placeholder="contraseña"
             name="password1"  
             onChange={handleChange}  
           />  
-          <a href="#" onClick={switchShown}><i class={shown ? "far fa-eye-slash" :"far fa-eye"}></i> </a>
+          <a href="#" onClick={password}><i class={shownPassword ? "far fa-eye-slash" :"far fa-eye"}></i> </a>
           <label htmlFor="floatingInput">Contraseña*</label>
         </div>
         <div className="form-floating mb-3">
           <input
-            type={shown2 ? 'text' : 'password'}
+            type={shownPassword2 ? 'text' : 'password'}
             className="form-control"
             id="floatingPassword"
             placeholder="Repetir Contraseña"
             name="password2"
             onChange={handleChange}
           />
-            <a href="#" onClick={switchShown2}><i class={shown2 ? "far fa-eye-slash" :"far fa-eye"}></i> </a>
+            <a href="#" onClick={password2}><i class={shownPassword2 ? "far fa-eye-slash" :"far fa-eye"}></i> </a>
         
           <label htmlFor="floatingInput">Repetir contraseña*</label>
           
