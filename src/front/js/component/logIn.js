@@ -20,11 +20,11 @@ const LogIn=()=>{
     };
     
 
-    // const handleClick=()=>{   //pendiente de verificar si funciona /// se crea funcion para cuando se de click en el boton se ejecute la buscqueda en FETCH.
+    // const handleClickUser=()=>{   //pendiente de verificar si funciona /// se crea funcion para cuando se de click en el boton se ejecute la buscqueda en FETCH.
 
     //     const option ={
             
-    //         method: 'POST',//  metodo post porq se crea token
+    //      method: 'POST',//  metodo post porq se crea token
 	// 		body: JSON.stringify(formData),//   se envia "email" y" constraseña" que se ingresa en el Input. 
 	// 		headers: {
 	// 		  "Content-Type": "application/json", 
@@ -35,15 +35,10 @@ const LogIn=()=>{
     // useEffect(()=>{
     //  fetch(process.env.BACKEND_URL + "/api/login-user", option)   //guardar en una funcion 
     //  .then((response)=>{
-       
-    //     if(response === formData)  // pendiente de verificar         
-    //      return  response.json() ;
-       
-    //      else return "Error."
-    //                                            // aqui se guarda el token
+     //      response.json()
     //      })
-    //      .then((response)=>{                   /// se tiene que almacenar el token en localstorage o session storage depende lo que se quiera almacenar 
-    //          localStorage.setItem("token", response.token)                                 ///      localStorage : es una pequeña base de datos q se encuentra en los navegadores.
+    //      .then((response)=>{                    /// se tiene que almacenar el token en localstorage o session storage depende lo que se quiera almacenar   
+    //       localStorage.setItem("token", response.token)          ¡  ///      localStorage : es una pequeña base de datos q se encuentra en los navegadores.
     //         })                                                /// localStrogare.setItem("se guarda con cualquier nombre ", informacion que se quiere guardar"token" )
     //                                                          /// localStrogare.getItem: se utiliza para obtener informacion privada  del usuario con token.
     // })                      
@@ -97,7 +92,7 @@ const LogIn=()=>{
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <Link to="/privada-usuario/id"><button type="button" className="btn btn-outline-warning" onClick={handleClick}>Continuar</button></Link>  
+                      <Link to="/privada-usuario/id"><button type="button" className="btn btn-outline-warning" >Continuar</button></Link>  
                     </div>
                     </div>
                 </div>

@@ -4,8 +4,8 @@ import { useState, useEffect } from "react";
 // crear base de datos para la opcion ciudad, hacer fetch para visualizar.
 const SupplierRegister = () => {
   const [formData, setFormData] = useState({});
-  const [shownPassword, setShownPassword] = useState(false);   // para mostar contraseña
-  const [shownPassword2, setShownPassword2] = useState(false);
+  const [shownPassword, setShownPassword] = useState(true);   // para mostar contraseña
+  const [shownPassword2, setShownPassword2] = useState(true);
   const [city, setCity] = useState([]);
 
   const password = () =>{
@@ -33,14 +33,10 @@ const SupplierRegister = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.password1 === formData.password2) {
+      
+      
       //useEffect(()=>{
       /*fetch(process.env.BACKEND_URL + '/api/register-supplier'), {
-        method: 'POST',
-        headers:
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
@@ -119,7 +115,7 @@ const SupplierRegister = () => {
               onChange={handleChange}
             />
             <a href="#" onClick={password}>
-              <i class={shownPassword ? "far fa-eye-slash" : "far fa-eye"}></i>{" "}
+              <i class={shownPassword ? "far fa-eye" :"far fa-eye-slash"}></i>{" "}
             </a>
             <label htmlFor="floatingInput">Contraseña*</label>
           </div>
@@ -133,7 +129,7 @@ const SupplierRegister = () => {
               onChange={handleChange}
             />
             <a href="#" onClick={password2}>
-              <i class={shownPassword2 ? "far fa-eye-slash" : "far fa-eye"}></i>{" "}
+              <i class={shownPassword2 ? "far fa-eye" :"far fa-eye-slash"}></i>{" "}
             </a>
             <label htmlFor="floatingInput">Repetir contraseña*</label>
           </div>
@@ -189,3 +185,4 @@ const SupplierRegister = () => {
 };
 
 export default SupplierRegister;
+

@@ -3,17 +3,24 @@ import { useState, useEffect} from "react";
 
 const UserRegister = () => {
   const [formData, setFormData] = useState({});
-  const [shownPassword, setShownPassword] = useState(false);   // para mostar contraseña
-  const [shownPassword2, setShownPassword2] = useState(false);
+  // const [shownPassword, setShownPassword] = useState(true);   // para mostar contraseña
+  // const [shownPassword2, setShownPassword2] = useState(true);
+  const[password, setPassword]=useState({shown1:false, shown2:false});
   const [city, setCity] = useState([]);
   
-  const password = () =>{
-    setShownPassword(!shownPassword)
-  } ;
+
+  // const password = () =>{
+  //   setShownPassword(!shownPassword)
+  // } ;
   
 
-  const password2 = () => {
-    setShownPassword2(!shownPassword2)
+  // const password2 = () => {
+  //   setShownPassword2(!shownPassword2)
+  // };
+
+  const shownPassword =()=>{
+     setPassword({...password})
+         //shown1:"false", shown2:"false" 
   };
  
 
@@ -24,23 +31,17 @@ const UserRegister = () => {
   const handleSubmit =(event)=>{
     event.preventDefault();  
     if (formData.password1 === formData.password2){
-      //useEffect(()=>{
-      /*fetch(process.env.BACKEND_URL + '/api/register-user'), {
-        method: 'POST',
-        headers:
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      })
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-       });
-       else ("msg": "The password is not repeated")
-       */
+      // useEffect(()=>{
+      
+      // .then((response) => response.json())
+      // .then((response) => {
+      //   console.log(response);
+      //  });
+      //  else ("msg": "The password is not repeated")
+     
+      // )};
     }
   }
-
   return (
     <>
     <form onSubmit={handleSubmit}>
@@ -78,26 +79,26 @@ const UserRegister = () => {
         </div>
         <div className="form-floating mb-3">
           <input
-            type={shownPassword ? 'text' : 'password'}
+            type={ password.shown1 ? "password" : "text"}
             className="form-control"
-            id="floatingPassword"
+            id="floatingPassword"    
             placeholder="contraseña"
             name="password1"  
             onChange={handleChange}  
           />  
-          <a href="#" onClick={password}><i class={shownPassword ? "far fa-eye-slash" :"far fa-eye"}></i> </a>
+          <a href="#" onClick={shownPassword}><i className={password.shown1 ? "far fa-eye" : "far fa-eye-slash" }></i> </a>
           <label htmlFor="floatingInput">Contraseña*</label>
         </div>
         <div className="form-floating mb-3">
           <input
-            type={shownPassword2 ? 'text' : 'password'}
+          type={password.shown2? "password" : "text"}
             className="form-control"
             id="floatingPassword"
             placeholder="Repetir Contraseña"
             name="password2"
             onChange={handleChange}
           />
-            <a href="#" onClick={password2}><i class={shownPassword2 ? "far fa-eye-slash" :"far fa-eye"}></i> </a>
+            <a href="#" onClick={shownPassword}><i className={password.shown2 ? "far fa-eye" : "far fa-eye-slash" }></i> </a>
         
           <label htmlFor="floatingInput">Repetir contraseña*</label>
           
@@ -155,6 +156,33 @@ const UserRegister = () => {
 
 export default UserRegister;
 
-
-
 // className={type=="password"?"far fa-eye-slash":"far fa-eye"}><i class="far fa-eye-slash"></i>  </a>
+
+
+/// FETCH PARA HACER EL REGISTRO. 
+
+ // const handleClickUser=()=>{
+ // const option ={
+            
+    //      method: 'POST',//  metodo post porq se crea token
+	// 		body: JSON.stringify(formData),//   se envia "email" y" constraseña" que se ingresa en el Input. 
+	// 		headers: {
+	// 		  "Content-Type": "application/json", 
+          
+    //                 }
+    //             }
+
+//  useEffect(()=>{
+ //  fetch(process.env.BACKEND_URL + "/api/register-supplier", option)   
+    //  .then((response)=>{
+     //      response.json()
+    //      })
+    //      .then((response)=>{                    /// se tiene que almacenar el token en localstorage o session storage depende lo que se quiera almacenar   
+    //       localStorage.setItem("token", response.token)          ¡  ///      localStorage : es una pequeña base de datos q se encuentra en los navegadores.
+    //         })                                                /// localStrogare.setItem("se guarda con cualquier nombre ", informacion que se quiere guardar"token" )
+    //                                                          /// localStrogare.getItem: se utiliza para obtener informacion privada  del usuario con token.
+    // })                      
+
+
+//  }) 
+ // }

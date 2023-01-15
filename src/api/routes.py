@@ -127,10 +127,10 @@ def register_supplier():
 
 @api.route('/login-user', methods=['POST'])  #login de usuario    
 def login_user():
-    data = request.json
+    data = request.json  #aqui se almacena json que nos envia de la base de datos
     user = User.query.filter_by(email=data['email'], password=data['password']).first()
     if user:
-        access_token = create_access_token(identity=user.id)
+        access_token = create_access_token(identity=user.id)   #se crea token y asocia al ID
         return jsonify({"token": access_token, "user": user}), 200
     
     return jsonify({"msg": "Wrong user/password"}), 400
