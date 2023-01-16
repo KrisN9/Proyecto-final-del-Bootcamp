@@ -142,9 +142,9 @@ def login_supplier():
     supplier = Supplier.query.filter_by(email=data['email'], password=data['password']).first()
     if supplier:
         access_token = create_access_token(identity=supplier.id)
-        return jsonify({"token": access_token}), 200
+        return jsonify({"token": access_token, "supplier": supplier}), 200
 
-    return jsonify({"msg": "Wrong user/password"}), 400
+    return jsonify({"msg": "Wrong supplier/password"}), 400
 
 
 @api.route('/offer', methods=['POST'])  #crear una nueva oferta   #pendiente
