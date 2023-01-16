@@ -7,6 +7,7 @@ const SupplierRegister = () => {
   const [shownPassword, setShownPassword] = useState(true);   // para mostar contraseña
   const [shownPassword2, setShownPassword2] = useState(true);
   const [city, setCity] = useState([]);
+  const [check, setCheck] = useState(true);
 
   const password = () =>{
     setShownPassword(!shownPassword)
@@ -41,10 +42,11 @@ const SupplierRegister = () => {
         body: JSON.stringify(formData),
       }
       .then((response) => response.json())
-      .then((response) => {
-        alert('Se ha registrado correctamente!');
-       });
-    } else {alert('La contraseña no se ha repetido correctamente')}
+      .then((data) =>
+        //alert('Se ha registrado correctamente!');
+        console.log(data)
+       );
+    } //else {alert('La contraseña no se ha repetido correctamente')}
   };
   return (
     <>
@@ -116,7 +118,7 @@ const SupplierRegister = () => {
               onChange={handleChange}
             />
             <a href="#" onClick={password}>
-              <i class={shownPassword ? "far fa-eye" :"far fa-eye-slash"}></i>{" "}
+              <i className={shownPassword ? "far fa-eye" :"far fa-eye-slash"}></i>{" "}
             </a>
             <label htmlFor="floatingInput">Contraseña*</label>
           </div>
@@ -130,7 +132,7 @@ const SupplierRegister = () => {
               onChange={handleChange}
             />
             <a href="#" onClick={password2}>
-              <i class={shownPassword2 ? "far fa-eye" :"far fa-eye-slash"}></i>{" "}
+              <i className={shownPassword2 ? "far fa-eye" :"far fa-eye-slash"}></i>{" "}
             </a>
             <label htmlFor="floatingInput">Repetir contraseña*</label>
           </div>
@@ -169,7 +171,7 @@ const SupplierRegister = () => {
               value=""
               id="defaultCheck1"
             />
-            <label className="form-check-label" htmlFor="defaultCheck1">
+            <label className="form-check-label" htmlFor="defaultCheck1" onClick={() => setCheck()}>
               He leído y consiento al contenido de la Información Legal y de
               Protección de Datos.
             </label>
