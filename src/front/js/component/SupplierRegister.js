@@ -22,28 +22,29 @@ const SupplierRegister = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  useEffect(() => {
+/*   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/city")
       .then((response) => response.json())
       .then((response) => {
         setCity(response);
       });
-  }, []);
+  }, []); */
 
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.password1 === formData.password2) {
-      
-      
-      //useEffect(()=>{
-      /*fetch(process.env.BACKEND_URL + '/api/register-supplier'), {
+      fetch(process.env.BACKEND_URL + '/api/register-supplier'), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      }
       .then((response) => response.json())
       .then((response) => {
-        console.log(response);
+        alert('Se ha registrado correctamente!');
        });
-       else ("msg": "The password is not repeated")
-       */
-    }
+    } else {alert('La contraseña no se ha repetido correctamente')}
   };
   return (
     <>
