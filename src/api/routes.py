@@ -21,9 +21,9 @@ def get_supplier(supplier_id):
 
 @api.route('/user/<int:user_id>', methods=['GET']) # se obtiene usuario por id 
 def get_user(user_id):
-    users= User.query.filter_by(id=user_id).first()
-    if users : 
-        return jsonify(users.serialize()),200
+    user= User.query.filter_by(id=user_id).first()
+    if user : 
+        return jsonify(user.serialize()),200
     
     return jsonify({"Doesn´t exist"})
 
