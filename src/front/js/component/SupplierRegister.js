@@ -32,13 +32,13 @@ const SupplierRegister = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.password1 === formData.password2) {
-      fetch(process.env.BACKEND_URL + "/api/register-supplier"), {
+      fetch(process.env.BACKEND_URL + "/api/register-supplier", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(formData),
-        }
+        })
           .then((response) => response.json())
           .then((data) => console.log(data))
           .catch(error => alert(error))
