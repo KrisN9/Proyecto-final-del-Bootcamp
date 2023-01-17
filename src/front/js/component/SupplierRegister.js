@@ -4,26 +4,24 @@ import { useState, useEffect } from "react";
 // crear base de datos para la opcion ciudad, hacer fetch para visualizar.
 const SupplierRegister = () => {
   const [formData, setFormData] = useState({});
-  const [shownPassword, setShownPassword] = useState(true);   // para mostar contraseña
+  const [shownPassword, setShownPassword] = useState(true); // para mostar contraseña
   const [shownPassword2, setShownPassword2] = useState(true);
   const [city, setCity] = useState([]);
   const [check, setCheck] = useState(true);
 
-  const password = () =>{
-    setShownPassword(!shownPassword)
-  } ;
-  
+  const password = () => {
+    setShownPassword(!shownPassword);
+  };
 
   const password2 = () => {
-    setShownPassword2(!shownPassword2)
+    setShownPassword2(!shownPassword2);
   };
- 
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-/*   useEffect(() => {
+  /*   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/city")
       .then((response) => response.json())
       .then((response) => {
@@ -34,20 +32,21 @@ const SupplierRegister = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.password1 === formData.password2) {
-      fetch(process.env.BACKEND_URL + '/api/register-supplier'), {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      }
-      .then((response) => response.json())
-      .then((data) =>
-        //alert('Se ha registrado correctamente!');
-        console.log(data)
-       );
-    } //else {alert('La contraseña no se ha repetido correctamente')}
+      fetch(process.env.BACKEND_URL + "/api/register-supplier"),
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        }
+          .then((response) => response.json())
+          .then((data) => console.log(data));
+    } else {
+      alert("El registro no se ha realizado correctamente");
+    }
   };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -118,7 +117,9 @@ const SupplierRegister = () => {
               onChange={handleChange}
             />
             <a href="#" onClick={password}>
-              <i className={shownPassword ? "far fa-eye" :"far fa-eye-slash"}></i>{" "}
+              <i
+                className={shownPassword ? "far fa-eye" : "far fa-eye-slash"}
+              ></i>{" "}
             </a>
             <label htmlFor="floatingInput">Contraseña*</label>
           </div>
@@ -132,7 +133,9 @@ const SupplierRegister = () => {
               onChange={handleChange}
             />
             <a href="#" onClick={password2}>
-              <i className={shownPassword2 ? "far fa-eye" :"far fa-eye-slash"}></i>{" "}
+              <i
+                className={shownPassword2 ? "far fa-eye" : "far fa-eye-slash"}
+              ></i>{" "}
             </a>
             <label htmlFor="floatingInput">Repetir contraseña*</label>
           </div>
@@ -171,7 +174,11 @@ const SupplierRegister = () => {
               value=""
               id="defaultCheck1"
             />
-            <label className="form-check-label" htmlFor="defaultCheck1" onClick={() => setCheck()}>
+            <label
+              className="form-check-label"
+              htmlFor="defaultCheck1"
+              onClick={() => setCheck()}
+            >
               He leído y consiento al contenido de la Información Legal y de
               Protección de Datos.
             </label>
@@ -188,4 +195,3 @@ const SupplierRegister = () => {
 };
 
 export default SupplierRegister;
-
