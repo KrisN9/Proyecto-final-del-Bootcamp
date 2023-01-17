@@ -39,10 +39,10 @@ const UserRegister = () => {
         body: JSON.stringify(formData),
       }
       .then((response) => response.json())
-      .then((response) => {
-        alert('Se ha registrado correctamente!');
-       });
-    } else {alert('La contraseña no se ha repetido correctamente')}
+      .then((data) => console.log(data));
+    } else {
+      alert("El registro no se ha realizado correctamente");
+    }
   };
 
   return (
