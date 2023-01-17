@@ -19,6 +19,7 @@ const SupplierRegister = () => {
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
+    setCity({...city, [event.target.name]: event.target.value});
   };
 
   /*   useEffect(() => {
@@ -34,6 +35,7 @@ const SupplierRegister = () => {
     if (formData.password1 === formData.password2) {
       fetch(process.env.BACKEND_URL + "/api/register-supplier", {
         method: "POST",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
@@ -43,8 +45,6 @@ const SupplierRegister = () => {
         .then((response) => response.json())
         .then((data) => console.log(data))
         .catch((error) => alert(error));
-    } else {
-      alert("El registro no se ha realizado correctamente");
     }
   };
 

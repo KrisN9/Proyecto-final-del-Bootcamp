@@ -31,6 +31,7 @@ const UserRegister = () => {
     if (formData.password1 === formData.password2) {
       fetch(process.env.BACKEND_URL + "/api/register-user", {
         method: "POST",
+        mode: "cors",
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
@@ -40,8 +41,6 @@ const UserRegister = () => {
         .then((response) => response.json())
         .then((data) => console.log(data))
         .catch((error) => alert(error));
-    } else {
-      alert("El registro no se ha realizado correctamente");
     }
   };
 
