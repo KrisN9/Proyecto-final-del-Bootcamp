@@ -8,7 +8,7 @@ class User(db.Model):
     password =db.Column(db.String(80), unique=False, nullable=False)
     name =db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
-    city_id=db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)    #address  por city   
+    city_id=db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)      
     city_name=db.relationship('City', backref='user', lazy=True)
     telephone_number=db.Column(db.String(80), nullable=False) 
     #id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)

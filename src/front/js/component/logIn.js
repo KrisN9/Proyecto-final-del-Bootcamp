@@ -20,36 +20,30 @@ const LogIn=()=>{
     };
     
 
-    // const handleClickUser=()=>{   //pendiente de verificar si funciona /// se crea funcion para cuando se de click en el boton se ejecute la buscqueda en FETCH.
+    const handleClickUser =()=>{   
+        const optionUser={   
+         method:'POST', //  metodo post porq se crea token
+			headers: {
+			  "Content-Type": "application/json" },
+            body: JSON.stringify(formData),
 
-    //     const option ={
-            
-    //      method: 'POST',//  metodo post porq se crea token
-	// 		body: JSON.stringify(formData),//   se envia "email" y" constraseña" que se ingresa en el Input. 
-	// 		headers: {
-	// 		  "Content-Type": "application/json", 
-
-    //                 }
-    //             }
-
-    // useEffect(()=>{
-    //  fetch(process.env.BACKEND_URL + "/api/login-user", option)   //guardar en una funcion 
-    //  .then((response)=>{
-     //      response.json()
-    //      })
-    //      .then((response)=>{                    /// se tiene que almacenar el token en localstorage o session storage depende lo que se quiera almacenar   
-    //       localStorage.setItem("token", response.token)          ¡  ///      localStorage : es una pequeña base de datos q se encuentra en los navegadores.
-    //         })                                                /// localStrogare.setItem("se guarda con cualquier nombre ", informacion que se quiere guardar"token" )
-    //                                                          /// localStrogare.getItem: se utiliza para obtener informacion privada  del usuario con token.
-    // })                      
-    // }
-                                
-            
-
+                }
+ useEffect(() => {
+     fetch(process.env.BACKEND_URL +"/api/login-user", optionUser )   
+     .then((response)=>{
+          if(response.status === 200) return response.json();
+         })
+     .then((response)=>{                    /// se tiene que almacenar el token en localstorage o session storage depende lo que se quiera almacenar   
+        localStorage.setItem("token", response.token);           ///      localStorage : es una pequeña base de datos q se encuentra en los navegadores.
+            })                                                /// localStrogare.setItem("se guarda con cualquier nombre ", informacion que se quiere guardar"token" )
+        })                                                    /// localStrogare.getItem: se utiliza para obtener informacion privada  del usuario con token.                     
+    }
+    
+   
+       
     const handleSubmit = (e) => {
         e.preventDefault()
     }
-
     return (
     
         <form onSubmit={handleSubmit}>
@@ -70,29 +64,29 @@ const LogIn=()=>{
                     <div className="form-floating mb-3">
                             <input
                             type="email"
-                            name="email"
+                            name="user-email"
                             onChange={handleChange}
                             className="form-control"
-                            id="floatingInput"
+                            id="floatingInput1"
                             placeholder="name@example.com"
                             />
-                            <label for="floatingInput">Dirección de correo electrónico*</label>
+                            <label htmlFor="floatingInput1">Dirección de correo electrónico*</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input
                              type={shownUser ? "text" : "password"}
-                             name="contraseña"
+                             name="user-password"
                             onChange={handleChange}     
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
-                            /> <a href="#" onClick={user}><i class={shownUser? "far fa-eye-slash" :"far fa-eye"}></i></a>
-                            <label for="floatingInput">Contraseña*</label>
+                            /> <a href="#" onClick={user}><i className={shownUser? "far fa-eye-slash" :"far fa-eye"}></i></a>
+                            <label htmlFor="floatingInput">Contraseña*</label>
                         </div>
                     </div>
                     <div className="modal-footer">
                         <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-                      <Link to="/privada-usuario/id"><button type="button" className="btn btn-outline-warning" >Continuar</button></Link>  
+                      <Link to="/privada-usuario/id"><button type="button" onClick={handleClickUser} className="btn btn-outline-warning" >Continuar</button></Link>  
                     </div>
                     </div>
                 </div>
@@ -117,25 +111,25 @@ const LogIn=()=>{
                     <div className="form-floating mb-3">
                             <input
                             type="email"
-                            name="email"
-                            onChange={handleChange}
+                            name="email-supplier"
+                            
                             className="form-control"
-                            id="floatingInput"
+                            id="floatingInput2"
                             placeholder="name@example.com"
                             />
-                            <label for="floatingInput">Dirección de correo electrónico*</label>
+                            <label htmlFor="floatingInput2">Dirección de correo electrónico*</label>
                         </div>
                         <div className="form-floating mb-3">
                             <input
                             type={shownSupplier ? 'text' : 'password'}
-                            name="contraseña"
-                            onChange={handleChange}
+                            name="supplier-password"
+                            
                             className="form-control"
                             id="floatingPassword"
                             placeholder="contraseña"
                             />
-                            <a href="#" onClick={supplier}><i class={shownSupplier? "far fa-eye-slash" :"far fa-eye"}></i> </a>
-                            <label for="floatingInput">Contraseña*</label>
+                            <a href="#" onClick={supplier}><i className={shownSupplier? "far fa-eye-slash" :"far fa-eye"}></i> </a>
+                            <label htmlFor="floatingPassword">Contraseña*</label>
                         </div>
                     </div>
                     <div className="modal-footer">
@@ -160,4 +154,4 @@ const LogIn=()=>{
 
 export default LogIn
 
-
+ {/* onClick={handleClickSupplier}*/ }
