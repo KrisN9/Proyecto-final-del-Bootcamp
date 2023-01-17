@@ -19,7 +19,6 @@ const SupplierRegister = () => {
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    setCity({...city, [event.target.name]: event.target.value});
   };
 
   /*   useEffect(() => {
@@ -45,6 +44,8 @@ const SupplierRegister = () => {
         .then((response) => response.json())
         .then((data) => console.log(data))
         .catch((error) => alert(error));
+    } else {
+      alert("El registro no se ha realizado correctamente");
     }
   };
 
