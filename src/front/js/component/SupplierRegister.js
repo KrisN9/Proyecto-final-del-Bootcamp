@@ -40,7 +40,8 @@ const SupplierRegister = () => {
           body: JSON.stringify(formData),
         }
           .then((response) => response.json())
-          .then((data) => console.log(data));
+          .then((data) => console.log(data))
+          .catch(error => alert(error))
     } else {
       alert("El registro no se ha realizado correctamente");
     }
