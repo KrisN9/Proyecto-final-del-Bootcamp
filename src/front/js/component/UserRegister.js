@@ -7,6 +7,7 @@ const UserRegister = () => {
   // const [shownPassword2, setShownPassword2] = useState(true);
   const[password, setPassword]=useState({shown1:false, shown2:false});
   const [city, setCity] = useState([]);
+  const [check, setCheck] = useState(true);
   
 
   // const password = () =>{
@@ -141,7 +142,7 @@ const UserRegister = () => {
             value=""
             id="defaultCheck1"
           />
-          <label className="form-check-label" htmlFor="defaultCheck1">
+          <label className="form-check-label" htmlFor="defaultCheck1" onClick={() => setCheck()}>
             He leído y consiento al contenido de la Información Legal y de
             Protección de Datos.
           </label>
