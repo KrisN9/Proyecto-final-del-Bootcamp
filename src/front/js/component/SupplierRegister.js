@@ -35,7 +35,7 @@ const SupplierRegister = () => {
     if (formData.password1 === formData.password2) {
       fetch(process.env.BACKEND_URL + "/api/register-supplier", {
         method: "POST",
-        mode: "cors",
+        mode: "no-cors",
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",
