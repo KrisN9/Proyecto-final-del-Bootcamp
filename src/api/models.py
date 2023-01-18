@@ -9,7 +9,7 @@ class User(db.Model):
     name =db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
     city_id=db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)      
-    city_name=db.relationship('City', backref='user', lazy=True)
+    city=db.relationship('City', backref='user', lazy=True)
     telephone_number=db.Column(db.String(80), nullable=False) 
     #id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
    
@@ -50,7 +50,7 @@ class Supplier(db.Model):
     name=db.Column(db.String(80), unique=False, nullable=False)
     last_name=db.Column(db.String(80), unique=False, nullable=False)
     city_id=db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)       #address  por city  
-    city_name=db.relationship('City', backref='supplier', lazy=True) 
+    city=db.relationship('City', backref='supplier', lazy=True) 
     telephone_number=db.Column(db.String(80), nullable=False)
     # id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
     # login= db.relationship('Login', backref='supplier', lazy=True)
@@ -100,7 +100,7 @@ class City(db.Model):
     name =db.Column(db.String(80), unique=True, nullable=False)
 
     def __repr__(self):
-        return f'<City {self.name}>'
+        return f'<City {self.id} - {self.name}>'
 
     def serialize(self):
         return {
