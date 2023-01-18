@@ -17,7 +17,7 @@ export const Home = () => {
 	<>
     <div className="text-center mt-3">
       <Slide />
-    </div>
+   
 	
 	<div className="row">
 	<div className="col-12 col-md-6 mt-5">
@@ -28,7 +28,7 @@ export const Home = () => {
 		</div>	
 	</div>
 
-	<div className="col-12 col-md-6 mt-5 ">
+	<div className="col-12 col-md-6 mt-5">
 		<div className="me-5">
 		<SearchBar />
 		<MyMapComponent isMarkerShown />
@@ -37,7 +37,7 @@ export const Home = () => {
 
 	</div>
 	</div>
-		
+	</div>
 	
 	</>
   );

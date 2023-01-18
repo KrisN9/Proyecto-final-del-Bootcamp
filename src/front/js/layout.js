@@ -39,7 +39,7 @@ const Layout = () => {
                         <Route element={<PrivateAreaSupplier/>} path="/privada-proveedor/id"/>
                         <Route element={<Registers/>} path="/registro"/>
                         <Route element={<SupplierRegister/>} path ="/registro-proveedor"/> 
-                        <Route element={<UserRegister/>} path = "/registro-usuario"/>
+                        <Route element={<UserRegister/>} path ="/registro-usuario"/>
                     </Routes>
                     <Footer />
                 </ScrollToTop>
