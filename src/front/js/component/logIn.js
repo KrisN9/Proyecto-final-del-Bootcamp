@@ -237,7 +237,7 @@ const LogIn = () => {
                       </button>
                       <button
                         type="button"
-                        onclick={handleClickSupplier}
+                        onClick={handleClickSupplier}
                         className="btn btn-outline-warning"
                       >
                         Continuar

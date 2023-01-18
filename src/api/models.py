@@ -48,7 +48,7 @@ class Supplier(db.Model):
     company_name =db.Column(db.String(80), unique=True, nullable=False) 
     company_cif=db.Column(db.String(80),unique=True, nullable=False)
     name=db.Column(db.String(80), unique=False, nullable=False)
-    last_name=db.Column(db.String(80), unique=False, nullable=False)
+    #last_name=db.Column(db.String(80), unique=False, nullable=False)
     city_id=db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)       #address  por city  
     city=db.relationship('City', backref='supplier', lazy=True) 
     telephone_number=db.Column(db.String(80), nullable=False)

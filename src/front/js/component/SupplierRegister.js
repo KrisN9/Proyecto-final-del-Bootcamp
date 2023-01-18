@@ -23,7 +23,7 @@ const SupplierRegister = () => {
 
   useEffect(() => {
     fetch(
-      "https://3001-krisn9-proyectofinaldel-seq0791ixbw.ws-eu83.gitpod.io/api/city"
+      "https://3001-krisn9-proyectofinaldel-b0emlfyzls5.ws-eu83.gitpod.io/api/city"
     )
       .then((response) => response.json())
       .then((response) => {
@@ -33,12 +33,11 @@ const SupplierRegister = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (formData.password === formData.password2) {
+    /* if (formData.password === formData.password2) */ {
       fetch(
-        "https://3001-krisn9-proyectofinaldel-seq0791ixbw.ws-eu83.gitpod.io/api/register-supplier",
+        "https://3001-krisn9-proyectofinaldel-b0emlfyzls5.ws-eu83.gitpod.io/api/register-supplier",
         {
           method: "POST",
-          mode: "cors",
           headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
