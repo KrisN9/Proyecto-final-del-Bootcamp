@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const LogIn = () => {
@@ -22,7 +22,7 @@ const LogIn = () => {
 
   const handleClickUser = () => {
     const optionUser = {
-      method: "POST", //  metodo post porq se crea token
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -31,7 +31,6 @@ const LogIn = () => {
     fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
       .then((response) => {
         if (response.status === 200) return response.json();
-        else alert("Email or Password incorrect. Try again!");
       })
       .then((response) => {
         localStorage.setItem("token", response.token);
@@ -39,27 +38,25 @@ const LogIn = () => {
       });
   };
 
-  // const handleClickSupplier = () => {
-  //   const optionSupplier = {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(formData),
-  //   };
+  const handleClickSupplier = () => {
+    const optionSupplier = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    };
 
-  //   fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
-  //     .then((response) => {
-  //       if (response.status === 200) return response.json();
-  //       else alert("Email or Password incorrect. Try again!");
-  //     })
-  //     .then((response) => {
-  //       localStorage.setItem("token", response.token);
-  //       navigate("/privada-proveedor/id");
-  //     });
-  // };
-
-
+    fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
+      .then((response) => {
+        if (response.status === 200) return response.json();
+        else alert("Email or Password incorrect. Try again!");
+      })
+      .then((response) => {
+        localStorage.setItem("token", response.token);
+        navigate("/privada-proveedor/id");
+      });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -113,10 +110,10 @@ const LogIn = () => {
                           name="email"
                           onChange={handleChange}
                           className="form-control"
-                          id="floatingInput1"
+                          id="floatingInput"
                           placeholder="name@example.com"
                         />
-                        <label htmlFor="floatingInput1">
+                        <label htmlFor="floatingInput">
                           Dirección de correo electrónico*
                         </label>
                       </div>
@@ -126,7 +123,7 @@ const LogIn = () => {
                           name="password"
                           onChange={handleChange}
                           className="form-control"
-                          id="floatingInput"
+                          id="floatingPassword"
                           placeholder="contraseña"
                         />{" "}
                         <a href="#" onClick={user}>
@@ -136,7 +133,7 @@ const LogIn = () => {
                             }
                           ></i>
                         </a>
-                        <label htmlFor="floatingInput">Contraseña*</label>
+                        <label htmlFor="floatingPassword">Contraseña*</label>
                       </div>
                     </div>
                     <div className="modal-footer">
@@ -202,6 +199,7 @@ const LogIn = () => {
                         <input
                           type="email"
                           name="email"
+                          onChange={handleChange}
                           className="form-control"
                           id="floatingInput1"
                           placeholder="name@example.com"
@@ -214,8 +212,9 @@ const LogIn = () => {
                         <input
                           type={shownSupplier ? "text" : "password"}
                           name="password"
+                          onChange={handleChange}
                           className="form-control"
-                          id="floatingInput"
+                          id="floatingPassword1"
                           placeholder="contraseña"
                         />
                         <a href="#" onClick={supplier}>
@@ -225,7 +224,7 @@ const LogIn = () => {
                             }
                           ></i>{" "}
                         </a>
-                        <label htmlFor="floatingInput">Contraseña*</label>
+                        <label htmlFor="floatingPassword1">Contraseña*</label>
                       </div>
                     </div>
                     <div className="modal-footer">
@@ -236,7 +235,11 @@ const LogIn = () => {
                       >
                         Cancelar
                       </button>
-                      <button type="button" className="btn btn-outline-warning">
+                      <button
+                        type="button"
+                        onclick={handleClickSupplier}
+                        className="btn btn-outline-warning"
+                      >
                         Continuar
                       </button>
                     </div>
