@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const LogIn = () => {
@@ -28,7 +28,6 @@ const LogIn = () => {
       },
       body: JSON.stringify(formData),
     };
-
     fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
       .then((response) => {
         if (response.status === 200) return response.json();
@@ -40,29 +39,32 @@ const LogIn = () => {
       });
   };
 
-  const handleClickSupplier = () => {
-    const optionSupplier = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    };
+  // const handleClickSupplier = () => {
+  //   const optionSupplier = {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(formData),
+  //   };
 
-    fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
-      .then((response) => {
-        if (response.status === 200) return response.json();
-        else alert("Email or Password incorrect. Try again!");
-      })
-      .then((response) => {
-        localStorage.setItem("token", response.token);
-        navigate("/privada-proveedor/id");
-      });
-  };
+  //   fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
+  //     .then((response) => {
+  //       if (response.status === 200) return response.json();
+  //       else alert("Email or Password incorrect. Try again!");
+  //     })
+  //     .then((response) => {
+  //       localStorage.setItem("token", response.token);
+  //       navigate("/privada-proveedor/id");
+  //     });
+  // };
+
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="container">
@@ -200,7 +202,6 @@ const LogIn = () => {
                         <input
                           type="email"
                           name="email"
-                          onChange={handleChange}
                           className="form-control"
                           id="floatingInput1"
                           placeholder="name@example.com"
@@ -213,7 +214,6 @@ const LogIn = () => {
                         <input
                           type={shownSupplier ? "text" : "password"}
                           name="password"
-                          onChange={handleChange}
                           className="form-control"
                           id="floatingInput"
                           placeholder="contraseña"
@@ -236,11 +236,7 @@ const LogIn = () => {
                       >
                         Cancelar
                       </button>
-                      <button
-                        type="button"
-                        className="btn btn-outline-warning"
-                        onClick={handleClickSupplier}
-                      >
+                      <button type="button" className="btn btn-outline-warning">
                         Continuar
                       </button>
                     </div>
@@ -266,4 +262,4 @@ export default LogIn;
 //     console.log(
 //       "Esta linea de codigo se ejecuta cuando se cargue o se actualice el componente"
 //     );
-//   }, []);
+//   }, [])
