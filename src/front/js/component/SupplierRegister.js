@@ -65,7 +65,7 @@ const SupplierRegister = () => {
               className="form-control"
               id="floatingName"
               placeholder="Nombre de la empresa"
-              name="Nombre de la empresa"
+              name="company_name"
               onChange={handleChange}
             />
             <label htmlFor="floatingInput">Nombre de la empresa*</label>
@@ -76,7 +76,7 @@ const SupplierRegister = () => {
               className="form-control"
               id="floatingNumber"
               placeholder="CIF de la empresa"
-              name="CIF de la empresa"
+              name="company_cif"
               onChange={handleChange}
             />
             <label htmlFor="floatingInput">CIF de la empresa*</label>
@@ -87,7 +87,7 @@ const SupplierRegister = () => {
               className="form-control"
               id="floatingName"
               placeholder="Nombre y Apellidos"
-              name="Nombre y Apellidos"
+              name="name"
               onChange={handleChange}
             />
             <label htmlFor="floatingName">
@@ -100,7 +100,7 @@ const SupplierRegister = () => {
               className="form-control"
               id="floatingInput"
               placeholder="name@example.com"
-              name="Dirección de correo electrónico"
+              name="email"
               onChange={handleChange}
             />
             <label htmlFor="floatingInput">
@@ -145,7 +145,7 @@ const SupplierRegister = () => {
               className="form-control"
               id="floatingNumber"
               placeholder="Número de teléfono"
-              name="Número de teléfono"
+              name="telephone_number"
               onChange={handleChange}
             />
             <label htmlFor="floatingNumber">Número de teléfono</label>
@@ -153,7 +153,7 @@ const SupplierRegister = () => {
           <select
             className="form-select mb-3"
             aria-label="Default select example"
-            name="Ciudad"
+            name="city"
             onChange={handleChange}
           >
             <option disabled selected>

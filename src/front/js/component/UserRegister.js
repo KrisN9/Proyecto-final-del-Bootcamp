@@ -61,7 +61,7 @@ const UserRegister = () => {
               className="form-control"
               id="floatingName"
               placeholder="Nombre y Apellidos"
-              name="Nombre y Apellidos"
+              name="name"
               onChange={handleChange}
             />
             <label htmlFor="floatingName">Nombre y Apellidos*</label>
@@ -72,7 +72,7 @@ const UserRegister = () => {
               className="form-control"
               id="floatingInput"
               placeholder="name@example.com"
-              name="Dirección de correo electrónico"
+              name="email"
               onChange={handleChange}
             />
             <label htmlFor="floatingInput">
@@ -118,7 +118,7 @@ const UserRegister = () => {
               className="form-control"
               id="floatingNumber"
               placeholder="Número de teléfono"
-              name="Número de teléfono"
+              name="telephone_number"
               onChange={handleChange}
             />
             <label htmlFor="floatingNumber">Número de teléfono</label>
@@ -126,7 +126,7 @@ const UserRegister = () => {
           <select
             className="form-select mb-3"
             aria-label="Default select example"
-            name="Ciudad"
+            name="city"
             onChange={handleChange}
           >
             <option disabled selected>
