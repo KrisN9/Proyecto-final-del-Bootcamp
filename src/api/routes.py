@@ -171,45 +171,74 @@ def add_favorite():
 
 @api.route('/user/<int:user_id>', methods=['PUT']) #modificación de datos de usuario
 def update_user(user_id):
-    change_data = request.json
+    try:
+        user = User.query.filter_by(user_id=user_id).first()
+    except:
+        return jsonify({"msg": "User doesn't exist"}), 400
 
-    for user in users:
-        if user['id'] == user_id:
-            user['email'] = change_data['email'],
-            user['password'] = change_data['password']
-            user['telephone_number'] = change_data['telephone_number']
-            return jsonify(user), 200
+    new_name = request.json.get("name", user.name)
+    new_email = request.json.get("email", user.email)
+    new_telephone_number = request.json.get("telephone_number", user.telephone_number)
+    new_city = request.json.get("city", user.city)
 
-        return ({"msg": 'User with id {user_id} not found'}), 404
+    setattr(user, "name", new_name)
+    setattr(user, "email", new_email)
+    setattr(user, "telephone_number", new_telephone_number)
+    setattr(user, "city", new_city)
+
+    db.session.commit()
+       
+    return jsonify(user.serialize()), 200
 
 @api.route('/supplier/<int:supplier_id>', methods=['PUT']) #modificacion de datos de proveedor
 def update_supplier(supplier_id):
+    try:
+        supplier = Supplier.query.filter_by(supplier_id=supplier_id).first()
+    except:
+        return jsonify({"msg": "Supplier doesn't exist"}), 400
 
-    change_data = request.json
+    new_company_name = request.json.get("company_name", supplier.company_name)
+    new_company_cif = request.json.get("company_cif", supplier.company_cif)
+    new_name = request.json.get("name", supplier.name)
+    new_email = request.json.get("email", supplier.email)
+    new_telephone_number = request.json.get("telephone_number", supplier.telephone_number)
+    new_city = request.json.get("city", supplier.city)
 
-    for supplier in suppliers:
-        if supplier['id'] == supplier_id:
-            supplier['email'] = change_data['email'],
-            supplier['password'] = change_data['password']
-            supplier['telephone_number'] = change_data['telephone_number']
-            return jsonify(supplier), 200
+    setattr(supplier, "company_name", new_company_name)
+    setattr(supplier, "company_cif", new_company_cif)
+    setattr(supplier, "name", new_name)
+    setattr(supplier, "email", new_email)
+    setattr(supplier, "telephone_number", new_telephone_number)
+    setattr(supplier, "city", new_city)
 
-        return ({"msg": 'Supplier with id {supplier_id} not found'}), 404
+    db.session.commit()
+       
+    return jsonify(user.serialize()), 200
 
 @api.route('/offer/<int:offer_id>', methods=['PUT']) #modificar datos de oferta
 def update_offer(offer_id):
+    try:
+        offer = Offer.query.filter_by(offer_id=offer_id).first()
+    except:
+        return jsonify({"msg": "Offer doesn't exist"}), 400
 
-    change_data = request.json
+    new_company_name = request.json.get("company_name", offer.company_name)
+    new_name = request.json.get("name", offer.name)
+    new_price = request.json.get("price", offer.price)
+    new_url_image = request.json.get("url_image", offer.url_image)
+    new_url = request.json.get("url", offer.url)
+    new_location = request.json.get("location", offer.location)
 
-    for offer in offers:
-        if offer['id'] == offer_id:
-            offer['name'] = change_data['name'],
-            offer['url'] = change_data['url'],
-            offer['image'] = change_data['url_image']
-            offer['location'] = change_data['location']
-            return jsonify(offer), 200
+    setattr(offer, "company_name", new_company_name)
+    setattr(offer, "name", new_name)
+    setattr(offer, "price", new_price)
+    setattr(offer, "url_image", new_url_image)
+    setattr(offer, "url", new_url)
+    setattr(offer, "location", new_location)
 
-        return ({"msg": 'Offer with id {offer_id} not found'}), 404
+    db.session.commit()
+       
+    return jsonify(user.serialize()), 200
 
 #pendiente de preguntar crear ROUTE PARA obetener las ofertas por la zona de busqueda 
 
