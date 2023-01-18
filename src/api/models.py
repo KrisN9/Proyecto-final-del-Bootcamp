@@ -7,7 +7,7 @@ class User(db.Model):
     email =db.Column(db.String(120), unique=True, nullable=False)
     password =db.Column(db.String(80), unique=False, nullable=False)
     name =db.Column(db.String(80), unique=False, nullable=False)
-    last_name=db.Column(db.String(80), unique=False, nullable=False)
+    #last_name=db.Column(db.String(80), unique=False, nullable=False)
     city_id=db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)      
     city=db.relationship('City', backref='user', lazy=True)
     telephone_number=db.Column(db.String(80), nullable=False) 
@@ -77,7 +77,7 @@ class Offer(db.Model):
     price= db.Column(db.Integer, nullable=False )
     url_image=db.Column(db.String(200), nullable=False)
     url= db.Column(db.String(200), nullable=False)
-    location =db.Column(db.String(200), nullable=False) #ubicacion en el mapa 
+    location =db.Column(db.String(200), nullable=False) #ubicacion en el mapa, pendiente de revisar
 
 
     def __repr__(self):
