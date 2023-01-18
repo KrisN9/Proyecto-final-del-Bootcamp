@@ -28,7 +28,7 @@ const UserRegister = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (formData.password1 === formData.password2) {
+    if (formData.password === formData.password2) {
       fetch(process.env.BACKEND_URL + "/api/register-user", {
         method: "POST",
         mode: "no-cors",
@@ -85,7 +85,7 @@ const UserRegister = () => {
               className="form-control"
               id="floatingPassword"
               placeholder="contraseña"
-              name="password1"
+              name="password"
               onChange={handleChange}
             />
             <a href="#" onClick={shownPassword}>

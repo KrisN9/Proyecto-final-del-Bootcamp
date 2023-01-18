@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 // crear base de datos para la opcion ciudad, hacer fetch para visualizar.
 const SupplierRegister = () => {
@@ -31,7 +31,7 @@ const SupplierRegister = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (formData.password1 === formData.password2) {
+    if (formData.password === formData.password2) {
       fetch(process.env.BACKEND_URL + "/api/register-supplier", {
         method: "POST",
         mode: "no-cors",
@@ -113,7 +113,7 @@ const SupplierRegister = () => {
               className="form-control"
               id="floatingPassword"
               placeholder="contraseña"
-              name="password1"
+              name="password"
               onChange={handleChange}
             />
             <a href="#" onClick={password}>
