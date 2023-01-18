@@ -31,6 +31,7 @@ const LogIn = () => {
     fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
       .then((response) => {
         if (response.status === 200) return response.json();
+        else alert("Email or Password incorrect. Try again!");
       })
       .then((response) => {
         localStorage.setItem("token", response.token);
@@ -201,10 +202,10 @@ const LogIn = () => {
                           name="email"
                           onChange={handleChange}
                           className="form-control"
-                          id="floatingInput1"
+                          id="floatingEmail"
                           placeholder="name@example.com"
                         />
-                        <label htmlFor="floatingInput1">
+                        <label htmlFor="floatingEmail">
                           Dirección de correo electrónico*
                         </label>
                       </div>
@@ -237,7 +238,7 @@ const LogIn = () => {
                       </button>
                       <button
                         type="button"
-                        onclick={handleClickSupplier}
+                        onClick={handleClickSupplier}
                         className="btn btn-outline-warning"
                       >
                         Continuar
