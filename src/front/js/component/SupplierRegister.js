@@ -46,8 +46,8 @@ const SupplierRegister = () => {
         }
       )
         .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
+        .then((response) => {
+          console.log('Success:', response);
         })
         .catch((error) => alert(error));
     }
