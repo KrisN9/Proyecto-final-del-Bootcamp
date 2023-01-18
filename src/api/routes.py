@@ -101,7 +101,7 @@ def register_user():
     try:
         data = request.json
         user = User(id=data['id'], name=data['name'], email=data['email'], password1=data['password1'], password2=data['password2'],  
-         telephone_number=data['telephone_number'], city=data['city'])
+        telephone_number=data['telephone_number'], city=data['city'])
         db.session.add(user)
         db.session.commit()
     except: 
