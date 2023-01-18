@@ -100,7 +100,7 @@ def delete_offer(supplier_id, offer_id):
 def register_user():
     try:
         data = request.json
-        user = User(id=data['id'], name=data['name'], email=data['email'], password=data['password'],  
+        user = User(name=data['name'], email=data['email'], password=data['password'],  
         telephone_number=data['telephone_number'], city=data['city'])
         db.session.add(user)
         db.session.commit()
@@ -115,7 +115,7 @@ def register_user():
 def register_supplier():
     try:
         data = request.json
-        supplier = Supplier(id=data['id'], company_name=data['company_name'], company_cif=data['company_cif'], name=data['name'], email=data['email'],
+        supplier = Supplier(company_name=data['company_name'], company_cif=data['company_cif'], name=data['name'], email=data['email'],
         password=data['password'], telephone_number=data['telephone_number'], city=data['city'])
         db.session.add(supplier)
         db.session.commit()
