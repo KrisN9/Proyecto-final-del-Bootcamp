@@ -28,7 +28,7 @@ const UserRegister = () => {
 
   useEffect(() => {
     fetch(
-      "https://3001-krisn9-proyectofinaldel-nnscj7gye1e.ws-eu83.gitpod.io/api/city"
+      "https://3001-krisn9-proyectofinaldel-7a5cxxqupu9.ws-eu83.gitpod.io/api/city"
     )
       .then((response) => response.json())
       .then((response) => {
@@ -40,10 +40,9 @@ const UserRegister = () => {
     event.preventDefault();
     if (formData.password === formData.password2) {
       fetch(
-        "https://3001-krisn9-proyectofinaldel-nnscj7gye1e.ws-eu83.gitpod.io/api/register-user",
+        "https://3001-krisn9-proyectofinaldel-7a5cxxqupu9.ws-eu83.gitpod.io/api/register-user",
         {
           method: "POST",
-          mode: "no-cors",
           headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
@@ -52,7 +51,9 @@ const UserRegister = () => {
         }
       )
         .then((response) => response.json())
-        .then((data) => console.log(data))
+        .then((data) => {
+          console.log(data);
+        })
         .catch((error) => alert(error));
     }
   };
