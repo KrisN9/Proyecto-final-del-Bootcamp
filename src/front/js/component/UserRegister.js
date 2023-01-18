@@ -26,6 +26,14 @@ const UserRegister = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
+  useEffect(() => {
+    fetch(process.env.BACKEND_URL + "/api/city")
+      .then((response) => response.json())
+      .then((response) => {
+        setCity(response);
+      });
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.password === formData.password2) {
@@ -132,7 +140,14 @@ const UserRegister = () => {
             <option disabled selected>
               Ciudad(elegir de las indicadas en el desplegable)*
             </option>
-            <option value="Álava/Araba">Álava/Araba</option>
+            {city.map((value, index) => {
+              return (
+                <option key={index} value={value.id}>
+                  {value.name}
+                </option>
+              );
+            })}
+            {/* <option value="Álava/Araba">Álava/Araba</option>
             <option value="Albacete">Albacete</option>
             <option value="Alicante">Alicante</option>
             <option value="Almería">Almería</option>
@@ -183,14 +198,7 @@ const UserRegister = () => {
             <option value="Valladolid">Valladolid</option>
             <option value="Vizcaya/Bizkaia">Vizcaya/Bizkaia</option>
             <option value="Zamora">Zamora</option>
-            <option value="Zaragoza">Zaragoza</option>
-            {city.map((value, index) => {
-              return (
-                <option key={index} value={value.id}>
-                  {value.name}
-                </option>
-              );
-            })}
+            <option value="Zaragoza">Zaragoza</option> */}
           </select>
           <div className="form-check mb-3">
             <input
