@@ -38,6 +38,7 @@ const SupplierRegister = () => {
         "https://3001-krisn9-proyectofinaldel-seq0791ixbw.ws-eu83.gitpod.io/api/register-supplier",
         {
           method: "POST",
+          mode: "cors",
           headers: {
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
