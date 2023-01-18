@@ -131,7 +131,7 @@ def login_user():
     user = User.query.filter_by(email=data['email'], password=data['password']).first()
     if user:
         access_token = create_access_token(identity=user.id)   #se crea token y asocia al ID
-        return jsonify({"token": access_token,}), 200
+        return jsonify({"token": access_token}), 200
     
     return jsonify({"msg": "Wrong user/password"}), 400
 
@@ -142,7 +142,7 @@ def login_supplier():
     supplier = Supplier.query.filter_by(email=data['email'], password=data['password']).first()
     if supplier:
         access_token = create_access_token(identity=supplier.id)
-        return jsonify({"token": access_token, "supplier": supplier}), 200
+        return jsonify({"token": access_token}), 200
 
     return jsonify({"msg": "Wrong supplier/password"}), 400
 

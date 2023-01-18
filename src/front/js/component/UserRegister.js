@@ -27,7 +27,9 @@ const UserRegister = () => {
   };
 
   useEffect(() => {
-    fetch(process.env.BACKEND_URL + "/api/city")
+    fetch(
+      "https://3001-krisn9-proyectofinaldel-nnscj7gye1e.ws-eu83.gitpod.io/api/city"
+    )
       .then((response) => response.json())
       .then((response) => {
         setCity(response);
@@ -37,15 +39,18 @@ const UserRegister = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.password === formData.password2) {
-      fetch(process.env.BACKEND_URL + "/api/register-user", {
-        method: "POST",
-        mode: "no-cors",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify(formData),
-      })
+      fetch(
+        "https://3001-krisn9-proyectofinaldel-nnscj7gye1e.ws-eu83.gitpod.io/api/register-user",
+        {
+          method: "POST",
+          mode: "no-cors",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify(formData),
+        }
+      )
         .then((response) => response.json())
         .then((data) => console.log(data))
         .catch((error) => alert(error));

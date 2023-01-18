@@ -22,17 +22,15 @@ const LogIn = () => {
 
   const handleClickUser = () => {
     const optionUser = {
-      method: "POST", //  metodo post porq se crea token
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
     };
-
     fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
       .then((response) => {
         if (response.status === 200) return response.json();
-        else alert("Email or Password incorrect. Try again!");
       })
       .then((response) => {
         localStorage.setItem("token", response.token);
@@ -63,6 +61,7 @@ const LogIn = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="container">
@@ -111,10 +110,10 @@ const LogIn = () => {
                           name="email"
                           onChange={handleChange}
                           className="form-control"
-                          id="floatingInput1"
+                          id="floatingInput"
                           placeholder="name@example.com"
                         />
-                        <label htmlFor="floatingInput1">
+                        <label htmlFor="floatingInput">
                           Dirección de correo electrónico*
                         </label>
                       </div>
@@ -124,7 +123,7 @@ const LogIn = () => {
                           name="password"
                           onChange={handleChange}
                           className="form-control"
-                          id="floatingInput"
+                          id="floatingPassword"
                           placeholder="contraseña"
                         />{" "}
                         <a href="#" onClick={user}>
@@ -134,7 +133,7 @@ const LogIn = () => {
                             }
                           ></i>
                         </a>
-                        <label htmlFor="floatingInput">Contraseña*</label>
+                        <label htmlFor="floatingPassword">Contraseña*</label>
                       </div>
                     </div>
                     <div className="modal-footer">
@@ -215,7 +214,7 @@ const LogIn = () => {
                           name="password"
                           onChange={handleChange}
                           className="form-control"
-                          id="floatingInput"
+                          id="floatingPassword1"
                           placeholder="contraseña"
                         />
                         <a href="#" onClick={supplier}>
@@ -225,7 +224,7 @@ const LogIn = () => {
                             }
                           ></i>{" "}
                         </a>
-                        <label htmlFor="floatingInput">Contraseña*</label>
+                        <label htmlFor="floatingPassword1">Contraseña*</label>
                       </div>
                     </div>
                     <div className="modal-footer">
@@ -238,8 +237,8 @@ const LogIn = () => {
                       </button>
                       <button
                         type="button"
+                        onclick={handleClickSupplier}
                         className="btn btn-outline-warning"
-                        onClick={handleClickSupplier}
                       >
                         Continuar
                       </button>
@@ -266,4 +265,4 @@ export default LogIn;
 //     console.log(
 //       "Esta linea de codigo se ejecuta cuando se cargue o se actualice el componente"
 //     );
-//   }, []);
+//   }, [])
