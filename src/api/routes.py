@@ -100,12 +100,12 @@ def delete_offer(supplier_id, offer_id):
 def register_user():
     data = request.json
     try:
-        user = User(id=data['id'], name=data['name'], email=data['email'], password=data['password'],  
-        telephone_number=data['telephone_number'], city=data['city'])
+        user = User(name=data['name'], email=data['email'], password=data['password'],  
+        telephone_number=data['telephone_number'], city_id=data['city'])
         db.session.add(user)
         db.session.commit()
-    except: 
-
+    except Exception as e: 
+        print(e)
         return jsonify({"msg": "Error"}),400
     
     return jsonify({"msg": "User created"}),200

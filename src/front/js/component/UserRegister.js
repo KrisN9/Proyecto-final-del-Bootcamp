@@ -28,7 +28,7 @@ const UserRegister = () => {
 
   useEffect(() => {
     fetch(
-      "https://3001-krisn9-proyectofinaldel-jdppm3waabq.ws-eu83.gitpod.io/api/city"
+      process.env.BACKEND_URL + "/api/city"
     )
       .then((response) => response.json())
       .then((response) => {
@@ -40,7 +40,7 @@ const UserRegister = () => {
     event.preventDefault();
     if (formData.password === formData.password2) {
       fetch(
-        "https://3001-krisn9-proyectofinaldel-jdppm3waabq.ws-eu83.gitpod.io/api/register-user",
+        process.env.BACKEND_URL + "/api/register-user",
         {
           method: "POST",
           headers: {

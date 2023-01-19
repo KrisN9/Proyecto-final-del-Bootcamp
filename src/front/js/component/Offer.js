@@ -13,7 +13,7 @@ const Offer= ()=>{
         }
         
         const handleClick =()=>{
-            fetch("process.env.BACKEND_URL + "/api/offer ,
+            fetch(process.env.BACKEND_URL + "/api/offer" ,
                 {
                   method: "POST",
                   headers: {

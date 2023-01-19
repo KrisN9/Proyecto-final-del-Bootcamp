@@ -22,9 +22,7 @@ const SupplierRegister = () => {
   };
 
   useEffect(() => {
-    fetch(
-      "https://3001-krisn9-proyectofinaldel-jdppm3waabq.ws-eu83.gitpod.io/api/city"
-    )
+    fetch(process.env.BACKEND_URL + "/api/city")
       .then((response) => response.json())
       .then((response) => {
         setCity(response);
@@ -34,17 +32,14 @@ const SupplierRegister = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.password === formData.password2) {
-      fetch(
-        "https://3001-krisn9-proyectofinaldel-jdppm3waabq.ws-eu83.gitpod.io/api/register-supplier",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify(formData),
-        }
-      )
+      fetch(process.env.BACKEND_URL + "/api/register-supplier", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(formData),
+      })
         .then((response) => response.json())
         .then((response) => {
           console.log(response);

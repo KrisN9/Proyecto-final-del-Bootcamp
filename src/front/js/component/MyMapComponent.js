@@ -38,7 +38,8 @@ function MyMapComponent() {
         onLoad={onLoad}
         onUnmount={onUnmount}
       >
-        <></>
+        <>
+        </>
       </GoogleMap>
   ) : <></>
 }
