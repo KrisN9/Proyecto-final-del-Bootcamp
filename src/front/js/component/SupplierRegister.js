@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // crear base de datos para la opcion ciudad, hacer fetch para visualizar.
 const SupplierRegister = () => {
@@ -8,6 +9,8 @@ const SupplierRegister = () => {
   const [shownPassword2, setShownPassword2] = useState(true);
   const [city, setCity] = useState([]);
   const [check, setCheck] = useState(true);
+  
+  const navigate = useNavigate();
 
   const password = () => {
     setShownPassword(!shownPassword);
@@ -42,8 +45,11 @@ const SupplierRegister = () => {
       })
         .then((response) => response.json())
         .then((response) => {
+          if (response.status == 200) {
           console.log(response);
-        })
+          navigate("/inicio-sesion");
+          /* alert("El registro se ha creado correctamente!"); */
+        }})
         .catch((error) => alert(error));
     }
   };

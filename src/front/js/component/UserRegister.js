@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const UserRegister = () => {
   const [formData, setFormData] = useState({});
@@ -8,6 +9,8 @@ const UserRegister = () => {
   const [password, setPassword] = useState({ shown1: false, shown2: false });
   const [city, setCity] = useState([]);
   const [check, setCheck] = useState(true);
+
+  const navigate = useNavigate();
 
   // const password = () =>{
   //   setShownPassword(!shownPassword)
@@ -52,8 +55,11 @@ const UserRegister = () => {
       )
         .then((response) => response.json())
         .then((response) => {
-          console.log(response);
-        })
+          if (response.status == 200) {
+            console.log(response);
+            navigate("/inicio-sesion");
+            /* alert("El registro se ha creado correctamente!"); */
+          }})
         .catch((error) => alert(error));
     }
   };
