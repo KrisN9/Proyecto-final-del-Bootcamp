@@ -9,6 +9,7 @@ import SearchBar from "../component/SearchBar";
 import SupplierRegister from "../component/SupplierRegister";
 import UserRegister from "../component/UserRegister";
 import Cards from "../component/Cards";
+import GoogleMap from "../component/GoogleMap";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -31,7 +32,7 @@ export const Home = () => {
 	<div className="col-12 col-md-6 mt-5">
 		<div className="me-5">
 		<SearchBar />
-		<MyMapComponent isMarkerShown />
+		<MyMapComponent />
 		</div>
 
 
