@@ -5,7 +5,7 @@ const Cards = () => {
   const params = useParams();
   const [offer, setOffer] = useState("");
 
-  useEffect(() => {
+/*   useEffect(() => {
     fetch(process.env.BACKEND_URL + ".....") //pendiente url
       .then((response) => {
         return response.json();
@@ -13,7 +13,7 @@ const Cards = () => {
       .then((response) => {
         setOffer(response);
       });
-  }, []);
+  }, []); */
 
   return (
     /* pendiente de revisar si van las cards 
