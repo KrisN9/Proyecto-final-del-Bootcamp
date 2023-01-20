@@ -33,6 +33,11 @@ function MyMapComponent() {
     setMap(null)
   }, [])
 
+  const panTo = React.useCallback(({ lat, lng }) => {
+    mapRef.current.panTo({ lat, lng });
+    mapRef.current.setZoom(14);
+  }, []);
+
   return isLoaded ? (
     <div>
 
@@ -52,7 +57,7 @@ function MyMapComponent() {
   ) : <></>
 }
 
-function Search() {
+function Search(panTo) {
   const {
     ready,
     value,
@@ -65,6 +70,23 @@ function Search() {
       radius: 200 * 1000,
     },
   });
+
+  const handleInput = (e) => {
+    setValue(e.target.value);
+  };
+
+  const handleSelect = async (address) => {
+    setValue(address, false);
+    clearSuggestions();
+
+    try {
+      const results = await getGeocode({ address });
+      const { lat, lng } = await getLatLng(results[0]);
+      panTo({ lat, lng });
+    } catch (error) {
+      console.log("Error: ", error);
+    }
+  };
 
   return (
     <div className="search">

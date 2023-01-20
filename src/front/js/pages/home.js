@@ -19,18 +19,11 @@ export const Home = () => {
     <div className="text-center mt-3">
       <Slide />
    
+	<br></br>
 	
 	<div className="row">
-	<div className="col-12 col-md-6 mt-5">
-		<div className="ms-5">
-			<Cards/>
-			<Cards/>
-			<Cards/>
-		</div>	
-	</div>
-
-	<div className="col-12 col-md-6 mt-5">
-		<div className="me-5">
+	<div className="col-md-6 offset-md-3">
+		<div className="map">
 		<MyMapComponent />
 		</div>
 
