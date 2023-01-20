@@ -81,6 +81,17 @@ const Offer = () => {          //revisar no funciona
           />
           <label htmlFor="floatingPrice">Precio de oferta</label>
         </div>
+       <div className="form-floating mb-3">
+          <input
+            type="url"
+            className="form-control"
+            id="floatingUrl"
+            placeholder="url"
+            name="url"
+            onChange={handleChange}
+          />
+          <label htmlFor="floatingPrice">Dirección página web</label>
+        </div>
         <div className="mb-3 text-start ">
           <label htmlFor="floatingImage" class="form-label">Añadir Imagen</label>
           <input className="form-control form-control-sm" 
@@ -88,14 +99,6 @@ const Offer = () => {          //revisar no funciona
           name="url_image" 
           type="file"
           onChange={handleChange}/>
-       </div>
-       <div className="mb-3 text-start">
-          <label htmlFor="floatingUrl" class="form-label">Añadir url de empresa </label>
-          <input className="form-control form-control-sm"
-           id="floatingUrl" 
-           name="url" 
-           type="file"
-           onChange={handleChange}/>
        </div>
         
         <div className="col-12 mb-3">
@@ -113,3 +116,12 @@ const Offer = () => {          //revisar no funciona
 };
 
 export default Offer;
+
+// <div className="mb-3 text-start">
+// <label htmlFor="floatingUrl" class="form-label">Añadir url de empresa </label>
+// <input className="form-control form-control-sm"
+//  id="floatingUrl" 
+//  name="url" 
+//  type="file"
+//  onChange={handleChange}/>
+// </div>
