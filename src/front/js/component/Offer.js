@@ -40,7 +40,7 @@ const Offer = () => {     //revisar no funciona
       <div className="container bg-warning px-3 py-3 mt-2 mb-5 col-12 col-md-8">
         <div className="form-floating mb-3">
           <input
-            type="company_name"
+            type="text"
             className="form-control"
             id="floatingName"
             placeholder="Nombre de la empresa "
@@ -62,14 +62,14 @@ const Offer = () => {     //revisar no funciona
         </div>
         <div className="form-floating mb-3">
           <input
-            type="title"
+            type="text"
             className="form-control"   
-            id="floatingName"
+            id="floatingTitle"
             placeholder="Descripción de la oferta "
             name="title"
             onChange={handleChange}
           />
-          <label htmlFor="floatingName">Descripción de la oferta</label>
+          <label htmlFor="floatingTitle">Descripción de la oferta</label>
         </div>
         <div className="form-floating mb-3">
           <input
@@ -80,32 +80,17 @@ const Offer = () => {     //revisar no funciona
             name="price"
             onChange={handleChange}
           />
-          <label htmlFor="floatingNumber">Precio de oferta</label>
+          <label htmlFor="floatingPrice">Precio de oferta</label>
         </div>
-        <div className="form-floating mb-3">
-          <input
-            type="url_image"
-            className="form-control"
-            id="floatingNumber"
-            placeholder="Añadir imagen"
-            name="url_image"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingNumber">Añadir imagen </label>
-        </div>
-
-        <div className="form-floating mb-3">
-          <input
-            type="url"
-            className="form-control"
-            id="floatingNumber"
-            placeholder="Añadir enlace Web"
-            name="url"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingNumber">Añadir enlace Web</label>
-        </div>
-
+        <div className="mb-3 text-start ">
+          <label htmlFor="floatingImage" class="form-label">Añadir Imagen</label>
+          <input className="form-control form-control-sm" id="floatingImage" type="file"/>
+       </div>
+       <div className="mb-3 text-start">
+          <label htmlFor="floatingUrl" class="form-label">Añadir url de empresa </label>
+          <input className="form-control form-control-sm" id="floatingUrl" type="file"/>
+       </div>
+        
         <div className="col-12 mb-3">
           <button
             type="submit"
