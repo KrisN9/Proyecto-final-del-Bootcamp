@@ -1,5 +1,7 @@
 import React from "react";
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
+/* import usePlacesAutocomplete, {getGeocode, getLatLng,} from "use-places-autocomplete"; */
+/* import { Combobox, ComboboxInput, ComboboxPopover, ComboboxList, ComboboxOption } from "@reach/combobox"; */
 
 const containerStyle = {
   width: '100%',
