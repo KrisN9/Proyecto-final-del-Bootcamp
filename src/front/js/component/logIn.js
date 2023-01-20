@@ -31,7 +31,7 @@ const LogIn = () => {
     fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
       .then((response) => {
         if (response.status === 200) return response.json();
-        else alert("Email o Password incorrect. Try again ")
+        else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
       })
       .then((response) => {
         localStorage.setItem("token", response.token);
@@ -51,7 +51,7 @@ const LogIn = () => {
     fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
       .then((response) => {
         if (response.status === 200) return response.json();
-        else alert("Email or Password incorrect. Try again!");
+        else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
       })
       .then((response) => {
         localStorage.setItem("token", response.token);

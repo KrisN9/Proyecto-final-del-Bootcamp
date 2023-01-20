@@ -23,11 +23,10 @@ const Offer = () => {          //revisar no funciona
       })
       .then((response) => {
         if (response.status == 200) return response.json();
-        else alert("Oferta Registrada");
+        else alert("Algo salio mal. Intentalo de nuevo");
       })
       .then((response) => {
         console.log(response);
-
       })
       .catch((error) => alert(error));
   };
