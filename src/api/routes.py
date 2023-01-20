@@ -115,13 +115,12 @@ def register_user():
 def register_supplier():
     data = request.json
     try:
-        supplier = Supplier(company_name=data['company_name'], company_cif=data['company_cif'], name=data['name'], email=data['email'],
-        password=data['password'], telephone_number=data['telephone_number'], city_id=data['city'])
+        supplier = Supplier(id=data['id'], company_name=data['company_name'], company_cif=data['company_cif'], name=data['name'], email=data['email'],
+        password=data['password'], telephone_number=data['telephone_number'], city=data['city'])
         db.session.add(supplier)
         db.session.commit()
-    except Exception as e: 
-        print(e)
-        return jsonify({"msg": "Error"}),400
+    except:
+         return jsonify({"msg": "Error"}),400
     
     return jsonify({"msg": "Supplier created"}),200
 
@@ -150,23 +149,25 @@ def login_supplier():
 
 @api.route('/offer', methods=['POST'])  #crear una nueva oferta   #pendiente
 def create_offer():
-    
     data = request.json
-    offer = Offer.query.filter_by(name=data['name'], company_name=data['company_name'], url=data['url'], image=data['url_image'], location=data['location'] )
-    if offer:
-        return jsonify(data), 200
+    try:
+       offer = Offer.query.filter_by(name=data['name'],company_name=data['company_name'], 
+       url=data['url'], url_image=data['url_image'], title=data['title'], price=data['price']).first()  # location=data['location']
+    except:
+      
+      return jsonify(data), 200
 
     return jsonify({"msg": "Wrong name/URL"}), 400
-
 
 @api.route('/favorite', methods=['POST']) #añadir un nuevo favorito
 def add_favorite():
 
     data = request.json
-    favorite = Favorite.query.filter_by(id_user=data['id_user'], id_offer=data['id_offer'])
-    if favorite:
+    try:
+     favorite = Favorite.query.filter_by(id_user=data['id_user'], id_offer=data['id_offer']).first()
+    except Exception as e: 
+        print(e)
         return jsonify(data), 200
-
     return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400
 
 

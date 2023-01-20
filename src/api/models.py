@@ -4,7 +4,7 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    email =db.Column(db.String(120), unique=True, nullable=False)
+    email=db.Column(db.String(120), unique=True, nullable=False)
     password =db.Column(db.String(80), unique=False, nullable=False)
     name =db.Column(db.String(80), unique=False, nullable=False)
     #last_name=db.Column(db.String(80), unique=False, nullable=False)
@@ -71,13 +71,14 @@ class Supplier(db.Model):
 class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     id_supplier =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)
+    title=db.Column(db.String(250), unique=False, nullable=False)    
     supplier= db.relationship('Supplier', backref='supplier', lazy=True)
     company_name=db.Column(db.String(80),unique=True, nullable=False) #pendiente   db.ForeignKey('supplier.company_name')
     name=db.Column(db.String(200), unique=False, nullable=False)    #posible cambio de nombre a "title" donde se colocar el titulop de la oferta
     price= db.Column(db.Integer, nullable=False )
-    url_image=db.Column(db.String(200), nullable=False)
-    url= db.Column(db.String(200), nullable=False)
-    location =db.Column(db.String(200), nullable=False) #ubicacion en el mapa, pendiente de revisar
+    url_image=db.Column(db.String(250), nullable=False)
+    url= db.Column(db.String(250), nullable=False)
+    #location =db.Column(db.String(200), nullable=False) #ubicacion en el mapa, pendiente de revisar
 
 
     def __repr__(self):
@@ -86,11 +87,11 @@ class Offer(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "company name":self.company_name,
+            "price":self.price,
+            "title":self.title,
             "url": self.url,
-            "image":self.url_image,
-            "location":self.location, 
-            "company name":self.company_name
-            
+            "url image":self.url_image
         }
 
 
