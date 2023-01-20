@@ -4,27 +4,23 @@ import { useNavigate } from "react-router-dom";
 
 const UserRegister = () => {
   const [formData, setFormData] = useState({});
-  // const [shownPassword, setShownPassword] = useState(true);   // para mostar contraseña
-  // const [shownPassword2, setShownPassword2] = useState(true);
-  const [password, setPassword] = useState({ shown1: false, shown2: false });
+  const [shownPassword, setShownPassword] = useState(true);   // para mostar contraseña
+   const [shownPassword2, setShownPassword2] = useState(true);
+ 
   const [city, setCity] = useState([]);
   const [check, setCheck] = useState(true);
 
   const navigate = useNavigate();
 
-  // const password = () =>{
-  //   setShownPassword(!shownPassword)
-  // } ;
+  const password = () =>{
+    setShownPassword(!shownPassword)
+  } ;
 
-  // const password2 = () => {
-  //   setShownPassword2(!shownPassword2)
-  // };
-
-  const shownPassword = () => {
-    setPassword({ ...password });
-    //shown1:"false", shown2:"false"
+  const password2 = () => {
+    setShownPassword2(!shownPassword2)
   };
 
+  
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -101,32 +97,32 @@ const UserRegister = () => {
           </div>
           <div className="form-floating mb-3">
             <input
-              type={password.shown1 ? "password" : "text"}
+              type={shownPassword? "password" : "text"}
               className="form-control"
               id="floatingPassword"
               placeholder="contraseña"
               name="password"
               onChange={handleChange}
             />
-            <a href="#" onClick={shownPassword}>
+            <a href="#" onClick={password}>
               <i
-                className={password.shown1 ? "far fa-eye" : "far fa-eye-slash"}
+                className={shownPassword ? "far fa-eye" : "far fa-eye-slash"}
               ></i>{" "}
             </a>
             <label htmlFor="floatingInput">Contraseña*</label>
           </div>
           <div className="form-floating mb-3">
             <input
-              type={password.shown2 ? "password" : "text"}
+              type={shownPassword2 ? "password" : "text"}
               className="form-control"
               id="floatingPassword"
               placeholder="Repetir Contraseña"
               name="password2"
               onChange={handleChange}
             />
-            <a href="#" onClick={shownPassword}>
+            <a href="#" onClick={password2}>
               <i
-                className={password.shown2 ? "far fa-eye" : "far fa-eye-slash"}
+                className={shownPassword2 ? "far fa-eye" : "far fa-eye-slash"}
               ></i>{" "}
             </a>
 

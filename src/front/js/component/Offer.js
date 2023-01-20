@@ -75,7 +75,7 @@ const Offer = () => {     //revisar no funciona
           <input
             type="price"
             className="form-control"
-            id="floatingNumber"
+            id="floatingPrice"
             placeholder="Precio de oferta"
             name="price"
             onChange={handleChange}
