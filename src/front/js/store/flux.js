@@ -1,26 +1,24 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			message: null,
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+			ofertas: [], 
+			
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-
+			
+			getOffers:()=>{
+				fetch(process.env.BACKEND_URL +"/api/supplier/offer/<int:supplier_id>")
+				.then(response => response.json())
+				.then(response =>{
+				   setStore({ofertas: response})
+				})
+			},
+			 
+			
 			getMessage: async () => {
 				try{
 					// fetching data from the backend
