@@ -84,11 +84,11 @@ const Offer = () => {     //revisar no funciona
         </div>
         <div className="mb-3 text-start ">
           <label htmlFor="floatingImage" class="form-label">Añadir Imagen</label>
-          <input className="form-control form-control-sm" id="floatingImage" type="file"/>
+          <input className="form-control form-control-sm" id="floatingImage" name="url_image" type="file"/>
        </div>
        <div className="mb-3 text-start">
           <label htmlFor="floatingUrl" class="form-label">Añadir url de empresa </label>
-          <input className="form-control form-control-sm" id="floatingUrl" type="file"/>
+          <input className="form-control form-control-sm" id="floatingUrl" name="url" type="file"/>
        </div>
         
         <div className="col-12 mb-3">

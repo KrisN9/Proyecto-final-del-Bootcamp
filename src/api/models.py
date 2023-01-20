@@ -74,8 +74,8 @@ class Offer(db.Model):
     title=db.Column(db.String(250), unique=False, nullable=False)    
     supplier= db.relationship('Supplier', backref='supplier', lazy=True)
     company_name=db.Column(db.String(80),unique=True, nullable=False) #pendiente   db.ForeignKey('supplier.company_name')
-    name=db.Column(db.String(200), unique=False, nullable=False)    #posible cambio de nombre a "title" donde se colocar el titulop de la oferta
-    price= db.Column(db.Integer, nullable=False )
+    name=db.Column(db.String(200), unique=False, nullable=False)  
+    price= db.Column(db.Float, default= 0, nullable=False )
     url_image=db.Column(db.String(250), nullable=False)
     url= db.Column(db.String(250), nullable=False)
     #location =db.Column(db.String(200), nullable=False) #ubicacion en el mapa, pendiente de revisar
