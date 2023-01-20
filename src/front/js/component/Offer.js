@@ -22,7 +22,8 @@ const Offer = () => {          //revisar no funciona
       body: JSON.stringify(formData),
       })
       .then((response) => {
-        return response.json();
+        if (response.status == 200) return response.json();
+        else alert("Oferta Registrada");
       })
       .then((response) => {
         console.log(response);
