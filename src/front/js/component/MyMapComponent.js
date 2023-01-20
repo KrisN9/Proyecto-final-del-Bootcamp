@@ -20,6 +20,7 @@ function MyMapComponent() {
   })
 
   const [map, setMap] = React.useState(null)
+  const [selected, setSelected] = React.useState(null);
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds(center);
@@ -33,6 +34,10 @@ function MyMapComponent() {
   }, [])
 
   return isLoaded ? (
+    <div>
+
+      <Search />
+
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
@@ -43,6 +48,7 @@ function MyMapComponent() {
         <>
         </>
       </GoogleMap>
+    </div>
   ) : <></>
 }
 
