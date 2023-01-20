@@ -151,14 +151,14 @@ def login_supplier():
 def create_offer():
     data = request.json
     try:
-       offer = Offer.query.filter_by(name=data['name'],company_name=data['company_name'], 
-       url=data['url'], url_image=data['url_image'], title=data['title'], price=data['price']).first()  # location=data['location']
+       offer= Offer(name=data['name'],company_name=data['company_name'], 
+       url=data['url'], url_image=data['url_image'], title=data['title'], price=data['price'])  # location=data['location']
        db.session.add(offer)
        db.session.commit()
     except:
-      return jsonify({"msg": "Error"}),400
+      return jsonify({"msg":"Error"}),400
     
-    return jsonify({"msg": "Offer created"}),200
+    return jsonify({"msg":"Offer created"}),200
 
 @api.route('/favorite', methods=['POST']) #añadir un nuevo favorito
 def add_favorite():

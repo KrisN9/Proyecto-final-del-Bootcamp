@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 
-const Offer = () => {     //revisar no funciona 
+const Offer = () => {          //revisar no funciona 
   const [formData, setFormData] = useState({});
 
 
@@ -18,7 +18,6 @@ const Offer = () => {     //revisar no funciona
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
       },
       body: JSON.stringify(formData),
       })
@@ -84,11 +83,19 @@ const Offer = () => {     //revisar no funciona
         </div>
         <div className="mb-3 text-start ">
           <label htmlFor="floatingImage" class="form-label">Añadir Imagen</label>
-          <input className="form-control form-control-sm" id="floatingImage" name="url_image" type="file"/>
+          <input className="form-control form-control-sm" 
+          id="floatingImage" 
+          name="url_image" 
+          type="file"
+          onChange={handleChange}/>
        </div>
        <div className="mb-3 text-start">
           <label htmlFor="floatingUrl" class="form-label">Añadir url de empresa </label>
-          <input className="form-control form-control-sm" id="floatingUrl" name="url" type="file"/>
+          <input className="form-control form-control-sm"
+           id="floatingUrl" 
+           name="url" 
+           type="file"
+           onChange={handleChange}/>
        </div>
         
         <div className="col-12 mb-3">
