@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import { GoogleMap, useLoadScript, Marker } from "@react-google-maps/api";
 
 const libraries = ["places"];
@@ -23,6 +23,23 @@ export default function TestMap() {
   });
 
   const [markers, setMarkers] = useState([]);
+  const [selected, setSelected] = useState(null);
+
+  const onMapClick = useCallback((event) => {
+    setMarkers((current) => [
+      ...current,
+      {
+        lat: event.latLng.lat(),
+        lng: event.latLng.lng(),
+        time: new Date(),
+      },
+    ]);
+  }, []);
+
+  const mapRef = useRef();
+  const onMapLoad = useCallback((map) => {
+    mapRef.current = map;
+  }, []);
 
   if (loadError) return "Error loading maps";
   if (!isLoaded) return "Loading Maps";
@@ -34,20 +51,13 @@ export default function TestMap() {
         zoom={15}
         center={center}
         options={options}
-        onClick={(event) => {
-          setMarkers((current) => [
-            ...current,
-            {
-              lat: event.latLng.lat(),
-              lng: event.latLng.lng(),
-              time: new Date(),
-            },
-          ]);
-        }}
+        onClick={onMapClick}
+        onLoad={onMapLoad}
       >
-
-        {/* {markers.map(marker => <Marker key={marker.time.toISOstring()} position={{lat: marker.lat, lng: marker.lng}} />)} */}
-
+        {markers.map(marker => <Marker key={marker.time.toISOstring()} position={{lat: marker.lat, lng: marker.lng}} />)}
+        onClick={() => {
+          setSelected(marker);
+        }}
       </GoogleMap>
     </div>
   );
