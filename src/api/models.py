@@ -63,8 +63,8 @@ class Supplier(db.Model):
             "id": self.id,
             "email":self.email,
             "name": self.name,
-            "last name": self.last_name,
-            "company name": self.company_name,
+            # "last_name": self.last_name,
+            "company_name": self.company_name,
         }
 
 
@@ -73,7 +73,7 @@ class Offer(db.Model):
     id_supplier =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)
     title=db.Column(db.String(250), unique=False, nullable=False)    
     supplier= db.relationship('Supplier', backref='supplier', lazy=True)
-    company_name=db.Column(db.String(80),unique=True, nullable=False) #pendiente   db.ForeignKey('supplier.company_name')
+    company_name=db.Column(db.String(80),unique=False, nullable=False) #pendiente   db.ForeignKey('supplier.company_name')
     name=db.Column(db.String(200), unique=False, nullable=False)  
     price= db.Column(db.Float, default= 0, nullable=False )
     url_image=db.Column(db.String(250), nullable=False)
@@ -87,11 +87,11 @@ class Offer(db.Model):
     def serialize(self):
         return {
             "id": self.id,
-            "company name":self.company_name,
+            "company_name":self.company_name,
             "price":self.price,
             "title":self.title,
             "url": self.url,
-            "url image":self.url_image
+            "url_image":self.url_image
         }
 
 

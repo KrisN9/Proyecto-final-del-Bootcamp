@@ -27,15 +27,15 @@ def get_user(user_id):
     
     return jsonify({"Doesn´t exist"})
 
-@api.route('/user/favorite/<int:user_id>', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
-def favorite_user(user_id):                                             
-    favorites= Favorite.query.all(id=user_id)
+@api.route('/user/favorite/<int:id_user>', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
+def favorite_user(id_user):                                             
+    favorites= Favorite.query.filter_by(id_user=id_user)
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
 
-@api.route('/supplier/offer/<int:supplier_id>', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
-def offer_supplier(supplier_id):                                                 
-    offers= Offer.query.all(id=supplier_id)
+@api.route('/supplier/offer/<int:id_supplier>', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
+def offer_supplier(id_supplier):                                                 
+    offers= Offer.query.filter_by(id_supplier=id_supplier)
     data=[offer.serialize() for offer in offers ]
     return jsonify(data), 200
 

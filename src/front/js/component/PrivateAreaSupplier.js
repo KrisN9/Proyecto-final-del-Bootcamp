@@ -1,13 +1,22 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
 import Offer from "./Offer";
-import OfferCards from "./OfferCars";
+import OfferCards from "./OfferCards";
+import Supplier from "./Supplier";
 
 const PrivateAreaSupplier=()=>{
+  const params= useParams()
+  
+  const [offer, setOffer]=useState([])
 
+    useEffect(()=>{    
+      fetch(`process.env.BACKEND_URL + /api/supplier/offer/${params.id}`)
+        .then(response => response.json())
+        .then(response =>{
+            setOffer(response)
+        })
+    }, [])
 
-
-
-    
 return (
     <div className="container mt-3">
         <div className="text-center">
@@ -30,24 +39,22 @@ return (
 </ul>
 <div className="tab-content" id="myTabContent">
   <div className="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-     <div>
-        <div className="text-md-start mt-3 mb-4 fs-4 fw-semibold">
-         <ul>
-            <li>Nombre:</li>
-            <li>Empresa:</li>
-            <li>Correo Electronico:</li>
-            <li>Cif de empresa:</li>
-            <li>Telefono:</li>
-         </ul>
-        </div>
-     </div>
+       <Supplier/>
     </div>
   <div className="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <div className="mt-3">
     <p className="text-center fst-italic fs-3 text-danger">Aquí tienes todas tus ofertas: .....Numero de ofertas... .</p>
-       <OfferCards/> 
-       <OfferCards/>
-       <OfferCards/>
+    {
+        offer.map((e)=>{
+          return <OfferCards image={e.url_image} 
+                        title={e.title} 
+                        price={e.price} 
+                        name={e.name}
+                        id={e.id} 
+                        /> 
+
+        })
+      } 
     </div>
   </div>
   <div className="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
