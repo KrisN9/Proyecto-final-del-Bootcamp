@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import reactDom from "react-dom";
 import mapboxgl from "mapbox-gl";
 
+mapboxgl.accessToken='pk.eyJ1Ijoia3Jpc245IiwiYSI6ImNsZDV4Y2x0ZTByOHIzb2tianpoZ2xmeWgifQ.M8N3QZtBSFlC_MPoI-PVTQ';
+
 class TestMap extends React.Component{
 
   constructor(props){
@@ -9,7 +11,7 @@ class TestMap extends React.Component{
     this.state = {
       lng: -3.70315046264256,
       lat: 40.41397175226467,
-      zoom: 14
+      zoom: 10
     }
   }
 
