@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import reactDom from "react-dom";
 import mapboxgl from "mapbox-gl";
+import Autofill from "./Autofill";
 
 mapboxgl.accessToken='pk.eyJ1Ijoia3Jpc245IiwiYSI6ImNsZDV4Y2x0ZTByOHIzb2tianpoZ2xmeWgifQ.M8N3QZtBSFlC_MPoI-PVTQ';
 
@@ -38,6 +39,7 @@ class TestMap extends React.Component{
   render(){
     return (
       <div>
+        <Autofill />
         <div ref={el => this.mapContainer = el} style={{width:'100%', height:'465px'}} />
       </div>
     )
