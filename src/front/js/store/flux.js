@@ -1,8 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			ofertas: [], 
-			
+			token:"" 
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -10,14 +9,48 @@ const getState = ({ getStore, getActions, setStore }) => {
 				getActions().changeColor(0, "green");
 			},
 			
-			getOffers:()=>{
-				fetch(process.env.BACKEND_URL +"/api/supplier/offer/<int:supplier_id>")
-				.then(response => response.json())
-				.then(response =>{
-				   setStore({ofertas: response})
+		loginUser:(formData)=>{
+			const optionUser = {
+				method: "POST",
+				headers: {
+				  "Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			  };
+			  fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
+				.then((response) => {
+				  if (response.status === 200) return response.json();
+				  else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
 				})
-			},
-			 
+					localStorage.setItem("token", response.token);
+					setStore({token: response.token})
+					
+				  
+		},
+		loginSupplier:(formData)=>{
+			const optionSupplier = {
+				method: "POST",
+				headers: {
+				  "Content-Type": "application/json",
+				},
+				body: JSON.stringify(formData),
+			  };
+		  
+			  fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
+				.then((response) => {
+				  if (response.status === 200) return response.json();
+				  else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
+				})
+				    localStorage.setItem("token", response.token);
+					setStore({token: response.token})
+
+		},
+
+		logOut:()=>{
+			localStorage.removeItem("token")
+			setStore({token:""});
+
+		}, 
 			
 			getMessage: async () => {
 				try{

@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../store/appContext"; 
+import { useContext } from "react";
+import { useParams } from "react-router-dom";
 
 const LogIn = () => {
   const [formData, setFormData] = useState({});
   const [shownUser, setShownUser] = useState(false); //para mostar contraseña
   const [shownSupplier, setShownSupplier] = useState(false);
-
+  
+  const {store , actions}= useContext(Context)
   const navigate = useNavigate();
+  const params= useParams()
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -15,53 +20,28 @@ const LogIn = () => {
   const user = () => {
     setShownUser(!shownUser);
   };
-
   const supplier = () => {
-    setShownSupplier(!shownSupplier);
+    setShownSupplier(!shownSupplier);       
   };
 
   const handleClickUser = () => {
-    const optionUser = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    };
-    fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
-      .then((response) => {
-        if (response.status === 200) return response.json();
-        else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
+      actions.loginUser(formData).then(()=>{
+        navigate(`/privada-usuario/${params.id}`);
       })
-      .then((response) => {
-        localStorage.setItem("token", response.token);
-        navigate("/privada-usuario/id");
-      });
   };
 
   const handleClickSupplier = () => {
-    const optionSupplier = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    };
-
-    fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
-      .then((response) => {
-        if (response.status === 200) return response.json();
-        else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
-      })
-      .then((response) => {
-        localStorage.setItem("token", response.token);
-        navigate("/privada-proveedor/id");
-      });
+     actions.loginSupplier(formData).then(()=>{
+      navigate(`/privada-proveedor/${params.id}`)
+     })
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  // if ( store.token && store.token != "" && store.token != undefined) 
+  // navigate(`/privada-usuario/${params.id}`);
 
   return (
     <form onSubmit={handleSubmit}>

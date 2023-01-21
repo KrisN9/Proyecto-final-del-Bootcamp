@@ -70,7 +70,7 @@ class Supplier(db.Model):
 
 class Offer(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    id_supplier =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)
+    id_supplier =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)   
     title=db.Column(db.String(250), unique=False, nullable=False)    
     supplier= db.relationship('Supplier', backref='supplier', lazy=True)
     company_name=db.Column(db.String(80),unique=False, nullable=False) #pendiente   db.ForeignKey('supplier.company_name')
@@ -84,7 +84,7 @@ class Offer(db.Model):
     def __repr__(self):
         return f'<Offer {self.name}>'
 
-    def serialize(self):
+    def serialize(self):       # pendiente revisar si va id_supplier 
         return {
             "id": self.id,
             "company_name":self.company_name,

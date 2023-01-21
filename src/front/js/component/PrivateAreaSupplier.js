@@ -1,21 +1,31 @@
 import React,{useState, useEffect} from "react";
 import { useParams } from "react-router-dom";
 import Offer from "./Offer";
+import { Context } from "../store/appContext"; 
+import { useContext } from "react";
 import OfferCards from "./OfferCards";
 import Supplier from "./Supplier";
+import { useNavigate } from "react-router-dom";
+
 
 const PrivateAreaSupplier=()=>{
   const params= useParams()
-  
+  const navigate = useNavigate();
   const [offer, setOffer]=useState([])
+  const {store , actions}= useContext(Context)
 
     useEffect(()=>{    
-      fetch(`process.env.BACKEND_URL + /api/supplier/offer/${params.id}`)
+      fetch(`process.env.BACKEND_URL +/api/supplier/offer/${params.id}`)
         .then(response => response.json())
         .then(response =>{
             setOffer(response)
         })
     }, [])
+
+          const SessionOut =()=>{
+            actions.logOut()
+            navigate("/");
+          }
 
 return (
     <div className="container mt-3">
@@ -52,7 +62,6 @@ return (
                         name={e.name}
                         id={e.id} 
                         /> 
-
         })
       } 
     </div>
@@ -60,7 +69,7 @@ return (
   <div className="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
     <div>
     <p className="fs-3 mt-4">Estás seguro de que te quieres ir ? </p>
-     <button type="button" class="btn btn-outline-dark mt-5 mb-5"> Cerrar Sesión </button>
+     <button type="button" onClick={SessionOut} class="btn btn-outline-dark mt-5 mb-5"> Cerrar Sesión </button>
     </div>
   </div>
 

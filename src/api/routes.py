@@ -147,7 +147,7 @@ def login_supplier():
     return jsonify({"msg": "Wrong supplier/password"}), 400
 
 
-@api.route('/offer', methods=['POST'])  #crear una nueva oferta   #pendiente
+@api.route('/offer.', methods=['POST'])  #crear una nueva oferta   #pendiente de revisar si va id en la ruta
 def create_offer():
     data = request.json
     try:
@@ -156,8 +156,8 @@ def create_offer():
        db.session.add(offer)
        db.session.commit()
     except:
-      return jsonify({"msg":"Error"}),400
-    
+        return jsonify({"msg":"Error"}),400
+        
     return jsonify({"msg":"Offer created"}),200
 
 @api.route('/favorite', methods=['POST']) #añadir un nuevo favorito
@@ -167,7 +167,6 @@ def add_favorite():
     try:
      favorite = Favorite.query.filter_by(id_user=data['id_user'], id_offer=data['id_offer']).first()
     except Exception as e: 
-        print(e)
         return jsonify(data), 200
     return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400
 

@@ -7,7 +7,7 @@ const Supplier =()=>{
     const params= useParams()
 
     useEffect(()=>{
-    fetch(`process.env.BACKEND_URL +/supplier/${params.id}}`)
+    fetch(`process.env.BACKEND_URL +/supplier/${params.id}`)
     .then((response)=>{
         return response.json()
     }).then ((response)=>{
