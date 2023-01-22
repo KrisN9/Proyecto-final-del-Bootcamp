@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import reactDom from "react-dom";
 import mapboxgl from "mapbox-gl";
-import Autofill from "./Autofill";
-/* import cities from './data/cities'; */
+/* import Autofill from "./Autofill"; */
 
 
 mapboxgl.accessToken='pk.eyJ1Ijoia3Jpc245IiwiYSI6ImNsZDV4Y2x0ZTByOHIzb2tianpoZ2xmeWgifQ.M8N3QZtBSFlC_MPoI-PVTQ';
@@ -32,6 +31,10 @@ class TestMap extends React.Component{
 
     map.addControl(new mapboxgl.FullscreenControl());
     map.addControl(new mapboxgl.NavigationControl());
+
+      const marker = new mapboxgl.Marker()
+      .setLngLat([-3.70315046264256, 40.41397175226467])
+      .addTo(map);
 
   }
 
