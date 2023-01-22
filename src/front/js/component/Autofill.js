@@ -74,7 +74,7 @@ export default function Autofill() {
             <label className="txt-s txt-bold color-gray mb3">Address</label>
             <AddressAutofill accessToken={token} onRetrieve={handleRetrieve}>
               <input
-                className="input mb12"
+                className="input mb12 form-control"
                 placeholder="Start typing your address, e.g. 123 Main..."
                 autoComplete="address-line1"
                 id="mapbox-autofill"
@@ -97,13 +97,13 @@ export default function Autofill() {
                 Address Line 2
               </label>
               <input
-                className="input mb12"
+                className="input mb12 form-control"
                 placeholder="Apartment, suite, unit, building, floor, etc."
                 autoComplete="address-line2"
               />
               <label className="txt-s txt-bold color-gray mb3">City</label>
               <input
-                className="input mb12"
+                className="input mb12 form-control"
                 placeholder="City"
                 autoComplete="address-level2"
               />
@@ -111,7 +111,7 @@ export default function Autofill() {
                 State / Region
               </label>
               <input
-                className="input mb12"
+                className="input mb12 form-control"
                 placeholder="State / Region"
                 autoComplete="address-level1"
               />
@@ -119,7 +119,7 @@ export default function Autofill() {
                 ZIP / Postcode
               </label>
               <input
-                className="input"
+                className="input form-control"
                 placeholder="ZIP / Postcode"
                 autoComplete="postal-code"
               />
@@ -142,12 +142,12 @@ export default function Autofill() {
         {/* Form buttons */}
         {showFormExpanded && (
           <div className="mb30 submit-btns">
-            <button type="submit" className="btn round" id="btn-confirm">
+            <button type="submit" className="btn round btn-warning" id="btn-confirm">
               Confirm
             </button>
             <button
               type="button"
-              className="btn round btn--gray-light ml3"
+              className="btn round btn--gray-light ml3 btn-secondary"
               id="btn-reset"
               onClick={resetForm}
             >

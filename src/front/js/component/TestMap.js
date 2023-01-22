@@ -38,10 +38,14 @@ class TestMap extends React.Component{
 
   render(){
     return (
+      <>
       <div>
         <Autofill />
+      </div>
+      <div>
         <div ref={el => this.mapContainer = el} style={{width:'100%', height:'465px'}} />
       </div>
+      </>
     )
   }
 
