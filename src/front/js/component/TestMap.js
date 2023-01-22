@@ -24,13 +24,11 @@ class TestMap extends React.Component{
       zoom: this.state.zoom
     })
 
-/*     data.forEach((location) => {
-			console.log(location)
-			var marker = new mapboxgl.Marker()
-							.setLngLat(location.coordinates)
-							.setPopup(new mapboxgl.Popup({ offset: 30 })
-							.setHTML('<h4>' + location.city + '</h4>' + location.location))
-							.addTo(map);
+/*  const marker = new mapboxgl.Marker({
+    draggable: true
+    })
+    .setLngLat([0, 0])
+    .addTo(map);
 
 		}) */
 
