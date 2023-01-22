@@ -32,7 +32,7 @@ class TestMap extends React.Component{
     map.addControl(new mapboxgl.FullscreenControl());
     map.addControl(new mapboxgl.NavigationControl());
 
-      const marker = new mapboxgl.Marker()
+      const defaultMarker = new mapboxgl.Marker()
       .setLngLat([-3.70315046264256, 40.41397175226467])
       .addTo(map);
 
