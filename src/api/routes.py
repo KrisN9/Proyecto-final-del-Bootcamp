@@ -33,6 +33,15 @@ def favorite_user(id_user):
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
 
+
+@api.route('offer', methods=['GET'])            #Listar la totalidad de las ofertas
+def all_offers():
+    offers = Offer.query.all()
+    data = [offer.serialize() for offer in offers]
+    return jsonify(data), 200
+
+
+
 @api.route('/supplier/offer/<int:id_supplier>', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
 def offer_supplier(id_supplier):                                                 
     offers= Offer.query.filter_by(id_supplier=id_supplier)
