@@ -25,13 +25,8 @@ class TestMap extends React.Component{
       zoom: this.state.zoom
     })
 
-    const popup = new mapboxgl.Popup({ offset: 25 }).setText(
-      'Popup de prueba.'
-      );
-
     const marker1 = new mapboxgl.Marker({color: "red", draggable: true})
     .setLngLat([-3.70315046264256, 40.41397175226467])
-    .setPopup(popup)
     .addTo(map);
 
     const geocoder = new MapboxGeocoder({
@@ -66,3 +61,9 @@ class TestMap extends React.Component{
 }
 
 export default TestMap;
+
+
+
+/* const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+  'Popup de prueba.'
+  ); */
