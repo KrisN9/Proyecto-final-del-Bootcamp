@@ -32,8 +32,13 @@ class TestMap extends React.Component{
     map.addControl(new mapboxgl.FullscreenControl());
     map.addControl(new mapboxgl.NavigationControl());
 
+    const popup = new mapboxgl.Popup({ offset: 25 }).setText(
+      'Popup de prueba.'
+      );
+
       const marker1 = new mapboxgl.Marker({color: "red", draggable: true})
       .setLngLat([-3.70315046264256, 40.41397175226467])
+      .setPopup(popup)
       .addTo(map);
 
   }
