@@ -38,6 +38,7 @@ class TestMap extends React.Component{
       accessToken: mapboxgl.accessToken,
       marker: {
       color: 'red',
+      draggable: true,
       },
       mapboxgl: mapboxgl
       });

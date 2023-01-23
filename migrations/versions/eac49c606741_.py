@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: a17e7d5c79e4
+Revision ID: eac49c606741
 Revises: 
-Create Date: 2023-01-18 20:43:59.208656
+Create Date: 2023-01-23 20:05:10.118865
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'a17e7d5c79e4'
+revision = 'eac49c606741'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,7 +31,6 @@ def upgrade():
     sa.Column('company_name', sa.String(length=80), nullable=False),
     sa.Column('company_cif', sa.String(length=80), nullable=False),
     sa.Column('name', sa.String(length=80), nullable=False),
-    sa.Column('last_name', sa.String(length=80), nullable=False),
     sa.Column('city_id', sa.Integer(), nullable=False),
     sa.Column('telephone_number', sa.String(length=80), nullable=False),
     sa.ForeignKeyConstraint(['city_id'], ['city.id'], ),
@@ -54,15 +53,14 @@ def upgrade():
     op.create_table('offer',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('id_supplier', sa.Integer(), nullable=False),
+    sa.Column('title', sa.String(length=250), nullable=False),
     sa.Column('company_name', sa.String(length=80), nullable=False),
-    sa.Column('name', sa.String(length=200), nullable=False),
-    sa.Column('price', sa.Integer(), nullable=False),
-    sa.Column('url_image', sa.String(length=200), nullable=False),
-    sa.Column('url', sa.String(length=200), nullable=False),
-    sa.Column('location', sa.String(length=200), nullable=False),
+    sa.Column('price', sa.Float(), nullable=False),
+    sa.Column('url_image', sa.String(length=250), nullable=False),
+    sa.Column('url', sa.String(length=250), nullable=False),
+    sa.Column('location', sa.String(length=250), nullable=False),
     sa.ForeignKeyConstraint(['id_supplier'], ['supplier.id'], ),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('company_name')
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('favorite',
     sa.Column('id', sa.Integer(), nullable=False),

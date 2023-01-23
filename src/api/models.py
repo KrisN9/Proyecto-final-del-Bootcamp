@@ -73,25 +73,25 @@ class Offer(db.Model):
     id_supplier =db.Column(db.Integer, db.ForeignKey('supplier.id'),nullable=False)   
     title=db.Column(db.String(250), unique=False, nullable=False)    
     supplier= db.relationship('Supplier', backref='supplier', lazy=True)
-    company_name=db.Column(db.String(80),unique=False, nullable=False) #pendiente   db.ForeignKey('supplier.company_name')
-    name=db.Column(db.String(200), unique=False, nullable=False)  
+    company_name=db.Column(db.String(80),unique=False, nullable=False) #pendiente   db.ForeignKey('supplier.company_name') 
     price= db.Column(db.Float, default= 0, nullable=False )
     url_image=db.Column(db.String(250), nullable=False)
     url= db.Column(db.String(250), nullable=False)
-    #location =db.Column(db.String(200), nullable=False) #ubicacion en el mapa, pendiente de revisar
+    location = db.Column(db.String(250), nullable=False) #ubicacion en el mapa, pendiente de revisar
+    #city_id=db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)
+    #city=db.relationship('City', backref='offer', lazy=True) 
 
 
     def __repr__(self):
-        return f'<Offer {self.name}>'
+        return f'<Offer {self.title}>'
 
     def serialize(self):       # pendiente revisar si va id_supplier 
         return {
             "id": self.id,
-            "company_name":self.company_name,
-            "price":self.price,
             "title":self.title,
-            "url": self.url,
-            "url_image":self.url_image
+            "url_image":self.url_image,
+            "company_name":self.company_name,
+            "location":self.location
         }
 
 
