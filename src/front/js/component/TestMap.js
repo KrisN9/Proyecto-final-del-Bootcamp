@@ -25,9 +25,9 @@ class TestMap extends React.Component{
       zoom: this.state.zoom
     })
 
-    const marker1 = new mapboxgl.Marker({color: "red", draggable: true})
+/*     const marker1 = new mapboxgl.Marker({color: "red", draggable: true})
     .setLngLat([-3.70315046264256, 40.41397175226467])
-    .addTo(map);
+    .addTo(map); */
 
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
