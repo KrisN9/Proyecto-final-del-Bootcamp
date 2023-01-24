@@ -29,6 +29,7 @@ const ContactForm = () => {
             placeholder="Nombre y Apellidos"
             name="Nombre y Apellidos"
             onChange={handleChange}
+            required
             
           />
           <label htmlFor="floatingName">Nombre y Apellidos*</label>
@@ -41,6 +42,7 @@ const ContactForm = () => {
             placeholder="name@example.com"
             name=" Dirección de correo electrónico"
             onChange={handleChange}
+            required
           />
           <label htmlFor="floatingInput">
             Dirección de correo electrónico*
@@ -66,10 +68,11 @@ const ContactForm = () => {
             rows="3"
             name="Mensaje"
             onChange={handleChange}
+            required
           ></textarea>
 
           <label htmlFor="exampleFormControlMessage" className="form-label">
-            Mensaje
+            Mensaje*
           </label>
         </div>
 
@@ -79,6 +82,7 @@ const ContactForm = () => {
             type="checkbox"
             value=""
             id="defaultCheck1"
+            required
           />
           <label className="form-check-label" htmlFor="defaultCheck1">
             He leído y consiento al contenido de la Información Legal y de
