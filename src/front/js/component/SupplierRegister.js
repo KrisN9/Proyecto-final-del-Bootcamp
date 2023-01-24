@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ReactPasswordChecklist from "react-password-checklist";
 
 // crear base de datos para la opcion ciudad, hacer fetch para visualizar.
 const SupplierRegister = () => {
@@ -192,6 +193,17 @@ const SupplierRegister = () => {
               );
             })}
           </select>
+
+{/*           <ReactPasswordChecklist rules={["minLength", "match"]}
+          minLength={6}
+          value={"password"}
+          valueAgain={"password2"} 
+          messages= {{
+            minLength: "La contraseña tiene más de 6 caracteres.",
+            match: "Las contraseñas coinciden."
+          }}
+          /> */}
+
           <div className="form-check mb-3">
             <input
               className="form-check-input"

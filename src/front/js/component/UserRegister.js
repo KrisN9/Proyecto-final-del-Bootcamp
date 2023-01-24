@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import ReactPasswordChecklist from "react-password-checklist";
 
 const UserRegister = () => {
   const [formData, setFormData] = useState({});
@@ -136,6 +137,7 @@ const UserRegister = () => {
 
             <label htmlFor="floatingInput">Repetir contraseña*</label>
           </div>
+
           <div className="form-floating mb-3">
             <input
               type="phone-number"
@@ -165,6 +167,17 @@ const UserRegister = () => {
               );
             })}
           </select>
+
+          {/* <ReactPasswordChecklist rules={["minLength", "match"]}
+          minLength={6}
+          value={"password"}
+          valueAgain={"password2"} 
+          messages= {{
+            minLength: "La contraseña tiene más de 6 caracteres.",
+            match: "Las contraseñas coinciden."
+          }}
+          /> */}
+
           <div className="form-check mb-3">
             <input
               className="form-check-input"
