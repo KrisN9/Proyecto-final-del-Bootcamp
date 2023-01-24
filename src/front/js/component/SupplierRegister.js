@@ -25,9 +25,7 @@ const SupplierRegister = () => {
   };
 
   useEffect(() => {
-    fetch(
-      process.env.BACKEND_URL + "/api/city"
-    )
+    fetch(process.env.BACKEND_URL + "/api/city")
       .then((response) => response.json())
       .then((response) => {
         setCity(response);
@@ -37,30 +35,31 @@ const SupplierRegister = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.password === formData.password2) {
-      fetch(
-        process.env.BACKEND_URL + "/api/register-supplier",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify(formData),
-        }
-      )
+      fetch(process.env.BACKEND_URL + "/api/register-supplier", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(formData),
+      })
         .then((response) => {
-          if(response.status == 200){
-            alert("El registro se ha completado correctamente, puede iniciar sesión!");
+          if (response.status == 200) {
+            alert(
+              "El registro se ha completado correctamente, puede iniciar sesión!"
+            );
             navigate("/inicio-sesion");
           }
-          if(response.status == 400){
-            alert("El registro no ha podido completarse, vuelva a intentarlo...");
+          if (response.status == 400) {
+            alert(
+              "El registro no ha podido completarse, vuelva a intentarlo..."
+            );
             navigate("/registro");
           }
-          response.json()
+          response.json();
         })
         .then((response) => {
-            console.log(response);
+          console.log(response);
         })
         .catch((error) => alert(error));
     }
@@ -86,6 +85,7 @@ const SupplierRegister = () => {
               placeholder="Nombre de la empresa"
               name="company_name"
               onChange={handleChange}
+              required
             />
             <label htmlFor="floatingInput">Nombre de la empresa*</label>
           </div>
@@ -97,6 +97,7 @@ const SupplierRegister = () => {
               placeholder="CIF de la empresa"
               name="company_cif"
               onChange={handleChange}
+              required
             />
             <label htmlFor="floatingInput">CIF de la empresa*</label>
           </div>
@@ -108,6 +109,7 @@ const SupplierRegister = () => {
               placeholder="Nombre y Apellidos"
               name="name"
               onChange={handleChange}
+              required
             />
             <label htmlFor="floatingName">
               Nombre y Apellidos de la persona de contacto*
@@ -121,6 +123,7 @@ const SupplierRegister = () => {
               placeholder="name@example.com"
               name="email"
               onChange={handleChange}
+              required
             />
             <label htmlFor="floatingInput">
               Dirección de correo electrónico*
@@ -134,6 +137,7 @@ const SupplierRegister = () => {
               placeholder="contraseña"
               name="password"
               onChange={handleChange}
+              required
             />
             <a href="#" onClick={password}>
               <i
@@ -150,6 +154,7 @@ const SupplierRegister = () => {
               placeholder="Repetir Contraseña"
               name="password2"
               onChange={handleChange}
+              required
             />
             <a href="#" onClick={password2}>
               <i
@@ -174,6 +179,7 @@ const SupplierRegister = () => {
             aria-label="Default select example"
             name="city"
             onChange={handleChange}
+            required
           >
             <option disabled selected>
               Ciudad(elegir de las indicadas en el desplegable)*
@@ -192,6 +198,7 @@ const SupplierRegister = () => {
               type="checkbox"
               value=""
               id="defaultCheck1"
+              required
             />
             <label
               className="form-check-label"

@@ -83,6 +83,7 @@ const UserRegister = () => {
               placeholder="Nombre y Apellidos"
               name="name"
               onChange={handleChange}
+              required
             />
             <label htmlFor="floatingName">Nombre y Apellidos*</label>
           </div>
@@ -94,6 +95,7 @@ const UserRegister = () => {
               placeholder="name@example.com"
               name="email"
               onChange={handleChange}
+              required
             />
             <label htmlFor="floatingInput">
               Dirección de correo electrónico*
@@ -107,6 +109,7 @@ const UserRegister = () => {
               placeholder="contraseña"
               name="password"
               onChange={handleChange}
+              required
             />
             <a href="#" onClick={password}>
               <i
@@ -123,6 +126,7 @@ const UserRegister = () => {
               placeholder="Repetir Contraseña"
               name="password2"
               onChange={handleChange}
+              required
             />
             <a href="#" onClick={password2}>
               <i
@@ -148,6 +152,7 @@ const UserRegister = () => {
             aria-label="Default select example"
             name="city"
             onChange={handleChange}
+            required
           >
             <option disabled selected>
               Ciudad(elegir de las indicadas en el desplegable)*
@@ -166,6 +171,7 @@ const UserRegister = () => {
               type="checkbox"
               value=""
               id="defaultCheck1"
+              required
             />
             <label
               className="form-check-label"
