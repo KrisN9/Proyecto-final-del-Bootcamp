@@ -53,6 +53,10 @@ const UserRegister = () => {
             alert("El registro se ha completado correctamente, puede iniciar sesión!");
             navigate("/inicio-sesion")
           }
+          if(response.status == 400){
+            alert("El registro no ha podido completarse, vuelva a intentarlo...");
+            navigate("/registro");
+          }
           response.json()
         })
         .then((response) => {
