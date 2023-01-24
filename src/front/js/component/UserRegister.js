@@ -6,7 +6,6 @@ const UserRegister = () => {
   const [formData, setFormData] = useState({});
   const [shownPassword, setShownPassword] = useState(true); // para mostar contraseña
   const [shownPassword2, setShownPassword2] = useState(true);
-
   const [city, setCity] = useState([]);
   const [check, setCheck] = useState(true);
 
@@ -25,9 +24,7 @@ const UserRegister = () => {
   };
 
   useEffect(() => {
-    fetch(
-      process.env.BACKEND_URL +"/api/city"
-    )
+    fetch(process.env.BACKEND_URL + "/api/city")
       .then((response) => response.json())
       .then((response) => {
         setCity(response);
@@ -37,34 +34,35 @@ const UserRegister = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.password === formData.password2) {
-      fetch(
-        process.env.BACKEND_URL + "/api/register-user",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*",
-          },
-          body: JSON.stringify(formData),
-        }
-      )
+      fetch(process.env.BACKEND_URL + "/api/register-user", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+        body: JSON.stringify(formData),
+      })
         .then((response) => {
-          if(response.status == 200){
-            alert("El registro se ha completado correctamente, puede iniciar sesión!");
-            navigate("/inicio-sesion")
+          if (response.status == 200) {
+            alert(
+              "El registro se ha completado correctamente, puede iniciar sesión!"
+            );
+            navigate("/inicio-sesion");
           }
-          if(response.status == 400){
-            alert("El registro no ha podido completarse, vuelva a intentarlo...");
+          if (response.status == 400) {
+            alert(
+              "El registro no ha podido completarse, vuelva a intentarlo..."
+            );
             navigate("/registro");
           }
-          response.json()
+          response.json();
         })
         .then((response) => {
           console.log(response);
-      })
-      .catch((error) => alert(error));
-  }
-};
+        })
+        .catch((error) => alert(error));
+    }
+  };
 
   return (
     <>
@@ -112,7 +110,7 @@ const UserRegister = () => {
             />
             <a href="#" onClick={password}>
               <i
-                className={shownPassword ? "far fa-eye" : "far fa-eye-slash"}
+                className={shownPassword ? "far fa-eye-slash" : "far fa-eye"}
               ></i>{" "}
             </a>
             <label htmlFor="floatingInput">Contraseña*</label>
@@ -128,7 +126,7 @@ const UserRegister = () => {
             />
             <a href="#" onClick={password2}>
               <i
-                className={shownPassword2 ? "far fa-eye" : "far fa-eye-slash"}
+                className={shownPassword2 ? "far fa-eye-slash" : "far fa-eye"}
               ></i>{" "}
             </a>
 
