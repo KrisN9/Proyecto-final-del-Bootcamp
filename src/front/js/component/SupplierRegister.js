@@ -48,13 +48,15 @@ const SupplierRegister = () => {
           body: JSON.stringify(formData),
         }
       )
-        .then((response) => response.json())
         .then((response) => {
-          if (response.status == 200) {
-            console.log(response);
-            /* navigate("/inicio-sesion"); */
-            alert("El registro se ha creado correctamente!");
+          if(response.status == 200){
+            alert("El registro se ha completado correctamente, puede iniciar sesión!");
+            navigate("/inicio-sesion");
           }
+          response.json()
+        })
+        .then((response) => {
+            console.log(response);
         })
         .catch((error) => alert(error));
     }
