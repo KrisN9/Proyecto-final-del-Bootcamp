@@ -65,7 +65,7 @@ def delete_user(user_id):
         db.session.delete(user)
         db.session.commit()
 
-    except:
+    except Exception:
         return jsonify({"message": "Error"}), 400
     
     return jsonify({"message": "User Deleted."}),200
@@ -77,7 +77,7 @@ def delete_supplier(supplier_id):
         db.session.delete(supplier)
         db.session.commit()
 
-    except:
+    except Exception:
         return jsonify({"message": "Error"}), 400
     
     return jsonify({"message": "User Deleted."})
@@ -88,7 +88,7 @@ def delete_favorite(user_id, favorite_id):
         removeFavorite=Favorite(id=favorite_id)
         db.session.delete(removeFavorite)
         db.session.commit()
-    except:
+    except Exception:
         return jsonify({"message": "Error"}),400
 
     return jsonify({"Favorite removed"})
@@ -99,7 +99,7 @@ def delete_offer(supplier_id, offer_id):
         removeOffer=Offer(id=offer_id)
         db.session.delete(removeOffer)
         db.session.commit()
-    except:
+    except Exception:
         return jsonify({"message": "Error"}),400
 
     return jsonify({"Offer removed"})
@@ -124,12 +124,13 @@ def register_user():
 def register_supplier():
     data = request.json
     try:
-        supplier = Supplier(id=data['id'], company_name=data['company_name'], company_cif=data['company_cif'], name=data['name'], email=data['email'],
+        supplier = Supplier(company_name=data['company_name'], company_cif=data['company_cif'], name=data['name'], email=data['email'],
         password=data['password'], telephone_number=data['telephone_number'], city_id=data['city'])
         db.session.add(supplier)
         db.session.commit()
-    except:
-         return jsonify({"msg": "Error"}),400
+    except Exception as e:
+        print(e)
+        return jsonify({"msg": "Error"}),400
     
     return jsonify({"msg": "Supplier created"}),200
 
@@ -164,7 +165,7 @@ def create_offer():
        url=data['url'], url_image=data['url_image'], title=data['title'], price=data['price'])  # location=data['location']
        db.session.add(offer)
        db.session.commit()
-    except:
+    except Exception:
         return jsonify({"msg":"Error"}),400
         
     return jsonify({"msg":"Offer created"}),200
@@ -184,7 +185,7 @@ def add_favorite():
 def update_user(user_id):
     try:
         user = User.query.filter_by(user_id=user_id).first()
-    except:
+    except Exception:
         return jsonify({"msg": "User doesn't exist"}), 400
 
     new_name = request.json.get("name", user.name)
@@ -205,7 +206,7 @@ def update_user(user_id):
 def update_supplier(supplier_id):
     try:
         supplier = Supplier.query.filter_by(supplier_id=supplier_id).first()
-    except:
+    except Exception:
         return jsonify({"msg": "Supplier doesn't exist"}), 400
 
     new_company_name = request.json.get("company_name", supplier.company_name)
@@ -230,7 +231,7 @@ def update_supplier(supplier_id):
 def update_offer(offer_id):
     try:
         offer = Offer.query.filter_by(offer_id=offer_id).first()
-    except:
+    except Exception:
         return jsonify({"msg": "Offer doesn't exist"}), 400
 
     new_company_name = request.json.get("company_name", offer.company_name)

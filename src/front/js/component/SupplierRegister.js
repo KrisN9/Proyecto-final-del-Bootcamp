@@ -9,7 +9,7 @@ const SupplierRegister = () => {
   const [shownPassword2, setShownPassword2] = useState(true);
   const [city, setCity] = useState([]);
   const [check, setCheck] = useState(true);
-  
+
   const navigate = useNavigate();
 
   const password = () => {
@@ -25,7 +25,9 @@ const SupplierRegister = () => {
   };
 
   useEffect(() => {
-    fetch("https://3001-krisn9-proyectofinaldel-m3vx5yp6vnb.ws-eu83.gitpod.io/api/city")
+    fetch(
+      "https://3001-krisn9-proyectofinaldel-3ph7ih3c15o.ws-eu83.gitpod.io/api/city"
+    )
       .then((response) => response.json())
       .then((response) => {
         setCity(response);
@@ -35,21 +37,25 @@ const SupplierRegister = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formData.password === formData.password2) {
-      fetch("https://3001-krisn9-proyectofinaldel-m3vx5yp6vnb.ws-eu83.gitpod.io/api/register-supplier", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-        body: JSON.stringify(formData),
-      })
+      fetch(
+        "https://3001-krisn9-proyectofinaldel-3ph7ih3c15o.ws-eu83.gitpod.io/api/register-supplier",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Access-Control-Allow-Origin": "*",
+          },
+          body: JSON.stringify(formData),
+        }
+      )
         .then((response) => response.json())
         .then((response) => {
           if (response.status == 200) {
-          console.log(response);
-          navigate("/inicio-sesion");
-          /* alert("El registro se ha creado correctamente!"); */
-        }})
+            console.log(response);
+            /* navigate("/inicio-sesion"); */
+            alert("El registro se ha creado correctamente!");
+          }
+        })
         .catch((error) => alert(error));
     }
   };

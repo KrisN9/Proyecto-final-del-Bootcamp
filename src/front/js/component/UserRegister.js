@@ -4,30 +4,29 @@ import { useNavigate } from "react-router-dom";
 
 const UserRegister = () => {
   const [formData, setFormData] = useState({});
-  const [shownPassword, setShownPassword] = useState(true);   // para mostar contraseña
-   const [shownPassword2, setShownPassword2] = useState(true);
- 
+  const [shownPassword, setShownPassword] = useState(true); // para mostar contraseña
+  const [shownPassword2, setShownPassword2] = useState(true);
+
   const [city, setCity] = useState([]);
   const [check, setCheck] = useState(true);
 
   const navigate = useNavigate();
 
-  const password = () =>{
-    setShownPassword(!shownPassword)
-  } ;
-
-  const password2 = () => {
-    setShownPassword2(!shownPassword2)
+  const password = () => {
+    setShownPassword(!shownPassword);
   };
 
-  
+  const password2 = () => {
+    setShownPassword2(!shownPassword2);
+  };
+
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   useEffect(() => {
     fetch(
-      "https://3001-krisn9-proyectofinaldel-m3vx5yp6vnb.ws-eu83.gitpod.io/api/city"
+      "https://3001-krisn9-proyectofinaldel-3ph7ih3c15o.ws-eu83.gitpod.io/api/city"
     )
       .then((response) => response.json())
       .then((response) => {
@@ -39,7 +38,7 @@ const UserRegister = () => {
     event.preventDefault();
     if (formData.password === formData.password2) {
       fetch(
-        "https://3001-krisn9-proyectofinaldel-m3vx5yp6vnb.ws-eu83.gitpod.io/api/register-user",
+        "https://3001-krisn9-proyectofinaldel-3ph7ih3c15o.ws-eu83.gitpod.io/api/register-user",
         {
           method: "POST",
           headers: {
@@ -55,7 +54,8 @@ const UserRegister = () => {
             console.log(response);
             navigate("/inicio-sesion");
             /* alert("El registro se ha creado correctamente!"); */
-          }})
+          }
+        })
         .catch((error) => alert(error));
     }
   };
@@ -97,7 +97,7 @@ const UserRegister = () => {
           </div>
           <div className="form-floating mb-3">
             <input
-              type={shownPassword? "password" : "text"}
+              type={shownPassword ? "password" : "text"}
               className="form-control"
               id="floatingPassword"
               placeholder="contraseña"
