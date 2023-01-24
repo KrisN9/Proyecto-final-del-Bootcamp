@@ -26,7 +26,7 @@ const SupplierRegister = () => {
 
   useEffect(() => {
     fetch(
-      "https://3001-krisn9-proyectofinaldel-3ph7ih3c15o.ws-eu83.gitpod.io/api/city"
+      process.env.BACKEND_URL + "/api/city"
     )
       .then((response) => response.json())
       .then((response) => {
@@ -38,7 +38,7 @@ const SupplierRegister = () => {
     event.preventDefault();
     if (formData.password === formData.password2) {
       fetch(
-        "https://3001-krisn9-proyectofinaldel-3ph7ih3c15o.ws-eu83.gitpod.io/api/register-supplier",
+        process.env.BACKEND_URL + "/api/register-supplier",
         {
           method: "POST",
           headers: {
