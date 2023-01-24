@@ -6,7 +6,7 @@ import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken='pk.eyJ1Ijoia3Jpc245IiwiYSI6ImNsZDV4Y2x0ZTByOHIzb2tianpoZ2xmeWgifQ.M8N3QZtBSFlC_MPoI-PVTQ';
 
-class TestMap extends React.Component{
+class FinalMap extends React.Component{
 
   constructor(props){
     super(props);
@@ -60,7 +60,7 @@ class TestMap extends React.Component{
 
 }
 
-export default TestMap;
+export default FinalMap;
 
 
 
