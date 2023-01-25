@@ -206,7 +206,6 @@ def update_user(user_id):
     setattr(user, "name", new_name)
     setattr(user, "email", new_email)
     setattr(user, "telephone_number", new_telephone_number)
-    setattr(user, "city", new_city)
 
     db.session.commit()
        
@@ -223,15 +222,11 @@ def update_supplier(supplier_id):
     new_company_cif = request.json.get("company_cif", supplier.company_cif)
     new_name = request.json.get("name", supplier.name)
     new_email = request.json.get("email", supplier.email)
-    new_telephone_number = request.json.get("telephone_number", supplier.telephone_number)
-    new_city = request.json.get("city", supplier.city)
 
     setattr(supplier, "company_name", new_company_name)
     setattr(supplier, "company_cif", new_company_cif)
     setattr(supplier, "name", new_name)
     setattr(supplier, "email", new_email)
-    setattr(supplier, "telephone_number", new_telephone_number)
-    setattr(supplier, "city", new_city)
 
     db.session.commit()
        
