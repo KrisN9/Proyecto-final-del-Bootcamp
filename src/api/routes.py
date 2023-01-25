@@ -11,42 +11,41 @@ api = Blueprint('api', __name__)
 
 
 
-@api.route('/supplier/<int:supplier_id>', methods=['GET']) # se obtiene proveedor por id 
-def get_supplier(supplier_id):
+@api.route('/supplier', methods=['GET']) # se obtiene proveedor por id 
+@jwt_required()
+def get_supplier():
+    supplier_id= get_jwt_identity()
     supplier= Supplier.query.filter_by(id=supplier_id).first()
     if supplier : 
         return jsonify(supplier.serialize()),200
     
     return jsonify({"Doesn´t exist"}), 400
 
-@api.route('/user/<int:user_id>', methods=['GET']) # se obtiene usuario por id 
-def get_user(user_id):
+@api.route('/user', methods=['GET']) # se obtiene usuario por id 
+@jwt_required()
+def get_user():
+    user_id= get_jwt_identity()
     user= User.query.filter_by(id=user_id).first()
     if user : 
         return jsonify(user.serialize()),200
     
     return jsonify({"Doesn´t exist"})
 
-@api.route('/user/favorite/<int:id_user>', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
-def favorite_user(id_user):                                             
-    favorites= Favorite.query.filter_by(id_user=id_user)
+@api.route('/user/favorite', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
+def favorite_user():                                             
+    favorites= Favorite.query.filter_by(id=user_id)
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
 
 
-@api.route('offer', methods=['GET'])            #Listar la totalidad de las ofertas
-def all_offers():
-    offers = Offer.query.all()
-    data = [offer.serialize() for offer in offers]
-    return jsonify(data), 200
-
-
-
-@api.route('/supplier/offer/<int:id_supplier>', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
-def offer_supplier(id_supplier):                                                 
-    offers= Offer.query.filter_by(id_supplier=id_supplier)
+@api.route('/supplier/offer', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
+@jwt_required()
+def offer_supplier():
+    supplier_id= get_jwt_identity()                                                 
+    offers= Offer.query.filter_by(id=supplier_id)
     data=[offer.serialize() for offer in offers ]
     return jsonify(data), 200
+
 
 
 @api.route('/city', methods=['GET'])  #se obtiene todas las ciudades
@@ -137,10 +136,10 @@ def register_supplier():
 
 @api.route('/login-user', methods=['POST'])  #login de usuario    
 def login_user():
-    data = request.json  #aqui se almacena json que nos envia de la base de datos
+    data = request.json 
     user = User.query.filter_by(email=data['email'], password=data['password']).first()
     if user:
-        access_token = create_access_token(identity=user.id)   #se crea token y asocia al ID
+        access_token = create_access_token(identity=user.id)   
         return jsonify({"token": access_token}), 200
     
     return jsonify({"msg": "Wrong user/password"}), 400
@@ -157,15 +156,18 @@ def login_supplier():
     return jsonify({"msg": "Wrong supplier/password"}), 400
 
 
-@api.route('/offer.', methods=['POST'])  #crear una nueva oferta   #pendiente de revisar si va id en la ruta
+@api.route('/offer', methods=['POST'])  #crear una nueva oferta   #pendiente de revisar si va id en la ruta
+@jwt_required()
 def create_offer():
-    data = request.json
+    data=request.json
+    supplier_id = get_jwt_identity()
     try:
-       offer= Offer(name=data['name'],company_name=data['company_name'], 
+       offer= Offer(id=supplier_id,name=data['name'],company_name=data['company_name'], 
        url=data['url'], url_image=data['url_image'], title=data['title'], price=data['price'])  # location=data['location']
        db.session.add(offer)
        db.session.commit()
-    except Exception:
+    except Exception as e: 
+        print(e)
         return jsonify({"msg":"Error"}),400
         
     return jsonify({"msg":"Offer created"}),200
@@ -254,6 +256,14 @@ def update_offer(offer_id):
 
 #pendiente de preguntar crear ROUTE PARA obetener las ofertas por la zona de busqueda 
 
+
+
+
+# @api.route('offer', methods=['GET'])            #Listar la totalidad de las ofertas
+# def all_offers():
+#     offers = Offer.query.all()
+#     data = [offer.serialize() for offer in offers]
+#     return jsonify(data), 200
 
 # @api.route('/user', methods=['GET'])  #se obtiene todo los usuarios 
 # def all_user():
