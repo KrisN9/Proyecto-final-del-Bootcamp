@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import reactDom from "react-dom";
 import mapboxgl from "mapbox-gl";
 /* import Autofill from "./Autofill"; */
@@ -24,10 +24,6 @@ class FinalMap extends React.Component{
       center: [this.state.lng, this.state.lat],
       zoom: this.state.zoom
     })
-
-/*     const marker1 = new mapboxgl.Marker({color: "red", draggable: true})
-    .setLngLat([-3.70315046264256, 40.41397175226467])
-    .addTo(map); */
 
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
@@ -60,9 +56,22 @@ class FinalMap extends React.Component{
 
 }
 
+/* const [latitude, setLatitude] = useState([]);
+   const [longitude, setLongitude] = useState([]);
+
+useEffect(() => {
+  fetch(process.env.BACKEND_URL + "/api/offer")
+  .then((response) => response.json())
+  .then((response) => {
+    setLatitude(response), setLongitude(response);
+  });
+}, []); */
+
 export default FinalMap;
 
-
+/*     const marker1 = new mapboxgl.Marker({color: "red", draggable: true})
+    .setLngLat([-3.70315046264256, 40.41397175226467])
+    .addTo(map); */
 
 /* const popup = new mapboxgl.Popup({ offset: 25 }).setText(
   'Popup de prueba.'
