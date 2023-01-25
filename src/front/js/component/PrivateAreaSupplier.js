@@ -17,6 +17,7 @@ const PrivateAreaSupplier=()=>{
             navigate("/");
           }
 
+
 return (
     <div className="container mt-3">
         <div className="text-center">
@@ -53,11 +54,11 @@ return (
           <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div className="modal-body">
-          <SupplierEdit />
+          {/* <SupplierEdit /> */}
         </div>
         <div className="modal-footer">
           <button type="button" className="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
-          <button type="button" className="btn btn-outline-warning">Guardar cambios</button>
+          <button type="submit" className="btn btn-outline-warning">Guardar cambios</button>
         </div>
       </div>
     </div>

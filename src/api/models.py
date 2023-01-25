@@ -1,4 +1,5 @@
 from flask_sqlalchemy import SQLAlchemy
+from geopy.geocoders import Nominatim
 
 db = SQLAlchemy()
 
@@ -89,12 +90,18 @@ class Offer(db.Model):
         return f'<Offer {self.title}>'
 
     def serialize(self):       # pendiente revisar si va id_supplier 
+        geolocator = Nominatim(user_agent="MyApp")
+        location = geolocator.geocode("Calle de San Luis, 3, Almeria")
+        #location = geolocator.geocode(self.location)
+        print(location.latitude)
         return {
             "id": self.id,
             "title":self.title,
             "url_image":self.url_image,
             "company_name":self.company_name,
             "location":self.location,
+            #"latitude": location.latitude,
+            #"longitude": location.longitude,
             "price":self.price
         }
 
