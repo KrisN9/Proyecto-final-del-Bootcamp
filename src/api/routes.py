@@ -48,6 +48,12 @@ def offer_supplier():
     data=[offer.serialize() for offer in offers ]
     return jsonify(data), 200
 
+@api.route('offer', methods=['GET'])            #Listar la totalidad de las ofertas (no mover de momento).
+def all_offers():
+    offers = Offer.query.all()
+    data = [offer.serialize() for offer in offers]
+    return jsonify(data), 200
+
 
 
 @api.route('/city', methods=['GET'])  #se obtiene todas las ciudades
@@ -261,11 +267,7 @@ def update_offer(offer_id):
 
 
 
-# @api.route('offer', methods=['GET'])            #Listar la totalidad de las ofertas
-# def all_offers():
-#     offers = Offer.query.all()
-#     data = [offer.serialize() for offer in offers]
-#     return jsonify(data), 200
+
 
 # @api.route('/user', methods=['GET'])  #se obtiene todo los usuarios 
 # def all_user():
