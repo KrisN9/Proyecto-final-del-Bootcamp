@@ -9,18 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 
 const PrivateAreaSupplier=()=>{
-  const params= useParams()
   const navigate = useNavigate();
-  const [offer, setOffer]=useState([])
   const {store , actions}= useContext(Context)
-
-    useEffect(()=>{    
-      fetch(`process.env.BACKEND_URL +/api/supplier/offer/${params.id}`)
-        .then(response => response.json())
-        .then(response =>{
-            setOffer(response)
-        })
-    }, [])
 
           const SessionOut =()=>{
             actions.logOut()
@@ -30,7 +20,7 @@ const PrivateAreaSupplier=()=>{
 return (
     <div className="container mt-3">
         <div className="text-center">
-         <p className="fst-italic fs-3">Bienvenido a tu area Privada ..name... </p>
+         <p className="fst-italic fs-3">Bienvenido a tu area Privada </p>
   <ul className="nav nav-tabs  justify-content-center"  id="myTab" role="tablist">
   <li className="nav-item" role="presentation">
     <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Cuenta</button>
@@ -53,17 +43,8 @@ return (
     </div>
   <div className="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <div className="mt-3">
-    <p className="text-center fst-italic fs-3 text-danger">Aquí tienes todas tus ofertas: .....Numero de ofertas... .</p>
-    {
-        offer.map((e)=>{
-          return <OfferCards image={e.url_image} 
-                        title={e.title} 
-                        price={e.price} 
-                        name={e.name}
-                        id={e.id} 
-                        /> 
-        })
-      } 
+    <p className="text-center fst-italic fs-3 text-danger">Aquí tienes todas tus ofertas</p>
+    <OfferCards /> 
     </div>
   </div>
   <div className="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
@@ -78,7 +59,6 @@ return (
        <Offer/>
     </div>
   </div>
-  
 </div>
         </div>
     </div>

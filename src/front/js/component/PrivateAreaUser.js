@@ -8,7 +8,6 @@ import User from "./User";
 import Cards from "./Cards";
 
 const PrivateAreaUser=()=>{
-  const params= useParams()
   const navigate = useNavigate();
   const {store , actions}= useContext(Context)
 
@@ -21,7 +20,7 @@ return (
 
     <div className="container">
         <div className="text-center">
-         <p className="fst-italic fs-1">Bienvenido a tu area Privada ..name... </p>
+         <p className="fst-italic fs-1">Bienvenido a tu area Privada </p>
   <ul className="nav nav-tabs  justify-content-center"  id="myTab" role="tablist">
   <li className="nav-item" role="presentation">
     <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Cuenta</button>
@@ -46,14 +45,14 @@ return (
     <div className="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <div className="mt-3"><p className="text-center fst-italic fs-3 text-danger">Aún no tienes ofertas favoritas.</p>
     <Cards/>
-    <Cards/><Cards/>
+    
     
     </div>
     </div>
   <div className="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
     <div>
         <p className="fs-3 mt-4">Espera aún no te vayas!!! Tenemos mas ofertas que mostrarte.</p>
-        <button type="button" onClick={SessionOut} class="btn btn-outline-dark mt-5 mb-5"> Cerrar Sesión </button>
+        <button type="button" onClick={SessionOut} className="btn btn-outline-dark mt-5 mb-5"> Cerrar Sesión </button>
     </div>
   </div>
   
@@ -68,4 +67,3 @@ return (
 }
 
 export default  PrivateAreaUser
-

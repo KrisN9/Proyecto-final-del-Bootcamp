@@ -13,22 +13,22 @@ const Offer = () => {          //revisar no funciona
   };
 
   const handleClick = () => {
-
-    fetch(process.env.BACKEND_URL +"/api/offer", {
+    fetch(process.env.BACKEND_URL + "/api/offer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        'Authorization':'Bearer '+ localStorage.getItem('token')
       },
       body: JSON.stringify(formData),
-      })
+      mode: "no-cors",
+    })
       .then((response) => {
         if (response.status == 200) return response.json();
         else alert("Algo salio mal. Intentalo de nuevo");
       })
       .then((response) => {
         console.log(response);
-      })
-      .catch((error) => alert(error));
+      });
   };
 
   return (

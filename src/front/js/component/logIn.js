@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext"; 
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
 
 const LogIn = () => {
   const [formData, setFormData] = useState({});
@@ -11,7 +10,6 @@ const LogIn = () => {
   
   const {store , actions}= useContext(Context)
   const navigate = useNavigate();
-  const params= useParams()
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -25,28 +23,54 @@ const LogIn = () => {
   };
 
   const handleClickUser = () => {
-      actions.loginUser(formData).then(()=>{
-        navigate(`/privada-usuario/${params.id}`);
+    const optionUser = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+      };
+      fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
+      .then((response) => {
+        if (response.status == 200)
+        return response.json()
+        else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
+      }).then((response)=>{
+        actions.setToken(response)
+        navigate("/area-privada-usuario");
       })
+    
   };
 
   const handleClickSupplier = () => {
-     actions.loginSupplier(formData).then(()=>{
-      navigate(`/privada-proveedor/${params.id}`)
-     })
+    const optionSupplier = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+      };
+    
+      fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
+      .then((response) => {
+        if (response.status === 200) return response.json();
+        else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
+      })
+      .then((response)=>{
+        actions.setToken(response)
+        navigate("/area-privada-proveedor");
+      })
+
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  // if ( store.token && store.token != "" && store.token != undefined) 
-  // navigate(`/privada-usuario/${params.id}`);
 
   return (
     <form onSubmit={handleSubmit}>
       <div className="container">
-        {/* pendiente de arreglar la presentación*/}
         <div className="row text-center mb-5 centro">
           <div className="col-md-6">
             <p className="fs-1 fst-italic">Iniciar sesión como usuario</p>

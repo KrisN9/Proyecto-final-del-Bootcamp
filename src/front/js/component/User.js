@@ -3,36 +3,33 @@ import { useParams } from "react-router-dom";
 
 const User =()=>{
 
-    const [user , setUser]=useState([])
-    const params= useParams()
+    const [user, setUser]=useState([])
 
     useEffect(()=>{
-    fetch(`process.env.BACKEND_URL +/user/${params.id}`)
+      const optionsUser={
+      headers:{
+        "Content-Type": "application/json",
+        'Authorization':'Bearer '+ localStorage.getItem('token')
+      }
+      }
+    fetch(process.env.BACKEND_URL+ "/api/user" , optionsUser)
     .then((response)=>{
         return response.json()
     }).then ((response)=>{
         setUser(response)
     })
-
-    }, [])
+    },[])
    
 return (
 
     <div className="text-md-start mt-3 mb-4 fs-4 fw-semibold">
-            {   
-            user.map((e)=>{
+           
                 <ul>
-                <li>Nombre:{e.name}</li>
-                <li>Correo Electronico:{e.name}</li>
-                <li>Telefono:{e.telephone_number}</li>
+                <li><p className="fst-italic">Nombre: {user.name}</p></li>
+                <li><p className="fst-italic">Correo Electronico:{user.email}</p></li>
                 </ul>
-            })
-            }
               </div>
-
 )
-        
-    
 
 }
 
