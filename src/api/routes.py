@@ -32,8 +32,10 @@ def get_user():
     return jsonify({"Doesn´t exist"})
 
 @api.route('/user/favorite', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
-def favorite_user():                                             
-    favorites= Favorite.query.filter_by(id=user_id)
+@jwt_required()
+def favorite_user():  
+    user_id = get_jwt_identity()                                            
+    favorites= Favorite.query.filter_by(id_user=user_id)
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
 
@@ -41,8 +43,8 @@ def favorite_user():
 @api.route('/supplier/offer', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
 @jwt_required()
 def offer_supplier():
-    supplier_id= get_jwt_identity()                                                 
-    offers= Offer.query.filter_by(id=supplier_id)
+    supplier_id = get_jwt_identity()                                               
+    offers= Offer.query.filter_by(id_supplier=supplier_id)
     data=[offer.serialize() for offer in offers ]
     return jsonify(data), 200
 

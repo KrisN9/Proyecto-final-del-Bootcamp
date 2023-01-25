@@ -94,7 +94,8 @@ class Offer(db.Model):
             "title":self.title,
             "url_image":self.url_image,
             "company_name":self.company_name,
-            "location":self.location
+            "location":self.location,
+            "price":self.price
         }
 
 
