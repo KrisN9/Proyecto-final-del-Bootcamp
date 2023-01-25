@@ -5,7 +5,7 @@ import { useContext } from "react";
 import OfferCards from "./OfferCards";
 import Supplier from "./Supplier";
 import { useNavigate } from "react-router-dom";
-import SupplierEdit from "./componentes de prueba/SupplierEdit";
+/* import SupplierEdit from "./componentes de prueba/SupplierEdit"; */
 
 
 const PrivateAreaSupplier=()=>{

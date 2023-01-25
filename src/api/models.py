@@ -91,17 +91,17 @@ class Offer(db.Model):
 
     def serialize(self):       # pendiente revisar si va id_supplier 
         geolocator = Nominatim(user_agent="MyApp")
-        location = geolocator.geocode("Calle de San Luis, 3, Almeria")
-        #location = geolocator.geocode(self.location)
+        location = geolocator.geocode(self.location)
         print(location.latitude)
+        print(location.longitude)
         return {
             "id": self.id,
             "title":self.title,
             "url_image":self.url_image,
             "company_name":self.company_name,
             "location":self.location,
-            #"latitude": location.latitude,
-            #"longitude": location.longitude,
+            "latitude": location.latitude,
+            "longitude": location.longitude,
             "price":self.price
         }
 
