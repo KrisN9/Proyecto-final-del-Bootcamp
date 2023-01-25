@@ -93,7 +93,7 @@ const Offer = () => {          //revisar no funciona
           <label htmlFor="floatingPrice">Dirección página web</label>
         </div>
         <div className="mb-3 text-start ">
-          <label htmlFor="floatingImage" class="form-label">Añadir Imagen</label>
+          <label htmlFor="floatingImage" className="form-label">Añadir Imagen</label>
           <input className="form-control form-control-sm" 
           id="floatingImage" 
           name="url_image" 
@@ -118,7 +118,7 @@ const Offer = () => {          //revisar no funciona
 export default Offer;
 
 // <div className="mb-3 text-start">
-// <label htmlFor="floatingUrl" class="form-label">Añadir url de empresa </label>
+// <label htmlFor="floatingUrl" className="form-label">Añadir url de empresa </label>
 // <input className="form-control form-control-sm"
 //  id="floatingUrl" 
 //  name="url" 
