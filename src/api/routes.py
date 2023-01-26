@@ -101,18 +101,19 @@ def delete_favorite(user_id, favorite_id):
 
     return jsonify({"Favorite removed"})
 
-@api.route('/offer', methods=['DELETE'])   #eliminar oferta de un proveedor 
+@api.route('/delete_offer/id', methods=['DELETE'])   #eliminar oferta de un proveedor 
 @jwt_required()
-def delete_offer():
+def delete_offer(id):
     try:
         supplier_id = get_jwt_identity()
-        removeOffer =Offer.query.filter_by(id=supplier_id) 
+        removeOffer = Offer.query.filter_by(id=supplier_id).first()
         db.session.delete(removeOffer)
         db.session.commit()
-    except Exception:
+    except Exception as e:
+        print(e)
         return jsonify({"message": "Error"}),400
 
-    return jsonify({"Offer removed"})
+    return jsonify({"Offer removed"}),200
 
 @api.route('/register-user', methods=['POST'])   #registro de usuario
 def register_user():

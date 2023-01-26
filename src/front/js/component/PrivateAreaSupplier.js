@@ -43,7 +43,7 @@ return (
   </div>
   <div className="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <div className="mt-3">
-    <p className="text-center fst-italic fs-3 text-danger">Aquí tienes todas tus ofertas</p>
+    <p className="text-center fst-italic fs-3 text-danger"></p>
     <OfferCards /> 
     </div>
   </div>
