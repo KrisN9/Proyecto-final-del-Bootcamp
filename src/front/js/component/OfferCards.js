@@ -20,13 +20,30 @@ const OfferCards =()=>{
       })
 
   }, []);
+  
+  const remove =()=>{
+    const remove = {
+      method: 'PUT',
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization':'Bearer '+ localStorage.getItem('token')
+      },
+    };
+    fetch(process.env.BACKEND_URL +"/delete_offer", remove)
+    .then((response)=>{
+        return response.json()
+
+    }).then((response)=>{
+      console.log(response)
+    })
+  }
 
   return (
 
     <div className="container col-12 col-md-6 mt-4">
       {
-         offer.map((e)=>{
-               return  <div className="card mb-3">
+         offer.map((e, index)=>{
+               return  <div className="card mb-3" key={index}>
                  <div className="row g-0"> 
                  <div className="col-md-3"><img
                     src={e.url_image}
@@ -44,6 +61,7 @@ const OfferCards =()=>{
                   </div>
                   <div className="col-md-2 mt-3">
                     <p>Precio:{e.price}€</p>
+                    <button type="button" className="btn btn-secondary" onClick={remove}><i className="fas fa-trash-alt"></i></button> 
                   </div> 
                     </div>
                       </div>

@@ -1,34 +1,34 @@
 import React from "react";
 import { useState } from "react";
 
-const Offer = () => {          //revisar no funciona 
+const Offer = () => { 
   const [formData, setFormData] = useState({});
 
-
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setFormData({...formData, [event.target.name]: event.target.value });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
   };
 
   const handleClick = () => {
-    fetch(process.env.BACKEND_URL + "/api/offer", {
-      method: "POST",
+    fetch(process.env.BACKEND_URL + "/api/offer",{
+      method:"POST",
       headers: {
         "Content-Type": "application/json",
         'Authorization':'Bearer '+ localStorage.getItem('token')
       },
       body: JSON.stringify(formData),
-      mode: "no-cors",
+    }).then((response) => {
+      if (response.status == 200){
+      }else{
+      }response.json();
+      
+     
     })
-      .then((response) => {
-        if (response.status == 200) return response.json();
-        else alert("Algo salio mal. Intentalo de nuevo");
-      })
-      .then((response) => {
-        console.log(response);
-      });
+    .then((response) => {
+      console.log(response);
+    });
   };
 
   return (
@@ -45,6 +45,7 @@ const Offer = () => {          //revisar no funciona
             placeholder="Nombre de la empresa "
             name="company_name"
             onChange={handleChange}
+            
           />
           <label htmlFor="floatingName">Nombre de la empresa </label>
         </div>
@@ -78,6 +79,7 @@ const Offer = () => {          //revisar no funciona
             placeholder="Precio de oferta"
             name="price"
             onChange={handleChange}
+           
           />
           <label htmlFor="floatingPrice">Precio de oferta</label>
         </div>
@@ -89,8 +91,22 @@ const Offer = () => {          //revisar no funciona
             placeholder="url"
             name="url"
             onChange={handleChange}
+           
+           
           />
           <label htmlFor="floatingPrice">Dirección página web</label>
+        </div>
+        <div className="form-floating mb-3">
+          <input
+            type="location"
+            className="form-control"
+            id="floatingLocation"
+            placeholder="location"
+            name="location"
+            onChange={handleChange}
+            
+          />
+          <label htmlFor="floatingLocation">location</label>
         </div>
         <div className="mb-3 text-start ">
           <label htmlFor="floatingImage" className="form-label">Añadir Imagen</label>
@@ -98,9 +114,11 @@ const Offer = () => {          //revisar no funciona
           id="floatingImage" 
           name="url_image" 
           type="file"
-          onChange={handleChange}/>
+          onChange={handleChange}
+          
+          />
        </div>
-        
+      
         <div className="col-12 mb-3">
           <button
             type="submit"
