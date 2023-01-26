@@ -56,7 +56,7 @@ class FinalMap extends React.Component{
 
 }
 
-/* const [latitude, setLatitude] = useState([]);
+/*    const [latitude, setLatitude] = useState([]);
    const [longitude, setLongitude] = useState([]);
 
 useEffect(() => {

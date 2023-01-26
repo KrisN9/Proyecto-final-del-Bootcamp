@@ -75,6 +75,7 @@
 	"dependencies": {
 		"@mapbox/mapbox-gl-geocoder": "^5.0.1",
 		"@mapbox/search-js-react": "^1.0.0-beta.14",
+		"@material/snackbar": "^14.0.0",
 		"@reach/combobox": "^0.18.0",
 		"@react-google-maps/api": "^2.17.1",
 		"axios": "^1.2.4",
