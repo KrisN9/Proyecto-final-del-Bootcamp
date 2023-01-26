@@ -75,9 +75,6 @@ class FinalMap extends React.Component{
 
 export default FinalMap;
 
-/*     const marker1 = new mapboxgl.Marker({color: "red", draggable: true})
-
-
 /* const popup = new mapboxgl.Popup({ offset: 25 }).setText(
   'Popup de prueba.'
   ); */
