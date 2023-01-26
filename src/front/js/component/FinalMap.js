@@ -1,77 +1,43 @@
-import React, { Component, useEffect, useState } from "react";
-import reactDom from "react-dom";
+import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
-/* import Autofill from "./Autofill"; */
+import "mapbox-gl/dist/mapbox-gl.css";
 
 
-mapboxgl.accessToken='pk.eyJ1Ijoia3Jpc245IiwiYSI6ImNsZDV4Y2x0ZTByOHIzb2tianpoZ2xmeWgifQ.M8N3QZtBSFlC_MPoI-PVTQ';
+const styles = {
+  width: "100%",
+  height: "465px",
+  position: "relative"
+};
 
-class FinalMap extends React.Component{
+const FinalMap = () => {
+  const [map, setMap] = useState(null);
+  const mapContainer = useRef(null);
 
-  constructor(props){
-    super(props);
-    this.state = {
-      lng: -3.70315046264256,
-      lat: 40.41397175226467,
-      zoom: 10
-    }
-  }
-
-  componentDidMount(){
-    const map = new mapboxgl.Map({
-      container: this.mapContainer,
-      style: 'mapbox://styles/mapbox/streets-v11',
-      center: [this.state.lng, this.state.lat],
-      zoom: this.state.zoom
-    })
-
-    const CustomMarkers = () => {
-      const [latitude, setLatitude] = useState([]);
-      const [longitude, setLongitude] = useState([]);
-      
-      useEffect(() => {
-        fetch(process.env.BACKEND_URL + "/api/offer")
-        .then((response) => response.json())
-        .then((response) => {
-          console.log(response);
-        });
-      }, []);
-    }
-
-/*   const marker = new mapboxgl.Marker({color: "red"})
-    .setLngLat([this.state.lng, this.state.lat])
-    .addTo(map); */
-
-    const geocoder = new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      marker: {
-      color: 'red',
-      draggable: true,
-      },
-      mapboxgl: mapboxgl
+  useEffect(() => {
+    mapboxgl.accessToken = 'pk.eyJ1Ijoia3Jpc245IiwiYSI6ImNsZDV4Y2x0ZTByOHIzb2tianpoZ2xmeWgifQ.M8N3QZtBSFlC_MPoI-PVTQ';
+    const initializeMap = ({ setMap, mapContainer }) => {
+      const map = new mapboxgl.Map({
+        container: mapContainer.current,
+        style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
+        center: [-3.70315046264256, 40.41397175226467],
+        zoom: 10
       });
-       
-      map.addControl(geocoder);
 
-    map.addControl(new mapboxgl.FullscreenControl());
-    map.addControl(new mapboxgl.NavigationControl());
+      const marker = new mapboxgl.Marker({color: "red"})
+      .setLngLat([-3.70315046264256, 40.41397175226467])
+      .addTo(map);
 
-  }
+      map.on("load", () => {
+        setMap(map);
+        map.resize();
+      });
+    };
 
-  render(){
-    return (
-      <>
-      <div>
-        {/* <Autofill /> */}
-      </div>
-      <div>
-        <div ref={el => this.mapContainer = el} style={{width:'100%', height:'465px'}} />
-      </div>
-      </>
-    )
-  }
+    if (!map) initializeMap({ setMap, mapContainer });
+  }, [map]);
 
-}
+  return <div ref={el => (mapContainer.current = el)} style={styles} />;
+};
 
 export default FinalMap;
 
