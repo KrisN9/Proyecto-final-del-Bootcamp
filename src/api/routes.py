@@ -101,14 +101,12 @@ def delete_favorite(user_id, favorite_id):
 
     return jsonify({"Favorite removed"})
 
-@api.route('/delete_offer', methods=['DELETE'])      #eliminar oferta de un proveedor 
+@api.route('/offer', methods=['DELETE'])   #eliminar oferta de un proveedor 
 @jwt_required()
 def delete_offer():
     try:
         supplier_id = get_jwt_identity()
-        removeOffer =Offer.query.filter_by(id_offer=supplier_id).first()  #REVISAR
-        #data=[offer.serialize() for offer in removeOffer ]
-
+        removeOffer =Offer.query.filter_by(id=supplier_id) 
         db.session.delete(removeOffer)
         db.session.commit()
     except Exception:
@@ -174,8 +172,8 @@ def create_offer():
     data=request.json
     supplier_id = get_jwt_identity()
     try:
-       offer= Offer(id=supplier_id,name=data['name'],company_name=data['company_name'], 
-       url=data['url'], url_image=data['url_image'], title=data['title'], price=data['price'])  # location=data['location']
+       offer= Offer(id_supplier=supplier_id,name=data['name'],company_name=data['company_name'], 
+       url=data['url'], url_image=data['url_image'], title=data['title'], price=data['price'], location=data['location'])  
        db.session.add(offer)
        db.session.commit()
     except Exception as e: 
