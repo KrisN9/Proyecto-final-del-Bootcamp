@@ -87,6 +87,7 @@
 		"react-dom": "^16.8.4",
 		"react-google-maps": "^9.4.5",
 		"react-hook-form": "^7.42.1",
+		"react-map-gl": "^7.0.21",
 		"react-map-gl-geocoder": "^2.2.0",
 		"react-mapbox-autocomplete": "^0.2.3",
 		"react-password-checklist": "^1.4.3",

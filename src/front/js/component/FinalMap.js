@@ -26,8 +26,8 @@ class FinalMap extends React.Component{
     })
 
     const CustomMarkers = () => {
-      /* const [latitude, setLatitude] = useState([]);
-         const [longitude, setLongitude] = useState([]); */
+      const [latitude, setLatitude] = useState([]);
+      const [longitude, setLongitude] = useState([]);
       
       useEffect(() => {
         fetch(process.env.BACKEND_URL + "/api/offer")
@@ -37,6 +37,10 @@ class FinalMap extends React.Component{
         });
       }, []);
     }
+
+/*   const marker = new mapboxgl.Marker({color: "red"})
+    .setLngLat([this.state.lng, this.state.lat])
+    .addTo(map); */
 
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
@@ -72,8 +76,7 @@ class FinalMap extends React.Component{
 export default FinalMap;
 
 /*     const marker1 = new mapboxgl.Marker({color: "red", draggable: true})
-    .setLngLat([-3.70315046264256, 40.41397175226467])
-    .addTo(map); */
+
 
 /* const popup = new mapboxgl.Popup({ offset: 25 }).setText(
   'Popup de prueba.'
