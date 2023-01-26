@@ -27,6 +27,19 @@ const FinalMap = () => {
       .setLngLat([-3.70315046264256, 40.41397175226467])
       .addTo(map);
 
+      const geocoder = new MapboxGeocoder({
+        accessToken: mapboxgl.accessToken,
+        marker: {
+        color: 'red',
+        draggable: true,
+        },
+        mapboxgl: mapboxgl
+        });
+         
+      map.addControl(geocoder);
+      map.addControl(new mapboxgl.FullscreenControl());
+      map.addControl(new mapboxgl.NavigationControl());
+
       map.on("load", () => {
         setMap(map);
         map.resize();
