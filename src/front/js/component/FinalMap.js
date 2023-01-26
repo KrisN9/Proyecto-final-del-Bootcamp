@@ -25,6 +25,19 @@ class FinalMap extends React.Component{
       zoom: this.state.zoom
     })
 
+    const CustomMarkers = () => {
+      /* const [latitude, setLatitude] = useState([]);
+         const [longitude, setLongitude] = useState([]); */
+      
+      useEffect(() => {
+        fetch(process.env.BACKEND_URL + "/api/offer")
+        .then((response) => response.json())
+        .then((response) => {
+          console.log(response);
+        });
+      }, []);
+    }
+
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
       marker: {
@@ -55,17 +68,6 @@ class FinalMap extends React.Component{
   }
 
 }
-
-/*    const [latitude, setLatitude] = useState([]);
-   const [longitude, setLongitude] = useState([]);
-
-useEffect(() => {
-  fetch(process.env.BACKEND_URL + "/api/offer")
-  .then((response) => response.json())
-  .then((response) => {
-    setLatitude(response), setLongitude(response);
-  });
-}, []); */
 
 export default FinalMap;
 
