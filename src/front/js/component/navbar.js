@@ -1,7 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+	const navigate = useNavigate
+	const {store , actions}=useContext(Context)
+	
+	
 	return (
 
 		<nav className="navbar navbar-expand-lg navbar-dark text-dark">
@@ -15,13 +22,15 @@ export const Navbar = () => {
 				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon"></span>  
 				</button>
-				<div className="collapse navbar-collapse gap-2 justify-content-md-end" id="navbarSupportedContent">
 				
-			<Link to="/registro"><button type="button" className="btn btn-outline-success rounded-pill" >Registrarse</button></Link>
+				<div className="collapse navbar-collapse gap-2 justify-content-md-end" id="navbarSupportedContent"> 
 			
-	 		<Link to="/inicio-sesion"><button type="button" className="btn btn-outline-success rounded-pill">Iniciar sesión</button></Link>
+				<Link to="/registro"><button type="button" className="btn btn-outline-success rounded-pill" >Registrarse</button></Link>
+			     <Link to="/inicio-sesion"><button type="button" className="btn btn-outline-success rounded-pill">Iniciar sesión</button></Link>
+				   
+			      
 			
-		</div>
+			</div>
   </div>
 </nav>
 		
