@@ -101,9 +101,9 @@ def delete_favorite(user_id, favorite_id):
 
     return jsonify({"Favorite removed"})
 
-@api.route('/delete_offer/id', methods=['DELETE'])   #eliminar oferta de un proveedor 
+@api.route('/delete_offer', methods=['DELETE'])   #eliminar oferta de un proveedor 
 @jwt_required()
-def delete_offer(id):
+def delete_offer():
     try:
         supplier_id = get_jwt_identity()
         removeOffer = Offer.query.filter_by(id=supplier_id).first()

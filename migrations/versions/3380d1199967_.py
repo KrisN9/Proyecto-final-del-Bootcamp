@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 8a508695f5b1
+Revision ID: 3380d1199967
 Revises: 
-Create Date: 2023-01-26 14:55:17.421234
+Create Date: 2023-01-27 09:40:47.055440
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '8a508695f5b1'
+revision = '3380d1199967'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -53,6 +53,7 @@ def upgrade():
     op.create_table('offer',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('id_supplier', sa.Integer(), nullable=False),
+    sa.Column('name', sa.String(length=250), nullable=False),
     sa.Column('title', sa.String(length=250), nullable=False),
     sa.Column('company_name', sa.String(length=80), nullable=False),
     sa.Column('price', sa.Float(), nullable=False),
@@ -66,6 +67,11 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('id_user', sa.Integer(), nullable=False),
     sa.Column('id_offer', sa.Integer(), nullable=False),
+    sa.Column('title', sa.String(length=250), nullable=False),
+    sa.Column('company_name', sa.String(length=80), nullable=False),
+    sa.Column('price', sa.Float(), nullable=False),
+    sa.Column('url_image', sa.String(length=250), nullable=False),
+    sa.Column('url', sa.String(length=250), nullable=False),
     sa.ForeignKeyConstraint(['id_offer'], ['offer.id'], ),
     sa.ForeignKeyConstraint(['id_user'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')

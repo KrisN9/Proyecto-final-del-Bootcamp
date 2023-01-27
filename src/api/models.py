@@ -89,7 +89,7 @@ class Offer(db.Model):
     name=db.Column(db.String(250), unique=False, nullable=False)   
     title=db.Column(db.String(250), unique=False, nullable=False)    
     supplier= db.relationship('Supplier', backref='supplier', lazy=True)
-    company_name=db.Column(db.String(80),unique=False, nullable=False) #pendiente   db.ForeignKey('supplier.company_name') 
+    company_name=db.Column(db.String(80),unique=False, nullable=False) 
     price= db.Column(db.Float, default= 0, nullable=False )
     url_image=db.Column(db.String(250), nullable=False)
     url= db.Column(db.String(250), nullable=False)
