@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Params, useParams } from "react-router-dom";
 
 const Cards = () => {
   const [favorite, setFavorite] = useState([])
@@ -24,6 +23,8 @@ const Cards = () => {
   return (
    
     <div className="container col-12 col-md-6 mt-4"> 
+    <div className="mt-3"><p className="text-center fst-italic fs-3 text-danger"> Tienes {favorite.length} favoritos.</p>
+ 
         { favorite.map ((e)=>{
            return <div className="card mb-3">
                   <div className="row g-0">
@@ -48,13 +49,14 @@ const Cards = () => {
                   <button type="button" className="btn btn-outline-secondary mt-2 mb-2" >
                     <i className="fas fa-trash-alt"></i>
                     </button> 
+                    
                 </div>
               </div>
             </div>
 
 
         })}
-    
+     </div>
     </div>
   );
 };
