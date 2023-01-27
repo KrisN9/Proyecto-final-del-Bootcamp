@@ -40,11 +40,14 @@ const Cards = () => {
                     <p className="card-text"> {e.title}</p>
                   </div>
                 </div>
-                <div className="col-md-2 mt-3">
+                <div className="col-md-2 mt-2">
                 <p>Precio:{e.price}€</p>
-                  <button type="button"  className="btn btn-warning float-end me-2 mt-2 {e.url}" >
+                  <a href={e.url} target="_blanck" type="button" className="btn btn-warning float-end me-2 " >
                     Pedir!
-                  </button>
+                  </a>
+                  <button type="button" className="btn btn-outline-secondary mt-2 mb-2" >
+                    <i className="fas fa-trash-alt"></i>
+                    </button> 
                 </div>
               </div>
             </div>

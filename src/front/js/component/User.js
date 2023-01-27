@@ -27,6 +27,7 @@ return (
                 <ul>
                 <li><p className="fst-italic">Nombre: {user.name}</p></li>
                 <li><p className="fst-italic">Correo Electronico:{user.email}</p></li>
+                <li><p className="fst-italic">Número de telefóno :{user.telephone_number}</p></li>
                 </ul>
               </div>
 )
