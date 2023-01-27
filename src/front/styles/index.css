@@ -1,23 +1,33 @@
-.navbar , footer{
-
-    background: orange;
+.navbar,
+footer {
+  background: orange;
 }
 
-#exampleFormControlMessage{
-
-    height: 200px;
+#exampleFormControlMessage {
+  height: 200px;
 }
 
-.centro{
-    
-    height: 300px;
-    margin-top: 200px;
-    margin-bottom: 200px;
+.centro {
+  height: 300px;
+  margin-top: 200px;
+  margin-bottom: 200px;
 }
 
-.far{
-    position: absolute;
-    right: 10px;
-    top:50%
-    
+.far {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+}
+
+.mapboxgl-popup {
+  max-width: 200px;
+  max-height: 400px;
+}
+
+.mapboxgl-popup-content {
+  font: 400 12px/15px "Source Sans Pro", "Helvetica Neue", sans-serif;
+  padding: 0;
+  width: 200px;
+  height: 175px;
+  position: relative;
 }
