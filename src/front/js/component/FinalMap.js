@@ -29,6 +29,12 @@ const FinalMap = () => {
       .setLngLat([-3.70315046264256, 40.41397175226467])
       .addTo(map);
 
+/*     fetch(process.env.BACKEND_URL + "/api/offer")
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response)
+      }) */
+
       const geocoder = new MapboxGeocoder({
         accessToken: mapboxgl.accessToken,
         marker: {
