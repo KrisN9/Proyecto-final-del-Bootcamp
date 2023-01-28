@@ -15,10 +15,10 @@ const ContactForm = () => {
     <>
     <form onSubmit={handleSubmit}>
       <div className="text-center mt-3">
-        <p className="fs-1 fw-bolder">Contacta con nosotros</p>{" "}
+        <p className="fs-1 fw-bolder">Contacta con nosotros</p>
         <p className="fs-3 fst-italic">
           Rellena el formulario y contactaremos contigo
-        </p>{" "} 
+        </p>
       </div>
       <div className="container bg-warning px-3 py-3 mt-2 mb-5">
         <div className="form-floating mb-3">
