@@ -2,16 +2,20 @@ import React from "react";
 import { useState } from "react";
 
 const Offer = () => { 
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState([]);
+  const [value, setValue]=useState([]);
 
-  const handleChange = (event) => {
+  const handleChange = (event) => { 
     setFormData({...formData, [event.target.name]: event.target.value });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
   };
 
-  const handleClick = () => {
+  const handleClick = (event) => {
+    setValue({...value, [event.target.name]:formData})
+    setformData("");
+    
     fetch(process.env.BACKEND_URL + "/api/offer",{
       method:"POST",
       headers: {
