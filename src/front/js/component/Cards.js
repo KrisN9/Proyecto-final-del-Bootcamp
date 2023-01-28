@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 const Cards = () => {
-  const [favorite, setFavorite] = useState([])
+  const [favorites, setFavorites] = useState([])
   
   useEffect(() => {
     const optionFavorite = {
@@ -15,7 +15,7 @@ const Cards = () => {
         return response.json();
       })
       .then((response) => {
-        setFavorite(response);
+        setFavorites(response);
       })
 
   }, []);
@@ -44,28 +44,28 @@ const Cards = () => {
     <div className="container col-12 col-md-6 mt-4"> 
     <div className="mt-3"><p className="text-center fst-italic fs-3 text-danger"> Tienes {favorite.length} favoritos.</p>
  
-        { favorite.map ((e)=>{
-           return <div className="card mb-3">
+        { favorites.map ((favorite, index)=>{
+           return <div className="card mb-3" key={index}>
                   <div className="row g-0">
                 <div className="col-md-3">
                   <img
-                    src={e.url_image}
+                    src={favorite.url_image}
                     className="img-fluid rounded-start"
                     alt="..."
                   />
                 </div>
                 <div className="col-md-7">
                   <div className="card-body text-center">
-                    <h5 className="card-title fs-3 fw-bolder">{e.company_name}</h5>
-                    <p className="card-text"> {e.title}</p>
+                    <h5 className="card-title fs-3 fw-bolder">{favorite.company_name}</h5>
+                    <p className="card-text"> {favorite.title}</p>
                   </div>
                 </div>
                 <div className="col-md-2 mt-2">
-                <p>Precio:{e.price}€</p>
-                  <a href={e.url} target="_blanck" type="button" className="btn btn-warning float-end me-2 " >
+                <p>Precio:{favorite.price}€</p>
+                  <a href={favorite.url} target="_blanck" type="button" className="btn btn-warning float-end me-2 " >
                     Pedir!
                   </a>
-                  <button type="button"  className="btn btn-outline-secondary mt-2 mb-2" onClick={removeFavorite}>
+                  <button type="button"  className="btn btn-outline-secondary mt-2 mb-2" onClick={()=>removeFavorite(favorite.id)}>
                     <i className="fas fa-trash-alt"></i>
                     </button> 
                     
