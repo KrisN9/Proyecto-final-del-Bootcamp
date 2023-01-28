@@ -20,6 +20,25 @@ const Cards = () => {
 
   }, []);
   
+
+  const removeFavorite =(favorite_id)=>{
+    const constfavorite = {
+      method:'DELETE',
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization':'Bearer '+ localStorage.getItem('token')
+      },
+    };
+    fetch(process.env.BACKEND_URL +"/api/delete_favorite/" + favorite_id, constfavorite)
+    .then((response)=>{
+        return response.json();
+
+    }).then((response)=>{
+      console.log(response)
+    })
+  } 
+
+
   return (
    
     <div className="container col-12 col-md-6 mt-4"> 
@@ -46,7 +65,7 @@ const Cards = () => {
                   <a href={e.url} target="_blanck" type="button" className="btn btn-warning float-end me-2 " >
                     Pedir!
                   </a>
-                  <button type="button" className="btn btn-outline-secondary mt-2 mb-2" >
+                  <button type="button"  className="btn btn-outline-secondary mt-2 mb-2" onClick={removeFavorite}>
                     <i className="fas fa-trash-alt"></i>
                     </button> 
                     
