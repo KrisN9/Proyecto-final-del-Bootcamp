@@ -21,7 +21,7 @@ const OfferCards =()=>{
 
   }, []);
   
-  const remove =()=>{
+  const remove =(offer_id)=>{
     const remove = {
       method:'DELETE',
       headers: {
@@ -29,7 +29,7 @@ const OfferCards =()=>{
         'Authorization':'Bearer '+ localStorage.getItem('token')
       },
     };
-    fetch(process.env.BACKEND_URL +"/api/delete_offer", remove)
+    fetch(process.env.BACKEND_URL +"/api/delete_offer/"+ offer_id, remove)
     .then((response)=>{
         return response.json();
 
