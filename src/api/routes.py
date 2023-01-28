@@ -67,7 +67,7 @@ def get_cities():
 
 
 @api.route('/delete_user', methods=['DELETE'])   #eliminar usuario  por id 
-@jwt_required()
+@jwt_required()    # pendiente 
 def delete_user():
     try: 
         user_id= get_jwt_identity()
@@ -80,12 +80,12 @@ def delete_user():
     
     return jsonify({"message": "User Deleted."}),200
 
-@api.route('/delete_supplier', methods=['DELETE'])  #emilinar proveedor por id 
-@jwt_required()
+@api.route('/delete_supplier/<int:user_id>', methods=['DELETE'])  #emilinar proveedor por id 
+@jwt_required()   #pendiente ver si funciona 
 def delete_supplier():
     try: 
-        user_id=get_jwt_identity()
-        supplier =Supplier.query.filter_by(id=user_id).first()
+        supplier_id=get_jwt_identity()
+        supplier =Supplier.query.filter_by(id=supplier_id).first()
         db.session.delete(supplier)
         db.session.commit()
 
@@ -94,18 +94,17 @@ def delete_supplier():
     
     return jsonify({"message": "User Deleted."})
 
-@api.route('/delete_favorite', methods=['DELETE'])      #emilinar favorito del usuario.  
-@jwt_required()       #pendiente ver su funcionalidad 
-def delete_favorite():
+@api.route('/delete_favorite/<id:favorite_id>', methods=['DELETE'])      #emilinar favorito del usuario.  
+@jwt_required()       #pendiente ver su funcionalidad, supongo que si! ¬¬
+def delete_favorite(favorite_id):
     try:
-        favorite_id: get_jwt_identity()
         removeFavorite=Favorite.query.filter_by(id=favorite_id).first
         db.session.delete(removeFavorite)
         db.session.commit()
     except Exception:
         return jsonify({"message": "Error"}),400
 
-    return jsonify({"Favorite removed"})
+    return jsonify({"message":"Favorite removed"}),200
 
 @api.route('/delete_offer/<int:offer_id>', methods=['DELETE'])   #eliminar oferta de un proveedor 
 @jwt_required()          
