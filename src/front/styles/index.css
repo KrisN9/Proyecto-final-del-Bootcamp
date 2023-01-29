@@ -31,3 +31,11 @@ footer {
   height: 175px;
   position: relative;
 }
+
+.marker {
+  border: none;
+  cursor: pointer;
+  height: 56px;
+  width: 56px;
+  /* background-image: url(marker.png); */
+}

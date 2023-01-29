@@ -8,6 +8,7 @@ import SupplierRegister from "../component/SupplierRegister";
 import UserRegister from "../component/UserRegister";
 import Cards from "../component/Cards";
 import FinalMap from "../component/FinalMap";
+import Sidebar from "../component/componentes de prueba/Sidebar";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -22,6 +23,7 @@ export const Home = () => {
 	<div className="row">
 	<div className="col-md-6 offset-md-3">
 		<div className="map">
+		{/* <Sidebar/> */}	
 		<FinalMap />
 		</div>
 
