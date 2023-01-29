@@ -24,8 +24,7 @@ export const Navbar = () => {
 				</button>
 				<div className="collapse navbar-collapse gap-2 justify-content-md-end" id="navbarSupportedContent"> 
 			
-				{store.token != " " ? " "
-				   :<><Link to="/registro"><button type="button" className="btn btn-outline-success rounded-pill" >Registrarse</button></Link>
+				{store.token != " " ? " " :<><Link to="/registro"><button type="button" className="btn btn-outline-success rounded-pill" >Registrarse</button></Link>
 				   <Link to="/inicio-sesion"><button type="button" className="btn btn-outline-success rounded-pill">Iniciar sesión</button></Link></>}
 			</div>
   </div>

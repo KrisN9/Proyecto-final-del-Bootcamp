@@ -202,7 +202,7 @@ const UserRegister = () => {
           </div>
 
 
-          {/* pendiente probar modal
+           pendiente probar modal
 
           <div class="modal" tabindex="-1">
   <div class="modal-dialog">
@@ -212,7 +212,7 @@ const UserRegister = () => {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <p>Modal body text goes here.</p>
+        {  response.status == 200 }<p>Modal body text goes here.</p>   {/* aqui va un if ternario con lo que se quiere motrar, pero no se si response.status lo lea  */}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -220,7 +220,7 @@ const UserRegister = () => {
       </div>
     </div>
   </div>
-</div> */}
+</div> 
         </div>
       </form>
     </>
