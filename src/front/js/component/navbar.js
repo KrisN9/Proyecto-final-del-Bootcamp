@@ -22,14 +22,11 @@ export const Navbar = () => {
 				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 				<span className="navbar-toggler-icon"></span>  
 				</button>
-				
 				<div className="collapse navbar-collapse gap-2 justify-content-md-end" id="navbarSupportedContent"> 
 			
-				<Link to="/registro"><button type="button" className="btn btn-outline-success rounded-pill" >Registrarse</button></Link>
-			     <Link to="/inicio-sesion"><button type="button" className="btn btn-outline-success rounded-pill">Iniciar sesión</button></Link>
-				   
-			      
-			
+				{store.token != " " ? " "
+				   :<><Link to="/registro"><button type="button" className="btn btn-outline-success rounded-pill" >Registrarse</button></Link>
+				   <Link to="/inicio-sesion"><button type="button" className="btn btn-outline-success rounded-pill">Iniciar sesión</button></Link></>}
 			</div>
   </div>
 </nav>
