@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import "../../styles/sidebar.css";
 import Slide from "../component/slide";
 import ContactForm from "../component/ContactForm";
 import SupplierRegister from "../component/SupplierRegister";
@@ -23,7 +24,7 @@ export const Home = () => {
 	<div className="row">
 	<div className="col-md-6 offset-md-3">
 		<div className="map">
-		{/* <Sidebar/> */}	
+		{/* <Sidebar/> */}
 		<FinalMap />
 		</div>
 

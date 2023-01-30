@@ -11,8 +11,8 @@ const styles = {
 
 const FinalMap = () => {
   const [map, setMap] = useState(null);
-  const [latitude, setLatitude] = useState([]);
-  const [longitude, setLongitude] = useState([]);
+/*   const [latitude, setLatitude] = useState([]);
+  const [longitude, setLongitude] = useState([]); */
   const mapContainer = useRef(null);
 
   useEffect(() => {
