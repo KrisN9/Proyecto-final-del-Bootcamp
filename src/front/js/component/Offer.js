@@ -13,8 +13,8 @@ const Offer = () => {
   };
 
   const handleClick = (event) => {
-    setValue({...value, [event.target.name]:formData})
-    setformData("");
+    // setValue({...value, [event.target.name]:formData})
+    // setformData("");
     
     fetch(process.env.BACKEND_URL + "/api/offer",{
       method:"POST",
@@ -132,7 +132,7 @@ const Offer = () => {
           >
             Enviar
           </button>    {/* pendiente probar modal, no funciona el back */}
-          <div className="modal" tabindex="-1">
+          {/* <div className="modal" tabindex="-1">
       <div className="modal-dialog">
         <div className="modal-content">
           <div className="modal-header">
@@ -148,7 +148,7 @@ const Offer = () => {
       </div>
     </div>
   </div>
-</div>
+</div> */}
 
 
 

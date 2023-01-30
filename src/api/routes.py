@@ -80,7 +80,7 @@ def delete_user():
     
     return jsonify({"message": "User Deleted."}),200
 
-@api.route('/delete_supplier/<int:user_id>', methods=['DELETE'])  #emilinar proveedor por id 
+@api.route('/delete_supplier', methods=['DELETE'])  #emilinar proveedor por id 
 @jwt_required()   #pendiente ver si funciona 
 def delete_supplier():
     try: 
@@ -94,7 +94,7 @@ def delete_supplier():
     
     return jsonify({"message": "User Deleted."})
 
-@api.route('/delete_favorite/<id:favorite_id>', methods=['DELETE'])      #emilinar favorito del usuario.  
+@api.route('/delete_favorite/<int:favorite_id>', methods=['DELETE'])      #emilinar favorito del usuario.  
 @jwt_required()       #pendiente ver su funcionalidad, supongo que si! ¬¬
 def delete_favorite(favorite_id):
     try:
