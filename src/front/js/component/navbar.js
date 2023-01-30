@@ -1,16 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
-	const navigate = useNavigate
-	const {store , actions}=useContext(Context)
-	
-	
-	return (
+	const [login , setLogin]=useState(true);
+	const [register , setRegistere ]=useState(true);
 
+
+  const buttonLogin = () => {
+    setLogin(!login);
+  };
+
+	return (
+					
 		<nav className="navbar navbar-expand-lg navbar-dark text-dark">
 			  <div className="container">
 
@@ -23,10 +27,18 @@ export const Navbar = () => {
 				<span className="navbar-toggler-icon"></span>  
 				</button>
 				<div className="collapse navbar-collapse gap-2 justify-content-md-end" id="navbarSupportedContent"> 
-			
-				{ localStorage.getItem == store.token ? " " :
-				<><Link to="/registro"><button type="button" className="btn btn-outline-success rounded-pill" >Registrarse</button></Link>
-				   <Link to="/inicio-sesion"><button type="button" className="btn btn-outline-success rounded-pill">Iniciar sesión</button></Link></>}
+		        <>
+				<Link to="/registro"> 
+				{localStorage.getItem('token') != "" ? <button type="button" className="btn btn-outline-success rounded-pill" >Registrarse</button>
+				 : " "}
+				
+				
+				</Link>
+				   <Link to="/inicio-sesion">{localStorage.getItem('token') ? " " : <button type="button" className="btn btn-outline-success rounded-pill " onClick={buttonLogin} >
+				   iniciar sesión 
+				   </button> }
+				   </Link>
+				   </>
 			</div>
   </div>
 </nav>
@@ -34,3 +46,8 @@ export const Navbar = () => {
 	);
 };
 
+// {console.log("Header localStorage.getItem isLoggedIn is :" + localStorage.getItem("isLoggedIn"))
+// 								}
+// 								{
+// 								localStorage.getItem("isLoggedIn") === true ? "Logout" : "Login"
+// 								}

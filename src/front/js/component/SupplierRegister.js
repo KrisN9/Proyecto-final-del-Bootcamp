@@ -143,7 +143,7 @@ const SupplierRegister = () => {
             <a href="#" onClick={password}>
               <i
                 className={shownPassword ? "far fa-eye" : "far fa-eye-slash"}
-              ></i>{" "}
+              ></i>
             </a>
             <label htmlFor="floatingInput">Contraseña*</label>
           </div>
