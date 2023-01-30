@@ -35,7 +35,9 @@ const FinalMap = () => {
     });
     console.log(ofertas);
     ofertas.map((oferta) => {
-      new mapboxgl.Marker({ color: "red" })
+      var el = document.createElement('div');
+      el.className = 'marker';
+      new mapboxgl.Marker(el)
         .setLngLat([oferta.longitude, oferta.latitude])
         .setPopup(
           new mapboxgl.Popup({ offset: 10, className: "apple-popup" }).setHTML(`

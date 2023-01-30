@@ -33,20 +33,10 @@ footer {
   position: relative;
 }
 
-/* .button {
-  transition-duration: 0.4s;
-  background-color: ;
-}
-
-.button:hover {
-  background-color: red;
-  color: white;
-} */
-
-/* .marker {
+.marker {
   border: none;
   cursor: pointer;
   height: 56px;
   width: 56px;
   background-image: url(https://docs.mapbox.com/help/demos/building-a-store-locator/marker.png);
-} */
+}
