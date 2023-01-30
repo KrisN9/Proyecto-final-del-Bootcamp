@@ -23,8 +23,8 @@ export const Home = () => {
 	
 	<div className="row">
 	<div className="col-md-6 offset-md-3">
-		<div className="map">
 		{/* <Sidebar/> */}
+		<div className="map">
 		<FinalMap />
 		</div>
 

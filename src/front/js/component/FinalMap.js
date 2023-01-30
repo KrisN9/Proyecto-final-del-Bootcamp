@@ -37,14 +37,14 @@ const FinalMap = () => {
       new mapboxgl.Marker({ color: "red" })
         .setLngLat([oferta.longitude, oferta.latitude])
         .setPopup(
-          new mapboxgl.Popup({ offset: 10 }).setHTML(`
+          new mapboxgl.Popup({ offset: 10, className: "apple-popup" }).setHTML(`
           <img src=${oferta.url_image} width="60" height="60">,
           <br></br>
           ${oferta.title},
           <br></br> 
           ${oferta.price},
           <br></br>
-          <button>Me gusta</button>`)
+          <button class=" btn btn-outline-danger btn-sm">Me gusta</button>`)
         )
         .addTo(map);
     });

@@ -24,18 +24,28 @@ footer {
   max-height: 400px;
 }
 
-.mapboxgl-popup-content {
+.apple-popup .mapboxgl-popup-content {
   font: 400 12px/15px "Source Sans Pro", "Helvetica Neue", sans-serif;
-  padding: 0;
+  padding: 2;
   width: 200px;
-  height: 175px;
+  height: 180px;
   position: relative;
 }
 
-.marker {
+/* .button {
+  transition-duration: 0.4s;
+  background-color: ;
+}
+
+.button:hover {
+  background-color: red;
+  color: white;
+} */
+
+/* .marker {
   border: none;
   cursor: pointer;
   height: 56px;
   width: 56px;
   background-image: url(https://docs.mapbox.com/help/demos/building-a-store-locator/marker.png);
-}
+} */
