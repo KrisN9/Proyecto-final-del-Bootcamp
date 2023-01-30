@@ -22,6 +22,7 @@ footer {
 .mapboxgl-popup {
   max-width: 200px;
   max-height: 400px;
+  background-color: orange;
 }
 
 .apple-popup .mapboxgl-popup-content {

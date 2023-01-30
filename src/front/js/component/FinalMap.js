@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
+import Sidebar from "./componentes de prueba/Sidebar";
 "../../styles/index.css";
 
 const styles = {
@@ -38,7 +39,7 @@ const FinalMap = () => {
         .setLngLat([oferta.longitude, oferta.latitude])
         .setPopup(
           new mapboxgl.Popup({ offset: 10, className: "apple-popup" }).setHTML(`
-          <img src=${oferta.url_image} width="60" height="60">,
+          <img src=${oferta.url_image} width="65" height="65">,
           <br></br>
           ${oferta.title},
           <br></br> 
