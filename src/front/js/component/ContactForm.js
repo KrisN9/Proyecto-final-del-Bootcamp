@@ -2,14 +2,17 @@ import React, { useState } from "react";
 
 
 const ContactForm = () => {
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState({ });
+  const [check, setCheck] = useState(true);
+  
+
   
   const handleChange =(event) => {
     setFormData({...formData, [event.target.name]: event.target.value });
   };
   const handleSubmit =(event)=>{
     event.preventDefault();   
-   
+    setFormData({});  // hay que colocarlo despues del fetch 
   }
   return (
     <>
@@ -27,9 +30,10 @@ const ContactForm = () => {
             className="form-control"
             id="floatingName"
             placeholder="Nombre y Apellidos"
-            name="Nombre y Apellidos"
+            name="name"
             onChange={handleChange}
             required
+            value ={formData.name}
             
           />
           <label htmlFor="floatingName">Nombre y Apellidos*</label>
@@ -40,9 +44,10 @@ const ContactForm = () => {
             className="form-control"
             id="floatingInput"
             placeholder="name@example.com"
-            name=" Dirección de correo electrónico"
+            name="email"
             onChange={handleChange}
             required
+            value ={formData.email}
           />
           <label htmlFor="floatingInput">
             Dirección de correo electrónico*
@@ -53,9 +58,10 @@ const ContactForm = () => {
             type="phone-number"
             className="form-control"
             id="floatingNumber"
-            placeholder="Número de teléfono"
-            name="Número de teléfono"
+            placeholder="telephone_number"
+            name="telephone_number"
             onChange={handleChange}
+            value ={formData.telephone_number}
           />
           <label htmlFor="floatingNumber">Número de teléfono</label>
         </div>
@@ -69,6 +75,7 @@ const ContactForm = () => {
             name="Mensaje"
             onChange={handleChange}
             required
+            value ={formData.mensaje}
           ></textarea>
 
           <label htmlFor="exampleFormControlMessage" className="form-label">
@@ -84,16 +91,34 @@ const ContactForm = () => {
             id="defaultCheck1"
             required
           />
-          <label className="form-check-label" htmlFor="defaultCheck1">
+          <label className="form-check-label" htmlFor="defaultCheck1" onClick={() => setCheck()}>
             He leído y consiento al contenido de la Información Legal y de
             Protección de Datos.
           </label>
         </div>
         <div className="col-12 mb-3">
-          <button type="submit" className="btn btn-danger">
+          <button type="submit" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleSubmit}>
             Enviar
           </button>
+          <div class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Modal body text goes here.</p>   
+       </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>   
         </div>
+          
         
       </div>
       </form>

@@ -1,21 +1,11 @@
-import React,{useState, useEffect} from "react";
-import Offer from "./Offer";
-import { Context } from "../store/appContext"; 
-import { useContext } from "react";
-import OfferCards from "./OfferCards";
-import Supplier from "./Supplier";
-import { useNavigate } from "react-router-dom";
-/* import SupplierEdit from "./componentes de prueba/SupplierEdit"; */
-
-
 const PrivateAreaSupplier=()=>{
   const navigate = useNavigate();
-  const {store , actions}= useContext(Context)
+  // const {store , actions}= useContext(Context)
 
-          const SessionOut =()=>{
-            actions.logOut()
-            navigate("/");
-          }
+  //         const SessionOut =()=>{
+  //           actions.logOut()
+  //           navigate("/");
+  //         }
 
 return (
     <div className="container mt-3">
@@ -31,9 +21,7 @@ return (
   <li className="nav-item" role="presentation">
     <button className="nav-link" id="offer" data-bs-toggle="tab" data-bs-target="#offer-pane" type="button" role="tab" aria-controls="offer-pane" aria-selected="false">Añadir Ofertas</button>
   </li>
-  <li className="nav-item" role="presentation">
-    <button className="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Cerrar Sesión</button>
-  </li>
+  
   
  
 </ul>
@@ -43,15 +31,9 @@ return (
   </div>
   <div className="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     
-    <OfferCards /> 
-    
+    <OfferCards />   
   </div>
-  <div className="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-    <div>
-    <p className="fs-3 mt-4">Estás seguro de que te quieres ir ? </p>
-     <button type="button" onClick={SessionOut} className="btn btn-outline-dark mt-5 mb-5"> Cerrar Sesión </button>
-    </div>
-  </div>
+  
 
   <div className="tab-pane fade" id="offer-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
     <div>

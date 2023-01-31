@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { Context } from "../store/appContext";
+import { Context } from "../store/appContext"; 
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
-	const [login , setLogin]=useState(true);
-	const [register , setRegistere ]=useState(true);
+	const navigate = useNavigate();
+    const {store , actions}= useContext(Context)
 
-
-  const buttonLogin = () => {
-    setLogin(!login);
-  };
+          const SessionOut =()=>{
+            actions.logOut()
+            navigate("/");
+          }
+  
 
 	return (
 					
@@ -27,27 +28,24 @@ export const Navbar = () => {
 				<span className="navbar-toggler-icon"></span>  
 				</button>
 				<div className="collapse navbar-collapse gap-2 justify-content-md-end" id="navbarSupportedContent"> 
-		        <>
-				<Link to="/registro"> 
-				{localStorage.getItem('token') != "" ? <button type="button" className="btn btn-outline-success rounded-pill" >Registrarse</button>
-				 : " "}
-				
-				
+		        
+				{localStorage.getItem('token') ? <> 
+				<Link  to={ localStorage.getItem("type")== "user" ?"/area-privada-usuario" : "/area-privada-proveedor"}> 
+				   
+				</Link> 
+				  <Link class="btn btn-outline-success rounded-pill" to="/" onClick={SessionOut}>Cerra sesión</Link>
+				</> 
+				 :<>
+				<Link className="btn btn-outline-success rounded-pill " to="/registro"> 
+				   Registrarse
 				</Link>
-				   <Link to="/inicio-sesion">{localStorage.getItem('token') ? " " : <button type="button" className="btn btn-outline-success rounded-pill " onClick={buttonLogin} >
+				   <Link className="btn btn-outline-success rounded-pill " to="/inicio-sesion">
 				   iniciar sesión 
-				   </button> }
-				   </Link>
-				   </>
-			</div>
-  </div>
-</nav>
-		
+				   </Link> </>
+     				 }
+			      </div>
+				</div>
+				</nav>
+						
 	);
 };
-
-// {console.log("Header localStorage.getItem isLoggedIn is :" + localStorage.getItem("isLoggedIn"))
-// 								}
-// 								{
-// 								localStorage.getItem("isLoggedIn") === true ? "Logout" : "Login"
-// 								}

@@ -22,7 +22,7 @@ const SupplierRegister = () => {
   };
 
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]: event.target.value });
+    setFormData({ ...formData, [event.target.name]:formData});
   };
 
   useEffect(() => {
@@ -69,7 +69,7 @@ const SupplierRegister = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="text-center mt-3">
+        <div className="text-center mt-3 ">
           <p className="fs-1 fw-bolder">Registro de Proveedores</p>{" "}
           {/* falta corregir estilo de la letra*/}
           <p className="fs-3 fst-italic">
@@ -77,7 +77,7 @@ const SupplierRegister = () => {
           </p>{" "}
           {/* falta corregir estilo de la letra*/}
         </div>
-        <div className="container bg-warning px-3 py-3 mt-2 mb-5">
+        <div className="container bg-warning col-md-8 px-3 py-3 mt-2 mb-5">
           <div className="form-floating mb-3">
             <input
               type="company-name"
@@ -222,7 +222,7 @@ const SupplierRegister = () => {
             </label>
           </div>
           <div className="col-12 mb-3">
-            <button type="submit" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button type="submit" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleSubmit}>
               Enviar
             </button>
           </div>

@@ -8,14 +8,11 @@ const Offer = () => {
   const handleChange = (event) => { 
     setFormData({...formData, [event.target.name]: event.target.value });
   };
-  const handleSubmit = (event) => {
-    event.preventDefault();
-  };
-
+  
   const handleClick = (event) => {
-    // setValue({...value, [event.target.name]:formData})
-    // setformData("");
-    
+    setValue({...value, [event.target.name]:formData})
+
+    event.preventDefault();
     fetch(process.env.BACKEND_URL + "/api/offer",{
       method:"POST",
       headers: {
@@ -32,8 +29,11 @@ const Offer = () => {
     })
     .then((response) => {
       console.log(response);
+      
     });
+    setFormData({ });  // pendiente de revissaar 
   };
+
 
   return (
     <form onSubmit={handleSubmit}>
