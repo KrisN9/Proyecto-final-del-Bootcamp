@@ -12,7 +12,7 @@ const styles = {
 
 const FinalMap = () => {
   const [map, setMap] = useState(null);
-  const [city, setCity] = useState([]);
+  /* const [city, setCity] = useState([]); */
   const mapContainer = useRef(null);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const FinalMap = () => {
       });
   }, [map]);
 
-  const handleChange = (event) => {
+/*   const handleChange = (event) => {
     useEffect(() => {
       fetch(process.env.BACKEND_URL + "/api/city")
       .then((response) => response.json())
@@ -32,7 +32,7 @@ const FinalMap = () => {
         setCity(response);
       });
     }, []);
-  }
+  } */
 
   mapboxgl.accessToken =
     "pk.eyJ1Ijoia3Jpc245IiwiYSI6ImNsZDV4Y2x0ZTByOHIzb2tianpoZ2xmeWgifQ.M8N3QZtBSFlC_MPoI-PVTQ";
