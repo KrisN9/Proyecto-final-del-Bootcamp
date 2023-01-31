@@ -33,14 +33,14 @@ export const Navbar = () => {
 				<Link  to={ localStorage.getItem("type")== "user" ?"/area-privada-usuario" : "/area-privada-proveedor"}> 
 				   
 				</Link> 
-				  <Link className="btn btn-outline-success rounded-pill" to="/" onClick={SessionOut}>Cerra sesión</Link>
+				  <Link className="btn btn-outline-success rounded-pill" to="/" onClick={SessionOut}>Cerrar sesión</Link>
 				</> 
 				 :<>
 				<Link className="btn btn-outline-success rounded-pill " to="/registro"> 
 				   Registrarse
 				</Link>
 				   <Link className="btn btn-outline-success rounded-pill " to="/inicio-sesion">
-				   iniciar sesión 
+				   Iniciar sesión 
 				   </Link> </>
      				 }
 			      </div>
