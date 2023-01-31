@@ -23,16 +23,14 @@ const FinalMap = () => {
       });
   }, [map]);
 
-/*   const handleChange = (event) => {
-    useEffect(() => {
+/*     useEffect(() => {
       fetch(process.env.BACKEND_URL + "/api/city")
       .then((response) => response.json())
       .then((response) => {
         console.log(response);
         setCity(response);
       });
-    }, []);
-  } */
+    }, []); */
 
   mapboxgl.accessToken =
     "pk.eyJ1Ijoia3Jpc245IiwiYSI6ImNsZDV4Y2x0ZTByOHIzb2tianpoZ2xmeWgifQ.M8N3QZtBSFlC_MPoI-PVTQ";
@@ -82,7 +80,16 @@ const FinalMap = () => {
   };
 
   return (
-  <div ref={(el) => (mapContainer.current = el)} style={styles} id="map"></div>);
+  <div ref={(el) => (mapContainer.current = el)} style={styles} id="map">
+    {/* <div id="left" class="sidebar flex-center left collapsed">
+      <div class="sidebar-content rounded-rect flex-center">
+      Ofertas: 
+        <div class="sidebar-toggle rounded-rect left" onclick="toggleSidebar('left')">
+        &rarr;
+        </div>
+      </div>
+    </div> */}
+  </div>);
 };
 
 export default FinalMap;
