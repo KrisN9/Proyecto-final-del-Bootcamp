@@ -12,8 +12,7 @@ const styles = {
 
 const FinalMap = () => {
   const [map, setMap] = useState(null);
-/*   const [latitude, setLatitude] = useState([]);
-  const [longitude, setLongitude] = useState([]); */
+  const [city, setCity] = useState([]);
   const mapContainer = useRef(null);
 
   useEffect(() => {
@@ -23,6 +22,17 @@ const FinalMap = () => {
         if (!map) initializeMap({ setMap, mapContainer, ofertas: response });
       });
   }, [map]);
+
+/*   const handleChange = (event) => {
+    useEffect(() => {
+      fetch(process.env.BACKEND_URL + "/api/city")
+      .then((response) => response.json())
+      .then((response) => {
+        console.log(response);
+        setCity(response);
+      });
+    }, []);
+  } */
 
   mapboxgl.accessToken =
     "pk.eyJ1Ijoia3Jpc245IiwiYSI6ImNsZDV4Y2x0ZTByOHIzb2tianpoZ2xmeWgifQ.M8N3QZtBSFlC_MPoI-PVTQ";
@@ -47,9 +57,25 @@ const FinalMap = () => {
           <br></br> 
           ${oferta.price},
           <br></br>
-          <button class=" btn btn-outline-danger btn-sm">Me gusta</button>`)
+          <button class=" btn btn-outline-danger btn-sm">Me gusta!</button>`)
         )
         .addTo(map);
+
+        function toggleSidebar(id) {
+          const elem = document.getElementById(id);
+          // Add or remove the 'collapsed' CSS class from the sidebar element.
+          // Returns boolean "true" or "false" whether 'collapsed' is in the class list.
+          const collapsed = elem.classList.toggle('collapsed');
+          const padding = {};
+          // 'id' is 'right' or 'left'. When run at start, this object looks like: '{left: 300}';
+          padding[id] = collapsed ? 0 : 300; // 0 if collapsed, 300 px if not. This matches the width of the sidebars in the .sidebar CSS class.
+          // Use `map.easeTo()` with a padding option to adjust the map's center accounting for the position of sidebars.
+          map.easeTo({
+          padding: padding,
+          duration: 1000 // In ms. This matches the CSS transition duration property.
+          });
+          }
+        
     });
 
     const geocoder = new MapboxGeocoder({
@@ -61,17 +87,28 @@ const FinalMap = () => {
       mapboxgl: mapboxgl,
     });
 
-    map.addControl(geocoder);
+    /* map.addControl(geocoder); */
     map.addControl(new mapboxgl.FullscreenControl());
     map.addControl(new mapboxgl.NavigationControl());
 
     map.on("load", () => {
       setMap(map);
+      toggleSidebar('left');
       map.resize();
     });
   };
 
-  return <div ref={(el) => (mapContainer.current = el)} style={styles} />;
+  return (
+  <div ref={(el) => (mapContainer.current = el)} style={styles} id="map">
+    <div id="left" class="sidebar flex-center left collapsed">
+        <div class="sidebar-content rounded-rect flex-center">
+        Ubicaciones:
+        <div class="sidebar-toggle rounded-rect left" onclick="toggleSidebar('left')">
+        &rarr;
+        </div>
+        </div>
+    </div>
+  </div>);
 };
 
 export default FinalMap;
