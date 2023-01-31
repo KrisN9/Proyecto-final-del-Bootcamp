@@ -60,6 +60,7 @@ const FinalMap = () => {
           <button class=" btn btn-outline-danger btn-sm">Me gusta!</button>`)
         )
         .addTo(map);
+      });    
 
     function toggleSidebar(id) {
       const elem = document.getElementById(id);
@@ -94,8 +95,7 @@ const FinalMap = () => {
       map.resize();
       toggleSidebar('left');
     });
-  });
-};
+  };
 
   return (
   <div ref={(el) => (mapContainer.current = el)} style={styles} id="map">
