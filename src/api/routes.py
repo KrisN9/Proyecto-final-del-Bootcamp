@@ -55,7 +55,14 @@ def all_offers():
     data = [offer.serialize() for offer in offers]
     return jsonify(data), 200
 
+@api.route('offer/<int:offer_id>', methods=['GET'])       #Se obtienen datos de una oferta por id
+def get_offer(offer_id):
+    try:
+        offer = Offer.query.filter_by(offer_id=offer_id).first()
+    except Exception:
+        return jsonify({"msg": "Offer doesn't exist"}), 400
 
+    return jsonify(offer.serialize()), 200
 
 @api.route('/city', methods=['GET'])  #se obtiene todas las ciudades
 def get_cities():
@@ -242,7 +249,7 @@ def update_supplier(supplier_id):
 
     db.session.commit()
        
-    return jsonify(user.serialize()), 200
+    return jsonify(supplier.serialize()), 200
 
 @api.route('/offer/<int:offer_id>', methods=['PUT']) #modificar datos de oferta
 def update_offer(offer_id):
