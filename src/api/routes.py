@@ -188,14 +188,19 @@ def create_offer():
     return jsonify({"msg":"Offer created"}),200
 
 @api.route('/favorite', methods=['POST']) #añadir un nuevo favorito
+@jwt_required()
 def add_favorite():
-
     data = request.json
+    user_id = get_jwt_identity()
     try:
-     favorite = Favorite.query.filter_by(id_user=data['id_user'], id_offer=data['id_offer']).first()
+     favorite = Favorite(id_user=data['id_user'], id_offer=data['id_offer'])
+     db.session.add(favorite)
+     db.session.commit()
     except Exception as e: 
-        return jsonify(data), 200
-    return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400
+        print(e)
+        return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400
+
+    return jsonify({"msg": "Saved favorite"}), 200
 
 
 @api.route('/user/<int:user_id>', methods=['PUT']) #modificación de datos de usuario
