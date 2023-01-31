@@ -21,7 +21,7 @@ export const Navbar = () => {
 
    				<Link to="/">
 					<span className="navbar-brand mb-0 h1">
-					<img src="https://www.barrabes.com/images/home/logo_flash.png?v=2" alt="Logo" width="100" height="50" className="d-inline-block align-text-top"/>
+					<img src="https://i.postimg.cc/52Qb2x3f/Promo-Food.jpg" alt="Logo" width="100" height="50" className="d-inline-block align-text-top"/>
 					</span>
 				</Link>
 				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
