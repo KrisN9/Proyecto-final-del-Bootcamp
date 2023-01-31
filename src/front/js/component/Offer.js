@@ -3,15 +3,13 @@ import { useState } from "react";
 
 const Offer = () => { 
   const [formData, setFormData] = useState([]);
-  const [value, setValue]=useState([]);
+ 
 
   const handleChange = (event) => { 
     setFormData({...formData, [event.target.name]: event.target.value });
   };
   
   const handleClick = (event) => {
-    setValue({...value, [event.target.name]:formData})
-
     event.preventDefault();
     fetch(process.env.BACKEND_URL + "/api/offer",{
       method:"POST",
@@ -25,7 +23,7 @@ const Offer = () => {
       setFormData({});
     })
     .then((response) => {
-      console.log(response);
+      setFormData(response);
       
     });
    
@@ -126,7 +124,7 @@ const Offer = () => {
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div className="modal-body">
-      <p className="fs-4 text-danger"> Tu oferta ha sido creada con exito </p>
+      <p className="fs-4 text-danger"> {   } </p>
       </div>
       <div className="modal-footer">
         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
