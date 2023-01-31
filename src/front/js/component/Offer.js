@@ -21,15 +21,12 @@ const Offer = () => {
       },
       body: JSON.stringify(formData),
     }).then((response) => {
-      if (response.status == 200){
-      }else{
-      }response.json();
-      
-     
+      if (response.status == 200) response.json();
+      setFormData({});
     })
     .then((response) => {
       console.log(response);
-      setFormData({});
+      
     });
    
   };
@@ -120,26 +117,24 @@ const Offer = () => {
             data-bs-toggle="modal" data-bs-target="#exampleModal"
           >
             Enviar
-          </button>    {/* pendiente probar modal, no funciona el back */}
-          {/* <div className="modal" tabindex="-1">
-      <div className="modal-dialog">
-        <div className="modal-content">
-          <div className="modal-header">
-        <h5 className="modal-title">Modal title</h5>
+          </button>    
+
+          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div className="modal-dialog">
+    <div className="modal-content">
+      <div className="modal-header">
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div className="modal-body">
-        <p>Modal body text goes here.</p>
+      <p className="fs-4 text-danger"> Tu oferta ha sido creada con exito </p>
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" >Aceptar</button>
       </div>
     </div>
   </div>
-</div> */}
-
-
+</div>
 
         </div>
       </div>
