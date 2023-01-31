@@ -193,9 +193,9 @@ def add_favorite():
     data = request.json
     user_id = get_jwt_identity()
     try:
-     favorite = Favorite(id_user=data['id_user'], id_offer=data['id_offer'])
-     db.session.add(favorite)
-     db.session.commit()
+        favorite = Favorite(id_user=user_id, id_offer=data['id_offer'])
+        db.session.add(favorite)
+        db.session.commit()
     except Exception as e: 
         print(e)
         return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400

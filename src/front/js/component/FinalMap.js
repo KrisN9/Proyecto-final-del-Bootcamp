@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Sidebar from "./componentes de prueba/Sidebar";
-"../../styles/index.css";
+("../../styles/index.css");
 
 const styles = {
   width: "100%",
@@ -15,22 +15,36 @@ const FinalMap = () => {
   /* const [city, setCity] = useState([]); */
   const mapContainer = useRef(null);
 
+  const print = () => {
+    console.log("446645");
+  };
+
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/offer")
       .then((response) => response.json())
       .then((response) => {
-        if (!map) initializeMap({ setMap, mapContainer, ofertas: response });
+        if (!map) {
+          initializeMap({ setMap, mapContainer, ofertas: response });
+          const buttons = document.querySelectorAll(".btn-map");
+          console.log(buttons);
+          buttons.forEach((element) => {
+            console.log(element);
+            element.addEventListener("click", () => {
+              console.log("651651164");
+            });
+          });
+        } else {
+          const buttons = document.querySelectorAll(".btn-map");
+          console.log(buttons);
+          buttons.forEach((element) => {
+            console.log(element);
+            element.addEventListener("click", () => {
+              console.log("651651164");
+            });
+          });
+        }
       });
   }, [map]);
-
-/*     useEffect(() => {
-      fetch(process.env.BACKEND_URL + "/api/city")
-      .then((response) => response.json())
-      .then((response) => {
-        console.log(response);
-        setCity(response);
-      });
-    }, []); */
 
   mapboxgl.accessToken =
     "pk.eyJ1Ijoia3Jpc245IiwiYSI6ImNsZDV4Y2x0ZTByOHIzb2tianpoZ2xmeWgifQ.M8N3QZtBSFlC_MPoI-PVTQ";
@@ -43,8 +57,8 @@ const FinalMap = () => {
     });
     console.log(ofertas);
     ofertas.map((oferta) => {
-      var el = document.createElement('div');
-      el.className = 'marker';
+      var el = document.createElement("div");
+      el.className = "marker";
       new mapboxgl.Marker(el)
         .setLngLat([oferta.longitude, oferta.latitude])
         .setPopup(
@@ -55,10 +69,14 @@ const FinalMap = () => {
           <br></br> 
           ${oferta.price},
           <br></br>
-          <button class=" btn btn-outline-danger btn-sm">Me gusta!</button>`)
+          ${
+            localStorage.getItem("token")
+              ? `<button class="btn-map btn btn-outline-danger btn-sm">Me gusta!</button>`
+              : ""
+          }`)
         )
         .addTo(map);
-      });    
+    });
 
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
@@ -80,16 +98,9 @@ const FinalMap = () => {
   };
 
   return (
-  <div ref={(el) => (mapContainer.current = el)} style={styles} id="map">
-    {/* <div id="left" class="sidebar flex-center left collapsed">
-      <div class="sidebar-content rounded-rect flex-center">
-      Ofertas: 
-        <div class="sidebar-toggle rounded-rect left" onclick="toggleSidebar('left')">
-        &rarr;
-        </div>
-      </div>
-    </div> */}
-  </div>);
+    <div ref={(el) => (mapContainer.current = el)} style={styles} id="map">
+    </div>
+  );
 };
 
 export default FinalMap;

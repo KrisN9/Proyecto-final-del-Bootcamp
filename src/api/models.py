@@ -33,24 +33,14 @@ class Favorite(db.Model):
     user= db.relationship('User', backref='user', lazy=True) 
     id_offer =db.Column(db.Integer, db.ForeignKey('offer.id'),nullable=False)
     offer= db.relationship('Offer', backref='offer', lazy=True)
-    title=db.Column(db.String(250),unique=False, nullable=False)
-    company_name=db.Column(db.String(80),unique=False, nullable=False)
-    price= db.Column(db.Float, default= 0,nullable=False )
-    url_image=db.Column(db.String(250), nullable=False)
-    url= db.Column(db.String(250), nullable=False)
 
     def __repr__(self):
-        return f'<Favorite {self.email}>'
+        return f'<Favorite {self.id}>'
 
     def serialize(self):
         return {
             "user": self.id_user,
-            "offer": self.id_offer,
-            "title":self.title,
-            "url_image":self.url_image,
-            "company_name":self.company_name,
-            "url":self.url,
-            "price":self.price
+            "offer": self.id_offer
             
         }
 
