@@ -85,10 +85,6 @@ footer {
   right: -1.5em;
   }
    
-  .sidebar-toggle.right {
-  left: -1.5em;
-  }
-   
   .sidebar-toggle:hover {
   color: #0aa1cf;
   cursor: pointer;
