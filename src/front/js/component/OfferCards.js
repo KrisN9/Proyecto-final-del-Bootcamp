@@ -40,7 +40,7 @@ const OfferCards =()=>{
 
   return (
 
-    <div className="container col-12 col-md-6 mt-4">
+    <div className="container col-12 col-md-6 mt-4 mb-3">
       <div className="mt-3"><p className="text-center fst-italic fs-3 text-danger"> Tienes {offers.length} ofertas.</p>
       {
          offers.map((offer, index)=>{

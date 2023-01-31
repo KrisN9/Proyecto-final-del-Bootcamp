@@ -23,7 +23,7 @@ const Supplier =()=>{
    
 return (
 
-    <div className="text-md-start mt-3 mb-4 fs-4 fw-semibold">
+    <div className=" text-md-start mt-3 mb-4 fs-4 fw-semibold">
             
             <ul>
              <li><p className="fst-italic">Nombre: {supplier.name}</p></li>

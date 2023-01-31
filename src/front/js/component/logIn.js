@@ -245,7 +245,7 @@ const LogIn = () => {
                         type="button"
                         onClick={handleClickSupplier}
                         className="btn btn-outline-warning"
-                        ata-bs-dismiss="modal"
+                        data-bs-dismiss="modal"
                       >
                         Continuar
                       </button>

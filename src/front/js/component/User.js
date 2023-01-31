@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
 
 const User =()=>{
 
@@ -22,7 +21,7 @@ const User =()=>{
    
 return (
 
-    <div className="text-md-start mt-3 mb-4 fs-4 fw-semibold">
+    <div className="text-md-start mt-3 mb-4 fs-4 fw-semibold ">
            
                 <ul>
                 <li><p className="fst-italic">Nombre: {user.name}</p></li>

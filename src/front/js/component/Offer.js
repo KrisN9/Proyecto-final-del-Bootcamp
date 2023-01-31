@@ -29,14 +29,14 @@ const Offer = () => {
     })
     .then((response) => {
       console.log(response);
-      
+      setFormData({});
     });
-    setFormData({ });  // pendiente de revissaar 
+   
   };
-
+  
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleClick}>
       <div className="text-center">
         <p className="fs-1 fw-bolder">Añade tu oferta</p>
       </div>
@@ -53,17 +53,7 @@ const Offer = () => {
           />
           <label htmlFor="floatingName">Nombre de la empresa </label>
         </div>
-        <div className="form-floating mb-3">
-          <input
-            type="name"
-            className="form-control"
-            id="floatingName"
-            placeholder="Nombre del proveedor "
-            name="name"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingName">Nombre del proveedor </label>
-        </div>
+      
         <div className="form-floating mb-3">
           <input
             type="text"
@@ -95,7 +85,6 @@ const Offer = () => {
             placeholder="url"
             name="url"
             onChange={handleChange}
-           
            
           />
           <label htmlFor="floatingPrice">Dirección página web</label>
@@ -168,3 +157,15 @@ export default Offer;
 //  type="file"
 //  onChange={handleChange}/>
 // </div>
+
+{/* <div className="form-floating mb-3">
+          <input
+            type="name"
+            className="form-control"
+            id="floatingName"
+            placeholder="Nombre del proveedor "
+            name="name"
+            onChange={handleChange}
+          />
+          <label htmlFor="floatingName">Nombre del proveedor </label>
+        </div> */}

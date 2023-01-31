@@ -177,7 +177,7 @@ def create_offer():
     data=request.json
     supplier_id = get_jwt_identity()
     try:
-       offer= Offer(id_supplier=supplier_id,name=data['name'],company_name=data['company_name'], 
+       offer= Offer(id_supplier=supplier_id,company_name=data['company_name'], 
        url=data['url'], url_image=data['url_image'], title=data['title'], price=data['price'], location=data['location'])  
        db.session.add(offer)
        db.session.commit()
