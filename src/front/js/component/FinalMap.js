@@ -61,22 +61,20 @@ const FinalMap = () => {
         )
         .addTo(map);
 
-        function toggleSidebar(id) {
-          const elem = document.getElementById(id);
-          // Add or remove the 'collapsed' CSS class from the sidebar element.
-          // Returns boolean "true" or "false" whether 'collapsed' is in the class list.
-          const collapsed = elem.classList.toggle('collapsed');
-          const padding = {};
-          // 'id' is 'right' or 'left'. When run at start, this object looks like: '{left: 300}';
-          padding[id] = collapsed ? 0 : 300; // 0 if collapsed, 300 px if not. This matches the width of the sidebars in the .sidebar CSS class.
-          // Use `map.easeTo()` with a padding option to adjust the map's center accounting for the position of sidebars.
-          map.easeTo({
-          padding: padding,
-          duration: 1000 // In ms. This matches the CSS transition duration property.
-          });
-          }
-        
-    });
+    function toggleSidebar(id) {
+      const elem = document.getElementById(id);
+      // Add or remove the 'collapsed' CSS class from the sidebar element.
+      // Returns boolean "true" or "false" whether 'collapsed' is in the class list.
+      const collapsed = elem.classList.toggle('collapsed');
+      const padding = {};
+      // 'id' is 'right' or 'left'. When run at start, this object looks like: '{left: 300}';
+      padding[id] = collapsed ? 0 : 300; // 0 if collapsed, 300 px if not. This matches the width of the sidebars in the .sidebar CSS class.
+      // Use `map.easeTo()` with a padding option to adjust the map's center accounting for the position of sidebars.
+      map.easeTo({
+      padding: padding,
+      duration: 1000 // In ms. This matches the CSS transition duration property.
+      });
+      }
 
     const geocoder = new MapboxGeocoder({
       accessToken: mapboxgl.accessToken,
@@ -93,20 +91,21 @@ const FinalMap = () => {
 
     map.on("load", () => {
       setMap(map);
-      toggleSidebar('left');
       map.resize();
+      toggleSidebar('left');
     });
-  };
+  });
+};
 
   return (
   <div ref={(el) => (mapContainer.current = el)} style={styles} id="map">
-    <div id="left" class="sidebar flex-center left collapsed">
-        <div class="sidebar-content rounded-rect flex-center">
+    <div id="left" className="sidebar flex-center left collapsed">
+      <div className="sidebar-content rounded-rect flex-center">
         Ubicaciones:
-        <div class="sidebar-toggle rounded-rect left" onclick="toggleSidebar('left')">
+        <div className="sidebar-toggle rounded-rect left" onclick="toggleSidebar('left')">
         &rarr;
         </div>
-        </div>
+      </div>
     </div>
   </div>);
 };
