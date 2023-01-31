@@ -17,11 +17,11 @@ export const Navbar = () => {
 	return (
 					
 		<nav className="navbar navbar-expand-lg navbar-dark text-dark">
-			  <div className="container">
+			  <div className="container ">
 
    				<Link to="/">
 					<span className="navbar-brand mb-0 h1">
-					<img src="https://i.postimg.cc/52Qb2x3f/Promo-Food.jpg" alt="Logo" width="100" height="50" className="d-inline-block align-text-top"/>
+					<img src="https://i.postimg.cc/C12Xn8J5/Promo-Food.png" alt="Logo" width="70" height="70" className="d-inline-block align-text-top rounded-circle"/>
 					</span>
 				</Link>
 				<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
