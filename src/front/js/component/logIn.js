@@ -92,7 +92,7 @@ const LogIn = () => {
               >
                 <div className="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
                   <div className="modal-content">
-                    {" "}
+                   
                     {/*modal para usuario*/}
                     <div className="modal-header">
                       <h1
@@ -101,12 +101,12 @@ const LogIn = () => {
                       >
                         Usuario
                       </h1>
-                      <button
+                      {/* <button
                         type="button"
                         className="btn-close"
                         data-bs-dismiss="modal"
                         aria-label="Close"
-                      ></button>
+                      ></button> */}
                     </div>
                     <div className="modal-body">
                       <div className="form-floating mb-3">
@@ -153,6 +153,7 @@ const LogIn = () => {
                         type="button"
                         onClick={handleClickUser}
                         className="btn btn-outline-warning"
+                        data-bs-dismiss="modal"
                       >
                         Continuar
                       </button>
@@ -244,6 +245,7 @@ const LogIn = () => {
                         type="button"
                         onClick={handleClickSupplier}
                         className="btn btn-outline-warning"
+                        ata-bs-dismiss="modal"
                       >
                         Continuar
                       </button>
