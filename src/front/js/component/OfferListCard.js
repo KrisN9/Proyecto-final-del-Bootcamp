@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const OfferListCard = (props) => {
   const [offer, setOffer] = useState();
+  const [favorite, setFavorite] = useState();
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/offer/" + props.id)
@@ -12,6 +13,26 @@ const OfferListCard = (props) => {
         setOffer(response);
       });
   }, []);
+
+/*   const handleClick = (event) => {
+    event.preventDefault();
+    fetch(process.env.BACKEND_URL + "/api/offer/" + props.id,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        'Authorization':'Bearer '+ localStorage.getItem('token')
+      },
+      body: JSON.stringify(favorite),
+    }).then((response) => {
+      if (response.status == 200) response.json();
+      setFavorite({});
+    })
+    .then((response) => {
+      setFavorite(response);
+      
+    });
+   
+  }; */
 
   return offer ? (
     <>
@@ -26,7 +47,7 @@ const OfferListCard = (props) => {
           <li className="list-group-item">Ubicación: {offer.location}</li>
         </ul>
         <div className="card-body d-grid gap-2 col-6 mx-auto">
-          <button className="btn btn-outline-danger">Añadir a favoritos <i className="bi bi-heart"></i> </button>
+          <button className="btn btn-outline-danger" onClick={handleClick}>Añadir a favoritos <i className="bi bi-heart"></i> </button>
         </div>
       </div>
     </>
