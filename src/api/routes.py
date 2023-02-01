@@ -59,10 +59,11 @@ def all_offers():
 def get_offer(offer_id):
     try:
         offer = Offer.query.filter_by(offer_id=offer_id).first()
+        data = [offer.serialize() for offer in offers]
     except Exception:
         return jsonify({"msg": "Offer doesn't exist"}), 400
 
-    return jsonify(offer.serialize()), 200
+    return jsonify(data), 200
 
 @api.route('/city', methods=['GET'])  #se obtiene todas las ciudades
 def get_cities():
