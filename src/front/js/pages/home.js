@@ -10,6 +10,7 @@ import UserRegister from "../component/UserRegister";
 import Cards from "../component/Cards";
 import FinalMap from "../component/FinalMap";
 import Sidebar from "../component/componentes de prueba/Sidebar";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -17,6 +18,8 @@ export const Home = () => {
   return (
 	<>
     <div className="text-center mt-3">
+		<h3>¡Si te gustan estas ofertas, entra <Link to={`/listado-ofertas`}>aquí</Link> para conocer más!</h3>
+		<br></br>
       <Slide />
    
 	<br></br>
