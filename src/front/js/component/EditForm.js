@@ -3,10 +3,10 @@ import React, {useState, useEffect} from "react"
 const EditForm =()=>{
 
     const [supplier, setSupplier] = useState([]);
-    const [value, setValue] = useState({});
+    const [input, setInput] = useState({});
    
     const handleChange = (event) => {
-        setValue({ ...value, [event.target.name]:value});
+        setInput({ ...input, [event.target.name]:input});
       };
 
   useEffect(() => {
@@ -27,13 +27,30 @@ const EditForm =()=>{
 
   const handleSubmit = (event) => {
     event.preventDefault();
+        const modificar = {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
+        };
+        fetch(process.env.BACKEND_URL + "/api/supplier" + supplier_id, modificar)
+          .then((response) => {
+            return response.json();
+          })
+          .then((response) => {
+            console.log(response);
+          });
+
+    
 
   };
 
+  
  return ( 
     <>
     <form onSubmit={handleSubmit}>
-      <div className="text-center mt-3 ">
+      <div className="text-center mt-3 " key={supplier.id}>
         <p className="fs-1 fw-bolder">Editar Datos</p>
       </div>
       <div className="container bg-warning col-md-6 px-3 py-3 mt-2 mb-5">
@@ -45,7 +62,6 @@ const EditForm =()=>{
             placeholder="Nombre y Apellidos"
             name="name"
             onChange={handleChange}
-            required
             value={supplier.name}
           />
           <label htmlFor="floatingName">
@@ -60,7 +76,6 @@ const EditForm =()=>{
             placeholder="Empresa"
             name="Empresa"
             onChange={handleChange}
-            required
             value={supplier.company_name}
           />
           <label htmlFor="floatingName">
@@ -75,7 +90,6 @@ const EditForm =()=>{
             placeholder="name@example.com"
             name="email"
             onChange={handleChange}
-            required
             value={supplier.email}
           />
           <label htmlFor="floatingInput">
@@ -97,7 +111,7 @@ const EditForm =()=>{
         </div>
         <div className="col-12 mb-3">
           <button type="submit" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleSubmit}>
-            Enviar
+            Actualizar
           </button>
         </div>
 

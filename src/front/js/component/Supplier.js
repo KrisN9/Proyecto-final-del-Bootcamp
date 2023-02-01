@@ -20,22 +20,7 @@ const Supplier = () => {
       });
   }, []);
 
-  const modificar = () => {
-    const modificar = {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    };
-    fetch(process.env.BACKEND_URL + "/api/supplier" + supplier_id, modificar)
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        console.log(response);
-      });
-  };
+  
 
   return (
     <div
