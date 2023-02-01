@@ -14,9 +14,9 @@ const OfferListCard = (props) => {
       });
   }, []);
 
-/*   const handleClick = (event) => {
+/* const handleClick = (event) => {
     event.preventDefault();
-    fetch(process.env.BACKEND_URL + "/api/offer/" + props.id,{
+    fetch(process.env.BACKEND_URL + "/api/favorite", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -37,8 +37,8 @@ const OfferListCard = (props) => {
   return offer ? (
     <>
       <div className="card ms-5 me-3 mb-5">
-        <img src={offer.url_image} class="card-img-top" alt="..." />
-        <div class="card-body">
+        <img src={offer.url_image} className="card-img-top" alt="..." />
+        <div className="card-body">
           <h5 className="card-title">{offer.company_name}</h5>
           <p className="card-text">{offer.title}</p>
         </div>
