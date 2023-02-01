@@ -26,7 +26,7 @@ const OfferListCard = (props) => {
           <li className="list-group-item">Ubicación: {offer.location}</li>
         </ul>
         <div className="card-body d-grid gap-2 col-6 mx-auto">
-          <button className="btn btn-outline-danger">Añadir a favoritos</button>
+          <button className="btn btn-outline-danger">Añadir a favoritos <i className="bi bi-heart"></i> </button>
         </div>
       </div>
     </>
