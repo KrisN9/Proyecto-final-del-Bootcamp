@@ -41,20 +41,15 @@ const EditForm =()=>{
           .then((response) => {
             console.log(response);
           });
-
-    
-
   };
 
   
  return ( 
     <>
     <form onSubmit={handleSubmit}>
-      <div className="text-center mt-3 " key={supplier.id}>
-        <p className="fs-1 fw-bolder">Editar Datos</p>
-      </div>
-      <div className="container bg-warning col-md-6 px-3 py-3 mt-2 mb-5">
-        <div className="form-floating mb-3">
+      <div className="container " key={supplier.id}>
+        <div className="form-floating mb-2">
+        <p className="fs-6">Nombre y Apellidos</p>  
           <input
             type="name"
             className="form-control"
@@ -64,11 +59,13 @@ const EditForm =()=>{
             onChange={handleChange}
             value={supplier.name}
           />
-          <label htmlFor="floatingName">
-            Nombre y Apellidos
-          </label>
+          {/* <label htmlFor="floatingInput">
+           Nombre y apellido
+          </label> */}
         </div>
-        <div className="form-floating mb-3">
+        
+        <div className="form-floating mb-2">
+        <p className="fs-6">Empresa</p>
           <input
             type="name"
             className="form-control"
@@ -78,11 +75,13 @@ const EditForm =()=>{
             onChange={handleChange}
             value={supplier.company_name}
           />
-          <label htmlFor="floatingName">
+          {/* <label htmlFor="floatingName">
             Empresa
-          </label>
+          </label> */}
         </div>
-        <div className="form-floating mb-3">
+       
+        <div className="form-floating mb-2">
+        <p className="fs-6">Dirección de correo electronico</p>
           <input
             type="email"
             className="form-control"
@@ -92,12 +91,13 @@ const EditForm =()=>{
             onChange={handleChange}
             value={supplier.email}
           />
-          <label htmlFor="floatingInput">
+          {/* <label htmlFor="floatingInput">
             Dirección de correo electrónico*
-          </label>
+          </label> */}
         </div>
        
-        <div className="form-floating mb-3">
+        <div className="form-floating mb-2">
+        <p className="fs-6">Cif de empresa</p>
           <input
             type="phone-number"
             className="form-control"
@@ -107,7 +107,7 @@ const EditForm =()=>{
             onChange={handleChange}
             value={supplier.company_cif}
           />
-          <label htmlFor="floatingNumber">Cif de Empresa</label>
+          {/* <label htmlFor="floatingNumber">Cif de Empresa</label> */}
         </div>
         <div className="col-12 mb-3">
           <button type="submit" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleSubmit}>
