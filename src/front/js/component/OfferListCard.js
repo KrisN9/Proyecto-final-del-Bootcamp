@@ -15,25 +15,20 @@ const OfferListCard = () => {
 
     return (
     <>
-        {offers.map((offer, index) => {
-
-        /* })} */
-        return <div className="card" key={index}>
-        <img src={offer.url_image} class="card-img-top" alt="..." />
+        <div className="card">
+        <img src="https://ubces.vams.es/images/featured/_slider_g/AAFF_urbancheck_pansfriends_web_CAST.JPG" class="card-img-top" alt="..." />
         <div class="card-body">
-            <h5 className="card-title">{offer.company_name}</h5>
-            <p className="card-text">{offer.title}</p>
+            <h5 className="card-title">Pans & Company, S.L.</h5>
+            <p className="card-text">Menú Pans & Friends por 7,95€</p>
         </div>
         <ul className="list-group list-group-flush">
-            <li className="list-group-item">{offer.price}</li>
-            <li className="list-group-item">{offer.location}</li>
+            <li className="list-group-item">Precio: 7,95€</li>
+            <li className="list-group-item">Ubicación: Avinguda del Portal de l'Àngel, 2, Barcelona</li>
         </ul>
         <div className="card-body">
-            <a href="#" className="card-link">Card link</a>
-            <button className="btn btn-outline-warning">Me gusta!</button>
+            <button className="btn btn-outline-danger">Me gusta!</button>
         </div>
     </div>
-})};
     </>
     )
 }

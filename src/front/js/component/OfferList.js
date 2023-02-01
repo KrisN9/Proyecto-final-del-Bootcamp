@@ -19,6 +19,16 @@ const OfferList = () => {
         <div className="col-4">
             <OfferListCard />
         </div>
+        <div></div>
+        <div className="col-4">
+            <OfferListCard />
+        </div>
+        <div className="col-4">
+            <OfferListCard />
+        </div>
+        <div className="col-4">
+            <OfferListCard />
+        </div>
     </div>
 
        <br></br> 
