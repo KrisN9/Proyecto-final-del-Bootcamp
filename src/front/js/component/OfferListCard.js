@@ -25,7 +25,7 @@ const OfferListCard = () => {
             <li className="list-group-item">Precio: 7,95€</li>
             <li className="list-group-item">Ubicación: Avinguda del Portal de l'Àngel, 2, Barcelona</li>
         </ul>
-        <div className="card-body">
+        <div className="card-body d-grid gap-2 col-6 mx-auto">
             <button className="btn btn-outline-danger">Me gusta!</button>
         </div>
     </div>
