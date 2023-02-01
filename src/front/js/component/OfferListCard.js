@@ -1,23 +1,40 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 
 const OfferListCard = () => {
+    const [offers, setOffers] = useState([])
+
+    useEffect(() => {
+        fetch(process.env.BACKEND_URL + "/api/offer/<int:offer_id>")
+          .then((response) => {
+            return response.json();
+          })
+          .then((response) => {
+            setOffers(response);
+          })
+      }, []);
+
     return (
-        <div class="card">
-        <img src="..." class="card-img-top" alt="..." />
+    <>
+        {offers.map((offer, index) => {
+
+        /* })} */
+        return <div className="card" key={index}>
+        <img src={offer.url_image} class="card-img-top" alt="..." />
         <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 className="card-title">{offer.company_name}</h5>
+            <p className="card-text">{offer.title}</p>
         </div>
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item">An item</li>
-            <li class="list-group-item">A second item</li>
-            <li class="list-group-item">A third item</li>
+        <ul className="list-group list-group-flush">
+            <li className="list-group-item">{offer.price}</li>
+            <li className="list-group-item">{offer.location}</li>
         </ul>
-        <div class="card-body">
-            <a href="#" class="card-link">Card link</a>
-            <a href="#" class="card-link">Another link</a>
+        <div className="card-body">
+            <a href="#" className="card-link">Card link</a>
+            <button className="btn btn-outline-warning">Me gusta!</button>
         </div>
     </div>
+})};
+    </>
     )
 }
 
