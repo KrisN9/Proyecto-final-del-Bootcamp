@@ -15,7 +15,7 @@ const OfferListCard = () => {
 
     return (
     <>
-        <div className="card">
+        <div className="card ms-3 me-3 mb-5">
         <img src="https://ubces.vams.es/images/featured/_slider_g/AAFF_urbancheck_pansfriends_web_CAST.JPG" class="card-img-top" alt="..." />
         <div class="card-body">
             <h5 className="card-title">Pans & Company, S.L.</h5>
