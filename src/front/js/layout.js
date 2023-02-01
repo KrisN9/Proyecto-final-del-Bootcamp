@@ -17,6 +17,7 @@ import LogIn from "./component/logIn";
 import PrivateAreaUser from "./component/PrivateAreaUser";
 import PrivateAreaSupplier from "./component/PrivateAreaSupplier";
 import OfferList from "./component/OfferList";
+import EditForm from "./component/EditForm";
 
 //create your first component
 const Layout = () => {
@@ -42,7 +43,7 @@ const Layout = () => {
                         <Route element={<Registers/>} path="/registro"/>
                         <Route element={<SupplierRegister/>} path ="/registro-proveedor"/> 
                         <Route element={<UserRegister/>} path ="/registro-usuario"/>
-                    </Routes>
+                        <Route element={<EditForm/>} path ="/editar-formulario"/> </Routes>
                     <Footer />
                 </ScrollToTop>
             </BrowserRouter>

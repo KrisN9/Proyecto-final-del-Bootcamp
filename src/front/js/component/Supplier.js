@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import { Link } from "react-router-dom";
 
 const Supplier =()=>{
 
@@ -17,20 +18,41 @@ const Supplier =()=>{
     }).then ((response)=>{
         setSupplier(response)
     })
+
     },[])
 
+    const modificar =()=>{
+      const modificar ={
+        method:'Put',
+        headers:{
+          "Content-Type": "application/json",
+          'Authorization':'Bearer '+ localStorage.getItem('token')
+        }
+        }
+      fetch(process.env.BACKEND_URL+ "/api/supplier"+ supplier_id , modificar)
+      .then((response)=>{
+          return response.json()
+      }).then ((response)=>{
+          console.log(response);
+      })
+  
+    }
     
-   
 return (
 
-    <div className=" text-md-start mt-3 mb-4 fs-4 fw-semibold">
-            
+    <div className=" text-md-start mt-3 mb-4 fs-4 fw-semibold">  
             <ul>
              <li><p className="fst-italic">Nombre: {supplier.name}</p></li>
              <li><p className="fst-italic">Empresa: {supplier.company_name}</p></li>
              <li><p className="fst-italic">Correo Electronico: {supplier.email}</p></li>
              <li><p className="fst-italic">Cif de empresa: {supplier.company_cif}</p></li>
             </ul>
+              <div className="gap-2 d-md-flex justify-content-md-end">
+
+              <Link  type="button" className="btn btn-info" to="/editar-formulario"> Editar</Link>
+              
+              </div>
+            
               </div>
 
 )
