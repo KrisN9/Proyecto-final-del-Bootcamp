@@ -19,6 +19,7 @@ import PrivateAreaSupplier from "./component/PrivateAreaSupplier";
 import OfferList from "./component/OfferList";
 import EditForm from "./component/EditForm";
 
+
 //create your first component
 const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -43,7 +44,8 @@ const Layout = () => {
                         <Route element={<Registers/>} path="/registro"/>
                         <Route element={<SupplierRegister/>} path ="/registro-proveedor"/> 
                         <Route element={<UserRegister/>} path ="/registro-usuario"/>
-                        <Route element={<EditForm/>} path ="/editar-formulario"/> </Routes>
+                        <Route element={<EditForm/>} path ="/editar-formulario"/>
+                         </Routes>
                     <Footer />
                 </ScrollToTop>
             </BrowserRouter>
