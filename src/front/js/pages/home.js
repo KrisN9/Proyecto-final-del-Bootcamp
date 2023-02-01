@@ -19,7 +19,7 @@ export const Home = () => {
   return (
 	<>
     <div className="text-center mt-3">
-			<h3>¡Si te gustan estas ofertas, entra <Link to={`/listado-ofertas`}>aquí</Link> para conocer más!</h3>
+			<h3>¡Si te gustan estas ofertas, busca en el mapa las más cercanas a ti!</h3>
 		<br></br>
       <Slide />
    
