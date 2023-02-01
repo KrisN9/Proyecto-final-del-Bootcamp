@@ -49,7 +49,7 @@ const EditForm =()=>{
     <form onSubmit={handleSubmit}>
       <div className="container " key={supplier.id}>
         <div className="form-floating mb-2">
-        <p className="fs-6">Nombre y Apellidos</p>  
+        <p className="fs-6 text-primary">Nombre y Apellidos</p>  
           <input
             type="name"
             className="form-control"
@@ -65,7 +65,7 @@ const EditForm =()=>{
         </div>
         
         <div className="form-floating mb-2">
-        <p className="fs-6">Empresa</p>
+        <p className="fs-6 text-primary">Empresa</p>
           <input
             type="name"
             className="form-control"
@@ -81,7 +81,7 @@ const EditForm =()=>{
         </div>
        
         <div className="form-floating mb-2">
-        <p className="fs-6">Dirección de correo electronico</p>
+        <p className="fs-6 text-primary">Dirección de correo electronico</p>
           <input
             type="email"
             className="form-control"
@@ -97,7 +97,7 @@ const EditForm =()=>{
         </div>
        
         <div className="form-floating mb-2">
-        <p className="fs-6">Cif de empresa</p>
+        <p className="fs-6 text-primary">Cif de empresa</p>
           <input
             type="phone-number"
             className="form-control"
@@ -109,13 +109,7 @@ const EditForm =()=>{
           />
           {/* <label htmlFor="floatingNumber">Cif de Empresa</label> */}
         </div>
-        <div className="col-12 mb-3">
-          <button type="submit" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleSubmit}>
-            Actualizar
-          </button>
-        </div>
-
-
+    
       </div>
     </form>
   </>
