@@ -36,7 +36,7 @@ const Layout = () => {
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
-                        <Route element={<OfferList />} path="/listado-ofertas" />
+                        <Route element={<OfferList />} path="/ofertas/:id" />
                         <Route element={<ContactForm/>} path="/contacta-con-nosotros"/>  
                         <Route element={<LogIn/>} path="/inicio-sesion"/>
                         <Route element={<PrivateAreaUser/>} path="/area-privada-usuario"/>

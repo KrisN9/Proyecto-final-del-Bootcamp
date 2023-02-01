@@ -3,6 +3,7 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import Sidebar from "./componentes de prueba/Sidebar";
 ("../../styles/index.css");
+import { Link } from "react-router-dom";
 
 const styles = {
   width: "100%",
@@ -71,7 +72,12 @@ const FinalMap = () => {
           <br></br>
           ${
             localStorage.getItem("token")
-              ? `<button class="btn-map btn btn-outline-danger btn-sm">Me gusta!</button>`
+              ? `<a 
+                href=${"/ofertas/" + oferta.id}
+                class="btn-map btn btn-outline-danger btn-sm"
+              >
+                Me gusta!
+              </a>`
               : ""
           }`)
         )
@@ -98,8 +104,11 @@ const FinalMap = () => {
   };
 
   return (
-    <div ref={(el) => (mapContainer.current = el)} style={styles} id="map">
-    </div>
+    <div
+      ref={(el) => (mapContainer.current = el)}
+      style={styles}
+      id="map"
+    ></div>
   );
 };
 

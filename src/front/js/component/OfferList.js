@@ -1,39 +1,27 @@
 import React from "react";
 import OfferListCard from "./OfferListCard";
+import { useParams } from "react-router-dom";
 
 const OfferList = () => {
-    return (
-        <>
-        <br></br>
-    <div className="text-center">
-        <h1>¡Aquí podrás ver nuestras mejores ofertas, y elegir tu preferida!</h1>
-    </div>
-        <br></br>
-    <div className="row">
-        <div className="col-4">
-            <OfferListCard />
+  const params = useParams()
+  return (
+    <>
+      <br></br>
+      <div className="text-center">
+        <h1>
+          ¡Aquí podrás ver nuestras mejores ofertas, y elegir tu preferida!
+        </h1>
+      </div>
+      <br></br>
+      <div className="row">
+        <div className="col-12" id="ListCard">
+          <OfferListCard id={params.id} />
         </div>
-        <div className="col-4">
-            <OfferListCard />
-        </div>
-        <div className="col-4">
-            <OfferListCard />
-        </div>
-        <div></div>
-        <div className="col-4">
-            <OfferListCard />
-        </div>
-        <div className="col-4">
-            <OfferListCard />
-        </div>
-        <div className="col-4">
-            <OfferListCard />
-        </div>
-    </div>
+      </div>
 
-       <br></br> 
-
-        </>
-)}
+      <br></br>
+    </>
+  );
+};
 
 export default OfferList;
