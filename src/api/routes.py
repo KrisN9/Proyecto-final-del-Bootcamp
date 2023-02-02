@@ -213,7 +213,7 @@ def add_favorite():
 @api.route('/user/<int:user_id>', methods=['PUT']) #modificación de datos de usuario
 def update_user(user_id):
     try:
-        user = User.query.filter_by(user_id=user_id).first()
+        user = User.query.filter_by(id=user_id).first()
     except Exception:
         return jsonify({"msg": "User doesn't exist"}), 400
 
@@ -233,7 +233,7 @@ def update_user(user_id):
 @api.route('/supplier/<int:supplier_id>', methods=['PUT']) #modificacion de datos de proveedor
 def update_supplier(supplier_id):
     try:
-        supplier = Supplier.query.filter_by(supplier_id=supplier_id).first()
+        supplier = Supplier.query.filter_by(id=supplier_id).first()
     except Exception:
         return jsonify({"msg": "Supplier doesn't exist"}), 400
 
