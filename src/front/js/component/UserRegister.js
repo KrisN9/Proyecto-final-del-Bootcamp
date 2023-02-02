@@ -167,17 +167,6 @@ const UserRegister = () => {
               );
             })}
           </select>
-
-          {/* <ReactPasswordChecklist rules={["minLength", "match"]}
-          minLength={6}
-          value={"password"}
-          valueAgain={"password2"} 
-          messages= {{
-            minLength: "La contraseña tiene más de 6 caracteres.",
-            match: "Las contraseñas coinciden."
-          }}
-          /> */}
-
           <div className="form-check mb-3">
             <input
               className="form-check-input"

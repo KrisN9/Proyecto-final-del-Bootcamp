@@ -1,14 +1,16 @@
-import React, {useState, useEffect} from "react"
+import React, { useState, useEffect } from "react";
 
-const EditForm =()=>{
+const EditForm = () => {
+  const [supplier, setSupplier] = useState([]);
+  const [input, setInput] = useState({});
 
-    const [supplier, setSupplier] = useState([]);
-    const [input, setInput] = useState({});
-   
-    const handleChange = (event) => {
-        setInput({ ...input, [event.target.name]:input});
-      };
-
+  const handleChange = (event) => {
+    setInput({ ...input, [event.target.name]:event.target.value });
+  };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  };
+  
   useEffect(() => {
     const optionsSupplier = {
       headers: {
@@ -25,31 +27,11 @@ const EditForm =()=>{
       });
   }, []);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-        const modificar = {
-          method: "PUT",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem("token"),
-          },
-        };
-        fetch(process.env.BACKEND_URL + "/api/supplier" + supplier_id, modificar)
-          .then((response) => {
-            return response.json();
-          })
-          .then((response) => {
-            console.log(response);
-          });
-  };
-
-  
- return ( 
-    <>
+  return (
     <form onSubmit={handleSubmit}>
-      <div className="container " key={supplier.id}>
-        <div className="form-floating mb-2">
-        <p className="fs-6 text-primary">Nombre y Apellidos</p>  
+      <div className="container ">
+      <div className="mt-2"> 
+          <p className="fs-6 text-success">Nombre y Apellidos</p>
           <input
             type="name"
             className="form-control"
@@ -57,15 +39,12 @@ const EditForm =()=>{
             placeholder="Nombre y Apellidos"
             name="name"
             onChange={handleChange}
-            value={supplier.name}
+            defaultValue={supplier.name}
           />
-          {/* <label htmlFor="floatingInput">
-           Nombre y apellido
-          </label> */}
+         
         </div>
-        
-        <div className="form-floating mb-2">
-        <p className="fs-6 text-primary">Empresa</p>
+         <div className="mt-2">
+          <p className="fs-6 text-success">Empresa</p>
           <input
             type="name"
             className="form-control"
@@ -73,15 +52,11 @@ const EditForm =()=>{
             placeholder="Empresa"
             name="Empresa"
             onChange={handleChange}
-            value={supplier.company_name}
+            defaultValue={supplier.company_name}
           />
-          {/* <label htmlFor="floatingName">
-            Empresa
-          </label> */}
         </div>
-       
-        <div className="form-floating mb-2">
-        <p className="fs-6 text-primary">Dirección de correo electronico</p>
+            <div className="mt-2">
+          <p className="fs-6 text-success">Dirección de correo electronico</p>
           <input
             type="email"
             className="form-control"
@@ -89,37 +64,23 @@ const EditForm =()=>{
             placeholder="name@example.com"
             name="email"
             onChange={handleChange}
-            value={supplier.email}
+            defaultValue={supplier.email}
           />
-          {/* <label htmlFor="floatingInput">
-            Dirección de correo electrónico*
-          </label> */}
-        </div>
-       
-        <div className="form-floating mb-2">
-        <p className="fs-6 text-primary">Cif de empresa</p>
-          <input
+       </div>
+       <div className="mt-2" >
+          <p className="fs-6 text-success">Cif de empresa</p>
+          <input 
             type="phone-number"
             className="form-control"
             id="floatingNumber"
             placeholder="Cif de empresa"
             name="Cif_empresa"
             onChange={handleChange}
-            value={supplier.company_cif}
+            defaultValue={supplier.company_cif}
           />
-          {/* <label htmlFor="floatingNumber">Cif de Empresa</label> */}
-        </div>
-    
+          </div>
       </div>
     </form>
-  </>
-    
-    )
-
-
-
-
-}
-
-
-export default EditForm
+  );
+};
+export default EditForm;
