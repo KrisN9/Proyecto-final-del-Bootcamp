@@ -15,27 +15,30 @@ const OfferListCard = (props) => {
       });
   }, []);
 
-  /* const handleClick = (event) => {
+  const addFavorite = (offer) => {
+    setFavorite([...favorite, offer]);
+  };
+
+/* const handleClick = (event) => {
     event.preventDefault();
-    if (localStorage.getItem('token') === "user") {
-      fetch (process.env.BACKEND_URL + "/api/favorite", {
+    if (localStorage.getItem("token") === "user") {
+      fetch(process.env.BACKEND_URL + "/api/favorite", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(favorite),
       })
-      .then((response) => {
-        response.json();
-      })
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => alert(error));
+        .then((response) => {
+          response.json();
+        })
+        .then((response) => {
+          console.log(response);
+          alert("hola");
+        })
+        .catch((error) => alert(error));
     }
   }; */
-    
-
 
   return offer ? (
     <>
@@ -50,7 +53,9 @@ const OfferListCard = (props) => {
           <li className="list-group-item">Ubicación: {offer.location}</li>
         </ul>
         <div className="card-body d-grid gap-2 col-6 mx-auto">
-          <button className="btn btn-outline-danger">Añadir a favoritos <i className="fas fa-heart"></i> </button>
+          <button className="btn btn-outline-danger">
+            Añadir a favoritos <i className="fas fa-heart"></i>{" "}
+          </button>
         </div>
       </div>
     </>
