@@ -14,7 +14,7 @@ const OfferList = () => {
       </div>
       <br></br>
       <div className="row">
-        <div className="col-12" id="ListCard">
+        <div className="col-8 offset-md-2" id="ListCard">
           <OfferListCard id={params.id} />
         </div>
       </div>
