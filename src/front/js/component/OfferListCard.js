@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Cards from "./Cards";
+import { useNavigate } from "react-router-dom";
 
 const OfferListCard = (props) => {
   const [offer, setOffer] = useState();
-  const [favorite, setFavorite] = useState();
+  const [favorite, setFavorite] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/offer/" + props.id)
@@ -16,7 +18,7 @@ const OfferListCard = (props) => {
   }, []);
 
   const handleClick = () => {
-    console.log("Clicked!")
+    setFavorite(true)
   };
 
   return offer ? (
@@ -36,6 +38,8 @@ const OfferListCard = (props) => {
             Añadir a favoritos <i className="fas fa-heart"></i>{" "}
           </button>
         </div>
+        {favorite ?? navigate("/area-privada-usuario")}
+        {/* {favorite ?? <Cards />} */}
       </div>
     </>
   ) : (
