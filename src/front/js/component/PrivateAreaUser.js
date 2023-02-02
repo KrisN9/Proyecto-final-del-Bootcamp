@@ -1,10 +1,8 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import User from "./User";
 import Cards from "./Cards";
 
 const PrivateAreaUser=()=>{
-
 
 return (
 

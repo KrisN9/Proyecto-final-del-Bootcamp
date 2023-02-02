@@ -15,7 +15,7 @@ const OfferListCard = (props) => {
       });
   }, []);
 
-  const handleClick = (event) => {
+  /* const handleClick = (event) => {
     event.preventDefault();
     if (localStorage.getItem('token') === "user") {
       fetch (process.env.BACKEND_URL + "/api/favorite", {
@@ -33,7 +33,7 @@ const OfferListCard = (props) => {
       })
       .catch((error) => alert(error));
     }
-  };
+  }; */
     
 
 
@@ -50,7 +50,7 @@ const OfferListCard = (props) => {
           <li className="list-group-item">Ubicación: {offer.location}</li>
         </ul>
         <div className="card-body d-grid gap-2 col-6 mx-auto">
-          <button className="btn btn-outline-danger" onClick={handleClick}>Añadir a favoritos <i className="fas fa-heart"></i> </button>
+          <button className="btn btn-outline-danger">Añadir a favoritos <i className="fas fa-heart"></i> </button>
         </div>
       </div>
     </>
