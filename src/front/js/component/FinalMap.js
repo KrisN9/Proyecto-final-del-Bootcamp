@@ -12,12 +12,7 @@ const styles = {
 
 const FinalMap = () => {
   const [map, setMap] = useState(null);
-  /* const [city, setCity] = useState([]); */
   const mapContainer = useRef(null);
-
-  const print = () => {
-    console.log("446645");
-  };
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/offer")
@@ -25,23 +20,6 @@ const FinalMap = () => {
       .then((response) => {
         if (!map) {
           initializeMap({ setMap, mapContainer, ofertas: response });
-          const buttons = document.querySelectorAll(".btn-map");
-          console.log(buttons);
-          buttons.forEach((element) => {
-            console.log(element);
-            element.addEventListener("click", () => {
-              console.log("651651164");
-            });
-          });
-        } else {
-          const buttons = document.querySelectorAll(".btn-map");
-          console.log(buttons);
-          buttons.forEach((element) => {
-            console.log(element);
-            element.addEventListener("click", () => {
-              console.log("651651164");
-            });
-          });
         }
       });
   }, [map]);
@@ -51,7 +29,7 @@ const FinalMap = () => {
   const initializeMap = ({ setMap, mapContainer, ofertas }) => {
     const map = new mapboxgl.Map({
       container: mapContainer.current,
-      style: "mapbox://styles/mapbox/streets-v11", // stylesheet location
+      style: "mapbox://styles/mapbox/streets-v11",
       center: [-3.70315046264256, 40.41397175226467],
       zoom: 3,
     });
@@ -75,7 +53,7 @@ const FinalMap = () => {
                 href=${"/ofertas/" + oferta.id}
                 class="btn-map btn btn-outline-danger btn-sm"
               >
-                Me gusta!
+                ¡Me gusta!
               </a>`
               : ""
           }`)
