@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Cards from "./Cards";
 import { useNavigate } from "react-router-dom";
+import Cards from "./Cards";
 
 const OfferListCard = (props) => {
   const [offer, setOffer] = useState();
@@ -35,11 +35,10 @@ const OfferListCard = (props) => {
         </ul>
         <div className="card-body d-grid gap-2 col-6 mx-auto">
           <button className="btn btn-outline-danger" onClick={handleClick}>
-            Añadir a favoritos <i className="fas fa-heart"></i>{" "}
+            Añadir a favoritos <i className="fas fa-heart"></i>
           </button>
         </div>
-        {favorite ?? navigate("/area-privada-usuario")}
-        {/* {favorite ?? <Cards />} */}
+        {favorite === true && navigate("/area-privada-usuario")}
       </div>
     </>
   ) : (
