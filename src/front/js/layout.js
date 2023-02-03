@@ -17,6 +17,7 @@ import LogIn from "./component/logIn";
 import PrivateAreaUser from "./component/PrivateAreaUser";
 import PrivateAreaSupplier from "./component/PrivateAreaSupplier";
 import OfferList from "./component/OfferList";
+import FavoritesArea from "./component/FavoritesArea";
 import EditForm from "./component/EditForm";
 
 
@@ -40,6 +41,7 @@ const Layout = () => {
                         <Route element={<ContactForm/>} path="/contacta-con-nosotros"/>  
                         <Route element={<LogIn/>} path="/inicio-sesion"/>
                         <Route element={<PrivateAreaUser/>} path="/area-privada-usuario"/>
+                        <Route element={<FavoritesArea/>} path="/area-de-favoritos/" />
                         <Route element={<PrivateAreaSupplier/>} path="/area-privada-proveedor"/>
                         <Route element={<Registers/>} path="/registro"/>
                         <Route element={<SupplierRegister/>} path ="/registro-proveedor"/> 
