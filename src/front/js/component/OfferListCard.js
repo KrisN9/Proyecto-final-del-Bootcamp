@@ -19,19 +19,14 @@ const OfferListCard = (props) => {
 
   const favoriteCtx = useContext(FavoriteContext);
 
-  const itemIsFavorite = favoriteCtx.itemIsFavorite(offer.id);
+  const itemIsFavorite = favoriteCtx.itemIsFavorite(props.id);
 
   const toggleFavoriteStatusHandler = () => {
     if (itemIsFavorite) {
       favoriteCtx.removeFavorite(props.id);
     } else {
       favoriteCtx.addFavorite({
-        id: offer.id,
-/*         image: offer.url_image,
-        company_name: offer.company_name,
-        title: offer.title,
-        price: offer.price,
-        location: offer.location, */
+        id: props.id,
       });
     }
   };
