@@ -3,8 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 const OfferListCard = (props) => {
   const [offer, setOffer] = useState();
-  /*  const [favorite, setFavorite] = useState(false);
-  const navigate = useNavigate(); */
+  const [favorite, setFavorite] = useState(false);
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/offer/" + props.id)
@@ -15,6 +14,26 @@ const OfferListCard = (props) => {
         setOffer(response);
       });
   }, []);
+
+  const handleClick = (event) => {
+    event.preventDefault();
+    if (favorite === true) {
+    fetch(process.env.BACKEND_URL + "/api/favorite", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify(favorite),
+    })
+    .then((response) => {
+      response.json();
+    })
+    .then((response) => {
+      console.log(response);
+    })
+  }
+};
 
   return offer ? (
     <>
@@ -30,12 +49,11 @@ const OfferListCard = (props) => {
         </ul>
         <div className="card-body d-grid gap-2 col-6 mx-auto">
           <button
-            className="btn btn-outline-danger"
+            className="btn btn-outline-danger" onClick={handleClick}
           >Añadir a favoritos
             <i className="fas fa-heart"></i>
           </button>
         </div>
-        {favorite === true && navigate("/area-privada-usuario")}
       </div>
     </>
   ) : (
