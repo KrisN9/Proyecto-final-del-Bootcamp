@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-const Cards = () => {
+const Cards = (props) => {
+
   const [favorites, setFavorites] = useState([]);
 
-  useEffect(() => {
+  /* useEffect(() => {
     const optionFavorite = {
       headers: {
         "Content-Type": "application/json",
@@ -37,19 +38,14 @@ const Cards = () => {
       .then((response) => {
         console.log(response);
       });
-  };
+  }; */
 
   return (
     <div className="container col-12 col-md-6 mt-4">
       <div className="mt-3">
-        <p className="text-center fst-italic fs-3 text-danger">
-          {" "}
-          Tienes {favorites.length} favoritos.
-        </p>
-
-        {favorites.map((favorite, index) => {
+        {favorites.map((favorite) => {
           return (
-            <div className="card mb-3" key={index}>
+            <div className="card mb-3" key={id}>
               <div className="row g-0">
                 <div className="col-md-3">
                   <img
@@ -76,13 +72,6 @@ const Cards = () => {
                   >
                     Pedir!
                   </a>
-                  <button
-                    type="button"
-                    className="btn btn-outline-secondary mt-2 mb-2"
-                    onClick={() => removeFavorite(favorite.id)}
-                  >
-                    <i className="fas fa-trash-alt"></i>
-                  </button>
                 </div>
               </div>
             </div>
@@ -100,3 +89,11 @@ export default Cards;
                     <i className="fas fa-heart"></i>
                   </button> */
 }
+
+{/* <button
+type="button"
+className="btn btn-outline-secondary mt-2 mb-2"
+onClick={() => removeFavorite(favorite.id)}
+>
+<i className="fas fa-trash-alt"></i>
+</button> */}

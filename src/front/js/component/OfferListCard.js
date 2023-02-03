@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import Cards from "./Cards";
+import FavoriteContext from "../store/FavoriteContext";
 
 const OfferListCard = (props) => {
   const [offer, setOffer] = useState();
-  const [favorite, setFavorite] = useState(false);
-  const navigate = useNavigate();
+  /*  const [favorite, setFavorite] = useState(false);
+  const navigate = useNavigate(); */
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/offer/" + props.id)
@@ -17,8 +17,23 @@ const OfferListCard = (props) => {
       });
   }, []);
 
-  const handleClick = () => {
-    setFavorite(true)
+  const favoriteCtx = useContext(FavoriteContext);
+
+  const itemIsFavorite = favoriteCtx.itemIsFavorite(offer.id);
+
+  const toggleFavoriteStatusHandler = () => {
+    if (itemIsFavorite) {
+      favoriteCtx.removeFavorite(props.id);
+    } else {
+      favoriteCtx.addFavorite({
+        id: offer.id,
+/*         image: offer.url_image,
+        company_name: offer.company_name,
+        title: offer.title,
+        price: offer.price,
+        location: offer.location, */
+      });
+    }
   };
 
   return offer ? (
@@ -34,11 +49,15 @@ const OfferListCard = (props) => {
           <li className="list-group-item">Ubicación: {offer.location}</li>
         </ul>
         <div className="card-body d-grid gap-2 col-6 mx-auto">
-          <button className="btn btn-outline-danger" onClick={handleClick}>
-            Añadir a favoritos <i className="fas fa-heart"></i>
+          <button
+            className="btn btn-outline-danger"
+            onClick={toggleFavoriteStatusHandler}
+          >
+            {itemIsFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"}
+            {/* <i className="fas fa-heart"></i> */}
           </button>
         </div>
-        {favorite === true && navigate("/area-privada-usuario")}
+        {/* {favorite === true && navigate("/area-privada-usuario")} */}
       </div>
     </>
   ) : (
