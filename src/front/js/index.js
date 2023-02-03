@@ -7,7 +7,6 @@ import "../styles/index.css";
 
 //import your own components
 import Layout from "./layout";
-import { FavoriteContextProvider } from "./store/FavoriteContext";
 
 //render your react application
-ReactDOM.render(<FavoriteContextProvider><Layout /></FavoriteContextProvider>, document.querySelector("#app"));
+ReactDOM.render(<Layout />, document.querySelector("#app"));

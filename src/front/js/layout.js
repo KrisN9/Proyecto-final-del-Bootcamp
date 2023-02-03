@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-import { useContext } from "react";
 
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";

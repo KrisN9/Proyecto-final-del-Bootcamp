@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 
-const Cards = (props) => {
+const Cards = () => {
 
   const [favorites, setFavorites] = useState([]);
 
-  /* useEffect(() => {
+  useEffect(() => {
     const optionFavorite = {
       headers: {
         "Content-Type": "application/json",
@@ -38,7 +38,7 @@ const Cards = (props) => {
       .then((response) => {
         console.log(response);
       });
-  }; */
+  }; 
 
   return (
     <div className="container col-12 col-md-6 mt-4">

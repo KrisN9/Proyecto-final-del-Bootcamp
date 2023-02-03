@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
-import FavoriteContext from "../store/FavoriteContext";
 
 const OfferListCard = (props) => {
   const [offer, setOffer] = useState();
@@ -17,20 +16,6 @@ const OfferListCard = (props) => {
       });
   }, []);
 
-  const favoriteCtx = useContext(FavoriteContext);
-
-  const itemIsFavorite = favoriteCtx.itemIsFavorite(props.id);
-
-  const toggleFavoriteStatusHandler = () => {
-    if (itemIsFavorite) {
-      favoriteCtx.removeFavorite(props.id);
-    } else {
-      favoriteCtx.addFavorite({
-        id: props.id,
-      });
-    }
-  };
-
   return offer ? (
     <>
       <div className="card ms-5 me-3 mb-5">
@@ -46,13 +31,11 @@ const OfferListCard = (props) => {
         <div className="card-body d-grid gap-2 col-6 mx-auto">
           <button
             className="btn btn-outline-danger"
-            onClick={toggleFavoriteStatusHandler}
-          >
-            {itemIsFavorite ? "Eliminar de favoritos" : "Añadir a favoritos"}
-            {/* <i className="fas fa-heart"></i> */}
+          >Añadir a favoritos
+            <i className="fas fa-heart"></i>
           </button>
         </div>
-        {/* {favorite === true && navigate("/area-privada-usuario")} */}
+        {favorite === true && navigate("/area-privada-usuario")}
       </div>
     </>
   ) : (
