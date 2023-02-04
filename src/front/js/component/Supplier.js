@@ -14,6 +14,11 @@ const Supplier = () => {
   };
 
   useEffect(() => {
+      getToUpdate()
+  }, []);
+
+  const getToUpdate=()=>{
+
     const optionsSupplier = {
       headers: {
         "Content-Type": "application/json",
@@ -27,7 +32,7 @@ const Supplier = () => {
       .then((response) => {
         setSupplier(response);
       });
-  }, []);
+  }
 
 
     const toUpDate =(supplier_id)=>{
@@ -44,7 +49,7 @@ const Supplier = () => {
             return response.json();
             })
             .then((response) => {
-              console.log(response)
+              getToUpdate(response)
             
             });
 
