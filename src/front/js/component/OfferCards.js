@@ -1,14 +1,15 @@
 import React , {useState, useEffect}from "react";
+import { get } from "react-hook-form";
 
 
 const OfferCards =()=>{
   const [offers, setOffers] = useState([])
   const [input, setInput] = useState({});
-  const [id , setId ]=useState("")
+  // const [id , setId ]=useState("")
 
-  const EditarOfertas=()=>{
-    setId(offers.id);
-  }
+  // const EditarOfertas=()=>{
+  //   setId(offers.id);
+  // }
 
   const handleChange = (event) => {
 
@@ -19,6 +20,10 @@ const OfferCards =()=>{
   };
   
   useEffect(() => {
+    getOffer()
+  }, []);
+
+  const getOffer=()=>{
     const offer = {
       headers: {
         "Content-Type": "application/json",
@@ -32,8 +37,7 @@ const OfferCards =()=>{
       .then((response) => {
         setOffers(response);
       })
-
-  }, []);
+  }
   
   const remove =(offer_id)=>{
     const remove = {
@@ -48,7 +52,7 @@ const OfferCards =()=>{
         return response.json();
 
     }).then((response)=>{
-      console.log(response)
+      getOffer(response)
     })
   }
 
