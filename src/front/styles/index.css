@@ -101,6 +101,13 @@ footer {
   height: 100%;
   }
 
+  .squar1{
+    
+    width: 90%; 
+    height: 100%; 
+     border: 3px solid #555;
+  }
+
 /*   .left.collapsed {
     transform: translateX(-295px);
     } */
