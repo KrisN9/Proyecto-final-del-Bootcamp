@@ -49,7 +49,7 @@ const Supplier = () => {
             return response.json();
             })
             .then((response) => {
-              getToUpdate(response)
+              getToUpdate()
             
             });
 

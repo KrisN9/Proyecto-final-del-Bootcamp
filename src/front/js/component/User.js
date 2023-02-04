@@ -48,7 +48,7 @@ const User =()=>{
           return response.json();
           })
           .then((response) => {
-            getUser(response)
+            getUser()
           
           });
 

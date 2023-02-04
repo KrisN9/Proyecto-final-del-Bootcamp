@@ -35,6 +35,7 @@ const OfferCards =()=>{
         return response.json();
       })
       .then((response) => {
+        getOffer();
         setOffers(response);
       })
   }
@@ -52,7 +53,7 @@ const OfferCards =()=>{
         return response.json();
 
     }).then((response)=>{
-      getOffer(response)
+      getOffer();
     })
   }
 
@@ -70,7 +71,7 @@ const OfferCards =()=>{
         return response.json();
         })
         .then((response) => {
-          console.log(response)
+          getOffer();
         
         });
 
