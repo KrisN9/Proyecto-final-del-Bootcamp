@@ -15,6 +15,10 @@ const OfferListCard = (props) => {
       });
   }, []);
 
+  const addFavorite = (favorite) => {
+    setFavorite(prev => [...prev, favorite])
+  };
+
   const handleClick = (event) => {
     event.preventDefault();
     if (favorite === true) {
@@ -30,7 +34,8 @@ const OfferListCard = (props) => {
       response.json();
     })
     .then((response) => {
-      console.log(response);
+      console.log("has hecho click!");
+      addFavorite(response);
     })
   }
 };
