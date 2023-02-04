@@ -17,6 +17,9 @@ const Slide=()=>{
             <img src="https://ubces.vams.es/images/featured/_slider_g/Telepi-Cupon-UrbanCheckFamilyDays-448x280-20117.jpg" className="d-block w-100" height="600"alt="..."/>
           </div>
           <div className="carousel-item">
+            <img src="https://pbs.twimg.com/media/D-uYIS3W4AArUgI.png" className="d-block w-100" height="600"alt="..."/>
+          </div>
+          <div className="carousel-item">
             <img src="https://www.subwaypanama.com/content/20230103085737-1.jpg " className="d-block w-100 " height="600" alt="..."/>
           </div>
           <div className="carousel-item">
