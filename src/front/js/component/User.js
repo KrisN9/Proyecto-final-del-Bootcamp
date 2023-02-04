@@ -16,19 +16,23 @@ const User =()=>{
 
 
     useEffect(()=>{
-      const optionsUser={
-      headers:{
-        "Content-Type": "application/json",
-        'Authorization':'Bearer '+ localStorage.getItem('token')
-      }
-      }
-    fetch(process.env.BACKEND_URL+ "/api/user" , optionsUser)
-    .then((response)=>{
-        return response.json()
-    }).then ((response)=>{
-        setUser(response)
-    })
+     getUser();
     },[])
+
+    const getUser=()=>{
+      const optionsUser={
+        headers:{
+          "Content-Type": "application/json",
+          'Authorization':'Bearer '+ localStorage.getItem('token')
+        }
+        }
+      fetch(process.env.BACKEND_URL+ "/api/user" , optionsUser)
+      .then((response)=>{
+          return response.json()
+      }).then ((response)=>{
+          setUser(response)
+      })
+    }
 
     const toUpDate =(user_id)=>{
       const modificar = {
@@ -44,7 +48,7 @@ const User =()=>{
           return response.json();
           })
           .then((response) => {
-            console.log(response)
+            getUser(response)
           
           });
 
