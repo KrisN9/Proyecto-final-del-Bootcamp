@@ -24,6 +24,7 @@ export const Navbar = () => {
 						<img src="https://i.postimg.cc/KYLQqTks/Promo-Food-1.png" alt="Logo" width="70" height="70" className="d-inline-block align-text-top rounded-circle"/>
 						</span>
 					</Link>
+					
 					<button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span className="navbar-toggler-icon"></span>  
 					</button>
