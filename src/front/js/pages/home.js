@@ -18,17 +18,23 @@ export const Home = () => {
 
   return (
 	<>
-    <div className="text-center mt-3">
-			<h3>¡Si te gustan estas ofertas, busca en el mapa las más cercanas a ti!</h3>
+	
+    <div className="text-center mt-3 ">
+		<div className="container squar1 mt-5 mb-3">
+         <p className="fs-1 text-success fst-italic">Encontrarás tus restaurantes favoritos con las mejores ofertas.</p>
+		</div>
 		<br></br>
       <Slide />
    
 	<br></br>
 	
 	<div className="row">
-	<div className="col-md-6 offset-md-3 mb-5">
+	<div className="container squar1 mt-5 mb-3">
+		<h3 className="fs-1 text-success fst-italic">¡Si te gustan estas ofertas, busca en el mapa las más cercanas a ti!</h3>
+	</div>
+	<div className="container col-md-10  mt-4 mb-5 "> 
 		{/* <Sidebar/> */}
-		<div className="map">
+		<div className="map ">
 		<FinalMap />
 		</div>
 
