@@ -1,22 +1,26 @@
 import React from "react";
 
-{/*pendiente de revisar como usar los slide
-se puede usar Props?*/}
 
 const Slide=()=>{
 
     return (
-
-        <div id="carouselExampleFade" className="carousel slide carousel-fade container col-md-6" data-bs-ride="carousel">
+          
+        <div id="carouselExampleFade" className="carousel slide carousel-fade container col-md-10" data-bs-ride="carousel">
         <div className="carousel-inner  ">
           <div className="carousel-item active ">
-            <img src="https://soydechollos.com/storage/oferta/2-pizzas-medianas-a-domicilio-de-hasta-2-ingredientes-por-69.png" className="d-block w-100 " height="500" alt="..."/>
+            <img src="https://www.hotelmalagapremium.com/wp-content/uploads/2018/03/MPH-noticia-sushi-take-away.jpg" className="d-block w-100 " height="600" alt="..."/>
           </div>
           <div className="carousel-item">
-            <img src="https://img.grouponcdn.com/deal/4KnwyiEmbAKVrYVcNrAbyZfc1zuG/4K-700x420/v1/t600x362.jpg" className="d-block w-100"  height="500" alt="..."/>
+            <img src="https://www.theoutletstoresalicante.es/wp-content/uploads/2019/03/TacoBell_Happy-Day-Adaptaciones_02_FB-1200x1200.png" className="d-block w-100"  height="600" alt="..."/>
           </div>
           <div className="carousel-item">
-            <img src="https://ubces.vams.es/images/featured/_slider_g/Telepi-Cupon-UrbanCheckFamilyDays-448x280-20117.jpg" className="d-block w-100" height="500"alt="..."/>
+            <img src="https://ubces.vams.es/images/featured/_slider_g/Telepi-Cupon-UrbanCheckFamilyDays-448x280-20117.jpg" className="d-block w-100" height="600"alt="..."/>
+          </div>
+          <div className="carousel-item">
+            <img src="https://www.subwaypanama.com/content/20230103085737-1.jpg " className="d-block w-100 " height="600" alt="..."/>
+          </div>
+          <div className="carousel-item">
+            <img src="https://static.kfc.es/images/static-page/promo/megabox3/hero-desktop.jpg" className="d-block w-100 " height="500" alt="..."/>
           </div>
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -28,6 +32,7 @@ const Slide=()=>{
           <span className="visually-hidden">Next</span>
         </button>
       </div>
+      
     )
 }
 
