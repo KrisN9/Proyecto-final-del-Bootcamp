@@ -21,7 +21,7 @@ export const Home = () => {
 	
     <div className="text-center mt-3 ">
 		<div className="container squar1 mt-5 mb-3">
-         <p className="fs-1 text-success fst-italic">Encontrarás tus restaurantes favoritos con las mejores ofertas.</p>
+         <p className="fs-1 text-success fst-italic">Aquí encontrarás tus restaurantes favoritos con las mejores ofertas.</p>
 		</div>
 		<br></br>
       <Slide />
