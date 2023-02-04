@@ -3,6 +3,7 @@ import { useState } from "react";
 
 const Offer = () => { 
   const [formData, setFormData] = useState([]);
+  const [ upDate, setUpDate] = useState("true");
  
 
   const handleChange = (event) => { 
@@ -19,8 +20,12 @@ const Offer = () => {
       },
       body: JSON.stringify(formData),
     }).then((response) => {
-      if (response.status == 200) response.json();
-      setFormData({});
+      if (response.status == 200) { 
+        alert ("Se ha creado con exito")
+        return response.json();
+      }else {
+        alert ("algo ha salido mal! Intentalo de nuevo ")
+      }
     })
     .then((response) => {
       setFormData(response);
@@ -116,23 +121,25 @@ const Offer = () => {
           >
             Enviar
           </button>    
-
           <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
+        <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div className="modal-body">
-      <p className="fs-4 text-danger"> {   } </p>
+       hola
       </div>
       <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" className="btn btn-primary" data-bs-dismiss="modal" >Aceptar</button>
+        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" className="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
 </div>
+
+          
 
         </div>
       </div>
@@ -141,6 +148,10 @@ const Offer = () => {
 };
 
 export default Offer;
+
+
+
+{/* { upDate  ? "Ha fallado algo! Intentalo de nuevo" : "Tu oferta ha sido creada con exito " }  */}
 
 // <div className="mb-3 text-start">
 // <label htmlFor="floatingUrl" className="form-label">Añadir url de empresa </label>
