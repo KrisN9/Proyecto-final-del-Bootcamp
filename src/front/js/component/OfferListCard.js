@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const OfferListCard = (props) => {
@@ -15,31 +15,33 @@ const OfferListCard = (props) => {
       });
   }, []);
 
-const addFavorite = (favorite) => {
+  const addFavorite = (favorite) => {
     const newFavoriteList = [...favorite, offer];
     setFavorite(newFavoriteList);
   };
 
   const handleClick = (event) => {
-    event.preventDefault();
+    console.log("hola");
     if (favorite === true) {
-    fetch(process.env.BACKEND_URL + "/api/favorite", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer " + localStorage.getItem("token"),
-      },
-      body: JSON.stringify(favorite),
-    })
-    .then((response) => {
-      response.json();
-    })
-    .then((response) => {
-      console.log("has hecho click!");
-      setFavorite(response);
-    })
-  }
-};
+      fetch(process.env.BACKEND_URL + "/api/favorite", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem("token"),
+        },
+        body: JSON.stringify({ id_offer: event }),
+      })
+        .then((response) => {
+          response.json();
+        })
+        .then((response) => {
+          console.log("has hecho click!");
+          setFavorite(response);
+        });
+    } else {
+      console.log("else");
+    }
+  };
 
   return offer ? (
     <>
@@ -55,8 +57,13 @@ const addFavorite = (favorite) => {
         </ul>
         <div className="card-body d-grid gap-2 col-6 mx-auto">
           <button
-            className="btn btn-outline-danger" onClick={handleClick}
-          >Añadir a favoritos
+            className="btn btn-outline-danger"
+            onClick={() => {
+              handleClick(offer.id);
+              setFavorite(true);
+            }}
+          >
+            Añadir a favoritos
             <i className="fas fa-heart"></i>
           </button>
         </div>

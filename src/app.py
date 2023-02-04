@@ -22,6 +22,8 @@ app.url_map.strict_slashes = False
 
 
 app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+app.config['JWT_ACCESS_TOKEN_EXPIRES'] = datetime.timedelta(seconds=3600)
+app.config['JWT_REFRESH_TOKEN_EXPIRES'] = datetime.timedelta(seconds=3600)
 jwt = JWTManager(app)
 
 

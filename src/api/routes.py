@@ -105,7 +105,7 @@ def delete_supplier():
 @jwt_required()       #pendiente ver su funcionalidad, supongo que si! ¬¬
 def delete_favorite(favorite_id):
     try:
-        removeFavorite=Favorite.query.filter_by(id=favorite_id).first
+        removeFavorite=Favorite.query.filter_by(id=favorite_id).first()
         db.session.delete(removeFavorite)
         db.session.commit()
     except Exception:
@@ -199,6 +199,9 @@ def create_offer():
 def add_favorite():
     data = request.json
     user_id = get_jwt_identity()
+    print("@@@@@@@@", data)
+    print("@@@@@@@@", user_id)
+    print("@@@@@@@@", data['id_offer'])
     try:
         favorite = Favorite(id_user=user_id, id_offer=data['id_offer'])
         db.session.add(favorite)

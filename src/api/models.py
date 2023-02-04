@@ -38,10 +38,12 @@ class Favorite(db.Model):
         return f'<Favorite {self.id}>'
 
     def serialize(self):
+        offerlist = Offer.query.get(self.id_offer)
         return {
             "user": self.id_user,
-            "offer": self.id_offer
-            
+            "offer": self.id_offer,
+            "offerlist": offerlist.serialize(),
+            "id": self.id
         }
 
 
