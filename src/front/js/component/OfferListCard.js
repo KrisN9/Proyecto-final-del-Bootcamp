@@ -15,11 +15,6 @@ const OfferListCard = (props) => {
       });
   }, []);
 
-  const addFavorite = (favorite) => {
-    const newFavoriteList = [...favorite, offer];
-    setFavorite(newFavoriteList);
-  };
-
   const handleClick = (event) => {
     console.log("hola");
     if (favorite === true) {
