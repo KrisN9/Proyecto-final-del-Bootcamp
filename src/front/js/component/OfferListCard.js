@@ -15,8 +15,9 @@ const OfferListCard = (props) => {
       });
   }, []);
 
-  const addFavorite = (favorite) => {
-    setFavorite(prev => [...prev, favorite])
+const addFavorite = (favorite) => {
+    const newFavoriteList = [...favorite, offer];
+    setFavorite(newFavoriteList);
   };
 
   const handleClick = (event) => {
@@ -35,7 +36,7 @@ const OfferListCard = (props) => {
     })
     .then((response) => {
       console.log("has hecho click!");
-      addFavorite(response);
+      setFavorite(response);
     })
   }
 };
