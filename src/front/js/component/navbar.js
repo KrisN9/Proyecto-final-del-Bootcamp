@@ -34,7 +34,8 @@ export const Navbar = () => {
 					<Link  to={ localStorage.getItem("type")== "user" ?"/area-privada-usuario" : "/area-privada-proveedor"}> 
 					   
 					</Link>
-					  <Link className="btn btn-outline-success rounded-pill" to="/area-privada-usuario">Área privada</Link>   {/* Terminar de implantar para user/supplier, y que solo aparezca en la Home */}
+					{/* {location.pathname !== "/area-privada-usuario" && */}
+					  <Link className="btn btn-outline-success rounded-pill" to="/area-privada-usuario">Área privada</Link>{/* } */}   {/* Terminar de implantar para user/supplier, y que solo aparezca en la Home */}
 					  <Link className="btn btn-outline-success rounded-pill" to="/" onClick={SessionOut}>Cerrar sesión</Link>
 					</> 
 					 :<>
