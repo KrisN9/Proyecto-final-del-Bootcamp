@@ -35,7 +35,6 @@ export const Navbar = () => {
 					   
 					</Link>
 					  <Link className="btn btn-outline-success rounded-pill" to="/area-privada-usuario">Área privada</Link>   {/* Terminar de implantar para user/supplier, y que solo aparezca en la Home */}
-					  {/* <Link className="btn btn-outline-success rounded-pill" to="/area-de-favoritos">Mis favoritos</Link>    // creo que ya no es necesario */}
 					  <Link className="btn btn-outline-success rounded-pill" to="/" onClick={SessionOut}>Cerrar sesión</Link>
 					</> 
 					 :<>
