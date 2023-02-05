@@ -3,12 +3,12 @@ import { useState } from "react";
 
 const Offer = () => { 
   const [formData, setFormData] = useState([]);
-  const [ upDate, setUpDate] = useState("true");
- 
 
+  
   const handleChange = (event) => { 
     setFormData({...formData, [event.target.name]: event.target.value });
   };
+  
   
   const handleClick = (event) => {
     event.preventDefault();
@@ -16,22 +16,23 @@ const Offer = () => {
       method:"POST",
       headers: {
         "Content-Type": "application/json",
-        'Authorization':'Bearer '+ localStorage.getItem('token')
+        'Authorization': 'Bearer '+ localStorage.getItem('token')
       },
       body: JSON.stringify(formData),
     }).then((response) => {
       if (response.status == 200) { 
         alert ("Se ha creado con exito")
-        return response.json();
+        setUser("")
       }else {
         alert ("algo ha salido mal! Intentalo de nuevo ")
+        setUser("")
       }
+      response.json();
     })
     .then((response) => {
-      setFormData(response);
-      
+    console.log(response);
     });
-   
+    
   };
   
 
@@ -49,7 +50,6 @@ const Offer = () => {
             placeholder="Nombre de la empresa "
             name="company_name"
             onChange={handleChange}
-            
           />
           <label htmlFor="floatingName">Nombre de la empresa </label>
         </div>
@@ -117,11 +117,10 @@ const Offer = () => {
             type="submit"
             className="btn btn-danger"
             onClick={handleClick}
-            data-bs-toggle="modal" data-bs-target="#exampleModal"
           >
             Enviar
           </button>    
-          <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          {/* <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div className="modal-dialog">
     <div className="modal-content">
       <div className="modal-header">
@@ -137,7 +136,7 @@ const Offer = () => {
       </div>
     </div>
   </div>
-</div>
+</div> */}
 
           
 

@@ -22,7 +22,7 @@ const SupplierRegister = () => {
   };
 
   const handleChange = (event) => {
-    setFormData({ ...formData, [event.target.name]:event.target.value});
+    setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
   useEffect(() => {
@@ -194,7 +194,7 @@ const SupplierRegister = () => {
             })}
           </select>
 
-{/*           <ReactPasswordChecklist rules={["minLength", "match"]}
+          {/*           <ReactPasswordChecklist rules={["minLength", "match"]}
           minLength={6}
           value={"password"}
           valueAgain={"password2"} 
@@ -222,7 +222,13 @@ const SupplierRegister = () => {
             </label>
           </div>
           <div className="col-12 mb-3">
-            <button type="submit" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={handleSubmit}>
+            <button
+              type="submit"
+              className="btn btn-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+              onClick={handleSubmit}
+            >
               Enviar
             </button>
           </div>

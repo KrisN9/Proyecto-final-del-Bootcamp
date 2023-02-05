@@ -1,14 +1,35 @@
-import React from "react";
+import React , {useState, useEffect}from "react";
 import User from "./User";
 import Cards from "./Cards";
 
 const PrivateAreaUser=()=>{
 
+  const [user, setUser]= useState ([]);
+
+  useEffect(()=>{
+    
+      const optionsUser={
+        headers:{
+          "Content-Type": "application/json",
+          'Authorization':'Bearer '+ localStorage.getItem('token')
+        }
+        }
+      fetch(process.env.BACKEND_URL+ "/api/user" , optionsUser)
+      .then((response)=>{
+          return response.json()
+      }).then ((response)=>{
+          setUser(response)
+      })
+    
+  },[])
+
 return (
 
     <div className="container">
         <div className="text-center">
-        <p className="fst-italic fs-2">Bienvenido a tu area Privada </p>
+          <div className="mt-5 mb-5">
+        <p className="fst-italic fs-2">Bienvenid@ a tu area privada {user.name}</p>
+        </div>
   <ul className="nav nav-tabs  justify-content-center"  id="myTab" role="tablist">
   <li className="nav-item" role="presentation">
     <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Cuenta</button>

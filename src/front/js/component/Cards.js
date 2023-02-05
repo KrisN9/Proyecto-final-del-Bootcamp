@@ -6,6 +6,7 @@ const Cards = () => {
   useEffect(() => {
     getFavorite();
   }, []);
+  
   const getFavorite = () => {
     fetch(process.env.BACKEND_URL + "/api/user/favorite", {
       headers: {

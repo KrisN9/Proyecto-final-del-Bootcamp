@@ -1,17 +1,37 @@
-import React from "react";
+import React, { useState ,useEffect } from "react";
 import Offer from "./Offer";
 import OfferCards from "./OfferCards";
 import Supplier from "./Supplier";
 
 
 
+
 const PrivateAreaSupplier=()=>{
+  const [supplier , setSupplier] = useState([]);
  
+
+  useEffect(()=>{
+    const optionsSupplier = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    };
+    fetch(process.env.BACKEND_URL + "/api/supplier", optionsSupplier)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        setSupplier(response);
+      });
+  }, [])
 
 return (
     <div className="container mt-3">
         <div className="text-center">
-         <p className="fst-italic fs-2">Bienvenido a tu area Privada </p>
+          <div className="mt-5 mb-5">
+        <p className="fst-italic fs-2">Bienvenid@ a tu area privada {supplier.name}</p>
+        </div>
   <ul className="nav nav-tabs  justify-content-center"  id="myTab" role="tablist">
   <li className="nav-item" role="presentation">
     <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Cuenta</button>
