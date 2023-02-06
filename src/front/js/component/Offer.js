@@ -103,18 +103,20 @@ const Offer = () => {
           />
           <label htmlFor="floatingLocation">location</label>
         </div>
-        <div className="mb-3 text-start ">
-          <label htmlFor="floatingImage" className="form-label">
-            Añadir Imagen
-          </label>
+
+
+        <div className="form-floating mb-3">
           <input
-            className="form-control form-control-sm"
-            id="floatingImage"
+            type="url_image"
+            className="form-control"
+            id="floatingUrlImage"
+            placeholder="imagen"
             name="url_image"
-            type="file"
             onChange={handleChange}
           />
-        </div>
+          <label htmlFor="floatingName">Url de imagen  </label>
+        </div> 
+       
 
         <div className="col-12 mb-3">
           <button
@@ -162,16 +164,16 @@ export default Offer;
 //  onChange={handleChange}/>
 // </div>
 
-{
-  /* <div className="form-floating mb-3">
-          <input
-            type="name"
-            className="form-control"
-            id="floatingName"
-            placeholder="Nombre del proveedor "
-            name="name"
-            onChange={handleChange}
-          />
-          <label htmlFor="floatingName">Nombre del proveedor </label>
-        </div> */
-}
+
+// <div className="mb-3 text-start ">
+// <label htmlFor="floatingImage" className="form-label">
+//   Añadir Imagen
+// </label>
+// <input
+//   className="form-control form-control-sm"
+//   id="floatingImage"
+//   name="url_image"
+//   type="file"
+//   onChange={handleChange}
+// />
+// </div>

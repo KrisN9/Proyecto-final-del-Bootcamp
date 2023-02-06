@@ -14,23 +14,26 @@ const OfferCards = () => {
   };
 
   useEffect(() => {
-    const offer = {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: 'Bearer ' + localStorage.getItem("token"),
-      },
-      
-    };
-    fetch(process.env.BACKEND_URL + "/api/supplier/offer", offer)
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-         setOffers(response);
-      });  
+    getOffer();
+
   }, []);
 
- 
+ const getOffer=()=>{
+  const offer = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: 'Bearer ' + localStorage.getItem("token"),
+    },
+    
+  };
+  fetch(process.env.BACKEND_URL + "/api/supplier/offer", offer)
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+       setOffers(response);
+    });  
+ }
 
   const remove = (offer_id) => {
     const remove = {
@@ -45,7 +48,7 @@ const OfferCards = () => {
         return response.json();
       })
       .then((response) => {
-       console.log(response)
+        getOffer();
       });
   };
 
@@ -63,22 +66,21 @@ const OfferCards = () => {
         return response.json();
       })
       .then((response) => {
-        console.log(response)
+        getOffer();
       });
   };
 
   return (
-    <div className="container col-12 col-md-6 mt-4 mb-3">
+    <div className="container col-12 col-md-6 mt-4 mb-3 ">
       <div className="mt-3">
         <p className="text-center fst-italic fs-3 text-danger">
-          {" "}
           Tienes {offers.length} ofertas.
         </p>
         {offers.map((offer, index) => {
           return (
-            <div className="card mb-3" key={index}>
+            <div className="card mb-3 " key={index}>
               <div className="row g-0">
-                <div className="col-md-3">
+                <div className="col-md-3 ">
                   <img
                     src={offer.url_image}
                     className="img-fluid rounded-start"
@@ -96,8 +98,9 @@ const OfferCards = () => {
                     {/* aqui va la descripcion de la oferta */}
                   </div>
                 </div>
-                <div className="col-md-2 mt-3">
-                  <p>Precio:{offer.price}€</p>
+                <div className="col-md-2 mt-3 "> 
+                  <p>Precio: {offer.price}€</p>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                   <button
                     type="button"
                     className="btn btn-secondary"
@@ -105,15 +108,18 @@ const OfferCards = () => {
                   >
                     <i className="fas fa-trash-alt"></i>
                   </button>
+                  
                   <button
                     type="button"
                     className="btn btn-outline-success"
                     data-bs-toggle="modal"
                     data-bs-target="#exampleModal"
+                    
                   >
                     <i className="fas fa-edit"></i>
                   </button>
-                </div>
+                  </div>
+                  </div>
               </div>
               <div
                 className="modal fade"
@@ -150,7 +156,7 @@ const OfferCards = () => {
                               defaultValue={offer.title}
                             />
                           </div>
-                          <div className="mt-2">
+                          <div className="col-md-3 mt-2">
                             <p className="fs-6 text-success">Precio </p>
                             <input
                               type="name"
