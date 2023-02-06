@@ -257,7 +257,7 @@ def update_supplier(supplier_id):
 @api.route('/offer/<int:offer_id>', methods=['PUT']) #modificar datos de oferta
 def update_offer(offer_id):
     try:
-        offer = Offer.query.filter_by(offer_id=offer_id).first()
+        offer = Offer.query.filter_by(id=offer_id).first()
     except Exception:
         return jsonify({"msg": "Offer doesn't exist"}), 400
 
