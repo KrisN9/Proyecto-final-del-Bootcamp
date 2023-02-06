@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext"; 
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 export const Navbar = () => {
+	/* const location = useLocation(); */
 	const navigate = useNavigate();
     const {store , actions}= useContext(Context)
 
@@ -34,8 +35,8 @@ export const Navbar = () => {
 					<Link  to={ localStorage.getItem("type")== "user" ?"/area-privada-usuario" : "/area-privada-proveedor"}> 
 					   
 					</Link>
-					{location.pathname !== "/area-privada-usuario" &&
-					  <Link className="btn btn-outline-success rounded-pill" to="/area-privada-usuario">Área privada</Link>}
+					{/* {location.pathname !== "/area-privada-usuario" && */}
+					  <Link className="btn btn-outline-success rounded-pill" to="/area-privada-usuario">Área privada</Link>{/* } */}   {/* Terminar de implantar para user/supplier, y que solo aparezca en la Home */}
 					  <Link className="btn btn-outline-success rounded-pill" to="/" onClick={SessionOut}>Cerrar sesión</Link>
 					</> 
 					 :<>
