@@ -2,43 +2,67 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User, Login, Favorite, Supplier, Offer
+from api.models import db, User, Favorite, Supplier, Offer, City
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required , get_jwt_identity
+
 
 
 api = Blueprint('api', __name__)
 
 
 
-@api.route('/supplier/<int:supplier_id>', methods=['GET']) # se obtiene proveedor por id 
-def get_supplier(supplier_id):
+@api.route('/supplier', methods=['GET']) # se obtiene proveedor por id 
+@jwt_required()
+def get_supplier():
+    supplier_id= get_jwt_identity()
     supplier= Supplier.query.filter_by(id=supplier_id).first()
     if supplier : 
         return jsonify(supplier.serialize()),200
     
     return jsonify({"Doesn´t exist"}), 400
 
-@api.route('/user/<int:user_id>', methods=['GET']) # se obtiene usuario por id 
-def get_user(user_id):
+@api.route('/user', methods=['GET']) # se obtiene usuario por id 
+@jwt_required()
+def get_user():
+    user_id= get_jwt_identity()
     user= User.query.filter_by(id=user_id).first()
     if user : 
         return jsonify(user.serialize()),200
     
     return jsonify({"Doesn´t exist"})
 
-@api.route('/user/favorite/<int:user_id>', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
-def favorite_user(user_id):                                             
-    favorites= Favorite.query.all(id=user_id)
+@api.route('/user/favorite', methods=['GET'])  #Listar todos los favoritos que pertenecen al usuario actual.
+@jwt_required()
+def favorite_user():  
+    user_id = get_jwt_identity()                                            
+    favorites= Favorite.query.filter_by(id_user=user_id)
     data = [favorite.serialize() for favorite in favorites]
     return jsonify(data),200
 
-@api.route('/supplier/offer/<int:supplier_id>', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
-def offer_supplier(supplier_id):                                                 
-    offers= Offer.query.all(id=supplier_id)
+
+@api.route('/supplier/offer', methods=['GET'])  #Listar todos las ofertas que pertenecen al proveedor.
+@jwt_required()
+def offer_supplier():
+    supplier_id = get_jwt_identity()                                               
+    offers= Offer.query.filter_by(id_supplier=supplier_id)
     data=[offer.serialize() for offer in offers ]
     return jsonify(data), 200
 
+@api.route('offer', methods=['GET'])            #Listar la totalidad de las ofertas (no mover de momento).
+def all_offers():
+    offers = Offer.query.all()
+    data = [offer.serialize() for offer in offers]
+    return jsonify(data), 200
+
+@api.route('offer/<int:offer_id>', methods=['GET'])       #Se obtienen datos de una oferta por id
+def get_offer(offer_id):
+    try:
+        offer = Offer.query.filter_by(id=offer_id).first()
+    except Exception:
+        return jsonify({"msg": "Offer doesn't exist"}), 400
+
+    return jsonify(offer.serialize()), 200
 
 @api.route('/city', methods=['GET'])  #se obtiene todas las ciudades
 def get_cities():
@@ -49,63 +73,69 @@ def get_cities():
 
 
 
-@api.route('/delete_user/<int:user_id>', methods=['DELETE'])   #eliminar usuario  por id 
-def delete_user(user_id):
+@api.route('/delete_user', methods=['DELETE'])   #eliminar usuario  por id 
+@jwt_required()    # pendiente 
+def delete_user():
     try: 
+        user_id= get_jwt_identity()
         user=User.query.filter_by(user_id).first()
         db.session.delete(user)
         db.session.commit()
 
-    except:
+    except Exception:
         return jsonify({"message": "Error"}), 400
     
     return jsonify({"message": "User Deleted."}),200
 
-@api.route('/delete_supplier/<int:supplier_id>', methods=['DELETE'])  #emilinar proveedor por id 
-def delete_supplier(supplier_id):
+@api.route('/delete_supplier', methods=['DELETE'])  #emilinar proveedor por id 
+@jwt_required()   #pendiente ver si funciona 
+def delete_supplier():
     try: 
-        supplier =Supplier.query.filter_by(supplier_id).first()
+        supplier_id=get_jwt_identity()
+        supplier =Supplier.query.filter_by(id=supplier_id).first()
         db.session.delete(supplier)
         db.session.commit()
 
-    except:
+    except Exception:
         return jsonify({"message": "Error"}), 400
     
     return jsonify({"message": "User Deleted."})
 
-@api.route('/delete_favorite/<int:user_id>/<int:favorite_id>', methods=['DELETE'])      #emilinar favorito del usuario.  preguntar 
-def delete_favorite(user_id, favorite_id):
+@api.route('/delete_favorite/<int:favorite_id>', methods=['DELETE'])   #emilinar favorito del usuario.  
+@jwt_required()     
+def delete_favorite(favorite_id):
     try:
-        removeFavorite=Favorite(id=favorite_id)
+        removeFavorite=Favorite.query.filter_by(id=favorite_id).first()
         db.session.delete(removeFavorite)
         db.session.commit()
-    except:
+    except Exception:
         return jsonify({"message": "Error"}),400
 
-    return jsonify({"Favorite removed"})
+    return jsonify({"message":"Favorite removed"}),200
 
-@api.route('/delete_offer/<int:supplier_id>/<int:offer_id>', methods=['DELETE'])      #eliminar oferta de un proveedor 
-def delete_offer(supplier_id, offer_id):
+@api.route('/delete_offer/<int:offer_id>', methods=['DELETE'])   #eliminar oferta de un proveedor 
+@jwt_required()          
+def delete_offer(offer_id):    
     try:
-        removeOffer=Offer(id=offer_id)
+        removeOffer = Offer.query.filter_by(id=offer_id).first()
         db.session.delete(removeOffer)
         db.session.commit()
-    except:
+    except Exception as e:
+        print(e)
         return jsonify({"message": "Error"}),400
 
-    return jsonify({"Offer removed"})
-
+    return jsonify({"message":"Offer removed"}),200
 
 @api.route('/register-user', methods=['POST'])   #registro de usuario
 def register_user():
+    data = request.json
     try:
-        data = request.json
-        user = User(id=data['id'], name=data['name'], email=data['email'], password=data['password'],  
-        telephone_number=data['telephone_number'], city=data['city'])
+        user = User(name=data['name'], email=data['email'], password=data['password'],  
+        telephone_number=data['telephone_number'], city_id=data['city'])
         db.session.add(user)
         db.session.commit()
-    except: 
-
+    except Exception as e: 
+        print(e)
         return jsonify({"msg": "Error"}),400
     
     return jsonify({"msg": "User created"}),200
@@ -113,25 +143,26 @@ def register_user():
 
 @api.route('/register-supplier', methods=['POST'])   #registro de proveedor
 def register_supplier():
+    data = request.json
     try:
-        data = request.json
-        supplier = Supplier(id=data['id'], company_name=data['company_name'], company_cif=data['company_cif'], name=data['name'], email=data['email'],
-        password=data['password'], telephone_number=data['telephone_number'], city=data['city'])
+        supplier = Supplier(company_name=data['company_name'], company_cif=data['company_cif'], name=data['name'], email=data['email'],
+        password=data['password'], telephone_number=data['telephone_number'], city_id=data['city'])
         db.session.add(supplier)
         db.session.commit()
-    except:
-         return jsonify({"msg": "Error"}),400
+    except Exception as e:
+        print(e)
+        return jsonify({"msg": "Error"}),400
     
     return jsonify({"msg": "Supplier created"}),200
 
 
 @api.route('/login-user', methods=['POST'])  #login de usuario    
 def login_user():
-    data = request.json  #aqui se almacena json que nos envia de la base de datos
+    data = request.json 
     user = User.query.filter_by(email=data['email'], password=data['password']).first()
     if user:
-        access_token = create_access_token(identity=user.id)   #se crea token y asocia al ID
-        return jsonify({"token": access_token,}), 200
+        access_token = create_access_token(identity=user.id)   
+        return jsonify({"token": access_token}), 200
     
     return jsonify({"msg": "Wrong user/password"}), 400
 
@@ -147,33 +178,46 @@ def login_supplier():
     return jsonify({"msg": "Wrong supplier/password"}), 400
 
 
-@api.route('/offer', methods=['POST'])  #crear una nueva oferta   #pendiente
+@api.route('/offer', methods=['POST'])  #crear una nueva oferta   #pendiente de revisar si va id en la ruta
+@jwt_required()
 def create_offer():
-    
-    data = request.json
-    offer = Offer.query.filter_by(name=data['name'], company_name=data['company_name'], url=data['url'], image=data['url_image'], location=data['location'] )
-    if offer:
-        return jsonify(data), 200
-
-    return jsonify({"msg": "Wrong name/URL"}), 400
-
+    data=request.json
+    supplier_id = get_jwt_identity()
+    try:
+       offer= Offer(id_supplier=supplier_id,company_name=data['company_name'], 
+       url=data['url'], url_image=data['url_image'], title=data['title'], price=data['price'], location=data['location'])  
+       db.session.add(offer)
+       db.session.commit()
+    except Exception as e: 
+        print(e)
+        return jsonify({"msg":"Error"}),400
+        
+    return jsonify({"msg":"Offer created"}),200
 
 @api.route('/favorite', methods=['POST']) #añadir un nuevo favorito
+@jwt_required()
 def add_favorite():
-
     data = request.json
-    favorite = Favorite.query.filter_by(id_user=data['id_user'], id_offer=data['id_offer'])
-    if favorite:
-        return jsonify(data), 200
+    user_id = get_jwt_identity()
+    print("@@@@@@@@", data)
+    print("@@@@@@@@", user_id)
+    print("@@@@@@@@", data['id_offer'])
+    try:
+        favorite = Favorite(id_user=user_id, id_offer=data['id_offer'])
+        db.session.add(favorite)
+        db.session.commit()
+    except Exception as e: 
+        print(e)
+        return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400
 
-    return jsonify({"msg": "Your favorite cannot be added, wrong details"}), 400
+    return jsonify({"msg": "Saved favorite"}), 200
 
 
 @api.route('/user/<int:user_id>', methods=['PUT']) #modificación de datos de usuario
 def update_user(user_id):
     try:
-        user = User.query.filter_by(user_id=user_id).first()
-    except:
+        user = User.query.filter_by(id=user_id).first()
+    except Exception:
         return jsonify({"msg": "User doesn't exist"}), 400
 
     new_name = request.json.get("name", user.name)
@@ -184,7 +228,6 @@ def update_user(user_id):
     setattr(user, "name", new_name)
     setattr(user, "email", new_email)
     setattr(user, "telephone_number", new_telephone_number)
-    setattr(user, "city", new_city)
 
     db.session.commit()
        
@@ -193,33 +236,29 @@ def update_user(user_id):
 @api.route('/supplier/<int:supplier_id>', methods=['PUT']) #modificacion de datos de proveedor
 def update_supplier(supplier_id):
     try:
-        supplier = Supplier.query.filter_by(supplier_id=supplier_id).first()
-    except:
+        supplier = Supplier.query.filter_by(id=supplier_id).first()
+    except Exception:
         return jsonify({"msg": "Supplier doesn't exist"}), 400
 
     new_company_name = request.json.get("company_name", supplier.company_name)
     new_company_cif = request.json.get("company_cif", supplier.company_cif)
     new_name = request.json.get("name", supplier.name)
     new_email = request.json.get("email", supplier.email)
-    new_telephone_number = request.json.get("telephone_number", supplier.telephone_number)
-    new_city = request.json.get("city", supplier.city)
 
     setattr(supplier, "company_name", new_company_name)
     setattr(supplier, "company_cif", new_company_cif)
     setattr(supplier, "name", new_name)
     setattr(supplier, "email", new_email)
-    setattr(supplier, "telephone_number", new_telephone_number)
-    setattr(supplier, "city", new_city)
 
     db.session.commit()
        
-    return jsonify(user.serialize()), 200
+    return jsonify(supplier.serialize()), 200
 
 @api.route('/offer/<int:offer_id>', methods=['PUT']) #modificar datos de oferta
 def update_offer(offer_id):
     try:
         offer = Offer.query.filter_by(offer_id=offer_id).first()
-    except:
+    except Exception:
         return jsonify({"msg": "Offer doesn't exist"}), 400
 
     new_company_name = request.json.get("company_name", offer.company_name)
@@ -241,6 +280,10 @@ def update_offer(offer_id):
     return jsonify(user.serialize()), 200
 
 #pendiente de preguntar crear ROUTE PARA obetener las ofertas por la zona de busqueda 
+
+
+
+
 
 
 # @api.route('/user', methods=['GET'])  #se obtiene todo los usuarios 
