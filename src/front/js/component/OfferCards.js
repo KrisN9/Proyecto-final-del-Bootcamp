@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Modals from "./Modal";
+import Modals from "./Modals";
 
 
 const OfferCards = () => {
