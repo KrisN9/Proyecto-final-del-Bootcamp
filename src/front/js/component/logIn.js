@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../store/appContext"; 
+import { useContext } from "react";
 
 const LogIn = () => {
   const [formData, setFormData] = useState({});
   const [shownUser, setShownUser] = useState(false); //para mostar contraseña
   const [shownSupplier, setShownSupplier] = useState(false);
-
+  
+  const {store , actions}= useContext(Context)
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -15,9 +18,8 @@ const LogIn = () => {
   const user = () => {
     setShownUser(!shownUser);
   };
-
   const supplier = () => {
-    setShownSupplier(!shownSupplier);
+    setShownSupplier(!shownSupplier);       
   };
 
   const handleClickUser = () => {
@@ -27,16 +29,17 @@ const LogIn = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    };
-    fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
+      };
+      fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
       .then((response) => {
-        if (response.status === 200) return response.json();
-        else alert("Email or Password incorrect. Try again!");
+        if (response.status == 200)
+        return response.json()
+        else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
+      }).then((response)=>{
+        actions.setToken(response)
+        navigate("/area-privada-usuario");
       })
-      .then((response) => {
-        localStorage.setItem("token", response.token);
-        navigate("/privada-usuario/id");
-      });
+    
   };
 
   const handleClickSupplier = () => {
@@ -46,27 +49,28 @@ const LogIn = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-    };
-
-    fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
+      };
+    
+      fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
       .then((response) => {
         if (response.status === 200) return response.json();
-        else alert("Email or Password incorrect. Try again!");
+        else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
       })
-      .then((response) => {
-        localStorage.setItem("token", response.token);
-        navigate("/privada-proveedor/id");
-      });
+      .then((response)=>{
+        actions.setToken(response)
+        navigate("/area-privada-proveedor");
+      })
+
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="container">
-        {/* pendiente de arreglar la presentación*/}
         <div className="row text-center mb-5 centro">
           <div className="col-md-6">
             <p className="fs-1 fst-italic">Iniciar sesión como usuario</p>
@@ -88,7 +92,7 @@ const LogIn = () => {
               >
                 <div className="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
                   <div className="modal-content">
-                    {" "}
+                   
                     {/*modal para usuario*/}
                     <div className="modal-header">
                       <h1
@@ -149,6 +153,7 @@ const LogIn = () => {
                         type="button"
                         onClick={handleClickUser}
                         className="btn btn-outline-warning"
+                        data-bs-dismiss="modal"
                       >
                         Continuar
                       </button>
@@ -202,10 +207,10 @@ const LogIn = () => {
                           name="email"
                           onChange={handleChange}
                           className="form-control"
-                          id="floatingEmail"
+                          id="floatingInput1"
                           placeholder="name@example.com"
                         />
-                        <label htmlFor="floatingEmail">
+                        <label htmlFor="floatingInput1">
                           Dirección de correo electrónico*
                         </label>
                       </div>
@@ -240,6 +245,7 @@ const LogIn = () => {
                         type="button"
                         onClick={handleClickSupplier}
                         className="btn btn-outline-warning"
+                        data-bs-dismiss="modal"
                       >
                         Continuar
                       </button>
