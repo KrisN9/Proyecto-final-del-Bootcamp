@@ -26,6 +26,12 @@ const OfferListCard = (props) => {
         body: JSON.stringify({ id_offer: event }),
       })
         .then((response) => {
+          if (response.status == 200) {
+            alert("¡La oferta se ha agregado a Favoritos, puedes verla en tu Área Privada!");
+          if (response.status == 400) {
+            alert("Algo ha fallado, inténtalo de nuevo...");
+          }
+          }
           response.json();
         })
         .then((response) => {
@@ -48,7 +54,7 @@ const OfferListCard = (props) => {
         </ul>
         <div className="card-body d-grid gap-2 col-6 mx-auto">
           <button
-            className="btn btn-outline-danger"
+            className="btn btn-danger"
             onClick={() => {
               handleClick(offer.id);
               setFavorite(true);
