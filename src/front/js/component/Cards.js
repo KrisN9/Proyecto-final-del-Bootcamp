@@ -6,7 +6,7 @@ const Cards = () => {
   useEffect(() => {
     getFavorite();
   }, []);
-  
+
   const getFavorite = () => {
     fetch(process.env.BACKEND_URL + "/api/user/favorite", {
       headers: {
@@ -20,10 +20,10 @@ const Cards = () => {
       .then((response) => {
         setFavorites(response);
       });
-  }
+  };
 
   const removeFavorite = (favorite_id) => {
-    console.log(favorite_id)
+    console.log(favorite_id);
     const constfavorite = {
       method: "DELETE",
       headers: {
@@ -46,6 +46,9 @@ const Cards = () => {
   return (
     <div className="container col-12 col-md-6 mt-4">
       <div className="mt-3">
+        <p className="text-center fst-italic fs-3 text-danger">
+          Tienes {favorites.length} ofertas favoritas.
+        </p>
         {favorites.map((favorite) => {
           return (
             <div className="card mb-3" key={favorite.id}>
