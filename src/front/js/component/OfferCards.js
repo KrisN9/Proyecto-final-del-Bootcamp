@@ -14,26 +14,24 @@ const OfferCards = () => {
   };
 
   useEffect(() => {
-    getOffer();
+    const offer = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: 'Bearer ' + localStorage.getItem("token"),
+      },
+      
+    };
+    fetch(process.env.BACKEND_URL + "/api/supplier/offer", offer)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+         setOffers(response);
+      });  
 
   }, []);
 
- const getOffer=()=>{
-  const offer = {
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: 'Bearer ' + localStorage.getItem("token"),
-    },
-    
-  };
-  fetch(process.env.BACKEND_URL + "/api/supplier/offer", offer)
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-       setOffers(response);
-    });  
- }
+ 
 
   const remove = (offer_id) => {
     const remove = {
@@ -48,7 +46,7 @@ const OfferCards = () => {
         return response.json();
       })
       .then((response) => {
-        getOffer();
+        console.log(response);
       });
   };
 
@@ -66,7 +64,8 @@ const OfferCards = () => {
         return response.json();
       })
       .then((response) => {
-        getOffer();
+        console.log(response)
+        
       });
   };
 
@@ -88,7 +87,7 @@ const OfferCards = () => {
                   />
                 </div>
 
-                <div className="col-md-7">
+                <div className="col-md-6">
                   <div className="card-body text-center">
                     <h5 className="card-title fs-3 fw-bolder">
                       {offer.company_name}
@@ -98,8 +97,8 @@ const OfferCards = () => {
                     {/* aqui va la descripcion de la oferta */}
                   </div>
                 </div>
-                <div className="col-md-2 mt-3 "> 
-                  <p>Precio: {offer.price}€</p>
+                <div className="col-md-3 mt-2 "> 
+                  <p>Precio:{offer.price}€</p>
                   <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                   <button
                     type="button"
@@ -156,14 +155,14 @@ const OfferCards = () => {
                               defaultValue={offer.title}
                             />
                           </div>
-                          <div className="col-md-3 mt-2">
+                          <div className=" mt-2">
                             <p className="fs-6 text-success">Precio </p>
                             <input
                               type="name"
                               className="form-control"
                               id="floatingName"
                               placeholder="Precio"
-                              name="Precio"
+                              name="price"
                               onChange={handleChange}
                               defaultValue={offer.price}
                             />
