@@ -45,31 +45,57 @@ export const Navbar = () => {
           id="navbarSupportedContent"
         >
           {localStorage.getItem("token") ? (
-            <>
-              <Link
-                to={
-                  localStorage.getItem("type") == "user"
-                    ? "/area-privada-usuario"
-                    : "/area-privada-proveedor"
-                }
-              ></Link>
-              {location.pathname !== "/area-privada-usuario" && (
+            (
+              <>
+                <Link
+                  to={
+                    localStorage.getItem("type") == "user"
+                      ? "/area-privada-usuario"
+                      : "/area-privada-proveedor"
+                  }
+                ></Link>
+                {location.pathname !== "/area-privada-usuario" && (
+                  <Link
+                    className="btn btn-outline-success rounded-pill"
+                    to="/area-privada-usuario"
+                  >
+                    Área privada
+                  </Link>
+                )}
                 <Link
                   className="btn btn-outline-success rounded-pill"
-                  to="/area-privada-usuario"
+                  to="/"
+                  onClick={SessionOut}
                 >
-                  Área privada
+                  Cerrar sesión
                 </Link>
-              )}
-              {/* Terminar de implantar para supplier */}
-              <Link
-                className="btn btn-outline-success rounded-pill"
-                to="/"
-                onClick={SessionOut}
-              >
-                Cerrar sesión
-              </Link>
-            </>
+              </>
+            ) && (
+              <>
+                <Link
+                  to={
+                    localStorage.getItem("type") == "supplier"
+                      ? "/area-privada-proveedor"
+                      : "/area-privada-usuario"
+                  }
+                ></Link>
+                {location.pathname !== "/area-privada-proveedor" && (
+                  <Link
+                    className="btn btn-outline-success rounded-pill"
+                    to="/area-privada-proveedor"
+                  >
+                    Área privada
+                  </Link>
+                )}
+                <Link
+                  className="btn btn-outline-success rounded-pill"
+                  to="/"
+                  onClick={SessionOut}
+                >
+                  Cerrar sesión
+                </Link>
+              </>
+            )
           ) : (
             <>
               <Link
