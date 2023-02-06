@@ -58,7 +58,7 @@ const OfferListCard = (props) => {
               setFavorite(true);
             }}
           >
-            Añadir a favoritos
+            Añadir a Favoritos<br></br>
             <i className="fas fa-heart"></i>
           </button>
         </div>

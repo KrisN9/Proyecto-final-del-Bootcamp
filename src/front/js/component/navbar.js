@@ -49,7 +49,7 @@ export const Navbar = () => {
               <>
                 <Link
                   to={
-                    localStorage.getItem("type") == "user"
+                    localStorage.getItem("type") === "user"
                       ? "/area-privada-usuario"
                       : "/area-privada-proveedor"
                   }
@@ -70,11 +70,11 @@ export const Navbar = () => {
                   Cerrar sesión
                 </Link>
               </>
-            ) && (
+            ) /* ?? (
               <>
                 <Link
                   to={
-                    localStorage.getItem("type") == "supplier"
+                    localStorage.getItem("type") === "supplier"
                       ? "/area-privada-proveedor"
                       : "/area-privada-usuario"
                   }
@@ -95,7 +95,7 @@ export const Navbar = () => {
                   Cerrar sesión
                 </Link>
               </>
-            )
+            ) */
           ) : (
             <>
               <Link
