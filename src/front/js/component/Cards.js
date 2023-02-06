@@ -36,6 +36,12 @@ const Cards = () => {
       constfavorite
     )
       .then((response) => {
+        if (response.status == 200) {
+          alert("La oferta se ha eliminado de Favoritos correctamente. ¡Prueba a encontrar más en nuestro mapa!")
+        }
+      if (response.status == 400) {
+        alert("Algo ha fallado, vuelve a intentarlo...")
+      }
         return response.json();
       })
       .then((response) => {
