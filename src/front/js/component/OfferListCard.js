@@ -16,7 +16,6 @@ const OfferListCard = (props) => {
   }, []);
 
   const handleClick = (event) => {
-    console.log("hola");
     if (favorite === true) {
       fetch(process.env.BACKEND_URL + "/api/favorite", {
         method: "POST",
@@ -30,11 +29,8 @@ const OfferListCard = (props) => {
           response.json();
         })
         .then((response) => {
-          console.log("has hecho click!");
           setFavorite(response);
         });
-    } else {
-      console.log("else");
     }
   };
 
