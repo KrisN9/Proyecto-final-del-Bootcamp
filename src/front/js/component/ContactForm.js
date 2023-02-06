@@ -12,11 +12,12 @@ const ContactForm = () => {
   };
   const handleSubmit =(event)=>{
     event.preventDefault();   
-    setFormData({});  // hay que colocarlo despues del fetch 
+    setFormData({});  
   }
   return (
     <>
     <form onSubmit={handleSubmit}>
+      <div className="container col-md-6">
       <div className="text-center mt-3">
         <p className="fs-1 fw-bolder">Contacta con nosotros</p>
         <p className="fs-3 fst-italic">
@@ -120,6 +121,7 @@ const ContactForm = () => {
         </div>
           
         
+      </div>
       </div>
       </form>
     </>

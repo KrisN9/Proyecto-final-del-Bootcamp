@@ -1,14 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { get } from "react-hook-form";
+
 
 const OfferCards = () => {
   const [offers, setOffers] = useState([]);
   const [input, setInput] = useState({});
-  // const [id , setId ]=useState("")
-
-  // const EditarOfertas=()=>{
-  //   setId(offers.id);
-  // }
+ 
 
   const handleChange = (event) => {
     setInput({ ...input, [event.target.name]: event.target.value });
@@ -18,17 +14,12 @@ const OfferCards = () => {
   };
 
   useEffect(() => {
-    getOffer();
-    
-  }, []);
-
-  const getOffer=()=>{
-
     const offer = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
+        Authorization: 'Bearer ' + localStorage.getItem("token"),
       },
+      
     };
     fetch(process.env.BACKEND_URL + "/api/supplier/offer", offer)
       .then((response) => {
@@ -37,8 +28,9 @@ const OfferCards = () => {
       .then((response) => {
          setOffers(response);
       });  
-  }
+  }, []);
 
+ 
 
   const remove = (offer_id) => {
     const remove = {
@@ -53,7 +45,7 @@ const OfferCards = () => {
         return response.json();
       })
       .then((response) => {
-        getOffer();
+       console.log(response)
       });
   };
 
@@ -71,7 +63,7 @@ const OfferCards = () => {
         return response.json();
       })
       .then((response) => {
-        getOffer();
+        console.log(response)
       });
   };
 

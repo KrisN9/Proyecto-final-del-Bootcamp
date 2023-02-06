@@ -101,8 +101,8 @@ def delete_supplier():
     
     return jsonify({"message": "User Deleted."})
 
-@api.route('/delete_favorite/<int:favorite_id>', methods=['DELETE'])      #emilinar favorito del usuario.  
-@jwt_required()       #pendiente ver su funcionalidad, supongo que si! ¬¬
+@api.route('/delete_favorite/<int:favorite_id>', methods=['DELETE'])   #emilinar favorito del usuario.  
+@jwt_required()     
 def delete_favorite(favorite_id):
     try:
         removeFavorite=Favorite.query.filter_by(id=favorite_id).first()
