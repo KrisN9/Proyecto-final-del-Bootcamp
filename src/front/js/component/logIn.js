@@ -76,7 +76,7 @@ const LogIn = () => {
             <p className="fs-1 fst-italic">Iniciar sesión como usuario</p>
             <div className=" col-6 mx-auto">
               <button
-                className="btn btn-outline-warning "
+                className="btn btn-danger btn-lg"
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#modalUsuario"
@@ -144,7 +144,7 @@ const LogIn = () => {
                     <div className="modal-footer">
                       <button
                         type="button"
-                        className="btn btn-outline-secondary"
+                        className="btn btn-secondary"
                         data-bs-dismiss="modal"
                       >
                         Cancelar
@@ -152,7 +152,7 @@ const LogIn = () => {
                       <button
                         type="button"
                         onClick={handleClickUser}
-                        className="btn btn-outline-warning"
+                        className="btn btn-warning"
                         data-bs-dismiss="modal"
                       >
                         Continuar
@@ -170,7 +170,7 @@ const LogIn = () => {
             <p className="fs-1 fst-italic">Iniciar sesión como proveedor</p>
             <div className="col-6 mx-auto">
               <button
-                className="btn btn-outline-warning"
+                className="btn btn-danger btn-lg"
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#modalProveedor"
@@ -236,7 +236,7 @@ const LogIn = () => {
                     <div className="modal-footer">
                       <button
                         type="button"
-                        className="btn btn-outline-secondary"
+                        className="btn btn-secondary"
                         data-bs-dismiss="modal"
                       >
                         Cancelar
@@ -244,7 +244,7 @@ const LogIn = () => {
                       <button
                         type="button"
                         onClick={handleClickSupplier}
-                        className="btn btn-outline-warning"
+                        className="btn btn-warning"
                         data-bs-dismiss="modal"
                       >
                         Continuar
