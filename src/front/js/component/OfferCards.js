@@ -100,7 +100,7 @@ const OfferCards = () => {
                 </div>
                 <div className="col-md-2 mt-3 "> 
                   <p>Precio: {offer.price}€</p>
-                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                   <button
                     type="button"
                     className="btn btn-secondary"
