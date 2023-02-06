@@ -75,7 +75,7 @@ const UserRegister = () => {
           </p>
         </div>
 
-        <div className="container bg-warning px-3 py-3 mt-2 mb-5">
+        <div className="container bg-warning col-md-8 px-3 py-3 mt-2 mb-5">
           <div className="form-floating mb-3">
             <input
               type="name"
@@ -201,7 +201,7 @@ const UserRegister = () => {
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        {  response.status == 200 }<p>Modal body text goes here.</p>   {/* aqui va un if ternario con lo que se quiere motrar, pero no se si response.status lo lea  */}
+        {/* {  response.status == 200 }<p>Modal body text goes here.</p>   aqui va un if ternario con lo que se quiere motrar, pero no se si response.status lo lea  */}
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
