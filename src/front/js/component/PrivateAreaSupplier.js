@@ -2,6 +2,7 @@ import React, { useState ,useEffect } from "react";
 import Offer from "./Offer";
 import OfferCards from "./OfferCards";
 import Supplier from "./Supplier";
+import "../../styles/supplierarea.css";
 
 
 
@@ -27,20 +28,20 @@ const PrivateAreaSupplier=()=>{
   }, [])
 
 return (
-    <div className="container mt-3">
+    <div className="container mt-3" id="hamburger">
         <div className="text-center">
           <div className="mt-5 mb-5">
         <p className="fst-italic fs-2">Bienvenid@ a tu area privada, {supplier.name}</p>
         </div>
   <ul className="nav nav-tabs  justify-content-center"  id="myTab" role="tablist">
   <li className="nav-item" role="presentation">
-    <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Cuenta</button>
+    <button className="nav-link active bg-success text-black bg-gradient" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Cuenta</button>
   </li>
   <li className="nav-item" role="presentation">
-    <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Tus Ofertas</button>
+    <button className="nav-link bg-warning text-black bg-gradient" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Tus Ofertas</button>
   </li>
   <li className="nav-item" role="presentation">
-    <button className="nav-link" id="offer" data-bs-toggle="tab" data-bs-target="#offer-pane" type="button" role="tab" aria-controls="offer-pane" aria-selected="false">Añadir Ofertas</button>
+    <button className="nav-link bg-danger text-white bg-gradient" id="offer" data-bs-toggle="tab" data-bs-target="#offer-pane" type="button" role="tab" aria-controls="offer-pane" aria-selected="false">Añadir Ofertas</button>
   </li>
   
   
