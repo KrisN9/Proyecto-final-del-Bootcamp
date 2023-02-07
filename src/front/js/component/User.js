@@ -124,8 +124,8 @@ return (
         </form>
               </div>
               <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-outline-success" data-bs-dismiss="modal" onClick={()=>toUpDate(user.id)} >Actualizar</button>
+                <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={()=>toUpDate(user.id)} >Actualizar</button>
               </div>
             </div>
           </div>

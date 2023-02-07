@@ -57,7 +57,7 @@ const Cards = () => {
         </p>
         {favorites.map((favorite) => {
           return (
-            <div className="card mb-3" key={favorite.id}>
+            <div className="card border-danger mb-3" key={favorite.id}>
               <div className="row g-0">
                 <div className="col-md-3">
                   <img
@@ -86,7 +86,7 @@ const Cards = () => {
                   </a>
                   <button
                     type="button"
-                    className="btn btn-outline-secondary mt-2 mb-2"
+                    className="btn btn-secondary"
                     onClick={() => removeFavorite(favorite.id)}
                   >
                     <i className="fas fa-trash-alt"></i>

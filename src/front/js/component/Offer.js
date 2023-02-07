@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import SupplierRegister from "./SupplierRegister";
 
 const Offer = () => {
   const [formData, setFormData] = useState([]);
@@ -51,8 +52,9 @@ const Offer = () => {
             name="company_name"
             onChange={handleChange}
             value={formData.company_name}
+            required
           />
-          <label htmlFor="floatingName">Nombre de la empresa </label>
+          <label htmlFor="floatingName">Nombre de la empresa*</label>
         </div>
 
         <div className="form-floating mb-3">
@@ -64,8 +66,9 @@ const Offer = () => {
             name="title"
             onChange={handleChange}
             value={formData.title}
+            required
           />
-          <label htmlFor="floatingTitle">Descripción de la oferta</label>
+          <label htmlFor="floatingTitle">Descripción de la oferta*</label>
         </div>
         <div className="form-floating mb-3">
           <input
@@ -76,8 +79,9 @@ const Offer = () => {
             name="price"
             onChange={handleChange}
             value={formData.price}
+            required
           />
-          <label htmlFor="floatingPrice">Precio de oferta</label>
+          <label htmlFor="floatingPrice">Precio de oferta*</label>
         </div>
         <div className="form-floating mb-3">
           <input
@@ -88,8 +92,9 @@ const Offer = () => {
             name="url"
             onChange={handleChange}
             value={formData.url}
+            required
           />
-          <label htmlFor="floatingPrice">Dirección página web</label>
+          <label htmlFor="floatingPrice">Dirección página web*</label>
         </div>
         <div className="form-floating mb-3">
           <input
@@ -100,8 +105,9 @@ const Offer = () => {
             name="location"
             onChange={handleChange}
             value={formData.location}
+            required
           />
-          <label htmlFor="floatingLocation">location</label>
+          <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
 
 
@@ -113,8 +119,9 @@ const Offer = () => {
             placeholder="imagen"
             name="url_image"
             onChange={handleChange}
+            required
           />
-          <label htmlFor="floatingName">Url de imagen  </label>
+          <label htmlFor="floatingName">Url de imagen*</label>
         </div> 
        
 

@@ -28,7 +28,7 @@ return (
     <div className="container">
         <div className="text-center">
           <div className="mt-5 mb-5">
-        <p className="fst-italic fs-2">Bienvenid@ a tu area privada {user.name}</p>
+        <p className="fst-italic fs-2">Bienvenid@ a tu area privada, {user.name}</p>
         </div>
   <ul className="nav nav-tabs  justify-content-center"  id="myTab" role="tablist">
   <li className="nav-item" role="presentation">
