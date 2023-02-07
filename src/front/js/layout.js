@@ -44,7 +44,7 @@ const Layout = () => {
                         <Route element={<Registers/>} path="/registro"/>
                         <Route element={<SupplierRegister/>} path ="/registro-proveedor"/> 
                         <Route element={<UserRegister/>} path ="/registro-usuario"/>
-                         </Routes>
+                    </Routes>
                     <Footer />
                 </ScrollToTop>
             </BrowserRouter>
