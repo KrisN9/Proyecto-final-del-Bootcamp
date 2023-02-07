@@ -42,14 +42,14 @@ const OfferListCard = (props) => {
 
   return offer ? (
     <>
-      <div className="card ms-5 me-5 mb-5">
+      <div className="card border-danger ms-5 me-5 mb-5 text-center">
         <img src={offer.url_image} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{offer.company_name}</h5>
           <p className="card-text">{offer.title}</p>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">Precio: {offer.price}</li>
+          <li className="list-group-item border-danger">Precio: {offer.price}</li>
           <li className="list-group-item">Ubicación: {offer.location}</li>
         </ul>
         <div className="card-body d-grid gap-2 col-6 mx-auto">

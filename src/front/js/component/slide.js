@@ -5,7 +5,7 @@ const Slide=()=>{
 
     return (
           
-        <div id="carouselExampleFade" className="carousel slide carousel-fade " data-bs-ride="carousel">  {/*container col-md-10  // pendiente ver si queda mejor asi */ }
+        <div id="carouselExampleFade" className="carousel slide carousel-fade me-4 ms-4" data-bs-ride="carousel">  {/*container col-md-10  // pendiente ver si queda mejor asi */ }
         <div className="carousel-inner  ">
           <div className="carousel-item active ">
             <img src="https://www.cclasrosas.es/wp-content/uploads/2019/09/VIPS-1024x440.jpg" className="d-block w-100" height="600" alt="..."/>

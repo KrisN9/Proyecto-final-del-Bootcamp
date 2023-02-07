@@ -60,7 +60,7 @@ const OfferCards = () => {
         </p>
         {offers.map((offer, index) => {
           return (
-            <div className="card mb-3 " key={index}>
+            <div className="card border-danger mb-3 " key={index}>
               <div className="row g-0">
                 <div className="col-md-3 ">
                   <img
@@ -83,14 +83,6 @@ const OfferCards = () => {
                 <div className="col-md-3 mt-2 "> 
                   <p>Precio:{offer.price}€</p>
                   <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <button
-                    type="button"
-                    className="btn btn-secondary"
-                    onClick={() => remove(offer.id)}
-                  >
-                    <i className="fas fa-trash-alt"></i>
-                  </button>
-                  
                   <button
                     type="button"
                     className="btn btn-outline-success"
