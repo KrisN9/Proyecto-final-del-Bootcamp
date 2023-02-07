@@ -42,7 +42,7 @@ const OfferListCard = (props) => {
 
   return offer ? (
     <>
-      <div className="card ms-5 me-3 mb-5">
+      <div className="card ms-5 me-5 mb-5">
         <img src={offer.url_image} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{offer.company_name}</h5>
