@@ -1,0 +1,11 @@
+#fast-food {
+    text-align: center;
+    background-image: url("https://thumbs.dreamstime.com/z/fast-food-chiken-nuggets-burgers-french-fries-white-background-top-view-fast-food-chiken-nuggets-burgers-french-fries-107985383.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    padding-top: 20px;
+    margin-top: 20px;
+}

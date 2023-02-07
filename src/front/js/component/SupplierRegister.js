@@ -80,7 +80,7 @@ const SupplierRegister = () => {
           <p className="fs-1 fw-bolder">Registro de Proveedores</p>{" "}
           {/* falta corregir estilo de la letra*/}
           <p className="fs-3 fst-italic">
-            Rellena el formulario para empezar a enviar tus ofertas!
+            ¡Rellena el formulario para empezar a enviar tus ofertas!
           </p>{" "}
           {/* falta corregir estilo de la letra*/}
         </div>
