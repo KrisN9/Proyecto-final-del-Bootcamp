@@ -1,0 +1,9 @@
+#hamburger {
+    text-align: center;
+    background-image: url("https://png.pngtree.com/background/20210710/original/pngtree-elemental-background-of-fast-food-hamburg-hot-dog-chips-coke-picture-image_981345.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+}
