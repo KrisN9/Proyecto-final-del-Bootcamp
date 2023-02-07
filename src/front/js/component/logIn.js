@@ -87,7 +87,7 @@ const LogIn = () => {
               <div
                 className="modal fade"
                 id="modalUsuario"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
               >
@@ -181,7 +181,7 @@ const LogIn = () => {
               <div
                 className="modal fade"
                 id="modalProveedor"
-                tabindex="-1"
+                tabIndex="-1"
                 aria-labelledby="exampleModalLabel"
                 aria-hidden="true"
               >

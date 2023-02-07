@@ -15,7 +15,7 @@ export const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark text-dark">
+    <nav className="navbar navbar-expand-lg navbar-dark text-dark text-center">
       <div className="container ">
         <Link to="/">
           <span className="navbar-brand mb-0 h1">
@@ -56,14 +56,14 @@ export const Navbar = () => {
                 ></Link>
                 {location.pathname !== "/area-privada-usuario" && (
                   <Link
-                    className="btn btn-outline-success rounded-pill"
+                    className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
                     to="/area-privada-usuario"
                   >
                     Área privada
                   </Link>
                 )}
                 <Link
-                  className="btn btn-outline-success rounded-pill"
+                  className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
                   to="/"
                   onClick={SessionOut}
                 >
@@ -99,13 +99,13 @@ export const Navbar = () => {
           ) : (
             <>
               <Link
-                className="btn btn-outline-success rounded-pill "
+                className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
                 to="/registro"
               >
                 Registrarse
               </Link>
               <Link
-                className="btn btn-outline-success rounded-pill "
+                className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
                 to="/inicio-sesion"
               >
                 Iniciar sesión
