@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactPasswordChecklist from "react-password-checklist";
+import Swal from "sweetalert2";
 
 const UserRegister = () => {
   const [formData, setFormData] = useState({});
@@ -45,15 +46,21 @@ const UserRegister = () => {
       })
         .then((response) => {
           if (response.status == 200) {
-            alert(
-              "El registro se ha completado correctamente, puede iniciar sesión!"
-            );
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: "¡Registrado con éxito!",
+              text: "El registro se ha completado correctamente, puede iniciar sesión!",
+            });
             navigate("/inicio-sesion");
           }
           if (response.status == 400) {
-            alert(
-              "El registro no ha podido completarse, vuelva a intentarlo..."
-            );
+            Swal.fire({
+              position: "top",
+              icon: "error",
+              title: "Oops...",
+              text: "El registro no ha podido completarse, vuelva a intentarlo...",
+            });
             navigate("/registro");
           }
           response.json();
@@ -137,7 +144,6 @@ const UserRegister = () => {
 
             <label htmlFor="floatingInput">Repetir contraseña*</label>
           </div>
-
           <div className="form-floating mb-3">
             <input
               type="phone-number"
@@ -185,31 +191,46 @@ const UserRegister = () => {
             </label>
           </div>
           <div className="col-12 mb-3">
-            <button type="submit" className="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <button
+              type="submit"
+              className="btn btn-danger"
+              data-bs-toggle="modal"
+              data-bs-target="#exampleModal"
+            >
               Enviar
             </button>
           </div>
-
-
-           pendiente probar modal
-
+          pendiente probar modal
           <div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        {/* {  response.status == 200 }<p>Modal body text goes here.</p>   aqui va un if ternario con lo que se quiere motrar, pero no se si response.status lo lea  */}
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> 
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  {/* {  response.status == 200 }<p>Modal body text goes here.</p>   aqui va un if ternario con lo que se quiere motrar, pero no se si response.status lo lea  */}
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary">
+                    Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </form>
     </>

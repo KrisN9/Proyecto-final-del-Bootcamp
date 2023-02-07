@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Swal from "sweetalert2";
 
 const Cards = () => {
   const [favorites, setFavorites] = useState([]);
@@ -37,11 +38,21 @@ const Cards = () => {
     )
       .then((response) => {
         if (response.status == 200) {
-          alert("La oferta se ha eliminado de Favoritos correctamente. ¡Prueba a encontrar más en nuestro mapa!")
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "Eliminado correctamente",
+            text: "La oferta se ha eliminado de Favoritos correctamente. ¡Prueba a encontrar más en nuestro mapa!",
+          });
         }
-      if (response.status == 400) {
-        alert("Algo ha fallado, vuelve a intentarlo...")
-      }
+        if (response.status == 400) {
+          Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Oops...",
+            text: "Algo ha fallado, vuelve a intentarlo...",
+          });
+        }
         return response.json();
       })
       .then((response) => {

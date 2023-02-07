@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactPasswordChecklist from "react-password-checklist";
+import Swal from "sweetalert2";
 
 // crear base de datos para la opcion ciudad, hacer fetch para visualizar.
 const SupplierRegister = () => {
@@ -46,15 +47,21 @@ const SupplierRegister = () => {
       })
         .then((response) => {
           if (response.status == 200) {
-            alert(
-              "El registro se ha completado correctamente, puede iniciar sesión!"
-            );
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: "¡Registrado con éxito!",
+              text: "El registro se ha completado correctamente, puede iniciar sesión!",
+            });
             navigate("/inicio-sesion");
           }
           if (response.status == 400) {
-            alert(
-              "El registro no ha podido completarse, vuelva a intentarlo..."
-            );
+            Swal.fire({
+              position: "top",
+              icon: "error",
+              title: "Oops...",
+              text: "El registro no ha podido completarse, vuelva a intentarlo...",
+            });
             navigate("/registro");
           }
           response.json();
