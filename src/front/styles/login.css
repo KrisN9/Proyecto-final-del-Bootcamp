@@ -1,0 +1,10 @@
+#background-image {
+    text-align: center;
+    background-image: url("https://thumbs.dreamstime.com/b/selection-take-out-fast-foods-corner-border-banner-top-down-view-white-wood-background-pizza-hamburgers-fried-chicken-190065618.jpg");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding-top: 20px;
+    margin-top: 20px;
+    padding-bottom: 40px;
+}

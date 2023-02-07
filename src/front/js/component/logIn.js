@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext"; 
 import { useContext } from "react";
+import "../../styles/login.css";
 
 const LogIn = () => {
   const [formData, setFormData] = useState({});
@@ -70,7 +71,7 @@ const LogIn = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="container">
+      <div className="container" id="background-image">
         <div className="row text-center mb-5 centro">
           <div className="col-md-6">
             <p className="fs-1 fst-italic">Iniciar sesión como usuario</p>
