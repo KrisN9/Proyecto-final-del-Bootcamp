@@ -132,7 +132,7 @@ const SupplierRegister = () => {
           </div>
           <div className="form-floating mb-3">
             <input
-              type={shownPassword ? "text" : "password"}
+              type={shownPassword ? "password" : "text"}
               className="form-control"
               id="floatingPassword"
               placeholder="contraseña"
@@ -142,14 +142,14 @@ const SupplierRegister = () => {
             />
             <a href="#" onClick={password}>
               <i
-                className={shownPassword ? "far fa-eye" : "far fa-eye-slash"}
+                className={shownPassword ? "far fa-eye-slash" : "far fa-eye"}
               ></i>
             </a>
             <label htmlFor="floatingInput">Contraseña*</label>
           </div>
           <div className="form-floating mb-3">
             <input
-              type={shownPassword2 ? "text" : "password"}
+              type={shownPassword2 ? "password" : "text"}
               className="form-control"
               id="floatingPassword"
               placeholder="Repetir Contraseña"
@@ -159,11 +159,13 @@ const SupplierRegister = () => {
             />
             <a href="#" onClick={password2}>
               <i
-                className={shownPassword2 ? "far fa-eye" : "far fa-eye-slash"}
+                className={shownPassword2 ? "far fa-eye-slash" : "far fa-eye"}
               ></i>{" "}
             </a>
+
             <label htmlFor="floatingInput">Repetir contraseña*</label>
           </div>
+
           <div className="form-floating mb-3">
             <input
               type="phone-number"

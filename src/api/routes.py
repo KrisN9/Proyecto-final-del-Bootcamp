@@ -257,19 +257,19 @@ def update_supplier(supplier_id):
 @api.route('/offer/<int:offer_id>', methods=['PUT']) #modificar datos de oferta
 def update_offer(offer_id):
     try:
-        offer = Offer.query.filter_by(offer_id=offer_id).first()
+        offer = Offer.query.filter_by(id=offer_id).first()
     except Exception:
         return jsonify({"msg": "Offer doesn't exist"}), 400
 
     new_company_name = request.json.get("company_name", offer.company_name)
-    new_name = request.json.get("name", offer.name)
+    new_title = request.json.get("name", offer.title)
     new_price = request.json.get("price", offer.price)
     new_url_image = request.json.get("url_image", offer.url_image)
     new_url = request.json.get("url", offer.url)
     new_location = request.json.get("location", offer.location)
 
     setattr(offer, "company_name", new_company_name)
-    setattr(offer, "name", new_name)
+    setattr(offer, "name", new_title)
     setattr(offer, "price", new_price)
     setattr(offer, "url_image", new_url_image)
     setattr(offer, "url", new_url)
@@ -277,7 +277,7 @@ def update_offer(offer_id):
 
     db.session.commit()
        
-    return jsonify(user.serialize()), 200
+    return jsonify(offer.serialize()), 200
 
 #pendiente de preguntar crear ROUTE PARA obetener las ofertas por la zona de busqueda 
 
