@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext"; 
 import { useContext } from "react";
 import "../../styles/login.css";
+import Swal from "sweetalert2";
 
 const LogIn = () => {
   const [formData, setFormData] = useState({});
@@ -35,7 +36,7 @@ const LogIn = () => {
       .then((response) => {
         if (response.status == 200)
         return response.json()
-        else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
+        else Swal.fire({position: 'top', icon: 'error', title: 'Oops...', text: "Correo electronico o contraseña incorrectos. ¡Inténtalo de nuevo!"});
       }).then((response)=>{
         actions.setToken(response)
         navigate("/area-privada-usuario");
@@ -55,7 +56,7 @@ const LogIn = () => {
       fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
       .then((response) => {
         if (response.status === 200) return response.json();
-        else alert("correo electronico o contraseña incorrecta. Intentalo de nuevo!");
+        else Swal.fire({position: 'top', icon: 'error', title: 'Oops...', text: "Correo electronico o contraseña incorrectos. ¡Inténtalo de nuevo!"});
       })
       .then((response)=>{
         actions.setToken(response)

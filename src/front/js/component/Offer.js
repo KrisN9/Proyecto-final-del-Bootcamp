@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import Swal from "sweetalert2";
 import SupplierRegister from "./SupplierRegister";
 
 const Offer = () => {
@@ -11,7 +12,6 @@ const Offer = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // event.target.reset();
-    
   };
 
   const handleClick = () => {
@@ -26,9 +26,19 @@ const Offer = () => {
     })
       .then((response) => {
         if (response.status == 200) {
-          alert("Se ha creado con exito");
+          Swal.fire({
+            position: "top",
+            icon: "success",
+            title: "¡Oferta creada!",
+            text: "Se ha creado con exito",
+          });
         } else {
-          alert("algo ha salido mal! Intentalo de nuevo ");
+          Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Oops...",
+            text: "¡Algo ha salido mal, inténtalo de nuevo!",
+          });
         }
         response.json();
       })
@@ -110,7 +120,6 @@ const Offer = () => {
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
 
-
         <div className="form-floating mb-3">
           <input
             type="url_image"
@@ -122,15 +131,10 @@ const Offer = () => {
             required
           />
           <label htmlFor="floatingName">Url de imagen*</label>
-        </div> 
-       
+        </div>
 
         <div className="col-12 mb-3">
-          <button
-            type="reset"
-            className="btn btn-danger"
-            onClick={handleClick}
-          >
+          <button type="reset" className="btn btn-danger" onClick={handleClick}>
             Enviar
           </button>
           {/* <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -170,7 +174,6 @@ export default Offer;
 //  type="file"
 //  onChange={handleChange}/>
 // </div>
-
 
 // <div className="mb-3 text-start ">
 // <label htmlFor="floatingImage" className="form-label">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const OfferListCard = (props) => {
   const [offer, setOffer] = useState();
@@ -27,10 +27,20 @@ const OfferListCard = (props) => {
       })
         .then((response) => {
           if (response.status == 200) {
-            alert("¡La oferta se ha agregado a Favoritos, puedes verla en tu Área Privada!");
-          if (response.status == 400) {
-            alert("Algo ha fallado, inténtalo de nuevo...");
-          }
+            Swal.fire({
+              position: "top",
+              icon: "success",
+              title: "¡Añadida con éxito!",
+              text: "¡La oferta se ha agregado a Favoritos, puedes verla en tu Área Privada!",
+            });
+            if (response.status == 400) {
+              Swal.fire({
+                position: "top",
+                icon: "error",
+                title: "Oops...",
+                text: "Algo ha fallado, inténtalo de nuevo...",
+              });
+            }
           }
           response.json();
         })
@@ -49,7 +59,9 @@ const OfferListCard = (props) => {
           <p className="card-text">{offer.title}</p>
         </div>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item border-danger">Precio: {offer.price}</li>
+          <li className="list-group-item border-danger">
+            Precio: {offer.price}
+          </li>
           <li className="list-group-item">Ubicación: {offer.location}</li>
         </ul>
         <div className="card-body d-grid gap-2 col-6 mx-auto">
