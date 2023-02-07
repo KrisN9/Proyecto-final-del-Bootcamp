@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const OfferListCard = (props) => {
   const [offer, setOffer] = useState();
   const [favorite, setFavorite] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetch(process.env.BACKEND_URL + "/api/offer/" + props.id)
@@ -33,6 +35,8 @@ const OfferListCard = (props) => {
               title: "¡Añadida con éxito!",
               text: "¡La oferta se ha agregado a Favoritos, puedes verla en tu Área Privada!",
             });
+            navigate("/");
+          
             if (response.status == 400) {
               Swal.fire({
                 position: "top",
