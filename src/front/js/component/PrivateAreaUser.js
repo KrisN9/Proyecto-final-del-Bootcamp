@@ -29,9 +29,9 @@ return (
     <div className="container" id="hotdog">
         <div className="text-center">
           <div className="mt-5 mb-5">
-        <p className="fst-italic fs-2">Bienvenid@ a tu area privada, {user.name}</p>
+        <p className="fst-italic fs-1">Bienvenid@ a tu area privada, {user.name}</p>
         </div>
-  <ul className="nav nav-tabs  justify-content-center"  id="myTab" role="tablist">
+  <ul className="nav nav-tabs justify-content-center border-0"  id="myTab" role="tablist">
   <li className="nav-item" role="presentation">
     <button className="nav-link active bg-warning text-black bg-gradient" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Cuenta</button>
   </li>

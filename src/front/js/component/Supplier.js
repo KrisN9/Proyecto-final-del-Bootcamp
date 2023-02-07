@@ -56,7 +56,7 @@ const Supplier = () => {
           }
   return (
     <div
-      className=" text-md-start mt-3 mb-4 fs-4 fw-semibold" >
+      className=" text-md-start mt-3 mb-4 fs-3 fw-bold" >
        
       <ul>
         <li>
@@ -73,8 +73,8 @@ const Supplier = () => {
         </li>
       </ul>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end" >  
-      <button  type="button" className="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-      <i className="fas fa-edit"></i>
+      <button  type="button" className="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Modificar datos de la cuenta:  <i className="fas fa-edit"></i>
       </button>
       </div>
       

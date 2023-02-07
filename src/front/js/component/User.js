@@ -56,7 +56,7 @@ const User =()=>{
    
 return (
 
-    <div className="text-md-start mt-3 mb-4 fs-4 fw-semibold ">
+    <div className="text-md-start mt-3 mb-4 fs-3 fw-semibold ">
            
                 <ul>
                 <li><p className="fst-italic">Nombre: {user.name}</p></li>
@@ -66,8 +66,8 @@ return (
              
 
         <div className="d-grid gap-2 d-md-flex justify-content-md-end" >  
-        <button  type="button" className="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-        <i className="fas fa-edit"></i>
+        <button  type="button" className="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        Modificar datos de mi cuenta: <i className="fas fa-edit"></i>
         </button>
         </div>
 
