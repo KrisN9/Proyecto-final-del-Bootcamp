@@ -61,7 +61,7 @@ const OfferCards = () => {
         </p>
         {offers.map((offer, index) => {
           return (
-            <div className="card border-danger mb-5 " key={index}>
+            <div className="card border-danger border-3 mb-5 " key={index}>
               <div className="row g-0">
                 <div className="col-md-3 ">
                   <img

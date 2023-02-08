@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/offerlistcard.css";
 import Swal from "sweetalert2";
 
 const OfferListCard = (props) => {
@@ -56,7 +57,7 @@ const OfferListCard = (props) => {
 
   return offer ? (
     <>
-      <div className="card border-danger ms-5 me-5 mb-5 text-center">
+      <div className="card border-danger border-3 ms-5 me-5 mb-5 text-center">
         <img src={offer.url_image} className="card-img-top" alt="..." />
         <div className="card-body">
           <h5 className="card-title">{offer.company_name}</h5>

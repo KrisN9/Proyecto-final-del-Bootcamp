@@ -69,7 +69,7 @@ const Cards = () => {
         </p>
         {favorites.map((favorite) => {
           return (
-            <div className="card border-danger mb-3" key={favorite.id}>
+            <div className="card border-danger border-3 mb-3" key={favorite.id}>
               <div className="row g-0">
                 <div className="col-md-3">
                   <img
