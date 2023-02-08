@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../../styles/register.css";
 
 
 const ContactForm = () => {
@@ -19,8 +20,8 @@ const ContactForm = () => {
     <form onSubmit={handleSubmit}>
       <div className="container col-md-6">
       <div className="text-center mt-3">
-        <p className="fs-1 fw-bolder">Contacta con nosotros</p>
-        <p className="fs-3 fst-italic">
+        <p className="fs-1 font-change">Contacta con nosotros</p>
+        <p className="fs-3 font-change">
           Rellena el formulario y contactaremos contigo
         </p>
       </div>
