@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../../styles/supplierarea.css";
 import EditForm from "./EditForm";
 
 const Supplier = () => {
@@ -60,16 +61,16 @@ const Supplier = () => {
        
       <ul>
         <li>
-          <p className="fw-lighter">Nombre: {supplier.name} </p>
+          <p className="font-change">Nombre: {supplier.name} </p>
         </li>
         <li>
-          <p className="fw-lighter">Empresa: {supplier.company_name}</p>
+          <p className="font-change">Empresa: {supplier.company_name}</p>
         </li>
         <li>
-          <p className="fw-lighter">Correo Electronico: {supplier.email}</p>
+          <p className="font-change">Correo Electronico: {supplier.email}</p>
         </li>
         <li>
-          <p className="fw-lighter">Cif de empresa: {supplier.company_cif}</p>
+          <p className="font-change">Cif de empresa: {supplier.company_cif}</p>
         </li>
       </ul>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end" >  
