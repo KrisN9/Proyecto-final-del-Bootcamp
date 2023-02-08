@@ -55,7 +55,7 @@ const OfferCards = () => {
   
   return (
     <div className="container col-12 col-md-6 mt-4 mb-3 ">
-      <div className="mt-3">
+      <div className="mt-3 pb-3 mb-5">
         <p className="text-center font-change fs-2 text-danger">
           Tienes {offers.length} ofertas.
         </p>
@@ -86,7 +86,7 @@ const OfferCards = () => {
                   <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                   <button
                     type="button"
-                    className="btn btn-outline-success"
+                    className="btn btn-success"
                     data-bs-toggle="modal" data-bs-target={offer.id.toString()}
                     
                   >
