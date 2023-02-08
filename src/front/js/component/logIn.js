@@ -75,7 +75,7 @@ const LogIn = () => {
       <div className="container" id="background-image">
         <div className="row text-center mb-5 centro">
           <div className="col-md-6">
-            <p className="fs-1 fst-italic">Iniciar sesión como usuario</p>
+            <p className="fs-1 font-change">Iniciar sesión como usuario</p>
             <div className=" col-6 mx-auto">
               <button
                 className="btn btn-danger btn-lg"
@@ -169,7 +169,7 @@ const LogIn = () => {
           {/*modal para proveedor*/}
 
           <div className="col-md-6">
-            <p className="fs-1 fst-italic">Iniciar sesión como proveedor</p>
+            <p className="fs-1 font-change">Iniciar sesión como proveedor</p>
             <div className="col-6 mx-auto">
               <button
                 className="btn btn-danger btn-lg"

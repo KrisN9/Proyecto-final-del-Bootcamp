@@ -31,7 +31,7 @@ return (
     <div className="container mt-3" id="hamburger">
         <div className="text-center">
           <div className="mt-5 mb-5">
-        <p className="fst-italic fs-1">Bienvenid@ a tu area privada, {supplier.name}</p>
+        <p className="font-change fs-1">Bienvenid@ a tu area privada, {supplier.name}</p>
         </div>
   <ul className="nav nav-tabs justify-content-center border-0"  id="myTab" role="tablist">
   <li className="nav-item" role="presentation">

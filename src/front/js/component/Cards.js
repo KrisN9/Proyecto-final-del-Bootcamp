@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import "../../styles/userarea.css";
 import Swal from "sweetalert2";
 
 const Cards = () => {
@@ -62,8 +63,8 @@ const Cards = () => {
 
   return (
     <div className="container col-12 col-md-6 mt-4">
-      <div className="mt-3">
-        <p className="text-center fst-italic fs-3 text-danger">
+      <div className="mt-3 pb-3 mb-5">
+        <p className="text-center font-change fs-2 text-danger">
           Tienes {favorites.length} ofertas favoritas.
         </p>
         {favorites.map((favorite) => {
@@ -90,7 +91,7 @@ const Cards = () => {
                   <button
                     target="_tab"
                     type="button"
-                    onClick={() => window.open(favorite.url)}
+                    onClick={() => window.open()}  //funcion para traer url de un favorito, incluido fetch
                     className="btn btn-warning float-end me-2 "
                   >
                     Pedir!

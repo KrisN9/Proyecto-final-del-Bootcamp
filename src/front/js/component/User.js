@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react";
+import "../../styles/userarea.css";
 
 const User =()=>{
 
@@ -59,9 +60,9 @@ return (
     <div className="text-md-start mt-3 mb-4 fs-3 fw-semibold ">
            
                 <ul>
-                <li><p className="fst-italic">Nombre: {user.name}</p></li>
-                <li><p className="fst-italic">Correo Electronico: {user.email}</p></li>
-                <li><p className="fst-italic">Número de telefóno : {user.telephone_number}</p></li>
+                <li><p className="font-change">Nombre: {user.name}</p></li>
+                <li><p className="font-change">Correo Electronico: {user.email}</p></li>
+                <li><p className="font-change">Número de telefóno : {user.telephone_number}</p></li>
                 </ul>
              
 
