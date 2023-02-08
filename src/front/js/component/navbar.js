@@ -83,33 +83,7 @@ export const Navbar = () => {
                 Iniciar sesión
               </Link>
             </>
-          ) 
-          /*? (
-            <>
-              <Link
-                to={
-                  localStorage.getItem("type") === "supplier"
-                    ? "/area-privada-proveedor"
-                    : "/area-privada-usuario"
-                }
-              ></Link>
-              {location.pathname !== "/area-privada-proveedor" && (
-                <Link
-                  className="btn btn-outline-success rounded-pill"
-                  to="/area-privada-proveedor"
-                >
-                  Área privada
-                </Link>
-              )}
-              <Link
-                className="btn btn-outline-success rounded-pill"
-                to="/"
-                onClick={SessionOut}
-              >
-                Cerrar sesión
-              </Link>
-            </>
-          ) */}
+          )}
         </div>
       </div>
     </nav>
