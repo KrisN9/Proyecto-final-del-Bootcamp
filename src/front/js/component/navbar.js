@@ -70,24 +70,7 @@ export const Navbar = () => {
                   Cerrar sesión
                 </Link>
               </>
-            )
-          ) : (
-            <>
-              <Link
-                className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
-                to="/registro"
-              >
-                Registrarse
-              </Link>
-              <Link
-                className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
-                to="/inicio-sesion"
-              >
-                Iniciar sesión
-              </Link>
-            </>
-          ) ? (
-            (
+            ) /* ?? (
               <>
                 <Link
                   to={
@@ -98,21 +81,21 @@ export const Navbar = () => {
                 ></Link>
                 {location.pathname !== "/area-privada-proveedor" && (
                   <Link
-                    className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
+                    className="btn btn-outline-success rounded-pill"
                     to="/area-privada-proveedor"
                   >
                     Área privada
                   </Link>
                 )}
                 <Link
-                  className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
+                  className="btn btn-outline-success rounded-pill"
                   to="/"
                   onClick={SessionOut}
                 >
                   Cerrar sesión
                 </Link>
               </>
-            )
+            ) */
           ) : (
             <>
               <Link
