@@ -87,14 +87,14 @@ const Cards = () => {
                 </div>
                 <div className="col-md-2 mt-2">
                   <p>Precio:{favorite.offerlist.price}€</p>
-                  <a
-                    href={favorite.offerlist.url}
-                    target="_blanck"
+                  <button
+                    target="_tab"
                     type="button"
+                    onClick={() => window.open(favorite.url)}
                     className="btn btn-warning float-end me-2 "
                   >
                     Pedir!
-                  </a>
+                  </button>
                   <button
                     type="button"
                     className="btn btn-secondary"
