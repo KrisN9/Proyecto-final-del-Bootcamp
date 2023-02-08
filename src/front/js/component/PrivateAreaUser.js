@@ -26,9 +26,9 @@ const PrivateAreaUser=()=>{
 
 return (
 
-    <div className="container" id="hotdog">
+    <div className="container-fluid" id="hotdog">
         <div className="text-center">
-          <div className="mt-5 mb-5">
+          <div className="mt-3 mb-3">
         <p className="font-change fs-1">Bienvenid@ a tu area privada, {user.name}</p>
         </div>
   <ul className="nav nav-tabs justify-content-center border-0"  id="myTab" role="tablist">
@@ -44,7 +44,7 @@ return (
 <div className="tab-content" id="myTabContent">
   <div className="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
      <div>
-        <div className="container col-md-8 text-md-start mt-5 mb-5 fs-4 fw-semibold">
+        <div className="container col-md-8 text-md-start mt-5 mb-3 fs-4 fw-semibold">
          <User/>
          
         </div>

@@ -63,7 +63,7 @@ const Cards = () => {
 
   return (
     <div className="container col-12 col-md-6 mt-4">
-      <div className="mt-3 pb-3 mb-5">
+      <div className="mt-3 pb-3 mb-3">
         <p className="text-center font-change fs-2 text-danger">
           Tienes {favorites.length} ofertas favoritas.
         </p>
