@@ -47,17 +47,14 @@ export const Navbar = () => {
           {localStorage.getItem("token") ? (
             (
               <>
-                <Link
-                  to={
-                    localStorage.getItem("type") === "user"
-                      ? "/area-privada-usuario"
-                      : "/area-privada-proveedor"
-                  }
-                ></Link>
                 {location.pathname !== "/area-privada-usuario" && (
                   <Link
                     className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
-                    to="/area-privada-usuario"
+                    to={
+                      localStorage.getItem("type") === "user"
+                        ? "/area-privada-usuario"
+                        : "/area-privada-proveedor"
+                    }
                   >
                     Área privada
                   </Link>
@@ -70,32 +67,7 @@ export const Navbar = () => {
                   Cerrar sesión
                 </Link>
               </>
-            ) /* ?? (
-              <>
-                <Link
-                  to={
-                    localStorage.getItem("type") === "supplier"
-                      ? "/area-privada-proveedor"
-                      : "/area-privada-usuario"
-                  }
-                ></Link>
-                {location.pathname !== "/area-privada-proveedor" && (
-                  <Link
-                    className="btn btn-outline-success rounded-pill"
-                    to="/area-privada-proveedor"
-                  >
-                    Área privada
-                  </Link>
-                )}
-                <Link
-                  className="btn btn-outline-success rounded-pill"
-                  to="/"
-                  onClick={SessionOut}
-                >
-                  Cerrar sesión
-                </Link>
-              </>
-            ) */
+            )
           ) : (
             <>
               <Link
@@ -111,7 +83,33 @@ export const Navbar = () => {
                 Iniciar sesión
               </Link>
             </>
-          )}
+          ) 
+          /*? (
+            <>
+              <Link
+                to={
+                  localStorage.getItem("type") === "supplier"
+                    ? "/area-privada-proveedor"
+                    : "/area-privada-usuario"
+                }
+              ></Link>
+              {location.pathname !== "/area-privada-proveedor" && (
+                <Link
+                  className="btn btn-outline-success rounded-pill"
+                  to="/area-privada-proveedor"
+                >
+                  Área privada
+                </Link>
+              )}
+              <Link
+                className="btn btn-outline-success rounded-pill"
+                to="/"
+                onClick={SessionOut}
+              >
+                Cerrar sesión
+              </Link>
+            </>
+          ) */}
         </div>
       </div>
     </nav>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Context } from "../store/appContext"; 
+import { Context } from "../store/appContext";
 import { useContext } from "react";
 import "../../styles/login.css";
 import Swal from "sweetalert2";
@@ -9,8 +9,8 @@ const LogIn = () => {
   const [formData, setFormData] = useState({});
   const [shownUser, setShownUser] = useState(false); //para mostar contraseña
   const [shownSupplier, setShownSupplier] = useState(false);
-  
-  const {store , actions}= useContext(Context)
+
+  const { store, actions } = useContext(Context);
   const navigate = useNavigate();
 
   const handleChange = (event) => {
@@ -21,7 +21,7 @@ const LogIn = () => {
     setShownUser(!shownUser);
   };
   const supplier = () => {
-    setShownSupplier(!shownSupplier);       
+    setShownSupplier(!shownSupplier);
   };
 
   const handleClickUser = () => {
@@ -31,17 +31,23 @@ const LogIn = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-      };
-      fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
+    };
+    fetch(process.env.BACKEND_URL + "/api/login-user", optionUser)
       .then((response) => {
-        if (response.status == 200)
-        return response.json()
-        else Swal.fire({position: 'top', icon: 'error', title: 'Oops...', text: "Correo electronico o contraseña incorrectos. ¡Inténtalo de nuevo!"});
-      }).then((response)=>{
-        actions.setToken(response)
-        navigate("/area-privada-usuario");
+        if (response.status == 200) return response.json();
+        else
+          Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Oops...",
+            text: "Correo electronico o contraseña incorrectos. ¡Inténtalo de nuevo!",
+          });
       })
-    
+      .then((response) => {
+        actions.setToken(response);
+        localStorage.setItem("type", "user");
+        navigate("/area-privada-usuario");
+      });
   };
 
   const handleClickSupplier = () => {
@@ -51,24 +57,29 @@ const LogIn = () => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(formData),
-      };
-    
-      fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
+    };
+
+    fetch(process.env.BACKEND_URL + "/api/login-supplier", optionSupplier)
       .then((response) => {
         if (response.status === 200) return response.json();
-        else Swal.fire({position: 'top', icon: 'error', title: 'Oops...', text: "Correo electronico o contraseña incorrectos. ¡Inténtalo de nuevo!"});
+        else
+          Swal.fire({
+            position: "top",
+            icon: "error",
+            title: "Oops...",
+            text: "Correo electronico o contraseña incorrectos. ¡Inténtalo de nuevo!",
+          });
       })
-      .then((response)=>{
-        actions.setToken(response)
+      .then((response) => {
+        actions.setToken(response);
+        localStorage.setItem("type", "supplier");
         navigate("/area-privada-proveedor");
-      })
-
+      });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
 
   return (
     <form onSubmit={handleSubmit}>
@@ -94,7 +105,6 @@ const LogIn = () => {
               >
                 <div className="modal-dialog modal-dialog modal-dialog-centered modal-dialog-scrollable">
                   <div className="modal-content">
-                   
                     {/*modal para usuario*/}
                     <div className="modal-header">
                       <h1

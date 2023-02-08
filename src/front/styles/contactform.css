@@ -1,0 +1,15 @@
+.font-change {
+    font-family: 'Bree Serif', serif;
+  }
+
+  #contactpic {
+    text-align: center;
+    background-image: url("https://www.freepik.com/free-photo/delicious-taco-wood-plate_7303188.htm#query=fast%20food&position=5&from_view=keyword&track=sph");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    padding-top: 20px;
+    margin-top: 20px;
+}
