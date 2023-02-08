@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../styles/register.css";
+import "../../styles/contactform.css";
 
 
 const ContactForm = () => {
@@ -18,7 +18,7 @@ const ContactForm = () => {
   return (
     <>
     <form onSubmit={handleSubmit}>
-      <div className="container col-md-6">
+      <div className="container col-md-6" id="contactpic">
       <div className="text-center mt-3">
         <p className="fs-1 font-change">Contacta con nosotros</p>
         <p className="fs-3 font-change">
