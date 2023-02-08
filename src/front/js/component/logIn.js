@@ -72,11 +72,11 @@ const LogIn = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="container" id="background-image">
-        <div className="row text-center mb-5 centro">
+      <div className="container-fluid" id="background-image">
+        <div className="row text-center mb-3 centro">
           <div className="col-md-6">
             <p className="fs-1 font-change">Iniciar sesión como usuario</p>
-            <div className=" col-6 mx-auto">
+            <div className="col-6 mx-auto">
               <button
                 className="btn btn-danger btn-lg"
                 type="button"

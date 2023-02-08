@@ -28,9 +28,9 @@ const PrivateAreaSupplier=()=>{
   }, [])
 
 return (
-    <div className="container mt-3" id="hamburger">
+    <div className="container-fluid" id="hamburger">
         <div className="text-center">
-          <div className="mt-5 mb-5">
+          <div className="mt-3 mb-3">
         <p className="font-change fs-1">Bienvenid@ a tu area privada, {supplier.name}</p>
         </div>
   <ul className="nav nav-tabs justify-content-center border-0"  id="myTab" role="tablist">
@@ -49,7 +49,7 @@ return (
 </ul>
 <div className="tab-content" id="myTabContent">
   <div className="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-  <div className="container col-md-8 text-md-start mt-5 mb-5 fs-4 fw-semibold">
+  <div className="container col-md-8 text-md-start mt-3 mb-3 fs-4 fw-semibold">
        <Supplier/>
   </div>
   </div>

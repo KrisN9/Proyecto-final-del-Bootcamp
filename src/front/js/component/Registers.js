@@ -4,9 +4,9 @@ import "../../styles/register.css";
 
 const Registers = () => {
   return (
-    <div className="container" id="fast-food">
+    <div className="container-fluid" id="fast-food">
       {/* pendiente de arreglar la presentación*/}
-      <div className="row text-center mb-5 centro">
+      <div className="row text-center mb-3 centro">
         <div className="col-md-6">
           <p className="fs-1 font-change">Regístrate como usuario</p>
           <div className=" col-6 mx-auto">

@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
 import SupplierRegister from "./SupplierRegister";
 
@@ -49,10 +50,10 @@ const Offer = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="text-center">
-        <p className="fs-1 fw-bolder">Añade tu oferta</p>
+      <div className="text-center mt-5">
+        <p className="fs-1 font-change">Rellena este formulario para añadir tu oferta</p>
       </div>
-      <div className="container bg-warning px-3 py-3 mt-2 mb-5 col-12 col-md-8">
+      <div className="container bg-warning px-3 py-3 mb-5 mb-5 col-12 col-md-8">
         <div className="form-floating mb-3">
           <input
             type="text"
@@ -133,7 +134,7 @@ const Offer = () => {
           <label htmlFor="floatingName">Url de imagen*</label>
         </div>
 
-        <div className="col-12 mb-3">
+        <div className="col-12">
           <button type="reset" className="btn btn-danger" onClick={handleClick}>
             Enviar
           </button>
