@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/register.css";
 import ReactPasswordChecklist from "react-password-checklist";
 import Swal from "sweetalert2";
 
@@ -76,10 +77,10 @@ const SupplierRegister = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="text-center mt-3 ">
-          <p className="fs-1 fw-bolder">Registro de Proveedores</p>{" "}
+        <div className="text-center mt-3 font-change">
+          <p className="fs-1 font-change">Registro de Proveedores</p>{" "}
           {/* falta corregir estilo de la letra*/}
-          <p className="fs-3 fst-italic">
+          <p className="fs-3 font-change">
             ¡Rellena el formulario para empezar a enviar tus ofertas!
           </p>{" "}
           {/* falta corregir estilo de la letra*/}
