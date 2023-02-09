@@ -50,7 +50,7 @@ const Offer = () => {
           Rellena este formulario para añadir tu oferta
         </p>
       </div>
-      <div className="container bg-warning px-3 py-3 mb-5 mb-5 col-12 col-md-8">
+      <div className="container bg-warning px-3 py-3 mb-3 mb-3 col-12 col-md-8">
         <div className="form-floating mb-3">
           <input
             type="text"
