@@ -89,11 +89,10 @@ const Cards = () => {
                 <div className="col-md-2 col-sm-12 mt-2">
                   <p>Precio:{favorite.offerlist.price}€</p>
                   <button
-                    target="_tab"
-                    type="button"
-                    onClick={() => window.open(favorite.offerlist.url, "_blank")}  //funcion para traer url de un favorito, incluido fetch
-                    className="btn btn-warning float-left me-2 mb-2"
-                  >
+                   target="_tab"
+                   type="button"
+                   onClick={() => window.open(favorite.offerlist.url, "_blank")}  //funcion para traer url de un favorito, incluido fetch
+                  className="btn btn-warning float-left me-2 mb-2">
                     Pedir!
                   </button>
                   <button
