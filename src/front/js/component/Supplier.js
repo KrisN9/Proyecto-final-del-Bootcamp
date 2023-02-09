@@ -57,7 +57,7 @@ const Supplier = () => {
           }
   return (
     <div
-      className=" text-md-start mt-3 mb-4 fs-3 fw-bold" >
+      className=" text-md-start mt-3 mb-3 fs-3 fw-bold" >
        
       <ul>
         <li>

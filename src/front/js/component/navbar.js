@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/home.css";
 
 export const Navbar = () => {
   const location = useLocation();
@@ -49,7 +50,7 @@ export const Navbar = () => {
               <>
                 {location.pathname !== "/area-privada-usuario" && (
                   <Link
-                    className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
+                    className="btn btn-outline-success text-center rounded-pill d-flex align-content-sm-center flex-wrap"
                     to={
                       localStorage.getItem("type") === "user"
                         ? "/area-privada-usuario"
