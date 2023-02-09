@@ -47,7 +47,7 @@ const Offer = () => {
     <form onSubmit={handleSubmit}>
       <div className="text-center mt-5">
         <p className="fs-1 font-change">
-          Rellena este formulario para añadir tu oferta
+          ¡Rellena este formulario para añadir tu oferta!
         </p>
       </div>
       <div className="container bg-warning px-3 py-3 mb-3 mb-3 col-12 col-md-8">
