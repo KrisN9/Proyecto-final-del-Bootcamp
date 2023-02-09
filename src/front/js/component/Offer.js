@@ -12,6 +12,11 @@ const Offer = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    // event.target.reset();
+  };
+
+  const handleClick = () => {
+    setFormData("");
     fetch(process.env.BACKEND_URL + "/api/offer", {
       method: "POST",
       headers: {
@@ -46,11 +51,9 @@ const Offer = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="text-center mt-5">
-        <p className="fs-1 font-change">
-          ¡Rellena este formulario para añadir tu oferta!
-        </p>
+        <p className="fs-1 font-change">Rellena este formulario para añadir tu oferta</p>
       </div>
-      <div className="container bg-warning px-3 py-3 mb-3 mb-3 col-12 col-md-8">
+      <div className="container bg-warning px-3 py-3 mb-5 mb-5 col-12 col-md-8">
         <div className="form-floating mb-3">
           <input
             type="text"
@@ -132,11 +135,7 @@ const Offer = () => {
         </div>
 
         <div className="col-12">
-          <button
-            type="reset"
-            className="btn btn-danger"
-            onClick={handleSubmit}
-          >
+          <button type="reset" className="btn btn-danger" onClick={handleClick}>
             Enviar
           </button>
           {/* <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
