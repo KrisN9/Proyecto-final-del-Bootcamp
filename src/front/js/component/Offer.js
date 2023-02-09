@@ -50,10 +50,10 @@ const Offer = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="text-center mt-5">
+      <div className="text-center mt-5 mb-5">
         <p className="fs-1 font-change">Rellena este formulario para añadir tu oferta</p>
       </div>
-      <div className="container bg-warning px-3 py-3 mb-5 mb-5 col-12 col-md-8">
+      <div className="container bg-warning px-3 py-3 mb-3 col-12 col-md-8">
         <div className="form-floating mb-3">
           <input
             type="text"
@@ -62,7 +62,6 @@ const Offer = () => {
             placeholder="Nombre de la empresa "
             name="company_name"
             onChange={handleChange}
-            value={formData.company_name}
             required
           />
           <label htmlFor="floatingName">Nombre de la empresa*</label>
@@ -76,7 +75,6 @@ const Offer = () => {
             placeholder="Descripción de la oferta "
             name="title"
             onChange={handleChange}
-            value={formData.title}
             required
           />
           <label htmlFor="floatingTitle">Descripción de la oferta*</label>
@@ -89,7 +87,6 @@ const Offer = () => {
             placeholder="Precio de oferta"
             name="price"
             onChange={handleChange}
-            value={formData.price}
             required
           />
           <label htmlFor="floatingPrice">Precio de oferta*</label>
@@ -102,7 +99,6 @@ const Offer = () => {
             placeholder="url"
             name="url"
             onChange={handleChange}
-            value={formData.url}
             required
           />
           <label htmlFor="floatingPrice">Dirección página web*</label>
@@ -115,7 +111,6 @@ const Offer = () => {
             placeholder="location"
             name="location"
             onChange={handleChange}
-            value={formData.location}
             required
           />
           <label htmlFor="floatingLocation">Ubicación*</label>

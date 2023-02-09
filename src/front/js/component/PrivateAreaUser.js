@@ -31,7 +31,7 @@ return (
           <div className="mt-3 mb-3">
         <p className="font-change fs-1">Bienvenid@ a tu area privada, {user.name}</p>
         </div>
-  <ul className="nav nav-tabs justify-content-center border-0"  id="myTab" role="tablist">
+  <ul className="nav nav-tabs justify-content-center border-1 border-dark"  id="myTab" role="tablist">
   <li className="nav-item" role="presentation">
     <button className="nav-link active bg-warning text-black bg-gradient" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Cuenta</button>
   </li>
