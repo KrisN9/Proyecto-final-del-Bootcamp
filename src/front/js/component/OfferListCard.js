@@ -69,7 +69,7 @@ const OfferListCard = (props) => {
           </li>
           <li className="list-group-item">Ubicación: {offer.location}</li>
         </ul>
-        <div className="card-body d-grid gap-2 col-6 mx-auto">
+        <div className="card-body d-grid gap-2 col-md-6 mx-auto">
           <button
             className="btn btn-danger"
             onClick={() => {

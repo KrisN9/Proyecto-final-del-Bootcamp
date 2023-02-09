@@ -121,7 +121,7 @@ const OfferCards = () => {
                   <p>Precio:{offer.price}€</p>
                   <button
                     type="button"
-                    className="btn btn-secondary"
+                    className="btn btn-secondary mb-2"
                     onClick={() => removeOffer(offer.id)}
                   >
                     <i className="fas fa-trash-alt"></i>

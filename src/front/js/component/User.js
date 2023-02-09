@@ -57,7 +57,7 @@ const User =()=>{
    
 return (
 
-    <div className="text-md-start mt-3 mb-4 fs-3 fw-semibold ">
+    <div className="text-md-start mt-3 mb-3 fs-3 fw-semibold ">
            
                 <ul>
                 <li><p className="font-change">Nombre: {user.name}</p></li>

@@ -71,8 +71,6 @@ def get_cities():
 
     return jsonify(data), 200
 
-
-
 @api.route('/delete_user', methods=['DELETE'])   #eliminar usuario  por id 
 @jwt_required()    # pendiente 
 def delete_user():
