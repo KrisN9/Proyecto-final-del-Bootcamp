@@ -101,6 +101,7 @@ class Offer(db.Model):
             "id": self.id,
             "title":self.title,
             "url_image":self.url_image,
+            "url":self.url,
             "company_name":self.company_name,
             "location":self.location,
             "latitude": location.latitude,
