@@ -84,12 +84,12 @@ const LogIn = () => {
   return (
     <form onSubmit={handleSubmit}>
       <div className="container-fluid" id="background-image">
-        <div className="row text-center mb-3 centro">
-          <div className="col-md-6">
-            <p className="fs-1 font-change">Iniciar sesión como usuario</p>
-            <div className="col-6 mx-auto">
+        <div className="row text-center mb-3 mt-3">
+          <div className="col-md-6 col-sm-6 mt-5 mb-5">
+            <p className="fs-1 font-change mt-5">Iniciar sesión como usuario</p>
+            <div className="col-6 mx-auto mb-5">
               <button
-                className="btn btn-danger btn-lg"
+                className="btn btn-danger btn-lg mb-5"
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#modalUsuario"
@@ -178,11 +178,11 @@ const LogIn = () => {
 
           {/*modal para proveedor*/}
 
-          <div className="col-md-6">
-            <p className="fs-1 font-change">Iniciar sesión como proveedor</p>
-            <div className="col-6 mx-auto">
+          <div className="col-md-6 col-sm-6 mt-5 mb-5">
+            <p className="fs-1 font-change mt-5">Iniciar sesión como proveedor</p>
+            <div className="col-6 mx-auto mb-5">
               <button
-                className="btn btn-danger btn-lg"
+                className="btn btn-danger btn-lg mb-5"
                 type="button"
                 data-bs-toggle="modal"
                 data-bs-target="#modalProveedor"
