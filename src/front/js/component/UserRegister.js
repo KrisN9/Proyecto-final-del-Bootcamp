@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/register.css";
 import ReactPasswordChecklist from "react-password-checklist";
 import Swal from "sweetalert2";
 
@@ -76,9 +77,9 @@ const UserRegister = () => {
     <>
       <form onSubmit={handleSubmit}>
         <div className="text-center mt-3">
-          <p className="fs-1 fw-bolder">Registro de usuarios</p>
-          <p className="fs-3 fst-italic">
-            Rellena el formulario para empezar a comparar ofertas!
+          <p className="fs-1 font-change">Registro de usuarios</p>
+          <p className="fs-3 font-change">
+            ¡Rellena el formulario para empezar a comparar ofertas!
           </p>
         </div>
 
@@ -200,7 +201,7 @@ const UserRegister = () => {
               Enviar
             </button>
           </div>
-          pendiente probar modal
+        
           <div class="modal" tabindex="-1">
             <div class="modal-dialog">
               <div class="modal-content">
