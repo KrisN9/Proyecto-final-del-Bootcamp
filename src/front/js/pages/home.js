@@ -19,6 +19,21 @@ export const Home = () => {
 
   return (
     <>
+    
+      <div className="row">
+        <div className="container squar1 mt-5 mb-3">
+          <h3 className="fs-1 text-success fst-italic text-center">
+            ¡Busca en el mapa las ofertas más cercanas a ti, y añade tus favoritas!
+          </h3>
+        </div>
+        <div className="container col-md-10  mt-4 mb-5 ">
+          {/* <Sidebar/> */}
+          <div className="map ">
+            <FinalMap />
+          </div>
+        </div>
+      </div>
+
       <div className="text-center mt-3 back">
         <div className="container squar1 mt-5 mb-3 ">
           <p className="fs-1 text-success fst-italic">
@@ -30,20 +45,6 @@ export const Home = () => {
 
         <br></br>
 
-        <div className="row">
-          <div className="container squar1 mt-5 mb-3">
-            <h3 className="fs-1 text-success fst-italic">
-              ¡Si te gustan estas ofertas, busca en el mapa las más cercanas a
-              ti!
-            </h3>
-          </div>
-          <div className="container col-md-10  mt-4 mb-5 ">
-            {/* <Sidebar/> */}
-            <div className="map ">
-              <FinalMap />
-            </div>
-          </div>
-        </div>
 			<br></br>
 
 			
