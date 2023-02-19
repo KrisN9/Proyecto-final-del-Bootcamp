@@ -46,7 +46,6 @@ return (
      <div>
         <div className="container col-md-8 text-md-start mt-5 mb-3 fs-4 fw-semibold">
          <User/>
-         
         </div>
      </div>
     </div>
