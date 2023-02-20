@@ -67,7 +67,7 @@ return (
              
 
         <div className="d-grid gap-2 d-md-flex justify-content-md-end" >  
-        <button  type="button" className="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+        <button  type="button" className="btn btn-secondary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Modificar datos de mi cuenta: <i className="fas fa-edit"></i>
         </button>
         </div>
@@ -76,14 +76,14 @@ return (
           <div className="modal-dialog modal-dialog-scrollable">
             <div className="modal-content">
               <div className="modal-header">
-                <h1 className="modal-title fs-5" id="staticBackdropLabel">Modifica tus datos</h1>
+                <h1 className="modal-title text-danger fs-5 font-change" id="staticBackdropLabel">Modifica tus datos</h1>
                 <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div className="modal-body">
               <form onSubmit={handleSubmit}>
                 <div className="container ">
                 <div className="mt-2"> 
-            <p className="fs-6 text-success">Nombre y Apellidos</p>
+            <p className="fs-6 font-change">Nombre y Apellidos</p>
             <input
               type="name"
               className="form-control"
@@ -97,7 +97,7 @@ return (
           </div>
         
               <div className="mt-2">
-            <p className="fs-6 text-success">Dirección de correo electronico</p>
+            <p className="fs-6 font-change">Dirección de correo electronico</p>
             <input
               type="email"
               className="form-control"
@@ -109,7 +109,7 @@ return (
             />
         </div>
         <div className="mt-2" >
-            <p className="fs-6 text-success">Cif de empresa</p>
+            <p className="fs-6 font-change">Cif de empresa</p>
             <input 
               type="Cif_empresa"
               className="form-control"
@@ -126,7 +126,7 @@ return (
               </div>
               <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="button" className="btn btn-success" data-bs-dismiss="modal" onClick={()=>toUpDate(user.id)} >Actualizar</button>
+                <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={()=>toUpDate(user.id)} >Actualizar</button>
               </div>
             </div>
           </div>
