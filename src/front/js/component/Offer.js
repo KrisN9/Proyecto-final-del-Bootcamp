@@ -3,10 +3,18 @@ import { useState } from "react";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
 import SupplierRegister from "./SupplierRegister";
+import {Cloudinary} from '@cloudinary/url-gen'
+import {Resize} from '@cloudinary/url-gen/actions'
+
 
 const Offer = () => {
   const [formData, setFormData] = useState([]);
+  const [image , setImage]= useState("");
+  const [loading , setLoading]= useState(false);
 
+  const upLoad=(e)=>{
+// pendiente de terminar de instalar cloudinary
+  }
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
@@ -47,6 +55,7 @@ const Offer = () => {
         console.log(response);
       });
   };
+
 
   return (
     <form onSubmit={handleSubmit}>
@@ -133,23 +142,7 @@ const Offer = () => {
           <button type="reset" className="btn btn-warning" onClick={handleClick}>
             Enviar
           </button>
-          {/* <div className="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div className="modal-body">
-       hola
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" className="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div> */}
+          
         </div>
       </div>
     </form>
@@ -157,10 +150,6 @@ const Offer = () => {
 };
 
 export default Offer;
-
-{
-  /* { upDate  ? "Ha fallado algo! Intentalo de nuevo" : "Tu oferta ha sido creada con exito " }  */
-}
 
 // <div className="mb-3 text-start">
 // <label htmlFor="floatingUrl" className="form-label">Añadir url de empresa </label>
