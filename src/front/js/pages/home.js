@@ -4,14 +4,7 @@ import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
 import "../../styles/sidebar.css";
 import Slide from "../component/slide";
-import ContactForm from "../component/ContactForm";
-import SupplierRegister from "../component/SupplierRegister";
-import UserRegister from "../component/UserRegister";
-import Cards from "../component/Cards";
 import FinalMap from "../component/FinalMap";
-import Sidebar from "../component/componentes de prueba/Sidebar";
-import { Link } from "react-router-dom";
-import OfferList from "../component/OfferList";
 
 
 export const Home = () => {

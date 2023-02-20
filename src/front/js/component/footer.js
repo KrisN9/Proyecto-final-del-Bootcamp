@@ -6,7 +6,7 @@ export const Footer = () => (
 
 	<footer className="footer mt-auto py-3 text-center text-dark ">
 		<div className="row ">
-			<div className="col-12 col-md-3 "><p className="fs-5 fw-semibold text-decoration-underline">Colaboradores</p>
+			<div className="col-12 col-md-3 "><p className="font-change  text-decoration-underline">Colaboradores</p>
 			<div className="mt-3"> 
 			<img src="https://pbs.twimg.com/profile_images/1531998332347990017/HGRMiQ___400x400.jpg" width="40" height="40" className="rounded-circle me-2" />
 			<img src="https://upload.wikimedia.org/wikipedia/commons/c/c0/The_Good_Burger_%28TGB%29.jpg" width="40" height="40" className="rounded-circle me-2"/>
@@ -32,20 +32,20 @@ export const Footer = () => (
 			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS62-qvwY-j4_l-0ywJcKM8rSLCuN5YdY47g-cDGdcUvWQZKN58U-8JxUAFR27jQGlmVnM&usqp=CAU" width="40" height="40" className="rounded-circle me-2"/>
 			</div>
 			</div>
-			<div className="col-12 col-md-3  "><p className="fs-5 fw-semibold text-decoration-underline">Descarga nuestras Apps</p>
+			<div className="col-12 col-md-3  "><p className="font-change text-decoration-underline">Descarga nuestras Apps</p>
 			<div className="mt-3"> 
 			<a href="https://play.google.com/store/games?hl=es"><img src="https://es.logodownload.org/wp-content/uploads/2019/06/disponible-en-google-play-badge-1.png" width="100" height="40" className=" me-2"/></a>
 			<a href="https://www.apple.com/es/app-store/"><img src="https://vivecudillero.com/wp-content/uploads/2019/11/appstore.png" width="100" height="40" className=" me-2"/></a>
 			</div>
 			</div>		
-			<div className="col-12 col-md-2 "><p className="fs-5 fw-semibold text-decoration-underline">Comunidad</p>
+			<div className="col-12 col-md-2 "><p className="font-change text-decoration-underline">Comunidad</p>
 			<div className=" mt-3">
 			<a href="https://es-es.facebook.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Facebook_f_logo_%282019%29.svg/2048px-Facebook_f_logo_%282019%29.svg.png" width="40" height="40" className="rounded-circle me-2"/></a>
 			<a href="https://www.instagram.com/"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/2048px-Instagram_logo_2016.svg.png" width="40" height="40" className="rounded-circle me-2"/></a>
 			<a href="https://twitter.com/"><img src="https://www.pngkey.com/png/full/2-27646_twitter-logo-png-transparent-background-logo-twitter-png.png" width="40" height="40" className="rounded-circle me-2"/></a>
 			</div>
 			</div>
-			<div className="col-12 col-md-4 "><p className="fs-5 fw-semibold text-decoration-underline">Tienes alguna duda?</p>
+			<div className="col-12 col-md-4 "><p className=" font-change text-decoration-underline">Tienes alguna duda?</p>
 			<Link to={`/contacta-con-nosotros`}>Contactanos</Link>
 			</div>
 		</div>
