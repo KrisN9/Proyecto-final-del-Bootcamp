@@ -74,7 +74,7 @@ const Supplier = () => {
         </li>
       </ul>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end" >  
-      <button  type="button" className="btn btn-warning mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+      <button  type="button" className="btn btn-secondary mb-3" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
         Modificar datos de la cuenta:  <i className="fas fa-edit"></i>
       </button>
       </div>
