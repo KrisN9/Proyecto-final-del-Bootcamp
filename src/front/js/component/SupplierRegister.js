@@ -14,7 +14,6 @@ const SupplierRegister = () => {
   const [check, setCheck] = useState(true);
 
   const navigate = useNavigate();
-
   const password = () => {
     setShownPassword(!shownPassword);
   };
@@ -82,10 +81,10 @@ const SupplierRegister = () => {
           {/* falta corregir estilo de la letra*/}
           <p className="fs-3 font-change">
             ¡Rellena el formulario para empezar a enviar tus ofertas!
-          </p>{" "}
+          </p>
           {/* falta corregir estilo de la letra*/}
         </div>
-        <div className="container bg-warning col-md-8 px-3 py-3 mt-2 mb-5">
+        <div className="container bg-danger col-md-8 px-3 py-3 mt-2 mb-5">
           <div className="form-floating mb-3">
             <input
               type="company-name"
@@ -151,7 +150,7 @@ const SupplierRegister = () => {
             <a href="#" onClick={password}>
               <i
                 className={shownPassword ? "far fa-eye-slash" : "far fa-eye"}
-              ></i>
+              ></i>{" "}
             </a>
             <label htmlFor="floatingInput">Contraseña*</label>
           </div>
@@ -234,7 +233,7 @@ const SupplierRegister = () => {
           <div className="col-12 mb-3">
             <button
               type="submit"
-              className="btn btn-danger"
+              className="btn btn-warning"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
               onClick={handleSubmit}

@@ -83,7 +83,7 @@ const UserRegister = () => {
           </p>
         </div>
 
-        <div className="container bg-warning col-md-8 px-3 py-3 mt-2 mb-5">
+        <div className="container bg-danger col-md-8 px-3 py-3 mt-2 mb-5">
           <div className="form-floating mb-3">
             <input
               type="name"
@@ -194,7 +194,7 @@ const UserRegister = () => {
           <div className="col-12 mb-3">
             <button
               type="submit"
-              className="btn btn-danger"
+              className="btn btn-warning"
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
