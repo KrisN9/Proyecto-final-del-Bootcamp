@@ -21,7 +21,7 @@ export const Navbar = () => {
         <Link to="/">
           <span className="navbar-brand mb-0 h1">
             <img
-              src="https://i.postimg.cc/KYLQqTks/Promo-Food-1.png"
+              src="https://i.postimg.cc/rFkmHZjL/fotor-2023-2-20-13-14-9.png"
               alt="Logo"
               width="70"
               height="70"
@@ -72,13 +72,13 @@ export const Navbar = () => {
           ) : (
             <>
               <Link
-                className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
+                className="btn btn-outline-dark  d-flex align-content-sm-center flex-wrap"
                 to="/registro"
               >
                 Registrarse
               </Link>
               <Link
-                className="btn btn-outline-success rounded-pill d-flex align-content-sm-center flex-wrap"
+                className="btn btn-outline-dark d-flex align-content-sm-center flex-wrap"
                 to="/inicio-sesion"
               >
                 Iniciar sesión

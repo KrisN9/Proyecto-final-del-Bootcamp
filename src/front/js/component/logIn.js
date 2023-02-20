@@ -142,7 +142,7 @@ const LogIn = () => {
                           className="form-control"
                           id="floatingPassword"
                           placeholder="contraseña"
-                        />{" "}
+                        />
                         <a href="#" onClick={user}>
                           <i
                             className={
@@ -164,7 +164,7 @@ const LogIn = () => {
                       <button
                         type="button"
                         onClick={handleClickUser}
-                        className="btn btn-warning"
+                        className="btn btn-danger"
                         data-bs-dismiss="modal"
                       >
                         Continuar
@@ -240,7 +240,7 @@ const LogIn = () => {
                             className={
                               shownSupplier ? "far fa-eye-slash" : "far fa-eye"
                             }
-                          ></i>{" "}
+                          ></i>
                         </a>
                         <label htmlFor="floatingPassword1">Contraseña*</label>
                       </div>
@@ -256,7 +256,7 @@ const LogIn = () => {
                       <button
                         type="button"
                         onClick={handleClickSupplier}
-                        className="btn btn-warning"
+                        className="btn btn-danger"
                         data-bs-dismiss="modal"
                       >
                         Continuar

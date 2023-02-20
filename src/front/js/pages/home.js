@@ -22,7 +22,7 @@ export const Home = () => {
     
       <div className="row">
         <div className="container squar1 mt-5 mb-3">
-          <h3 className="fs-1 text-success fst-italic text-center">
+          <h3 className="fs-1  fst-italic text-center">  {/* text-success */}
             ¡Busca en el mapa las ofertas más cercanas a ti, y añade tus favoritas!
           </h3>
         </div>
@@ -36,7 +36,7 @@ export const Home = () => {
 
       <div className="text-center mt-3 back">
         <div className="container squar1 mt-5 mb-3 ">
-          <p className="fs-1 text-success fst-italic">
+          <p className="fs-1  fst-italic">
             Aquí encontrarás tus restaurantes favoritos con las mejores ofertas
           </p>
         </div>
