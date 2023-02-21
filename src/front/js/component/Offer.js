@@ -7,11 +7,8 @@ const Offer = () => {
 
   const cloudinaryRef =useRef();
   const widgetRef =useRef();
-
+    let imageRef = "#floatingImage" ;
   const [formData, setFormData] = useState([]);
-  const [image, setImage] = useState("");
-  const [loading, setLoading] = useState(false);
-
 
     useEffect (()=>{
         cloudinaryRef.current = window.cloudinary;
@@ -19,8 +16,8 @@ const Offer = () => {
           cloudName: 'ddkqnzbrg',
           uploadPreset:'PromoFood'
         }, function(error , result){
-          if(!error && result & result.event=== 'success'){
-           // se sube la foto pero no guarda 
+          if(!error && result && result.event=== 'success'){
+            imageRef.src = result.info.secure_url;
           }
         });
     },[])
@@ -137,18 +134,20 @@ const Offer = () => {
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
 
-        <div className="mb-3 text-start ">
+        <div className="mb-3">
           <label htmlFor="floatingImage" className="form-label">
             Añadir Imagen
           </label>
           <input
             className="form-control form-control-sm"
-            id="floatingImage"
+            id="upload_widget"
             name="url_image"
             type="file"
             onChange={handleChange}
-            onClick={()=> widgetRef.current.open()}
           />
+          <div className="col-md-4  mt-3"><button onClick={()=> widgetRef.current.open()} id="upload_widget">
+          Examinar...
+      </button></div>
         </div>
 
         <div className="col-12">
