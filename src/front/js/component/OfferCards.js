@@ -6,7 +6,6 @@ import Modals from "./Modals";
 
 const OfferCards = () => {
   const [offers, setOffers] = useState([]);
-  
   useEffect(() => {
     getOffers();
   }, []);
@@ -93,7 +92,7 @@ const OfferCards = () => {
               <div className="row g-0">
                 <div className="col-md-3 ">
                   <img
-                    id="img"
+                    
                     src={offer.url_image}
                     className="img-fluid rounded-start"
                    

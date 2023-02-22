@@ -3,21 +3,36 @@ import { useState, useEffect, useRef } from "react";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
 import { preview } from "@cloudinary/url-gen/actions/videoEdit";
+import { Data } from "@react-google-maps/api";
 
 const Offer = () => {
   const [formData, setFormData] = useState([]);
+  const [image, setImage] = useState("");
+  const [loadin, setLoading] = useState(false);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    const archivo = document.getElementById("floatingImage").files[0];
-    const reader = new FileReader();
-    if (floatingImage) {
-      reader.readAsDataURL(archivo);
-      reader.onloadend = function () {
-        document.getElementById("img").src = reader.result;
-      };
-    }
+    const files = event.target.files;
+    Data.append("file", files[0]);
+    Data.append("upload_preset", "PromoFood");
+    setLoading(true);
+
+    fetch("https://api.cloudinary.com/v1_1/ddkqnzbrg/image/upload", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify(formData),
+    }).then((response)=>{
+      response.json();
+    }).then((response)=>{
+      console.log(file.secure_url)
+      setImage(file.secure_url)
+      setLoading(false)
+    })
   };
+
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -145,10 +160,9 @@ const Offer = () => {
           >
             Enviar
           </button>
-           <img id="img"/> 
+          <img id="img" />
         </div>
       </div>
-
     </form>
   );
 };
@@ -199,3 +213,12 @@ export default Offer;
 // const cloudinaryRef = useRef();
 // const widgetRef = useRef();
 // let imageRef = "#floatingImage";
+
+// const archivo = document.getElementById("floatingImage").files;
+//     const reader = new FileReader();
+//     if (floatingImage) {
+//       reader.readAsDataURL(archivo);
+//       reader.onloadend = function () {
+//         document.getElementById("img").src = reader.result;
+//       };
+//     }
