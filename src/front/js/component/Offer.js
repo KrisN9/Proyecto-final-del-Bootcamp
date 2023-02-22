@@ -1,38 +1,28 @@
 import React from "react";
-import { useState, useEffect,useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
+import { preview } from "@cloudinary/url-gen/actions/videoEdit";
 
 const Offer = () => {
-
-  const cloudinaryRef =useRef();
-  const widgetRef =useRef();
-    let imageRef = "#floatingImage" ;
   const [formData, setFormData] = useState([]);
-
-    useEffect (()=>{
-        cloudinaryRef.current = window.cloudinary;
-       widgetRef.current =cloudinaryRef.current.createUploadWidget({
-          cloudName: 'ddkqnzbrg',
-          uploadPreset:'PromoFood'
-        }, function(error , result){
-          if(!error && result && result.event=== 'success'){
-            imageRef.src = result.info.secure_url;
-          }
-        });
-    },[])
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-   
+    const archivo = document.getElementById("floatingImage").files[0];
+    const reader = new FileReader();
+    if (floatingImage) {
+      reader.readAsDataURL(archivo);
+      reader.onloadend = function () {
+        document.getElementById("img").src = reader.result;
+      };
+    }
   };
   const handleSubmit = (event) => {
     event.preventDefault();
   };
 
   const handleClick = () => {
-
-
     fetch(process.env.BACKEND_URL + "/api/offer", {
       method: "POST",
       headers: {
@@ -134,22 +124,19 @@ const Offer = () => {
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
 
-        <div className="mb-3">
-          <label htmlFor="floatingImage" className="form-label">
-            Añadir Imagen
+        <div className="mb-3 text-start">
+          <label htmlFor="formFile" className="form-label">
+            Añadir imagen
           </label>
           <input
-            className="form-control form-control-sm"
-            id="upload_widget"
-            name="url_image"
+            className="form-control"
             type="file"
+            id="floatingImage"
+            name="url_image"
             onChange={handleChange}
+            accept="image/*"
           />
-          <div className="col-md-4  mt-3"><button onClick={()=> widgetRef.current.open()} id="upload_widget">
-          Examinar...
-      </button></div>
         </div>
-
         <div className="col-12">
           <button
             type="reset"
@@ -158,8 +145,10 @@ const Offer = () => {
           >
             Enviar
           </button>
+           <img id="img"/> 
         </div>
       </div>
+
     </form>
   );
 };
@@ -175,6 +164,9 @@ export default Offer;
 //  onChange={handleChange}/>
 // </div>
 
+// <div className="col-md-4  mt-3"><button onClick={()=> widgetRef.current.open()} id="upload_widget">
+//           Examinar...
+//       </button></div>
 
 // fetch("https://api.cloudinary.com/v1_1/ddkqnzbrg/image/upload", {
 //   method: "POST",
@@ -184,3 +176,26 @@ export default Offer;
 //   },
 //   body: JSON.stringify(formData),
 // });
+
+{
+  /* <img id="img"/> */
+}
+
+// useEffect(() => {
+//   cloudinaryRef.current = window.cloudinary;
+//   widgetRef.current = cloudinaryRef.current.createUploadWidget(
+//     {
+//       cloudName: "ddkqnzbrg",
+//       uploadPreset: "PromoFood",
+//     },
+//     function (error, result) {
+//       if (!error && result && result.event === "success") {
+//         imageRef.src = result.info.secure_url;
+//       }
+//     }
+//   );
+// }, []);
+
+// const cloudinaryRef = useRef();
+// const widgetRef = useRef();
+// let imageRef = "#floatingImage";
