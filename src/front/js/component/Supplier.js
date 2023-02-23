@@ -74,7 +74,7 @@ const Supplier = () => {
           <p className="font-change">Cif de empresa: {supplier.company_cif}</p>
         </li>
         <li>
-          <p className="font-change">Número de teléfono:{supplier.telephone_number}</p>
+          <p className="font-change">Número de teléfono: {supplier.telephone_number}</p>
         </li>
       </ul>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end" >  
@@ -145,10 +145,10 @@ const Supplier = () => {
           <div className="mt-2" >
           <p className="fs-6 font-change ">Número de teléfono</p>
           <input 
-            type="Cif_empresa"
+            type="number"
             className="form-control"
-            id="floatingCifEmpresa"
-            placeholder="Cif de empresa"
+            id="telephono_number"
+            placeholder="Número de Teléfono"
             name="telephone_number"
             onChange={handleChange}
             defaultValue={supplier.telephone_number}
