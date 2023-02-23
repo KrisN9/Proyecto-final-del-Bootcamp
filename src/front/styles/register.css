@@ -1,6 +1,6 @@
 #fast-food {
     text-align: center;
-    background-image: url("https://img.freepik.com/free-photo/top-view-food-frame-with-hot-dogs_23-2148308901.jpg?w=996&t=st=1675953873~exp=1675954473~hmac=fb4983221a34db3b592f53c92c079a7d4c9902f7d585e1cc969ba7f91b880248");
+    background-image: url("https://thumbs.dreamstime.com/b/borde-superior-de-comida-chatarra-sobre-fondo-banner-m%C3%A1rmol-blanco-selecci%C3%B3n-r%C3%A1pida-y-consumo-pizza-hamburguesas-fritas-patatas-243199322.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -8,6 +8,7 @@
     width: 100%;
     padding-top: 20px;
     margin-top: 20px;
+    
 }
 
 .font-change {

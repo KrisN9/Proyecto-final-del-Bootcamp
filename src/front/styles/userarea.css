@@ -1,13 +1,15 @@
 #hotdog {
     text-align: center;
-    background-image: url("https://img.freepik.com/free-photo/burger-disposal-cup-sauce-bottle-french-fries-food-parcel-white-background_23-2147904845.jpg?w=900&t=st=1676046801~exp=1676047401~hmac=445a1039d3224ec566e371bb73a3b71e81e5a9b2f85a22d2fef93a0198cb6929");
+    background-image: url("https://thumbs.dreamstime.com/b/surtido-de-alimentos-extracci%C3%B3n-o-entrega-vista-superior-doble-borde-lateral-sobre-un-fondo-banner-madera-blanca-variedad-para-190066121.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     height: 100%;
     width: 100%;
+    
 }
 
 .font-change {
     font-family: 'Bree Serif', serif;
+   
   }

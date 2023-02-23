@@ -1,6 +1,6 @@
 #background-image {
   text-align: center;
-  background-image: url("https://img.freepik.com/free-photo/flat-lay-circular-frame-with-delicious-fast-food_23-2148308815.jpg?w=996&t=st=1675789653~exp=1675790253~hmac=6597ed2c5d32b6ccca31828f43d2ab19b515ac63023bbd0ba7d66250089c1f7d");
+  background-image: url("https://img.freepik.com/foto-gratis/vista-aerea-hamburguesas-papas-fritas-comida-rapida_53876-31674.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -8,6 +8,7 @@
   width: 100%;
   padding-top: 20px;
   margin-top: 20px;
+
 }
 
 font-change {
