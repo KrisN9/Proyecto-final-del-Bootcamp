@@ -2,17 +2,14 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
-import { preview } from "@cloudinary/url-gen/actions/videoEdit";
-import { Data } from "@react-google-maps/api";
 
 const Offer = () => {
   const [formData, setFormData] = useState([]);
- 
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
     
-  }
+  };
   const handleSubmit = (event) => {
     event.preventDefault();
   };
@@ -126,10 +123,11 @@ const Offer = () => {
           <input
             className="form-control"
             type="file"
-            id="floatingImage"
+            id="file"
             name="url_image"
             onChange={handleChange}
             accept="image/*"
+       
           />
         </div>
         <div className="col-12">
@@ -204,22 +202,25 @@ export default Offer;
 //     }
 
 
-// const files = event.target.files;
-//     Data.append("file", files[0]);
-//     Data.append("upload_preset", "PromoFood");
-//     setLoading(true);
+// const myWidget = cloudinary.createUploadWidget({
 
-//     fetch("https://api.cloudinary.com/v1_1/ddkqnzbrg/image/upload", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: "Bearer " + localStorage.getItem("token"),
-//       },
-//       body: JSON.stringify(formData),
-//     }).then((response)=>{
-//       response.json();
-//     }).then((response)=>{
-//       console.log(file.secure_url)
-//       setImage(file.secure_url)
-//       setLoading(false)
-//     })
+//   cloudName: cloudName,
+//   uploadPreset: uploadPreset,
+
+// },(error, result) => {
+//   if (!error && result && result.event === "success") {
+//     console.log("Done! Here is the image info: ", result.info);
+//     document
+//       .getElementById("uploadedimage")
+//       .setAttribute("src", result.info.secure_url);
+//   }
+// }
+
+// );
+// document.getElementById("upload_widget").addEventListener(
+// "click",
+// function () {
+//   myWidget.open();
+// },
+// false
+// );

@@ -11,7 +11,7 @@ class User(db.Model):
     #last_name=db.Column(db.String(80), unique=False, nullable=False)
     city_id=db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)      
     city=db.relationship('City', backref='user', lazy=True)
-    telephone_number=db.Column(db.String(80), nullable=False) 
+    telephone_number=db.Column(db.String(80), nullable=True) 
     #id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
    
     def __repr__(self):
@@ -51,13 +51,13 @@ class Supplier(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    company_name =db.Column(db.String(80), unique=True, nullable=False) 
-    company_cif=db.Column(db.String(80),unique=True, nullable=False)
+    company_name =db.Column(db.String(80), unique=True, nullable=True) 
+    company_cif=db.Column(db.String(80),unique=True, nullable=True)
     name=db.Column(db.String(80), unique=False, nullable=False)
     #last_name=db.Column(db.String(80), unique=False, nullable=False)
     city_id=db.Column(db.Integer, db.ForeignKey('city.id'), nullable=False)       #address  por city  
     city=db.relationship('City', backref='supplier', lazy=True) 
-    telephone_number=db.Column(db.String(80), nullable=False)
+    telephone_number=db.Column(db.String(80), nullable=True)
     # id_login= db.Column(db.Integer, db.ForeignKey('login.id'), nullable=False)
     # login= db.relationship('Login', backref='supplier', lazy=True)
 
@@ -71,7 +71,8 @@ class Supplier(db.Model):
             "name": self.name,
             # "last_name": self.last_name,
             "company_name": self.company_name,
-            "company_cif":self.company_cif
+            "company_cif":self.company_cif,
+            "telephone_number":self.telephone_number
         }
 
 

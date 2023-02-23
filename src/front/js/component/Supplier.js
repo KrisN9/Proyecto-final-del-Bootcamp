@@ -64,13 +64,17 @@ const Supplier = () => {
           <p className="font-change">Nombre: {supplier.name} </p>
         </li>
         <li>
-          <p className="font-change">Empresa: {supplier.company_name}</p>
-        </li>
-        <li>
           <p className="font-change">Correo Electronico: {supplier.email}</p>
         </li>
         <li>
+          <p className="font-change">Empresa: {supplier.company_name}</p>
+        </li>
+       
+        <li>
           <p className="font-change">Cif de empresa: {supplier.company_cif}</p>
+        </li>
+        <li>
+          <p className="font-change">Número de teléfono:{supplier.telephone_number}</p>
         </li>
       </ul>
         <div className="d-grid gap-2 d-md-flex justify-content-md-end" >  
@@ -136,6 +140,18 @@ const Supplier = () => {
             name="company_cif"
             onChange={handleChange}
             defaultValue={supplier.company_cif}
+          />
+          </div>
+          <div className="mt-2" >
+          <p className="fs-6 font-change ">Número de teléfono</p>
+          <input 
+            type="Cif_empresa"
+            className="form-control"
+            id="floatingCifEmpresa"
+            placeholder="Cif de empresa"
+            name="telephone_number"
+            onChange={handleChange}
+            defaultValue={supplier.telephone_number}
           />
           </div>
 

@@ -72,13 +72,13 @@ export const Navbar = () => {
           ) : (
             <>
               <Link
-                className="btn btn-outline-dark  d-flex align-content-sm-center flex-wrap"
+                className="btn btn-outline-dark align-content-sm-center flex-wrap"
                 to="/registro"
               >
                 Registrarse
               </Link>
               <Link
-                className="btn btn-outline-dark d-flex align-content-sm-center flex-wrap"
+                className="btn btn-outline-dark align-content-sm-center flex-wrap"
                 to="/inicio-sesion"
               >
                 Iniciar sesión

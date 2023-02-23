@@ -145,17 +145,6 @@ const UserRegister = () => {
 
             <label htmlFor="floatingInput">Repetir contraseña*</label>
           </div>
-          <div className="form-floating mb-3">
-            <input
-              type="phone-number"
-              className="form-control"
-              id="floatingNumber"
-              placeholder="Número de teléfono"
-              name="telephone_number"
-              onChange={handleChange}
-            />
-            <label htmlFor="floatingNumber">Número de teléfono</label>
-          </div>
           <select
             className="form-select mb-3"
             aria-label="Default select example"
