@@ -128,8 +128,7 @@ def delete_offer(offer_id):
 def register_user():
     data = request.json
     try:
-        user = User(name=data['name'], email=data['email'], password=data['password'],  
-        telephone_number=data['telephone_number'], city_id=data['city'])
+        user = User(name=data['name'], email=data['email'], password=data['password'], city_id=data['city'])
         db.session.add(user)
         db.session.commit()
     except Exception as e: 
@@ -143,8 +142,7 @@ def register_user():
 def register_supplier():
     data = request.json
     try:
-        supplier = Supplier(company_name=data['company_name'], company_cif=data['company_cif'], name=data['name'], email=data['email'],
-        password=data['password'], telephone_number=data['telephone_number'], city_id=data['city'])
+        supplier = Supplier(name=data['name'], email=data['email'],password=data['password'], city_id=data['city'])
         db.session.add(supplier)
         db.session.commit()
     except Exception as e:
@@ -242,11 +240,13 @@ def update_supplier(supplier_id):
     new_company_cif = request.json.get("company_cif", supplier.company_cif)
     new_name = request.json.get("name", supplier.name)
     new_email = request.json.get("email", supplier.email)
+    new_telephone_number = request.json.get("telephone_number", supplier.telephone_number)
 
     setattr(supplier, "company_name", new_company_name)
     setattr(supplier, "company_cif", new_company_cif)
     setattr(supplier, "name", new_name)
     setattr(supplier, "email", new_email)
+    setattr(supplier, "telephone_number", new_telephone_number)
 
     db.session.commit()
        

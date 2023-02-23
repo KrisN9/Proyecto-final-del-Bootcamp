@@ -62,22 +62,6 @@ const OfferCards = () => {
       });
   };
 
-/*   const removeOffer = (offer_id) => {
-    const remove = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-    };
-    fetch(process.env.BACKEND_URL + "/api/delete_offer/" + offer_id, remove)
-      .then((response) => {
-        return response.json();
-      })
-      .then((response) => {
-        getOffers(response);
-      });
-  }; */
 
   
   return (
@@ -92,7 +76,6 @@ const OfferCards = () => {
               <div className="row g-0">
                 <div className="col-md-3 ">
                   <img
-                    id="img"
                     src={offer.url_image}
                     className="img-fluid rounded-start"
                    
@@ -118,18 +101,7 @@ const OfferCards = () => {
                   >
                     <i className="fas fa-trash-alt"></i>
                   </button>
-                 {/*  <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-                  <button
-                    type="button"
-                    className="btn btn-success"
-                    data-bs-toggle="modal" data-bs-target={offer.id.toString()}
-                    
-                  >
-                    <i className="fas fa-edit"></i>
-                  </button>
-
-                  <Modals title={offer.title} price={offer.price} idModals={offer.id}  idModalLabel={offer.id + "label"}/>
-                  </div> */}
+                
                   </div>
               </div>
              
@@ -141,3 +113,35 @@ const OfferCards = () => {
   );
 };
 export default OfferCards;
+
+
+/*   const removeOffer = (offer_id) => {
+    const remove = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+    };
+    fetch(process.env.BACKEND_URL + "/api/delete_offer/" + offer_id, remove)
+      .then((response) => {
+        return response.json();
+      })
+      .then((response) => {
+        getOffers(response);
+      });
+  }; */
+
+
+   {/*  <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button
+                    type="button"
+                    className="btn btn-success"
+                    data-bs-toggle="modal" data-bs-target={offer.id.toString()}
+                    
+                  >
+                    <i className="fas fa-edit"></i>
+                  </button>
+
+                  <Modals title={offer.title} price={offer.price} idModals={offer.id}  idModalLabel={offer.id + "label"}/>
+                  </div> */}

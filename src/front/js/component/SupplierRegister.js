@@ -87,30 +87,6 @@ const SupplierRegister = () => {
         <div className="container bg-danger col-md-8 px-3 py-3 mt-2 mb-5">
           <div className="form-floating mb-3">
             <input
-              type="company-name"
-              className="form-control"
-              id="floatingName"
-              placeholder="Nombre de la empresa"
-              name="company_name"
-              onChange={handleChange}
-              required
-            />
-            <label htmlFor="floatingInput">Nombre de la empresa*</label>
-          </div>
-          <div className="form-floating mb-3">
-            <input
-              type="company-number"
-              className="form-control"
-              id="floatingNumber"
-              placeholder="CIF de la empresa"
-              name="company_cif"
-              onChange={handleChange}
-              required
-            />
-            <label htmlFor="floatingInput">CIF de la empresa*</label>
-          </div>
-          <div className="form-floating mb-3">
-            <input
               type="name"
               className="form-control"
               id="floatingName"
@@ -171,18 +147,6 @@ const SupplierRegister = () => {
             </a>
 
             <label htmlFor="floatingInput">Repetir contraseña*</label>
-          </div>
-
-          <div className="form-floating mb-3">
-            <input
-              type="phone-number"
-              className="form-control"
-              id="floatingNumber"
-              placeholder="Número de teléfono"
-              name="telephone_number"
-              onChange={handleChange}
-            />
-            <label htmlFor="floatingNumber">Número de teléfono</label>
           </div>
           <select
             className="form-select mb-3"
