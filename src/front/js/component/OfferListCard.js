@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/offerlistcard.css";
 import Swal from "sweetalert2";
 
@@ -37,7 +37,7 @@ const OfferListCard = (props) => {
               text: "¡La oferta se ha agregado a Favoritos, puedes verla en tu Área Privada!",
             });
             navigate("/");
-          
+
             if (response.status == 400) {
               Swal.fire({
                 position: "top",
@@ -57,31 +57,41 @@ const OfferListCard = (props) => {
 
   return offer ? (
     <>
-      <div className="card border-danger border-3 ms-5 me-5 mb-5 text-center">
-        <img src={offer.url_image} className="card-img-top" alt="..." />
-        <div className="card-body">
-          <h5 className="card-title">{offer.company_name}</h5>
-          <p className="card-text">{offer.title}</p>
-        </div>
-        <ul className="list-group list-group-flush">
-          <li className="list-group-item border-danger">
-            Precio: {offer.price}
-          </li>
-          <li className="list-group-item">Ubicación: {offer.location}</li>
-        </ul>
-        <div className="card-body d-grid gap-2 col-md-6 mx-auto">
-          <button
-            className="btn btn-danger"
-            onClick={() => {
-              handleClick(offer.id);
-              setFavorite(true);
-            }}
-          >
-            Añadir a Favoritos<br></br>
-            <i className="fas fa-heart"></i>
-          </button>
+      <div id="img" className="card mb-3 container">
+        <div className="row g-0">
+          <div className="col-md-5">
+          <img src={offer.url_image} className="card-img-top"  width="100" height="300" />
+          </div>
+          <div className="col-md-5 ">
+            <div className="card-body mt-4">
+            <h5 className="card-title text-decoration-underline">{offer.company_name}</h5>
+            <p className="card-text">{offer.title}</p>
+            <p className="card-text"> Precio: {offer.price}€</p>
+            <p className="card-text">Ubicación: {offer.location}</p>
+            </div>
+          </div>
+          <div className="col-md-2 mt-5 ">
+        <button
+          className="btn btn-danger"
+          type="button"
+          onClick={() => {
+            handleClick(offer.id);
+            setFavorite(true);
+          }}
+        >
+          Añadir a Favorito
+          
+        </button>
+        
+      </div>
         </div>
       </div>
+      <i className="fal fa-arrow-alt-left"></i>
+      <Link to="/" className=" mt-3 btn btn-success" type="button">
+          Ir a mapa
+        </Link> 
+
+    
     </>
   ) : (
     ""
@@ -89,3 +99,24 @@ const OfferListCard = (props) => {
 };
 
 export default OfferListCard;
+
+ 
+
+// card-body d-grid gap-2 col-md-6 mx-auto
+
+{
+  /* <div className="card border-danger border-3 ms-5 me-5 mb-5 text-center">
+<img src={offer.url_image} className="card-img-top" alt="..." />
+<div className="card-body">
+  <h5 className="card-title">{offer.company_name}</h5>
+  <p className="card-text">{offer.title}</p>
+</div>
+<ul className="list-group list-group-flush">
+  <li className="list-group-item border-danger">
+    Precio: {offer.price}
+  </li>
+  <li className="list-group-item">Ubicación: {offer.location}</li>
+</ul>
+
+</div> */
+}

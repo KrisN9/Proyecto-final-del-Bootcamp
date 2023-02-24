@@ -74,11 +74,12 @@ const OfferCards = () => {
           return (
             <div className="card border-danger border-3 mb-3 " key={index}>
               <div className="row g-0">
-                <div className="col-md-3 ">
+                <div className="col-md-4 ">
                   <img
                     src={offer.url_image}
                     className="img-fluid rounded-start"
-                   
+                    width="150"
+                    height="100"
                   />
                 </div>
 
@@ -90,13 +91,14 @@ const OfferCards = () => {
                     {/*Nombre de la empresa */}
                     <p className="card-text">{offer.title}</p>
                     {/* aqui va la descripcion de la oferta */}
+                    <p>Precio:{offer.price}€</p>
                   </div>
                 </div>
-                <div className="col-md-3 mt-2 "> 
-                  <p>Precio:{offer.price}€</p>
+                <div className="col-md-1 mt-5 "> 
+                 
                   <button
                     type="button"
-                    className="btn btn-secondary mb-2"
+                    className="btn btn-secondary "
                     onClick={() => removeOffer(offer.id)}
                   >
                     <i className="fas fa-trash-alt"></i>
