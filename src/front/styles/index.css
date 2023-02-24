@@ -23,15 +23,16 @@ footer {
 .mapboxgl-popup {
   max-width: 200px;
   max-height: 400px;
-  background-color: orange;
+  background-color: red;
 }
 
 .apple-popup .mapboxgl-popup-content {
   font: 400 12px/15px "Source Sans Pro", "Helvetica Neue", sans-serif;
   padding: 2;
-  width: 200px;
-  height: 225px;
+  width: 150px;
+  height: 205px;
   position: relative;
+  text-align: center;
 }
 
 .marker {
