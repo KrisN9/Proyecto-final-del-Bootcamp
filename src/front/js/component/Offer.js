@@ -8,10 +8,17 @@ const Offer = () => {
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
-    
   };
   const handleSubmit = (event) => {
     event.preventDefault();
+    fetch("https://api.cloudinary.com/v1_1/ddkqnzbrg/image/upload", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + localStorage.getItem("token"),
+      },
+      body: JSON.stringify(formData),
+    });
   };
 
   const handleClick = () => {
@@ -127,7 +134,6 @@ const Offer = () => {
             name="url_image"
             onChange={handleChange}
             accept="image/*"
-       
           />
         </div>
         <div className="col-12">
@@ -200,7 +206,6 @@ export default Offer;
 //         document.getElementById("img").src = reader.result;
 //       };
 //     }
-
 
 // const myWidget = cloudinary.createUploadWidget({
 
