@@ -87,14 +87,15 @@ const Cards = () => {
                 </div>
                 <div className="col-md-7">
                   <div className="card-body text-center">
-                    <h5 className="card-title fs-3 fw-bolder">
+                    <h5 className="card-title fs-3 fw-bolder text-decoration-underline">
                       {favorite.offerlist.company_name}
                     </h5>
                     <p className="card-text"> {favorite.offerlist.title}</p>
+                    <p>Precio:{favorite.offerlist.price}€</p>
                   </div>
                 </div>
-                <div className="col-md-2 col-sm-12 mt-2">
-                  <p>Precio:{favorite.offerlist.price}€</p>
+                <div className="col-md-2 col-sm-12 mt-4">
+                 
                   <button
                    target="_tab"
                    type="button"
