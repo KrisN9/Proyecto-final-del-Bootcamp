@@ -2,7 +2,12 @@
   font-family: "Lily Script One", cursive;
 }
 
-body {
-  background-color:white;
+.body {
+  background-color: white;
 }
 
+#mapa {
+  width: 70%;
+  height: 50%;
+  border: 1px solid black;
+}
