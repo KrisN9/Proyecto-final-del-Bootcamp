@@ -41,24 +41,22 @@ const FinalMap = () => {
         .setLngLat([oferta.longitude, oferta.latitude])
         .setPopup(
           new mapboxgl.Popup({ offset: 10, className: "apple-popup" }).setHTML(`
-          <div class= container>
-          <img id=mapa src=${oferta.url_image} width="100" height="100">
+          <img id=mapa src=${oferta.url_image} width="80" height="80">
           <br></br>
           ${oferta.title}
           <br></br> 
            Precio:${oferta.price}€
           <br></br>
-          
           ${
             localStorage.getItem("token")
               ? `<a 
                 href=${"/ofertas/" + oferta.id}
                 class="btn-map btn btn-outline-danger btn-sm"
               >
-                ¡Me gusta!
+              ¡Me gusta!
               </a>`
               : ""
-          }</div>`)
+          }`)
         )
         .addTo(map);
     });
