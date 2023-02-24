@@ -138,7 +138,7 @@ const Offer = () => {
           >
             Enviar
           </button>
-          <img id="img" />
+          <img id="file" />
         </div>
       </div>
     </form>
