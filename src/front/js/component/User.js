@@ -20,6 +20,8 @@ const User =()=>{
      getUser();
     },[])
 
+    
+
     const getUser=()=>{
       const optionsUser={
         headers:{
@@ -62,7 +64,7 @@ return (
                 <ul>
                 <li><p className="font-change">Nombre: {user.name}</p></li>
                 <li><p className="font-change">Correo Electronico: {user.email}</p></li>
-                <li><p className="font-change">Número de telefóno : {user.telephone_number}</p></li>
+                <li><p className="font-change">Número de teléfono : {user.telephone_number}</p></li>
                 </ul>
              
 
@@ -109,11 +111,11 @@ return (
             />
         </div>
         <div className="mt-2" >
-            <p className="fs-6 font-change">Cif de empresa</p>
+            <p className="fs-6 font-change">Número de teléfono</p>
             <input 
-              type="Cif_empresa"
+              type="number"
               className="form-control"
-              id="floatingCifEmpresa"
+              id="telephone_number"
               placeholder="Número de teléfono"
               name="telephone_number"
               onChange={handleChange}

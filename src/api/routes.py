@@ -128,7 +128,7 @@ def delete_offer(offer_id):
 def register_user():
     data = request.json
     try:
-        user = User(name=data['name'], email=data['email'], password=data['password'], city_id=data['city'])
+        user = User(name=data['name'], email=data['email'], password=data['password'],city_id=data['city']) 
         db.session.add(user)
         db.session.commit()
     except Exception as e: 
