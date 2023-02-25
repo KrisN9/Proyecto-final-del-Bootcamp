@@ -2,8 +2,37 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
+import { Cloudinary } from "@cloudinary/url-gen";
 
 const Offer = () => {
+  
+    const cloudinaryRef = useRef();
+    const widgetRef = useRef();
+    useEffect(()=>{
+      cloudinaryRef.current = window.cloudinary;
+      widgetRef.current = cloudinaryRef.current.createUploadWidget({
+        cloudName: "ddkqnzbrg",
+        uploadPreset: "PromoFood",
+      }, function(error , result){
+          console.log(result);
+          if (!error && result && result.event === "success") {
+            console.log("Done! Here is the image info: ", result.info);
+            document
+              .getElementById("uploadedimage")
+              .setAttribute("src", result.info.secure_url);
+          }
+      });document.getElementById("upload_widget").addEventListener(
+        "click",
+        function () {
+          myWidget.open();
+        },
+        false
+      );
+
+    },[])
+  
+  
+  
   const [formData, setFormData] = useState([]);
 
   const handleChange = (event) => {
@@ -11,16 +40,22 @@ const Offer = () => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("https://api.cloudinary.com/v1_1/ddkqnzbrg/image/upload", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + localStorage.getItem("token"),
-      },
-      body: JSON.stringify(formData),
-    });
+    
   };
-
+// const upload=(e)=>{
+//   fetch("https://api.cloudinary.com/v1_1/ddkqnzbrg/image/upload", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Authorization: "Bearer " + localStorage.getItem("token"),
+//       },
+//       body: JSON.stringify(formData),
+//     }).then((resp)=>
+//       resp.json()
+//     ).then((data)=>
+//     formData(data.url_image)
+//     )
+// }
   const handleClick = () => {
     fetch(process.env.BACKEND_URL + "/api/offer", {
       method: "POST",
@@ -29,7 +64,9 @@ const Offer = () => {
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
       body: JSON.stringify(formData),
+    
     })
+    console.log(formData)
       .then((response) => {
         if (response.status == 200) {
           Swal.fire({
@@ -123,19 +160,22 @@ const Offer = () => {
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
 
-        <div className="mb-3 text-start">
+        {/* <div className="mb-3 text-start">
           <label htmlFor="formFile" className="form-label">
             Añadir imagen
           </label>
           <input
             className="form-control"
-            type="file"
-            id="file"
+            type="file" id="upload_widget"
             name="url_image"
             onChange={handleChange}
             accept="image/*"
+           
           />
-        </div>
+        </div> */}
+        <div className="col-md-4  mt-3"><button onClick={()=> widgetRef.current.open()} id="upload_widget">
+          Examinar...
+      </button></div>
         <div className="col-12">
           <button
             type="reset"
@@ -144,7 +184,7 @@ const Offer = () => {
           >
             Enviar
           </button>
-          <img id="file" />
+          <img id="uploadedimage" src=""></img>
         </div>
       </div>
     </form>
