@@ -4,58 +4,39 @@ import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
 import { Cloudinary } from "@cloudinary/url-gen";
 
-
 const Offer = () => {
-  
-    const cloudinaryRef = useRef();
-    const widgetRef = useRef();
-    useEffect(()=>{
-      cloudinaryRef.current = window.cloudinary;
-      widgetRef.current = cloudinaryRef.current.createUploadWidget({
-        cloudName: "ddkqnzbrg",
-        uploadPreset: "PromoFood",
-      }, function(error , result){
-          console.log(result);
-          if (!error && result && result.event === "success") {
-            console.log("Done! Here is the image info: ", result.info);
-            document
-              .getElementById("uploadedimage")
-              .setAttribute("src", result.info.secure_url);
-          }
-      });document.getElementById("upload_widget").addEventListener(
-        "click",
-        function () {
-          myWidget.open();
-        },
-        false
-      );
+  const cloudinaryRef = useRef();
+  const widgetRef = useRef();
+  useEffect(()=>{
+    cloudinaryRef.current = window.cloudinary;
+    widgetRef.current = cloudinaryRef.current.createUploadWidget({
+      cloudName: "ddkqnzbrg",
+      uploadPreset: "PromoFood",
+    }, function(error , result){
+        console.log(result);
+        if (!error && result && result.event === "success") {
+          console.log("Informacion de la imagen : ", result.info);
+          document
+            .getElementById("uploadedimage")
+            .setAttribute("src", result.info.secure_url);
+        }
+    });document.getElementById("upload_widget").addEventListener(
+      "click",
+      function () {
+        myWidget.open();
+      },
+      false
+    );
 
-    },[])
-  
-  
-  
+  },[])
   const [formData, setFormData] = useState([]);
-
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    
   };
-const upload=(e)=>{
-  fetch("https://api.cloudinary.com/v1_1/ddkqnzbrg/image/upload", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    }).then((resp)=>
-      resp.json()
-    ).then((data)=>
-    formData(data.url)
-    )
-}
+
   const handleClick = () => {
     fetch(process.env.BACKEND_URL + "/api/offer", {
       method: "POST",
@@ -63,8 +44,7 @@ const upload=(e)=>{
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      body: JSON.stringify(formData),
-    
+      body: JSON.stringify({formData }),
     })
       .then((response) => {
         if (response.status == 200) {
@@ -159,27 +139,32 @@ const upload=(e)=>{
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
 
-        <div className="mb-3 text-start">
+        {/* <div className="mb-3 text-start">
           <label htmlFor="formFile" className="form-label">
             Añadir imagen
           </label>
           <input
             className="form-control"
-            type="file" 
+            type="file"
             name="url_image"
-            onChange={upload}
-            onClick={()=> widgetRef.current.open()} id="upload_widget"
-           
+            onChange={handleChange}
           />
-        </div>
+        </div> */}
         <div className="col-md-4  mt-3">
-          <button onClick={()=> widgetRef.current.open()} id="upload_widget"
-           onChange={handleChange}>
-          Examinar...
-      </button>
-    
-      <img id="uploadedimage" name ="url_image" onChange={handleChange} src=""></img>
-      </div>
+          <button
+            onClick={() => widgetRef.current.open()}
+            id="upload_widget"
+          >
+            Examinar...
+          </button>
+
+          <img
+            id="uploadedimage"
+            name="url_image"
+            onChange={handleChange}
+            src=""
+          ></img>
+        </div>
         <div className="col-12">
           <button
             type="reset"
@@ -188,7 +173,6 @@ const upload=(e)=>{
           >
             Enviar
           </button>
-          
         </div>
       </div>
     </form>
@@ -273,3 +257,13 @@ export default Offer;
 // },
 // false
 // );
+ // fetch("https://api.cloudinary.com/v1_1/ddkqnzbrg/upload", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formData),
+    // })
+    //   .then((resp) => resp.json())
+    //   .then((data) => 
+    //   setImage(data.secure_url));
