@@ -78,7 +78,7 @@ const OfferCards = () => {
                   <img
                     src={offer.url_image}
                     className="img-fluid rounded-start"
-                    width="150"
+                    width="200"
                     height="100"
                     id={offer.id}
                     
