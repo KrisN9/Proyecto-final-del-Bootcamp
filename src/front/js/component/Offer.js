@@ -4,6 +4,7 @@ import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
 import { Cloudinary } from "@cloudinary/url-gen";
 
+
 const Offer = () => {
   
     const cloudinaryRef = useRef();
@@ -42,20 +43,19 @@ const Offer = () => {
     event.preventDefault();
     
   };
-// const upload=(e)=>{
-//   fetch("https://api.cloudinary.com/v1_1/ddkqnzbrg/image/upload", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Authorization: "Bearer " + localStorage.getItem("token"),
-//       },
-//       body: JSON.stringify(formData),
-//     }).then((resp)=>
-//       resp.json()
-//     ).then((data)=>
-//     formData(data.url_image)
-//     )
-// }
+const upload=(e)=>{
+  fetch("https://api.cloudinary.com/v1_1/ddkqnzbrg/image/upload", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    }).then((resp)=>
+      resp.json()
+    ).then((data)=>
+    formData(data.url)
+    )
+}
   const handleClick = () => {
     fetch(process.env.BACKEND_URL + "/api/offer", {
       method: "POST",
@@ -66,7 +66,6 @@ const Offer = () => {
       body: JSON.stringify(formData),
     
     })
-    console.log(formData)
       .then((response) => {
         if (response.status == 200) {
           Swal.fire({
@@ -160,22 +159,27 @@ const Offer = () => {
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
 
-        {/* <div className="mb-3 text-start">
+        <div className="mb-3 text-start">
           <label htmlFor="formFile" className="form-label">
             Añadir imagen
           </label>
           <input
             className="form-control"
-            type="file" id="upload_widget"
+            type="file" 
             name="url_image"
-            onChange={handleChange}
-            accept="image/*"
+            onChange={upload}
+            onClick={()=> widgetRef.current.open()} id="upload_widget"
            
           />
-        </div> */}
-        <div className="col-md-4  mt-3"><button onClick={()=> widgetRef.current.open()} id="upload_widget">
+        </div>
+        <div className="col-md-4  mt-3">
+          <button onClick={()=> widgetRef.current.open()} id="upload_widget"
+           onChange={handleChange}>
           Examinar...
-      </button></div>
+      </button>
+    
+      <img id="uploadedimage" name ="url_image" onChange={handleChange} src=""></img>
+      </div>
         <div className="col-12">
           <button
             type="reset"
@@ -184,7 +188,7 @@ const Offer = () => {
           >
             Enviar
           </button>
-          <img id="uploadedimage" src=""></img>
+          
         </div>
       </div>
     </form>
