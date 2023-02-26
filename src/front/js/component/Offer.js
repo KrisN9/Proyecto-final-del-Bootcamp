@@ -1,13 +1,17 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import "../../styles/supplierarea.css";
-import Swal from "sweetalert2";
-import { Cloudinary } from "@cloudinary/url-gen";
+import Swal from "sweetalert2"
+import {Cloudinary} from " @cloudinary/url-gen " ;
 
 const Offer = () => {
+  
+
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
+  
   useEffect(() => {
+   
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
@@ -20,8 +24,10 @@ const Offer = () => {
           console.log("Informacion de la imagen : ", result.info);
           document
             .getElementById("uploadedimage")
-            .setAttribute("src", result.info.secure_url);
+            .setAttribute("src", result.info.secure_url)
+            
         }
+      
       }
     );
     document.getElementById("upload_widget").addEventListener(
@@ -33,6 +39,7 @@ const Offer = () => {
     );
   }, []);
 
+ 
   const [formData, setFormData] = useState([]);
 
   const handleChange = (event) => {
@@ -41,17 +48,20 @@ const Offer = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+   
+
   };
- 
+
 
   const handleClick = (event) => {
+    
     fetch(process.env.BACKEND_URL + "/api/offer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      body: JSON.stringify({ formData }),
+      body: JSON.stringify({ formData, imageUrl }),
     })
       .then((response) => {
         if (response.status == 200) {
@@ -150,13 +160,13 @@ const Offer = () => {
           <label htmlFor="formFile" className="form-label">
             Añadir imagen
           </label>
-          <input className="form-control" type="file"  />
+          <input className="form-control" type="file" name="url_image" accept="image/*"  />
         </div> */}
         <div className="col-md-4  mt-3">
           <button onClick={() => widgetRef.current.open()} id="upload_widget">
             Examinar...
           </button>
-          <img id="uploadedimage" name="url_image" src="" ></img>
+          <img id="uploadedimage" name="url_image" src=""></img>
         </div>
         <div className="col-12">
           <button
