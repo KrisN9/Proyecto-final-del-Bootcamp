@@ -1,46 +1,43 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import "../../styles/supplierarea.css";
-import Swal from "sweetalert2"
-import {Cloudinary} from " @cloudinary/url-gen " ;
+import Swal from "sweetalert2";
 
 const Offer = () => {
-  
+  // const cloudinaryRef = useRef();
+  // const widgetRef = useRef();
 
-  const cloudinaryRef = useRef();
-  const widgetRef = useRef();
-  
-  useEffect(() => {
-   
-    cloudinaryRef.current = window.cloudinary;
-    widgetRef.current = cloudinaryRef.current.createUploadWidget(
-      {
-        cloudName: "ddkqnzbrg",
-        uploadPreset: "PromoFood",
-      },
-      function (error, result) {
-        console.log(result);
-        if (!error && result && result.event === "success") {
-          console.log("Informacion de la imagen : ", result.info);
-          document
-            .getElementById("uploadedimage")
-            .setAttribute("src", result.info.secure_url)
-            
-        }
-      
-      }
-    );
-    document.getElementById("upload_widget").addEventListener(
-      "click",
-      function () {
-        widget_cloudinary.open();
-      },
-      false
-    );
-  }, []);
+  // useEffect(() => {
 
- 
+  //   cloudinaryRef.current = window.cloudinary;
+  //   widgetRef.current = cloudinaryRef.current.createUploadWidget(
+  //     {
+  //       cloudName: "ddkqnzbrg",
+  //       uploadPreset: "PromoFood",
+  //     },
+  //     function (error, result) {
+  //       console.log(result);
+  //       if (!error && result && result.event === "success") {
+  //         console.log("Informacion de la imagen : ", result.info);
+  //         document
+  //           .getElementById("uploadedimage")
+  //           .setAttribute("src", result.info.secure_url)
+
+  //       }
+
+  //     }
+  //   );
+  //   document.getElementById("upload_widget").addEventListener(
+  //     "click",
+  //     function () {
+  //       widget_cloudinary.open();
+  //     },
+  //     false
+  //   );
+  // }, []);
+
   const [formData, setFormData] = useState([]);
+  const [image, setImage] = useState("");
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -48,20 +45,40 @@ const Offer = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-   
-
   };
 
+  const processFile = (e) => {
+    const file = e.target.files[0];
+    const formData = new FormData();
+    const api = "845183212773547";
+    formData.append("file", file);
+    formData.append("upload_preset", "PromoFood");
+    formData.append("api_key", api);
+
+    console.log(file);
+    //  // fetch('https://api.cloudinary.com/v1_1/ddkqnzbrg/image/upload', {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json",
+    //     },
+    //     body: JSON.stringify(formData),
+    //   })
+
+    //     .then((resp) => resp.json())
+    //     .then(
+    //       data => setImage(data.secure_url));
+    //       console.log(setImage)
+    console.log(formData);
+  };
 
   const handleClick = (event) => {
-    
     fetch(process.env.BACKEND_URL + "/api/offer", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      body: JSON.stringify({ formData, imageUrl }),
+      body: JSON.stringify(formData),
     })
       .then((response) => {
         if (response.status == 200) {
@@ -156,18 +173,25 @@ const Offer = () => {
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
 
-        {/* <div className="mb-3 text-start">
+        <div className="mb-3 text-start">
           <label htmlFor="formFile" className="form-label">
             Añadir imagen
           </label>
-          <input className="form-control" type="file" name="url_image" accept="image/*"  />
-        </div> */}
-        <div className="col-md-4  mt-3">
+          <input
+            className="form-control"
+            id="file"
+            type="file"
+            name="url_image"
+            accept="image/*"
+            onChange={processFile}
+          />
+        </div>
+        {/* <div className="col-md-4  mt-3">
           <button onClick={() => widgetRef.current.open()} id="upload_widget">
             Examinar...
           </button>
           <img id="uploadedimage" name="url_image" src=""></img>
-        </div>
+        </div> */}
         <div className="col-12">
           <button
             type="reset"
