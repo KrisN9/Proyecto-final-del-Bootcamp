@@ -18,7 +18,7 @@ const Offer = () => {
     
     fetch(process.env.BACKEND_URL + "/api/upload/", {
       method: "POST",
-      body,
+      body: JSON.stringify(formData)
     })
       .then((resp) => resp.json())
       .then((data) => console.log(data));
@@ -31,7 +31,7 @@ const Offer = () => {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      body: JSON.stringify(formData, ),
+      body: JSON.stringify({formData, url_image: files}),
     })
       .then((response) => {
         if (response.status == 200) {

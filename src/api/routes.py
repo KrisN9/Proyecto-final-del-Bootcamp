@@ -28,7 +28,7 @@ def upload():
     setattr(offer, "url_image", new_url_image)
     db.session.commit()
     
-    return jsonify("OK"), 200
+    return jsonify(result), 200
 
 
 @api.route('/supplier', methods=['GET']) # se obtiene proveedor por id 
