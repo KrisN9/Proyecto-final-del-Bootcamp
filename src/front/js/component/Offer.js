@@ -12,15 +12,13 @@ const Offer = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
-    const image = new FormData();
-    image.append("url_image", files[0]);
-
+    formData.append("url_image", files);
+    
     fetch(process.env.BACKEND_URL + "/api/upload/", {
       method: "POST",
-      body: JSON.stringify(image )
+      body,
     })
       .then((resp) => resp.json())
       .then((data) => console.log(data));
@@ -33,7 +31,7 @@ const Offer = () => {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(formData, ),
     })
       .then((response) => {
         if (response.status == 200) {
