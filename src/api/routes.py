@@ -11,13 +11,18 @@ import cloudinary.api
 
 api = Blueprint('api', __name__)
 
+cloudinary.config( 
+  cloud_name = "ddkqnzbrg", 
+  api_key = "845183212773547", 
+  api_secret = "Kne2NEOR7tx9wFeTzrcFk0tLKPk",
+  secure = True
+)
 
 
 @api.route("/upload/", methods=["POST"])
 def upload():
-    url_image = request.json.get("url_image", offer.url_image)
-    result = cloudinary.uploader.upload(request.files['url_image']) 
-   
+    # url_image = request.json.get("url_image", offer.url_image)
+    result= cloudinary.uploader.upload(request.files['url_image']) 
     new_url_image= result['secure_url']
     
     setattr(offer, "url_image", new_url_image)
@@ -195,7 +200,7 @@ def create_offer():
     supplier_id = get_jwt_identity()
     try:
        offer= Offer(id_supplier=supplier_id,company_name=data['company_name'], 
-       url=data['url'], title=data['title'],url_image=data['url_image'], price=data['price'], location=data['location'])  
+       url=data['url'], title=data['title'], url_image=data['url_image'], price=data['price'], location=data['location'])  
        db.session.add(offer)
        db.session.commit()
     except Exception as e: 
