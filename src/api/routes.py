@@ -5,11 +5,25 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Favorite, Supplier, Offer, City
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required , get_jwt_identity
-
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 api = Blueprint('api', __name__)
 
+
+
+@api.route("/upload/", methods=["POST"])
+def upload():
+    url_image = request.json.get("url_image", offer.url_image)
+    result = cloudinary.uploader.upload(request.files['url_image']) 
+   
+    new_url_image= result['secure_url']
+    
+    setattr(offer, "url_image", new_url_image)
+    db.session.commit()
+    
+    return jsonify("OK"), 200
 
 
 @api.route('/supplier', methods=['GET']) # se obtiene proveedor por id 
@@ -181,7 +195,7 @@ def create_offer():
     supplier_id = get_jwt_identity()
     try:
        offer= Offer(id_supplier=supplier_id,company_name=data['company_name'], 
-       url=data['url'], url_image=data['url_image'], title=data['title'], price=data['price'], location=data['location'])  
+       url=data['url'], title=data['title'],url_image=data['url_image'], price=data['price'], location=data['location'])  
        db.session.add(offer)
        db.session.commit()
     except Exception as e: 

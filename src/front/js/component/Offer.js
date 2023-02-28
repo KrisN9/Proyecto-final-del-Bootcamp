@@ -2,73 +2,28 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
+import { image } from "@cloudinary/url-gen/qualifiers/source";
 
 const Offer = () => {
-  // const cloudinaryRef = useRef();
-  // const widgetRef = useRef();
-
-  // useEffect(() => {
-
-  //   cloudinaryRef.current = window.cloudinary;
-  //   widgetRef.current = cloudinaryRef.current.createUploadWidget(
-  //     {
-  //       cloudName: "ddkqnzbrg",
-  //       uploadPreset: "PromoFood",
-  //     },
-  //     function (error, result) {
-  //       console.log(result);
-  //       if (!error && result && result.event === "success") {
-  //         console.log("Informacion de la imagen : ", result.info);
-  //         document
-  //           .getElementById("uploadedimage")
-  //           .setAttribute("src", result.info.secure_url)
-
-  //       }
-
-  //     }
-  //   );
-  //   document.getElementById("upload_widget").addEventListener(
-  //     "click",
-  //     function () {
-  //       widget_cloudinary.open();
-  //     },
-  //     false
-  //   );
-  // }, []);
-
   const [formData, setFormData] = useState([]);
-  const [image, setImage] = useState("");
+  const [files, setFiles] = useState(null);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
-  };
+    const image = new FormData();
+    image.append("url_image", files[0]);
 
-  const processFile = (e) => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    const api = "845183212773547";
-    formData.append("file", file);
-    formData.append("upload_preset", "PromoFood");
-    formData.append("api_key", api);
-
-    console.log(file);
-    //  // fetch('https://api.cloudinary.com/v1_1/ddkqnzbrg/image/upload', {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json",
-    //     },
-    //     body: JSON.stringify(formData),
-    //   })
-
-    //     .then((resp) => resp.json())
-    //     .then(
-    //       data => setImage(data.secure_url));
-    //       console.log(setImage)
-    console.log(formData);
+    fetch(process.env.BACKEND_URL + "/api/upload/", {
+      method: "POST",
+      body: JSON.stringify(image )
+    })
+      .then((resp) => resp.json())
+      .then((data) => console.log(data));
   };
 
   const handleClick = (event) => {
@@ -183,7 +138,7 @@ const Offer = () => {
             type="file"
             name="url_image"
             accept="image/*"
-            onChange={processFile}
+            onChange={(e) => setFiles(e.target.files[0])}
           />
         </div>
         {/* <div className="col-md-4  mt-3">
@@ -294,3 +249,34 @@ export default Offer;
 //   .then((resp) => resp.json())
 //   .then((data) =>
 //   setImage(data.secure_url));
+// const cloudinaryRef = useRef();
+// const widgetRef = useRef();
+
+// useEffect(() => {
+
+//   cloudinaryRef.current = window.cloudinary;
+//   widgetRef.current = cloudinaryRef.current.createUploadWidget(
+//     {
+//       cloudName: "ddkqnzbrg",
+//       uploadPreset: "PromoFood",
+//     },
+//     function (error, result) {
+//       console.log(result);
+//       if (!error && result && result.event === "success") {
+//         console.log("Informacion de la imagen : ", result.info);
+//         document
+//           .getElementById("uploadedimage")
+//           .setAttribute("src", result.info.secure_url)
+
+//       }
+
+//     }
+//   );
+//   document.getElementById("upload_widget").addEventListener(
+//     "click",
+//     function () {
+//       widget_cloudinary.open();
+//     },
+//     false
+//   );
+// }, []);
