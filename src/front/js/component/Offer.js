@@ -3,30 +3,43 @@ import { useState, useEffect, useRef } from "react";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
 
-
 const Offer = () => {
   const [formData, setFormData] = useState([]);
-  const referencia = useRef();
   const [image, setImage] = useState(null);
-  const [preview, setPreview] = useState("");
 
-  const upload = () => {
-    referencia.current.click();
-  };
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
+
+  const cloudinaryRef = useRef();
+  const widgetRef = useRef();
+
   useEffect(() => {
-    if (image) {
-      const reader = new FileReader();
-      reader.onloadend = () => {
-        setPreview(reader.result.toString());
-      };
-      reader.readAsDataURL(image);
-    } else {
-      setPreview("");
-    }
-  }, [image]);
+    cloudinaryRef.current = window.cloudinary;
+    widgetRef.current = cloudinaryRef.current.createUploadWidget(
+      {
+        cloudName: "ddkqnzbrg",
+        uploadPreset: "PromoFood",
+      },
+      function (error, result) {
+        console.log(result);
+        if (!error && result && result.event === "success") {
+          console.log("Informacion de la imagen : ", result.info);
+          setImage(result.info.secure_url);
+          document
+            .getElementById("uploadedimage")
+            .setAttribute("src", result.info.secure_url);
+        }
+      }
+    );
+    document.getElementById("upload_widget").addEventListener(
+      "click",
+      function () {
+        widget_cloudinary.open();
+      },
+      false
+    );
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -47,7 +60,14 @@ const Offer = () => {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      body: JSON.stringify({formData,url_image:preview}),
+      body: JSON.stringify({
+        location: formData.location,
+        company_name:formData.company_name,
+        url_image: image,
+        title: formData.title,
+        url: formData.url,
+        price: formData.price,
+      }),
     })
       .then((response) => {
         if (response.status == 200) {
@@ -142,7 +162,7 @@ const Offer = () => {
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
 
-        <div className="mb-3 text-start">
+        {/* <div className="mb-3 text-start">
           <label htmlFor="formFile" className="form-label">
             Añadir imagen
           </label>
@@ -152,24 +172,15 @@ const Offer = () => {
             type="file"
             name="url_image"
             accept="image/*"
-            ref={referencia}
-            onChange={(e) => {
-              const file = e.target.files[0];
-              if (file && file.type.substring(0, 5) === "image") {
-                setImage(file);
-              } else {
-                setImage(null);
-              }
-            }}
           />
-        </div>
-        {/* <div className="col-md-4  mt-3">
+        </div> */}
+        <div className="col-md-4  mt-3">
           <button onClick={() => widgetRef.current.open()} id="upload_widget">
             Examinar...
           </button>
           <img id="uploadedimage" name="url_image" src=""></img>
-        </div> */}
-        <img id="img" src={preview} onClick={upload}/>
+        </div>
+
         <div className="col-12">
           <button
             type="reset"
@@ -227,19 +238,6 @@ export default Offer;
 //     }
 //   );
 // }, []);
-
-// const cloudinaryRef = useRef();
-// const widgetRef = useRef();
-// let imageRef = "#floatingImage";
-
-// const archivo = document.getElementById("floatingImage").files;
-//     const reader = new FileReader();
-//     if (floatingImage) {
-//       reader.readAsDataURL(archivo);
-//       reader.onloadend = function () {
-//         document.getElementById("img").src = reader.result;
-//       };
-//     }
 
 // const myWidget = cloudinary.createUploadWidget({
 
