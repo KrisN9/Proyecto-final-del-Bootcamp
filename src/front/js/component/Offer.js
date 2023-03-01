@@ -2,26 +2,42 @@ import React from "react";
 import { useState, useEffect, useRef } from "react";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
-import { image } from "@cloudinary/url-gen/qualifiers/source";
+
 
 const Offer = () => {
   const [formData, setFormData] = useState([]);
-  const [files, setFiles] = useState(null);
+  const referencia = useRef();
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState("");
 
+  const upload = () => {
+    referencia.current.click();
+  };
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
+  useEffect(() => {
+    if (image) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreview(reader.result.toString());
+      };
+      reader.readAsDataURL(image);
+    } else {
+      setPreview("");
+    }
+  }, [image]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    formData.append("url_image", files);
-    
-    fetch(process.env.BACKEND_URL + "/api/upload/", {
-      method: "POST",
-      body: JSON.stringify(formData)
-    })
-      .then((resp) => resp.json())
-      .then((data) => console.log(data));
+    // formData.append("url_image", files);
+
+    // fetch(process.env.BACKEND_URL + "/api/upload/", {
+    //   method: "POST",
+    //   body,
+    // })
+    //   .then((resp) => resp.json())
+    //   .then((data) => console.log(data));
   };
 
   const handleClick = (event) => {
@@ -31,7 +47,7 @@ const Offer = () => {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      body: JSON.stringify({formData, url_image: files}),
+      body: JSON.stringify({formData,url_image:preview}),
     })
       .then((response) => {
         if (response.status == 200) {
@@ -136,7 +152,15 @@ const Offer = () => {
             type="file"
             name="url_image"
             accept="image/*"
-            onChange={(e) => setFiles(e.target.files[0])}
+            ref={referencia}
+            onChange={(e) => {
+              const file = e.target.files[0];
+              if (file && file.type.substring(0, 5) === "image") {
+                setImage(file);
+              } else {
+                setImage(null);
+              }
+            }}
           />
         </div>
         {/* <div className="col-md-4  mt-3">
@@ -145,6 +169,7 @@ const Offer = () => {
           </button>
           <img id="uploadedimage" name="url_image" src=""></img>
         </div> */}
+        <img id="img" src={preview} onClick={upload}/>
         <div className="col-12">
           <button
             type="reset"
@@ -161,6 +186,7 @@ const Offer = () => {
 
 export default Offer;
 
+// onChange={(e) => setFiles(e.target.files[0])}
 // <div className="mb-3 text-start">
 // <label htmlFor="floatingUrl" className="form-label">Añadir url de empresa </label>
 // <input className="form-control form-control-sm"
