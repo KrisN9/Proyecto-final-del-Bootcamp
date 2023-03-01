@@ -6,7 +6,7 @@ import Swal from "sweetalert2";
 
 const Offer = () => {
   const [formData, setFormData] = useState([]);
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState("");
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -27,9 +27,8 @@ const Offer = () => {
         if (!error && result && result.event === "success") {
           console.log("Informacion de la imagen : ", result.info);
           setImage(result.info.secure_url);
-          document
-            .getElementById("uploadedimage")
-            .setAttribute("src", result.info.secure_url);
+          document.getElementById("uploadedimage");
+          // .setAttribute("src", result.info.secure_url);
         }
       }
     );
@@ -61,14 +60,12 @@ const Offer = () => {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      body: JSON.stringify({
-        location: formData.location,
+      body: JSON.stringify({location: formData.location,
         company_name: formData.company_name,
         url_image: image,
         title: formData.title,
         url: formData.url,
-        price: formData.price,
-      }),
+        price: formData.price}),
     })
       .then((response) => {
         if (response.status == 200) {
@@ -167,16 +164,17 @@ const Offer = () => {
           <label htmlFor="formFile" className="form-label">
             Añadir imagen
           </label>
+          <input
+            type="location"
+            className="form-control"
+            id="floatingLocation"
+            placeholder={image!="" ? image :"Imagen*"}
+            name="url_image"
+            onChange={handleChange}
+            required
+          />
         </div>
-            <div className="col-md-4">
-              <img
-                src=""
-                id="uploadedimage"
-                name="url_image"
-                className="img-fluid rounded-start"
-                type="reset"
-              />
-            </div>
+
         <div className="col-md-6">
           <button
             onClick={() => widgetRef.current.open()}
@@ -322,3 +320,14 @@ export default Offer;
 //     false
 //   );
 // }, []);
+{
+  /* <div className="col-md-4">
+
+              <img
+                src=""
+                id="uploadedimage"
+                name="url_image"
+                className="img-fluid rounded-start"
+              />
+            </div> */
+}
