@@ -80,8 +80,6 @@ const OfferCards = () => {
                     className="img-fluid rounded-start"
                     width="200"
                     height="100"
-                   
-                    
                   />
                 </div>
 
