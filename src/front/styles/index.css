@@ -29,8 +29,8 @@ footer {
 .apple-popup .mapboxgl-popup-content {
   font: 400 12px/15px "Source Sans Pro", "Helvetica Neue", sans-serif;
   padding: 2;
-  width: 150px;
-  height: 205px;
+  width: 130px;
+  height: 200px;
   position: relative;
   text-align: center;
 }
@@ -104,7 +104,6 @@ footer {
   }
 
   .squar1{
-    
     width: 90%; 
     height: 100%; 
      border: 3px solid #555;

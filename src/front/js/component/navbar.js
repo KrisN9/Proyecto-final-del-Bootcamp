@@ -50,7 +50,7 @@ export const Navbar = () => {
               <>
                 {location.pathname !== "/area-privada-usuario" && (
                   <Link
-                    className="btn btn-outline-dark text-center d-flex align-content-sm-center flex-wrap"
+                    className="btn btn-dark text-center d-flex align-content-sm-center flex-wrap"
                     to={
                       localStorage.getItem("type") === "user"
                         ? "/area-privada-usuario"
@@ -61,7 +61,7 @@ export const Navbar = () => {
                   </Link>
                 )}
                 <Link
-                  className="btn btn-outline-dark  d-flex align-content-sm-center flex-wrap"
+                  className="btn btn-dark d-flex align-content-sm-center flex-wrap"
                   to="/"
                   onClick={SessionOut}
                 >
