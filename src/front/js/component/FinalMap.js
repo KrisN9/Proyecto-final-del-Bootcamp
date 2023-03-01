@@ -41,7 +41,7 @@ const FinalMap = () => {
         .setLngLat([oferta.longitude, oferta.latitude])
         .setPopup(
           new mapboxgl.Popup({ offset: 10, className: "apple-popup" }).setHTML(`
-          <img id=mapa src=${oferta.url_image} width="80" height="80">
+          <img id=mapa src=${oferta.url_image} width="100" height="80">
           <br></br>
           ${oferta.title}
           <br></br> 

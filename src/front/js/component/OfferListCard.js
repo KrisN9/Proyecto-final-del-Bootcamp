@@ -58,16 +58,16 @@ const OfferListCard = (props) => {
   return offer ? (
     <>
       <div id="img" className="card mb-3 container">
-        <div className="row g-0">
+        <div className="row g-0 text-center d-flex align-content-sm-center flex-wrap">
           <div className="col-md-5">
           <img src={offer.url_image} className="card-img-top"  width="100" height="300" />
           </div>
           <div className="col-md-5 ">
             <div className="card-body mt-4">
-            <h5 className="card-title text-decoration-underline">{offer.company_name}</h5>
-            <p className="card-text">{offer.title}</p>
-            <p className="card-text"> Precio: {offer.price}€</p>
-            <p className="card-text">Ubicación: {offer.location}</p>
+            <h5 className="card-title fs-2 text-decoration-underline">{offer.company_name}</h5>
+            <p className="card-text fs-4">{offer.title}</p>
+            <p className="card-text fs-4"> Precio: {offer.price}€</p>
+            <p className="card-text fs-4">Ubicación: {offer.location}</p>
             </div>
           </div>
           <div className="col-md-2 mt-5 ">

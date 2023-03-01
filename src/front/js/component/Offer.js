@@ -1,5 +1,6 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
 
@@ -62,7 +63,7 @@ const Offer = () => {
       },
       body: JSON.stringify({
         location: formData.location,
-        company_name:formData.company_name,
+        company_name: formData.company_name,
         url_image: image,
         title: formData.title,
         url: formData.url,
@@ -77,6 +78,7 @@ const Offer = () => {
             title: "¡Oferta creada!",
             text: "Se ha creado con exito",
           });
+          navigate("/area-privada-proveedor");
         } else {
           Swal.fire({
             position: "top",
@@ -161,26 +163,29 @@ const Offer = () => {
           />
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
-
-        {/* <div className="mb-3 text-start">
+        <div className="mb-3 text-start">
           <label htmlFor="formFile" className="form-label">
             Añadir imagen
           </label>
-          <input
-            className="form-control"
-            id="file"
-            type="file"
-            name="url_image"
-            accept="image/*"
-          />
-        </div> */}
-        <div className="col-md-4  mt-3">
-          <button onClick={() => widgetRef.current.open()} id="upload_widget">
+        </div>
+            <div className="col-md-4">
+              <img
+                src=""
+                id="uploadedimage"
+                name="url_image"
+                className="img-fluid rounded-start"
+                type="reset"
+              />
+            </div>
+        <div className="col-md-6">
+          <button
+            onClick={() => widgetRef.current.open()}
+            id="upload_widget"
+            type="button"
+          >
             Examinar...
           </button>
-          <img id="uploadedimage" name="url_image" src=""></img>
         </div>
-
         <div className="col-12">
           <button
             type="reset"
@@ -196,6 +201,21 @@ const Offer = () => {
 };
 
 export default Offer;
+
+{
+  /* <div className="mb-3 text-start">
+          <label htmlFor="formFile" className="form-label">
+            Añadir imagen
+          </label>
+          <input
+            className="form-control"
+            id="file"
+            type="file"
+            name="url_image"
+            accept="image/*"
+          />
+        </div> */
+}
 
 // onChange={(e) => setFiles(e.target.files[0])}
 // <div className="mb-3 text-start">
