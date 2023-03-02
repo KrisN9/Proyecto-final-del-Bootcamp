@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 import Modals from "./Modals";
-
 
 const OfferCards = () => {
   const [offers, setOffers] = useState([]);
@@ -14,19 +14,16 @@ const OfferCards = () => {
     const offer = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: 'Bearer ' + localStorage.getItem("token"),
+        Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      
     };
     fetch(process.env.BACKEND_URL + "/api/supplier/offer", offer)
       .then((response) => {
         return response.json();
       })
       .then((response) => {
-         setOffers(response);
-        
-      });  
-
+        setOffers(response);
+      });
   };
 
   const removeOffer = (offer_id) => {
@@ -62,10 +59,14 @@ const OfferCards = () => {
       });
   };
 
-
-  
   return (
     <div className="container col-12 col-md-6 mt-3 mb-3 ">
+      <div>
+        <p className="font-change fs-3"> Puedes visualizar tu oferta en el mapa!</p>
+        <Link to="/" className="  btn btn-success " type="button">
+          Ir a Mapa
+        </Link>
+      </div>
       <div className="mt-3 pb-3 mb-3">
         <p className="text-center font-change fs-2 text-danger">
           Tienes {offers.length} ofertas.
@@ -76,7 +77,7 @@ const OfferCards = () => {
               <div className="row g-0">
                 <div className="col-md-4 ">
                   <img
-                  id="image-2"
+                    id="image-2"
                     src={offer.url_image}
                     className="img-fluid rounded-start"
                   />
@@ -93,8 +94,7 @@ const OfferCards = () => {
                     <p>Precio:{offer.price}€</p>
                   </div>
                 </div>
-                <div className="col-md-1 mt-5 "> 
-                 
+                <div className="col-md-1 mt-5 ">
                   <button
                     type="button"
                     className="btn btn-secondary "
@@ -102,19 +102,17 @@ const OfferCards = () => {
                   >
                     <i className="fas fa-trash-alt"></i>
                   </button>
-                
-                  </div>
+                </div>
               </div>
-             
             </div>
           );
         })}
       </div>
+      
     </div>
   );
 };
 export default OfferCards;
-
 
 /*   const removeOffer = (offer_id) => {
     const remove = {
@@ -133,8 +131,8 @@ export default OfferCards;
       });
   }; */
 
-
-   {/*  <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+{
+  /*  <div className="d-grid gap-2 d-md-flex justify-content-md-end">
                   <button
                     type="button"
                     className="btn btn-success"
@@ -145,4 +143,5 @@ export default OfferCards;
                   </button>
 
                   <Modals title={offer.title} price={offer.price} idModals={offer.id}  idModalLabel={offer.id + "label"}/>
-                  </div> */}
+                  </div> */
+}
