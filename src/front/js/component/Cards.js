@@ -98,7 +98,7 @@ const Cards = () => {
                     <p>Precio:{favorite.offerlist.price}€</p>
                   </div>
                 </div>
-                <div className="col-md-1 col-sm-12 mt-4">
+                <div className="col-md-1 col-sm-12 mt-5">
                   <button
                     target="_tab"
                     type="button"
@@ -111,7 +111,7 @@ const Cards = () => {
                   </button>
                   <button
                     type="button"
-                    className="btn btn-secondary mb-2"
+                    className="btn btn-secondary mb-2 ms-3"
                     onClick={() => removeFavorite(favorite.id)}
                   >
                     <i className="fas fa-trash-alt"></i>
