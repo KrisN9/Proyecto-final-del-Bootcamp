@@ -3,7 +3,6 @@ footer {
   background: red;
 }
 
-
 #exampleFormControlMessage {
   height: 200px;
 }
@@ -30,7 +29,7 @@ footer {
   font: 400 12px/15px "Source Sans Pro", "Helvetica Neue", sans-serif;
   padding: 2;
   width: 130px;
-  height: 200px;
+  height: 215px;
   position: relative;
   text-align: center;
 }
@@ -47,33 +46,33 @@ footer {
   background: white;
   border-radius: 10px;
   box-shadow: 0 0 50px -25px black;
-  }
-   
-  .flex-center {
+}
+
+.flex-center {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: center;
-  }
-   
-  .flex-center.left {
+}
+
+.flex-center.left {
   left: 0px;
-  }
-   
-  .flex-center.right {
+}
+
+.flex-center.right {
   right: 0px;
-  }
-   
-  .sidebar-content {
+}
+
+.sidebar-content {
   position: absolute;
   width: 95%;
   height: 95%;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 32px;
   color: gray;
-  }
-   
-  .sidebar-toggle {
+}
+
+.sidebar-toggle {
   position: absolute;
   width: 1.3em;
   height: 1.3em;
@@ -81,33 +80,33 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
-  }
-   
-  .sidebar-toggle.left {
+}
+
+.sidebar-toggle.left {
   right: -1.5em;
-  }
-   
-  .sidebar-toggle.right {
+}
+
+.sidebar-toggle.right {
   left: -1.5em;
-  }
-   
-  .sidebar-toggle:hover {
+}
+
+.sidebar-toggle:hover {
   color: #0aa1cf;
   cursor: pointer;
-  }
-   
-  .sidebar {
+}
+
+.sidebar {
   transition: transform 1s;
   z-index: 1;
   width: 300px;
   height: 100%;
-  }
+}
 
-  .squar1{
-    width: 90%; 
-    height: 100%; 
-     border: 3px solid #555;
-  }
+.squar1 {
+  width: 90%;
+  height: 100%;
+  border: 3px solid #555;
+}
 
 /*   .left.collapsed {
     transform: translateX(-295px);
