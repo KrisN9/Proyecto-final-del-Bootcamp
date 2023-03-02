@@ -21,10 +21,8 @@ export const Navbar = () => {
         <Link to="/">
           <span className="navbar-brand mb-0 h1">
             <img
+            id="logo"
               src="https://i.postimg.cc/rFkmHZjL/fotor-2023-2-20-13-14-9.png"
-              alt="Logo"
-              width="70"
-              height="70"
               className="d-inline-block align-text-top rounded-circle"
             />
           </span>
