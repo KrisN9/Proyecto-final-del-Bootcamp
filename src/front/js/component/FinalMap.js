@@ -43,10 +43,8 @@ const FinalMap = () => {
           new mapboxgl.Popup({ offset: 10, className: "apple-popup" }).setHTML(`
           <img id=mapa src=${oferta.url_image} width="100" height="80">
           <br></br>
-          ${oferta.title}
-          <br></br> 
-           Precio:${oferta.price}€
-          <br></br>
+         <p class="font-change"> ${oferta.title}</p>
+          <p class="font-change">Precio: ${oferta.price}€</p>
           ${
             localStorage.getItem("token")
               ? `<a 
