@@ -9,7 +9,7 @@ const Cards = () => {
 
   const handleClick = () => {
     navigate("/");
-  }
+  };
 
   useEffect(() => {
     getFavorite();
@@ -73,19 +73,23 @@ const Cards = () => {
         <p className="text-center font-change fs-2 text-danger">
           Tienes {favorites.length} ofertas favoritas.
         </p>
-        <button className="redirect btn btn-success" onClick={handleClick}>Ir al mapa para buscar favoritos <i className="bi bi-arrow-right-circle"></i></button>
+        <button className="redirect btn btn-success" onClick={handleClick}>
+          Ir al mapa para buscar favoritos{" "}
+          <i className="bi bi-arrow-right-circle"></i>
+        </button>
         {favorites.map((favorite) => {
           return (
             <div className="card border-danger border-3 mb-3" key={favorite.id}>
               <div className="row g-0">
-                <div className="col-md-3">
+                <div className="col-md-4">
                   <img
+                    id="image-2"
                     src={favorite.offerlist.url_image}
                     className="img-fluid rounded-start"
                     alt="..."
                   />
                 </div>
-                <div className="col-md-7">
+                <div className="col-md-6">
                   <div className="card-body text-center">
                     <h5 className="card-title fs-3 fw-bolder text-decoration-underline">
                       {favorite.offerlist.company_name}
@@ -94,13 +98,15 @@ const Cards = () => {
                     <p>Precio:{favorite.offerlist.price}€</p>
                   </div>
                 </div>
-                <div className="col-md-2 col-sm-12 mt-4">
-                 
+                <div className="col-md-1 col-sm-12 mt-4">
                   <button
-                   target="_tab"
-                   type="button"
-                   onClick={() => window.open(favorite.offerlist.url, "_blank")}  //funcion para traer url de un favorito, incluido fetch
-                  className="btn btn-warning float-left me-2 mb-2">
+                    target="_tab"
+                    type="button"
+                    onClick={() =>
+                      window.open(favorite.offerlist.url, "_blank")
+                    } //funcion para traer url de un favorito, incluido fetch
+                    className="btn btn-warning float-left me-2 mb-2"
+                  >
                     Pedir!
                   </button>
                   <button
