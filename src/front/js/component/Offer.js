@@ -43,14 +43,6 @@ const Offer = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // formData.append("url_image", files);
-
-    // fetch(process.env.BACKEND_URL + "/api/upload/", {
-    //   method: "POST",
-    //   body,
-    // })
-    //   .then((resp) => resp.json())
-    //   .then((data) => console.log(data));
   };
 
   const handleClick = (event) => {
@@ -77,7 +69,6 @@ const Offer = () => {
             title: "¡Oferta creada!",
             text: "Se ha creado con exito",
           });
-          navigate("/area-privada-proveedor");
         } else {
           Swal.fire({
             position: "top",
@@ -162,46 +153,46 @@ const Offer = () => {
           />
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
-        
+
         <form className="row g-3" onSubmit={handleSubmit}>
-        <div className="col-auto col-md-3">
-          <label for="staticEmail2" className="visually-hidden">
-            Añadir Imagen
-          </label>
-          <input
-            type="text"
-            readonly
-            className="form-control-plaintext"
-            id="staticEmail2"
-            value="*Añadir Imagen"
-          />
-        </div>
-        <div className="col-auto col-md-7">
-          <label for="inputPassword2" className="visually-hidden">
-            Password
-          </label>
-          <input
-             type="text"
-             className="form-control"
-             id="floatingLocation"
-             placeholder={image != "" ? image : "Imagen*"}
-             name="url_image"
-             onChange={handleChange}
-             required
-          />
-        </div>
-        <div className="col-auto col-md-2">
-          <button
-            type="submit"
-            className="btn btn-primary mb-3"
-            onClick={() => widgetRef.current.open()}
-            id="upload_widget"
-          >
-            Examinar
-          </button>
-        </div>
-      </form>
-       
+          <div className="col-auto col-md-3">
+            <label for="staticEmail2" className="visually-hidden">
+              Añadir Imagen
+            </label>
+            <input
+              type="text"
+              readonly
+              className="form-control-plaintext"
+              id="staticEmail2"
+              value="Añadir Imagen"
+            />
+          </div>
+          <div className="col-auto col-md-7">
+            <label for="inputPassword2" className="visually-hidden">
+              Añadir Imagen
+            </label>
+            <input
+              type="text"
+              className="form-control"
+              id="floatingLocation"
+              placeholder="Imagen*"
+              name="url_image"
+              onChange={handleChange}
+              required
+            />
+            <div></div>
+          </div>
+          <div className="col-auto col-md-2">
+            <button
+              type="submit"
+              className="btn btn-primary mb-3"
+              onClick={() => widgetRef.current.open()}
+              id="upload_widget"
+            >
+              Examinar
+            </button>
+          </div>
+        </form>
         <div className="col-12">
           <button
             type="reset"
@@ -212,8 +203,6 @@ const Offer = () => {
           </button>
         </div>
       </div>
-
-      
     </form>
   );
 };
@@ -340,8 +329,8 @@ export default Offer;
 //     false
 //   );
 // }, []);
-{
-  /* <div className="col-md-4">
+
+/* <div className="col-md-4">
 
               <img
                 src=""
@@ -350,4 +339,3 @@ export default Offer;
                 className="img-fluid rounded-start"
               />
             </div> */
-}
