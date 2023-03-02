@@ -76,10 +76,9 @@ const OfferCards = () => {
               <div className="row g-0">
                 <div className="col-md-4 ">
                   <img
+                  id="image-2"
                     src={offer.url_image}
                     className="img-fluid rounded-start"
-                    width="200"
-                    height="100"
                   />
                 </div>
 
