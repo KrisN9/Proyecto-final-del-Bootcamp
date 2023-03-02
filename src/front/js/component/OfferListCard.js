@@ -57,41 +57,39 @@ const OfferListCard = (props) => {
 
   return offer ? (
     <>
-      <div id="img" className="card mb-3 container">
+      <div id="img" className="card mb-3">
         <div className="row g-0 text-center d-flex align-content-sm-center flex-wrap">
-          <div className="col-md-5">
-          <img src={offer.url_image} className="card-img-top"  width="100" height="300" />
+          <div className="col-md-4">
+            <img id="image-3" src={offer.url_image} className="card-img-top" />
           </div>
-          <div className="col-md-5 ">
+          <div className="col-md-6 ">
             <div className="card-body mt-4">
-            <h5 className="card-title fs-2 text-decoration-underline">{offer.company_name}</h5>
-            <p className="card-text fs-4">{offer.title}</p>
-            <p className="card-text fs-4"> Precio: {offer.price}€</p>
-            <p className="card-text fs-4">Ubicación: {offer.location}</p>
+              <h5 className="card-title fs-2 text-decoration-underline">
+                {offer.company_name}
+              </h5>
+              <p className="card-text fs-4">{offer.title}</p>
+              <p className="card-text fs-4"> Precio: {offer.price}€</p>
+              <p className="card-text fs-4">Ubicación: {offer.location}</p>
             </div>
           </div>
-          <div className="col-md-2 mt-5 ">
-        <button
-          className="btn btn-danger"
-          type="button"
-          onClick={() => {
-            handleClick(offer.id);
-            setFavorite(true);
-          }}
-        >
-          Añadir a Favorito
-          
-        </button>
-        
-      </div>
+          <div className="col-md-1 mt-5 ms-3 ">
+            <button
+              className="btn btn-danger"
+              type="button"
+              onClick={() => {
+                handleClick(offer.id);
+                setFavorite(true);
+              }}
+            >
+              Añadir Favorito
+            </button>
+          </div>
         </div>
       </div>
       <i className="fal fa-arrow-alt-left"></i>
       <Link to="/" className=" mt-3 btn btn-success" type="button">
-          Ir a mapa
-        </Link> 
-
-    
+        Ir a mapa
+      </Link>
     </>
   ) : (
     ""
@@ -99,8 +97,6 @@ const OfferListCard = (props) => {
 };
 
 export default OfferListCard;
-
- 
 
 // card-body d-grid gap-2 col-md-6 mx-auto
 
