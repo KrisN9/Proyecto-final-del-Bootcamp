@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../styles/userarea.css";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Cards = () => {
   const [favorites, setFavorites] = useState([]);
@@ -73,10 +74,13 @@ const Cards = () => {
         <p className="text-center font-change fs-2 text-danger">
           Tienes {favorites.length} ofertas favoritas.
         </p>
-        <button className="redirect btn btn-success" onClick={handleClick}>
-          Ir al mapa para buscar favoritos{" "}
-          <i className="bi bi-arrow-right-circle"></i>
+        
+        <div>
+        <p className="font-change fs-3">¡Añade más favoritos, las ofertas te esperan!</p>
+        <button className="redirect btn btn-success mb-3" onClick={handleClick}> Ir a Mapa
         </button>
+        
+      </div>
         {favorites.map((favorite) => {
           return (
             <div className="card border-danger border-3 mb-3" key={favorite.id}>

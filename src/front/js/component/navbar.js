@@ -48,7 +48,7 @@ export const Navbar = () => {
           {localStorage.getItem("token") ? (
             (
               <>
-                {location.pathname !== "/area-privada-usuario" && (
+                {location.pathname !== "/area-privada-usuario" &&  (
                   <Link
                     className="btn btn-dark text-center d-flex align-content-sm-center flex-wrap"
                     to={
