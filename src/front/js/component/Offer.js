@@ -60,12 +60,14 @@ const Offer = () => {
         "Content-Type": "application/json",
         Authorization: "Bearer " + localStorage.getItem("token"),
       },
-      body: JSON.stringify({location: formData.location,
+      body: JSON.stringify({
+        location: formData.location,
         company_name: formData.company_name,
         url_image: image,
         title: formData.title,
         url: formData.url,
-        price: formData.price}),
+        price: formData.price,
+      }),
     })
       .then((response) => {
         if (response.status == 200) {
@@ -160,30 +162,46 @@ const Offer = () => {
           />
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
-        <div className="mb-3 text-start">
-          <label htmlFor="formFile" className="form-label">
-            Añadir imagen
+        
+        <form className="row g-3" onSubmit={handleSubmit}>
+        <div className="col-auto col-md-3">
+          <label for="staticEmail2" className="visually-hidden">
+            Añadir Imagen
           </label>
           <input
-            type="location"
-            className="form-control"
-            id="floatingLocation"
-            placeholder={image!="" ? image :"Imagen*"}
-            name="url_image"
-            onChange={handleChange}
-            required
+            type="text"
+            readonly
+            className="form-control-plaintext"
+            id="staticEmail2"
+            value="*Añadir Imagen"
           />
         </div>
-
-        <div className="col-md-6">
+        <div className="col-auto col-md-7">
+          <label for="inputPassword2" className="visually-hidden">
+            Password
+          </label>
+          <input
+             type="text"
+             className="form-control"
+             id="floatingLocation"
+             placeholder={image != "" ? image : "Imagen*"}
+             name="url_image"
+             onChange={handleChange}
+             required
+          />
+        </div>
+        <div className="col-auto col-md-2">
           <button
+            type="submit"
+            className="btn btn-primary mb-3"
             onClick={() => widgetRef.current.open()}
             id="upload_widget"
-            type="button"
           >
-            Examinar...
+            Examinar
           </button>
         </div>
+      </form>
+       
         <div className="col-12">
           <button
             type="reset"
@@ -194,6 +212,8 @@ const Offer = () => {
           </button>
         </div>
       </div>
+
+      
     </form>
   );
 };
