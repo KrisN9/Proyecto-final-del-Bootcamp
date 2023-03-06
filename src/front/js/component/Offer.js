@@ -5,6 +5,7 @@ import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
 
 const Offer = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState([]);
   const [image, setImage] = useState("");
 
@@ -26,10 +27,10 @@ const Offer = () => {
         console.log(result);
         if (!error && result && result.event === "success") {
           console.log("Informacion de la imagen : ", result.info);
-          //setImage(result.info.secure_url);
+          setImage(result.info.secure_url);
           document
-          .getElementById("uploadedimage")
-          .setAttribute("src", result.info.secure_url);
+            .getElementById("uploadedimage")
+            .setAttribute("src", result.info.secure_url);
         }
       }
     );
@@ -70,6 +71,7 @@ const Offer = () => {
             title: "¡Oferta creada!",
             text: "Se ha creado con exito",
           });
+          navigate("/");
         } else {
           Swal.fire({
             position: "top",
@@ -186,7 +188,7 @@ const Offer = () => {
           name="url_image"
           className="img-fluid rounded-start"
         ></img>
-        <div className="col-auto col-md-2">
+        <div className="col-auto col-md-2 mt-3 text-dark text-center">
           <button
             type="submit"
             className="btn btn-primary mb-3"
@@ -196,7 +198,7 @@ const Offer = () => {
             Examinar
           </button>
         </div>
-       
+
         <div className="col-12">
           <button
             type="reset"
