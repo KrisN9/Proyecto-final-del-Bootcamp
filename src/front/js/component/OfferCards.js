@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const OfferCards = () => {
   const [offers, setOffers] = useState([]);
+
   useEffect(() => {
     getOffers();
   }, []);

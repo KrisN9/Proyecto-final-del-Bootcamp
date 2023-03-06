@@ -1,13 +1,12 @@
 import React from "react";
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
 
 const Offer = () => {
-  const navigate = useNavigate();
   const [formData, setFormData] = useState([]);
   const [image, setImage] = useState("");
+  const [offers, setOffers] = useState([]);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -16,7 +15,7 @@ const Offer = () => {
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
 
-  useEffect(() => {
+  const getOffers = () => {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
@@ -41,6 +40,10 @@ const Offer = () => {
       },
       false
     );
+  };
+
+  useEffect(() => {
+    getOffers();
   }, []);
 
   const handleSubmit = (event) => {
@@ -71,7 +74,6 @@ const Offer = () => {
             title: "¡Oferta creada!",
             text: "Se ha creado con exito",
           });
-          navigate("/");
         } else {
           Swal.fire({
             position: "top",
@@ -83,7 +85,8 @@ const Offer = () => {
         response.json();
       })
       .then((response) => {
-        console.log(response);
+        //console.log(response);
+        getOffers();
       });
   };
 
@@ -201,7 +204,7 @@ const Offer = () => {
 
         <div className="col-12">
           <button
-            type="reset"
+            type="submit"
             className="btn btn-warning"
             onClick={handleClick}
           >
