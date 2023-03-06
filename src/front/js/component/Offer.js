@@ -178,13 +178,12 @@ const Offer = () => {
           </label>
         </div>
           <img
-            type="reset"
             src=""
             id="uploadedimage"
             name="url_image"
             className="img-fluid rounded-start"
           ></img>
-        <div className="col-auto col-md-12 text-dark text-center">
+        <div className="col-auto col-md-12 text-dark text-center mt-2">
           <button
             type="submit"
             className="btn btn-primary mb-3"
@@ -195,7 +194,7 @@ const Offer = () => {
           </button>
         </div>
 
-        <div className="col-12 mt-4">
+        <div className="col-12 mt-5">
           <button
             type="reset"
             className="btn btn-warning"
