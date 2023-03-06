@@ -76,7 +76,7 @@ const Cards = () => {
         </p>
         
         <div>
-        <p className="font-change fs-3">¡Añade más favoritos, las ofertas te esperan!</p>
+        <p className="font-change fs-3">{favorites == 0? "":"¡Añade más favoritos, las ofertas te esperan!"}</p>
         <button className="redirect btn btn-success mb-3" onClick={handleClick}> Ir a Mapa
         </button>
         

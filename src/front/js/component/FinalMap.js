@@ -51,7 +51,7 @@ const FinalMap = () => {
                 href=${"/ofertas/" + oferta.id}
                 class="btn-map btn btn-outline-danger btn-sm"
               >
-              ¡Me gusta!
+              ver oferta
               </a>`
               : ""
           }`)

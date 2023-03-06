@@ -64,7 +64,7 @@ const OfferCards = () => {
   return (
     <div className="container col-12 col-md-6 mt-3 mb-3 ">
       <div>
-        <p className="font-change fs-3"> Puedes visualizar tu oferta en el mapa!</p>
+        <p className="font-change fs-3"> {offers==0 ? "": "Puedes visualizar tu oferta en el mapa!"}</p>
         <Link to="/" className="  btn btn-success " type="button">
           Ir a Mapa
         </Link>

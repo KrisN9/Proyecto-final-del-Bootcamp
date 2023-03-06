@@ -36,7 +36,7 @@ const OfferListCard = (props) => {
               title: "¡Añadida con éxito!",
               text: "¡La oferta se ha agregado a Favoritos, puedes verla en tu Área Privada!",
             });
-            navigate("/");
+            navigate("/area-privada-usuario");
 
             if (response.status == 400) {
               Swal.fire({

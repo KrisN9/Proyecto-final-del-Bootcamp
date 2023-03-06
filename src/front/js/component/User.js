@@ -14,14 +14,9 @@ const User =()=>{
   const handleSubmit = (event) => {
     event.preventDefault();
   };
-
-
     useEffect(()=>{
      getUser();
     },[])
-
-    
-
     const getUser=()=>{
       const optionsUser={
         headers:{
