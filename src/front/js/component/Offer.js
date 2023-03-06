@@ -26,9 +26,10 @@ const Offer = () => {
         console.log(result);
         if (!error && result && result.event === "success") {
           console.log("Informacion de la imagen : ", result.info);
-          setImage(result.info.secure_url);
-          document.getElementById("uploadedimage");
-          // .setAttribute("src", result.info.secure_url);
+          //setImage(result.info.secure_url);
+          document
+          .getElementById("uploadedimage")
+          .setAttribute("src", result.info.secure_url);
         }
       }
     );
@@ -154,45 +155,48 @@ const Offer = () => {
           <label htmlFor="floatingLocation">Ubicación*</label>
         </div>
 
-        <form className="row g-3" onSubmit={handleSubmit}>
-          <div className="col-auto col-md-3">
-            <label for="staticEmail2" className="visually-hidden">
-              Añadir Imagen
-            </label>
-            <input
-              type="text"
-              readonly
-              className="form-control-plaintext"
-              id="staticEmail2"
-              value="Añadir Imagen"
-            />
-          </div>
-          <div className="col-auto col-md-7">
-            <label for="inputPassword2" className="visually-hidden">
-              Añadir Imagen
-            </label>
-            <input
+        <div className="col-auto col-md-3">
+          <label htmlFor="staticEmail2" className="visually-hidden">
+            Añadir Imagen
+          </label>
+          <input
+            type="text"
+            readonly
+            className="form-control-plaintext"
+            id="staticEmail2"
+            value="Añadir Imagen"
+          />
+        </div>
+        <div className="col-auto col-md-7">
+          <label for="inputPassword2" className="visually-hidden">
+            Añadir Imagen
+          </label>
+          {/* <input
               type="text"
               className="form-control"
               id="floatingLocation"
               placeholder="Imagen*"
               name="url_image"
               onChange={handleChange}
-              required
-            />
-            <div></div>
-          </div>
-          <div className="col-auto col-md-2">
-            <button
-              type="submit"
-              className="btn btn-primary mb-3"
-              onClick={() => widgetRef.current.open()}
-              id="upload_widget"
-            >
-              Examinar
-            </button>
-          </div>
-        </form>
+            /> */}
+        </div>
+        <img
+          src=""
+          id="uploadedimage"
+          name="url_image"
+          className="img-fluid rounded-start"
+        ></img>
+        <div className="col-auto col-md-2">
+          <button
+            type="submit"
+            className="btn btn-primary mb-3"
+            onClick={() => widgetRef.current.open()}
+            id="upload_widget"
+          >
+            Examinar
+          </button>
+        </div>
+       
         <div className="col-12">
           <button
             type="reset"

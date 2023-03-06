@@ -22,3 +22,9 @@
   width: 100px;
   height: 100px;
 }
+
+#uploadedimage {
+  border: 2px solid black;
+  width: 200px;
+  height: 150px;
+}

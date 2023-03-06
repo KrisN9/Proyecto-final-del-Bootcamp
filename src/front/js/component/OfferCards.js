@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../../styles/supplierarea.css";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
-import Modals from "./Modals";
+
 
 const OfferCards = () => {
   const [offers, setOffers] = useState([]);
