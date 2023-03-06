@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 const Offer = () => {
   const [formData, setFormData] = useState([]);
   const [image, setImage] = useState("");
-  const [offers, setOffers] = useState([]);
 
   const handleChange = (event) => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
@@ -15,7 +14,11 @@ const Offer = () => {
   const cloudinaryRef = useRef();
   const widgetRef = useRef();
 
-  const getOffers = () => {
+  useEffect(() => {
+    imageCloudinary();
+  }, []);
+
+  const imageCloudinary = () => {
     cloudinaryRef.current = window.cloudinary;
     widgetRef.current = cloudinaryRef.current.createUploadWidget(
       {
@@ -42,15 +45,12 @@ const Offer = () => {
     );
   };
 
-  useEffect(() => {
-    getOffers();
-  }, []);
-
   const handleSubmit = (event) => {
     event.preventDefault();
   };
 
   const handleClick = (event) => {
+    document.getElementById("uploadedimage").src="";
     fetch(process.env.BACKEND_URL + "/api/offer", {
       method: "POST",
       headers: {
@@ -86,7 +86,7 @@ const Offer = () => {
       })
       .then((response) => {
         //console.log(response);
-        getOffers();
+        imageCloudinary();
       });
   };
 
@@ -176,22 +176,15 @@ const Offer = () => {
           <label for="inputPassword2" className="visually-hidden">
             Añadir Imagen
           </label>
-          {/* <input
-              type="text"
-              className="form-control"
-              id="floatingLocation"
-              placeholder="Imagen*"
-              name="url_image"
-              onChange={handleChange}
-            /> */}
         </div>
-        <img
-          src=""
-          id="uploadedimage"
-          name="url_image"
-          className="img-fluid rounded-start"
-        ></img>
-        <div className="col-auto col-md-2 mt-3 text-dark text-center">
+          <img
+            type="reset"
+            src=""
+            id="uploadedimage"
+            name="url_image"
+            className="img-fluid rounded-start"
+          ></img>
+        <div className="col-auto col-md-12 text-dark text-center">
           <button
             type="submit"
             className="btn btn-primary mb-3"
@@ -202,9 +195,9 @@ const Offer = () => {
           </button>
         </div>
 
-        <div className="col-12">
+        <div className="col-12 mt-4">
           <button
-            type="submit"
+            type="reset"
             className="btn btn-warning"
             onClick={handleClick}
           >
@@ -259,7 +252,16 @@ export default Offer;
 {
   /* <img id="img"/> */
 }
-
+{
+  /* <input
+              type="text"
+              className="form-control"
+              id="floatingLocation"
+              placeholder="Imagen*"
+              name="url_image"
+              onChange={handleChange}
+            /> */
+}
 // useEffect(() => {
 //   cloudinaryRef.current = window.cloudinary;
 //   widgetRef.current = cloudinaryRef.current.createUploadWidget(

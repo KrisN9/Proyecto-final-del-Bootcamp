@@ -24,6 +24,7 @@ const OfferCards = () => {
       })
       .then((response) => {
         setOffers(response);
+        getOffers();
       });
   };
 
