@@ -9,7 +9,7 @@ const UserRegister = () => {
   const [formData, setFormData] = useState({});
   const [shownPassword, setShownPassword] = useState(true); // para mostar contraseña
   const [shownPassword2, setShownPassword2] = useState(true);
-  // const [city, setCity] = useState([]);
+  const [city, setCity] = useState([]);
   const [check, setCheck] = useState(true);
 
   const navigate = useNavigate();
@@ -26,13 +26,13 @@ const UserRegister = () => {
     setFormData({ ...formData, [event.target.name]: event.target.value });
   };
 
-  // useEffect(() => {
-  //   // fetch(process.env.BACKEND_URL + "/api/city")
-  //   //   .then((response) => response.json())
-  //   //   .then((response) => {
-  //   //     setCity(response);
-  //   //   });
-  // }, []);
+  useEffect(() => {
+    fetch(process.env.BACKEND_URL + "/api/city")
+      .then((response) => response.json())
+      .then((response) => {
+        setCity(response);
+      });
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -145,7 +145,7 @@ const UserRegister = () => {
 
             <label htmlFor="floatingInput">Repetir contraseña*</label>
           </div>
-          {/* <select
+          <select
             className="form-select mb-3"
             aria-label="Default select example"
             name="city"
@@ -162,7 +162,7 @@ const UserRegister = () => {
                 </option>
               );
             })}
-          </select> */}
+          </select>
           <div className="form-check mb-3">
             <input
               className="form-check-input"

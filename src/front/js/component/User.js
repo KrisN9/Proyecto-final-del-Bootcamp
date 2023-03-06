@@ -13,13 +13,16 @@ const User = () => {
     event.preventDefault();
   };
   useEffect(() => {
-    fetch(process.env.BACKEND_URL + "/api/city")
-      .then((response) => response.json())
-      .then((response) => {
-        setCity(response);
-      });
     getUser();
   }, []);
+
+  useEffect(()=>{
+    fetch(process.env.BACKEND_URL + "/api/city")
+    .then((response) => response.json())
+    .then((response) => {
+      setCity(response);
+    });
+  },[])
   const getUser = () => {
     const optionsUser = {
       headers: {
@@ -68,9 +71,7 @@ const User = () => {
             Número de teléfono : {user.telephone_number}
           </p>
         </li>
-        <li>
-          <p className="font-change">ciudad : {user.city}</p>
-        </li>
+        
       </ul>
 
       <div className="d-grid gap-2 d-md-flex justify-content-md-end">
@@ -151,25 +152,7 @@ const User = () => {
                       defaultValue={user.telephone_number}
                     />
                   </div>
-                  <p className="fs-6 font-change">Ciudad</p>
-                  <select
-                    className="form-select mb-3"
-                    aria-label="Default select example"
-                    name="city"
-                    onChange={handleChange}
-                    required
-                  >
-                    <option disabled selected>
-                      Ciudad(elegir de las indicadas en el desplegable)*
-                    </option>
-                    {city.map((value, index) => {
-                      return (
-                        <option key={index} value={value.id}>
-                          {value.name}
-                        </option>
-                      );
-                    })}
-                  </select>
+                  
                 </div>
               </form>
             </div>

@@ -19,16 +19,7 @@ cloudinary.config(
 )
 
 
-@api.route("/upload/", methods=["POST"])
-def upload():
-    # url_image = request.json.get("url_image", offer.url_image)
-    result= cloudinary.uploader.upload(request.files['url_image']) 
-    new_url_image= result['secure_url']
-    
-    setattr(offer, "url_image", new_url_image)
-    db.session.commit()
-    
-    return jsonify(result), 200
+
 
 
 @api.route('/supplier', methods=['GET']) # se obtiene proveedor por id 
@@ -147,7 +138,7 @@ def delete_offer(offer_id):
 def register_user():
     data = request.json
     try:
-        user = User(name=data['name'], email=data['email'], password=data['password'],city_id=data['city']) 
+        user = User(name=data['name'], email=data['email'], password=data['password'],city_id=data['city'])
         db.session.add(user)
         db.session.commit()
     except Exception as e: 
@@ -238,11 +229,12 @@ def update_user(user_id):
     new_name = request.json.get("name", user.name)
     new_email = request.json.get("email", user.email)
     new_telephone_number = request.json.get("telephone_number", user.telephone_number)
-    new_city = request.json.get("city", user.city)
+    #new_city_id = request.json.get("city_id", user.city_id)
 
     setattr(user, "name", new_name)
     setattr(user, "email", new_email)
     setattr(user, "telephone_number", new_telephone_number)
+    #setattr(user, "city_id", new_city_id)
 
     db.session.commit()
        
