@@ -28,9 +28,9 @@ const Slide=()=>{
           <div className="carousel-item">
             <img src="https://www.hotelmalagapremium.com/wp-content/uploads/2018/03/MPH-noticia-sushi-take-away.jpg" className="d-block w-100 " height="650" alt="..."/>
           </div>
-          <div className="carousel-item">
+          {/* <div className="carousel-item">
             <img src="https://sextavenida.com/wp-content/uploads/2022/04/220401_Pantalla-1080x1080_Calzone-10-1024x1024.jpg" className="d-block w-100 " height="650" alt="..."/>
-          </div>
+          </div> */}
         </div>
         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
           <span className="carousel-control-prev-icon" aria-hidden="true"></span>
