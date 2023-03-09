@@ -1,0 +1,17 @@
+#background-image {
+  text-align: center;
+  background-image: url("https://img.freepik.com/foto-gratis/vista-aerea-hamburguesas-papas-fritas-comida-rapida_53876-31674.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 600px;
+  width: 100%;
+  padding-right: 120px;
+  padding-top: 50px;
+  padding-bottom: 80px;
+  
+}
+
+font-change {
+  font-family: 'Bree Serif', serif;
+}

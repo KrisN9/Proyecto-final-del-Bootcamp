@@ -1,7 +1,31 @@
-/*
-    home.css: This website contains selectors only used in home.css
+.font-link {
+  font-family: "Lily Script One", cursive;
+}
 
-    All pages share the styles on index.css but you should create 
-    one more css for each page that will contain the selected used 
-    on that page only (the ones not reused in other pages).
-*/
+.body {
+  background-color: white;
+}
+
+#mapa {
+  border: 1px solid black;
+}
+
+#img {
+  border: 2px solid black;
+}
+
+#image-2{
+  width: 200px;
+  height: 200px;
+}
+#logo{
+  width: 100px;
+  height: 100px;
+}
+
+#uploadedimage {
+  border: 2px solid black;
+  width: 200px;
+  height: 150px;
+  background-color: white;
+}

@@ -73,10 +73,37 @@
 		]
 	},
 	"dependencies": {
+		"@cloudinary/react": "^1.11.0",
+		"@cloudinary/url-gen": "^1.9.1",
+		"@mapbox/mapbox-gl-geocoder": "^5.0.1",
+		"@mapbox/search-js-react": "^1.0.0-beta.14",
+		"@material/snackbar": "^14.0.0",
+		"@reach/combobox": "^0.18.0",
+		"@react-google-maps/api": "^2.17.1",
+		"axios": "^1.2.4",
+		"bootstrap-icons": "^1.10.3",
+		"cors": "^2.8.5",
+		"google-maps-react": "^2.0.6",
+		"mapbox-gl": "^2.12.0",
 		"prop-types": "^15.6.1",
+		"py-datetime": "^0.8.3",
 		"react": "^16.8.4",
 		"react-dom": "^16.8.4",
+		"react-google-maps": "^9.4.5",
+		"react-hook-form": "^7.42.1",
+		"react-images-uploading": "^3.1.7",
+		"react-map-gl": "^7.0.21",
+		"react-map-gl-geocoder": "^2.2.0",
+		"react-mapbox-autocomplete": "^0.2.3",
+		"react-password-checklist": "^1.4.3",
+		"react-places-autocomplete": "^7.3.0",
 		"react-polyfills": "0.0.1",
-		"react-router-dom": "^6.3.0"
+		"react-router-dom": "^6.3.0",
+		"redux": "^4.0.4",
+		"redux-logger": "^3.0.6",
+		"redux-thunk": "^2.3.0",
+		"styled-components": "^5.3.6",
+		"sweetalert2": "^11.7.1",
+		"use-places-autocomplete": "^4.0.0"
 	}
 }

@@ -2,25 +2,47 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import rigoImageUrl from "../../img/rigo-baby.jpg";
 import "../../styles/home.css";
+import "../../styles/sidebar.css";
+import Slide from "../component/slide";
+import FinalMap from "../component/FinalMap";
+
 
 export const Home = () => {
-	const { store, actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
 
-	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">
-				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
-			</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://start.4geeksacademy.com/starters/react-flask">
-					Read documentation
-				</a>
-			</p>
-		</div>
-	);
+  return (
+    <>
+    
+      <div className="row">
+        <div className="container squar1 mt-5 mb-3">
+          <h3 className="fs-1  fst-italic text-center">  {/* text-success */}
+            ¡Busca en el mapa las ofertas más cercanas a ti, y añade tus favoritas!
+          </h3>
+        </div>
+        <div className="container col-md-10  mt-4 mb-5 ">
+          {/* <Sidebar/> */}
+          <div className="map ">
+            <FinalMap />
+          </div>
+        </div>
+      </div>
+
+      <div className="text-center mt-3 back">
+        <div className="container squar1 mt-5 mb-3 ">
+          <p className="fs-1  fst-italic">
+            Aquí encontrarás tus restaurantes favoritos con las mejores ofertas
+          </p>
+        </div>
+        <br></br>
+        <Slide />
+
+        <br></br>
+
+			<br></br>
+
+			
+			
+      </div>
+    </>
+  );
 };

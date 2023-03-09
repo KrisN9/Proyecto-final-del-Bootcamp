@@ -1,0 +1,17 @@
+#fast-food {
+    text-align: center;
+    background-image: url("https://img.freepik.com/vector-premium/composicion-plana-horizontal-acuarela-borde-costuras-comida-tradicional-japonesa-sushi_714749-140.jpg?w=2000");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 600px;
+    width: 100%;
+    padding-right: 120px;
+  padding-top: 50px;
+  padding-bottom: 80px;
+    
+}
+
+.font-change {
+    font-family: 'Bree Serif', serif;
+  }

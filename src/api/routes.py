@@ -5,10 +5,20 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Favorite, Supplier, Offer, City
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required , get_jwt_identity
-
-
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 api = Blueprint('api', __name__)
+
+cloudinary.config( 
+  cloud_name = "ddkqnzbrg", 
+  api_key = "845183212773547", 
+  api_secret = "Kne2NEOR7tx9wFeTzrcFk0tLKPk",
+  secure = True
+)
+
+
 
 
 
@@ -71,8 +81,6 @@ def get_cities():
 
     return jsonify(data), 200
 
-
-
 @api.route('/delete_user', methods=['DELETE'])   #eliminar usuario  por id 
 @jwt_required()    # pendiente 
 def delete_user():
@@ -130,8 +138,7 @@ def delete_offer(offer_id):
 def register_user():
     data = request.json
     try:
-        user = User(name=data['name'], email=data['email'], password=data['password'],  
-        telephone_number=data['telephone_number'], city_id=data['city'])
+        user = User(name=data['name'], email=data['email'], password=data['password'],city_id=data['city'])
         db.session.add(user)
         db.session.commit()
     except Exception as e: 
@@ -145,8 +152,7 @@ def register_user():
 def register_supplier():
     data = request.json
     try:
-        supplier = Supplier(company_name=data['company_name'], company_cif=data['company_cif'], name=data['name'], email=data['email'],
-        password=data['password'], telephone_number=data['telephone_number'], city_id=data['city'])
+        supplier = Supplier(name=data['name'], email=data['email'],password=data['password'], city_id=data['city'])
         db.session.add(supplier)
         db.session.commit()
     except Exception as e:
@@ -184,8 +190,8 @@ def create_offer():
     data=request.json
     supplier_id = get_jwt_identity()
     try:
-       offer= Offer(id_supplier=supplier_id,company_name=data['company_name'], 
-       url=data['url'], url_image=data['url_image'], title=data['title'], price=data['price'], location=data['location'])  
+       offer= Offer(id_supplier=supplier_id,company_name=data['company_name'],
+       url=data['url'], title=data['title'], url_image=data['url_image'], price=data['price'], location=data['location'])
        db.session.add(offer)
        db.session.commit()
     except Exception as e: 
@@ -223,11 +229,12 @@ def update_user(user_id):
     new_name = request.json.get("name", user.name)
     new_email = request.json.get("email", user.email)
     new_telephone_number = request.json.get("telephone_number", user.telephone_number)
-    new_city = request.json.get("city", user.city)
+    #new_city_id = request.json.get("city_id", user.city_id)
 
     setattr(user, "name", new_name)
     setattr(user, "email", new_email)
     setattr(user, "telephone_number", new_telephone_number)
+    #setattr(user, "city_id", new_city_id)
 
     db.session.commit()
        
@@ -244,11 +251,13 @@ def update_supplier(supplier_id):
     new_company_cif = request.json.get("company_cif", supplier.company_cif)
     new_name = request.json.get("name", supplier.name)
     new_email = request.json.get("email", supplier.email)
+    new_telephone_number = request.json.get("telephone_number", supplier.telephone_number)
 
     setattr(supplier, "company_name", new_company_name)
     setattr(supplier, "company_cif", new_company_cif)
     setattr(supplier, "name", new_name)
     setattr(supplier, "email", new_email)
+    setattr(supplier, "telephone_number", new_telephone_number)
 
     db.session.commit()
        
@@ -257,19 +266,19 @@ def update_supplier(supplier_id):
 @api.route('/offer/<int:offer_id>', methods=['PUT']) #modificar datos de oferta
 def update_offer(offer_id):
     try:
-        offer = Offer.query.filter_by(offer_id=offer_id).first()
+        offer = Offer.query.filter_by(id=offer_id).first()
     except Exception:
         return jsonify({"msg": "Offer doesn't exist"}), 400
 
     new_company_name = request.json.get("company_name", offer.company_name)
-    new_name = request.json.get("name", offer.name)
+    new_title = request.json.get("name", offer.title)
     new_price = request.json.get("price", offer.price)
     new_url_image = request.json.get("url_image", offer.url_image)
     new_url = request.json.get("url", offer.url)
     new_location = request.json.get("location", offer.location)
 
     setattr(offer, "company_name", new_company_name)
-    setattr(offer, "name", new_name)
+    setattr(offer, "name", new_title)
     setattr(offer, "price", new_price)
     setattr(offer, "url_image", new_url_image)
     setattr(offer, "url", new_url)
@@ -277,7 +286,7 @@ def update_offer(offer_id):
 
     db.session.commit()
        
-    return jsonify(user.serialize()), 200
+    return jsonify(offer.serialize()), 200
 
 #pendiente de preguntar crear ROUTE PARA obetener las ofertas por la zona de busqueda 
 

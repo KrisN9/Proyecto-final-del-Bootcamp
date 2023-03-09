@@ -1,0 +1,17 @@
+#hotdog {
+  text-align: center;
+  background-image: url("https://img.freepik.com/foto-gratis/hamburguesa_1339-1573.jpg?w=2000");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  width: 100%;
+  padding-right: 120px;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  
+}
+
+.font-change {
+  font-family: "Bree Serif", serif;
+}
